@@ -7,6 +7,8 @@ public class Cell : MonoBehaviour
     private Vector2 originPos;
     private Vector2 target;
 
+    public Transform infectionBarPivot;
+
     public float offset;
     public float speed;
 
@@ -35,6 +37,7 @@ public class Cell : MonoBehaviour
                 infectionAmount = maxInfectionAmount;
                 isInfected = true;
             }
+            infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
         }
     }
 
@@ -57,6 +60,7 @@ public class Cell : MonoBehaviour
     {
         if(col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
+            col.gameObject.GetComponent<Player>().currentCell = this;
         }
     }
     
@@ -64,6 +68,7 @@ public class Cell : MonoBehaviour
     {
         if(col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
+            col.gameObject.GetComponent<Player>().currentCell = null;
         }
     }
 }
