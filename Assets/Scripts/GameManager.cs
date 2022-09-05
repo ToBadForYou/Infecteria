@@ -5,15 +5,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int DNAPoints = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    
+    private int absorbedCells = 0;
+    private int infectedCells = 0;
+    private int factoryAmount = 0;
+
+    public void IncreaseDNAPoints(int amount) {
+        DNAPoints += amount;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void IncreaseAbsorbedCells() {
+        absorbedCells++;
+    }
+
+    public void IncreaseInfectedCells() {
+        infectedCells++;
+    }
+
+    public void IncreaseFactoryAmount() {
+        factoryAmount++;
     }
 }

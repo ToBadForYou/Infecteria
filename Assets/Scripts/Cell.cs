@@ -7,6 +7,7 @@ public class Cell : MonoBehaviour
     private Vector2 originPos;
     private Vector2 target;
 
+    public GameObject factoryPrefab;
     public Transform infectionBarPivot;
 
     public float offset;
@@ -23,11 +24,19 @@ public class Cell : MonoBehaviour
     }
 
     public void GetAbsorbed() {
-        
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.IncreaseDNAPoints(100);
+        gm.IncreaseAbsorbedCells();
+
+        Destroy(gameObject);
     }
 
     public void TurnIntoFactory() {
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.IncreaseFactoryAmount();
 
+        Instantiate(factoryPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     public void Infect(float amount) {
@@ -36,6 +45,8 @@ public class Cell : MonoBehaviour
             if(infectionAmount >= maxInfectionAmount) {
                 infectionAmount = maxInfectionAmount;
                 isInfected = true;
+                GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+                gm.IncreaseInfectedCells();
             }
             infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
         }

@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd618ee3c260543b6711080f338265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  factoryPrefab: {fileID: 9200442734102122332, guid: fc09b64f442f5f044a37597d4b1919cc, type: 3}
   infectionBarPivot: {fileID: 977891674}
   offset: 4
   speed: 0.5
