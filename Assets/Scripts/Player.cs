@@ -10,9 +10,11 @@ public class Player : MonoBehaviour
     public GameObject eObject;
     public GameObject qObject;
 
+    public List<Vector2> startPositions;
+
     void Start()
     {
-        
+        transform.position = startPositions[Random.Range(0, startPositions.Count)];
     }
 
     void MakeObjActive(GameObject obj) {
