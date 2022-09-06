@@ -7,6 +7,13 @@ public class MicroBacteria : MonoBehaviour
     public bool isSelected;
     public Cell targetCell;
 
+    void Start() {
+        //Temporary setting selected to true and choosing a random target cell
+        isSelected = true;
+        GameObject[] cells = GameObject.FindGameObjectsWithTag("Cell");
+        targetCell = cells[Random.Range(0,cells.Length)].GetComponent<Cell>();
+    }
+
     void Update()
     {
         if(isSelected) {
