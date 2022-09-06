@@ -34,5 +34,7 @@ public class MicroBacteria : MonoBehaviour
 
     void OnMouseDown() {
         isSelected = !isSelected;
+        GameObject child = transform.GetChild(0).gameObject;
+        child.SetActive(!child.activeSelf);
     }
 }
