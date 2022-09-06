@@ -5,6 +5,7 @@ using UnityEngine;
 public class CellSpawner : MonoBehaviour
 {
     public GameObject cellObject;
+    public GameObject heartObject;
     public Transform playerPosition;
     public int distance = 5;
     public int amountX = 20;
@@ -13,6 +14,7 @@ public class CellSpawner : MonoBehaviour
     void Start()
     {
         float scale = cellObject.GetComponent<Transform>().localScale.x;
+        Heart heart = heartObject.GetComponent<Heart>();
         float playerX = playerPosition.position.x;
         float playerY = playerPosition.position.y;
         int startX = amountX/2;
@@ -21,7 +23,8 @@ public class CellSpawner : MonoBehaviour
         {
             for (int y = -startY; y < startY; y++)
             {
-                Instantiate(cellObject, new Vector2(playerX + scale * x * distance , playerY + scale * y * distance), Quaternion.identity);
+                GameObject cell = Instantiate(cellObject, new Vector2(playerX + scale * x * distance , playerY + scale * y * distance), Quaternion.identity);
+                heart.AddCell(cell);
             }
         }        
     }

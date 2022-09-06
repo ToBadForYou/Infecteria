@@ -22,4 +22,8 @@ public class Scout : Tower
             exclamationMark.SetActive(true);
         }
     }
+
+    public void SetTarget(Transform target){
+        followTarget.target = target;
+    }
 }
