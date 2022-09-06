@@ -297,6 +297,7 @@ MonoBehaviour:
   infectionBarPivot: {fileID: 977891674}
   offset: 4
   speed: 0.5
+  insideRenderer: {fileID: 1427935810}
   maxInfectionAmount: 10
   infectionAmount: 0
   isInfected: 0

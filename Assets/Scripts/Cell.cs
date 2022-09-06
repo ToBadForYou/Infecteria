@@ -13,6 +13,8 @@ public class Cell : MonoBehaviour
     public float offset;
     public float speed;
 
+    public SpriteRenderer insideRenderer;
+
     public float maxInfectionAmount;
     public float infectionAmount;
     public bool isInfected;
@@ -48,6 +50,7 @@ public class Cell : MonoBehaviour
                 GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
                 gm.IncreaseInfectedCells();
             }
+            insideRenderer.color = new Color(insideRenderer.color.r, insideRenderer.color.g + amount/10.0f, insideRenderer.color.b, insideRenderer.color.a);
             infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
         }
     }

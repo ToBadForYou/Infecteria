@@ -19,7 +19,7 @@ public class DNAProducer : MonoBehaviour
     {
         productionTimer -= Time.deltaTime;
         if (productionTimer < 0){
-            gameManager.DNAPoints += baseProduction;
+            gameManager.IncreaseDNAPoints(baseProduction);
             productionTimer = baseTimer;
         }
     }
