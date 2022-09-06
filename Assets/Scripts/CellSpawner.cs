@@ -9,7 +9,7 @@ public class CellSpawner : MonoBehaviour
     public int distance = 5;
     public int amountX = 20;
     public int amountY = 20;
-    // Start is called before the first frame update
+    
     void Start()
     {
         float scale = cellObject.GetComponent<Transform>().localScale.x;
@@ -26,9 +26,4 @@ public class CellSpawner : MonoBehaviour
         }        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

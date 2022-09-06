@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        transform.position = startPositions[Random.Range(0, startPositions.Count)];
+        //temporarily commented out for debug purposes
+        //transform.position = startPositions[Random.Range(0, startPositions.Count)];
     }
 
     void MakeObjActive(GameObject obj) {
