@@ -5,10 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Cell currentCell;
+    public Factory currentFactory;
 
     public GameObject spaceObject;
     public GameObject eObject;
     public GameObject qObject;
+    public GameObject bObject;
 
     public List<Vector2> startPositions;
 
@@ -18,13 +20,13 @@ public class Player : MonoBehaviour
         //transform.position = startPositions[Random.Range(0, startPositions.Count)];
     }
 
-    void MakeObjActive(GameObject obj) {
+    public void MakeObjActive(GameObject obj) {
         if(!obj.activeSelf) {
             obj.SetActive(true);
         }
     }
 
-    void MakeObjDeactive(GameObject obj) {
+    public void MakeObjDeactive(GameObject obj) {
         if(obj.activeSelf) {
             obj.SetActive(false);
         }
@@ -32,6 +34,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // Handling factories
+        if(currentFactory) {
+            
+        }
+
         // Infecting Cells
         if(currentCell) {
             if(currentCell.isInfected) {

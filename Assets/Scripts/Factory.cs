@@ -17,4 +17,22 @@ public class Factory : MonoBehaviour
             time = startTime;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Player") {
+            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
+            Player playerScript = col.gameObject.GetComponent<Player>();
+            playerScript.MakeObjActive(playerScript.bObject);
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Player") {
+            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
+            Player playerScript = col.gameObject.GetComponent<Player>();
+            playerScript.MakeObjDeactive(playerScript.bObject);
+        }
+    }
 }

@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 9200442734102122334}
   - component: {fileID: 9200442734102122333}
   - component: {fileID: 1444822331}
+  - component: {fileID: 1221382061}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Untagged
@@ -181,3 +182,19 @@ MonoBehaviour:
   microBacteriaPrefab: {fileID: 5050834132167503558, guid: 5ec7fb0577afbea4aab62482160d1f67, type: 3}
   startTime: 5
   time: 5
+--- !u!58 &1221382061
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200442734102122332}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1

@@ -74,7 +74,22 @@ public class SelectionHandler : MonoBehaviour
             float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
 
             selectionTransform.localScale = new Vector2(xScale, yScale);
-            selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
+            
+            //TODO: When it comes to graphics selection works correctly
+            //but when it comes to functionality it does only work when
+            //you select from topLeft to bottomRight at the moment.
+            if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y) {
+                selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
+            }
+            else if(worldPosition.x < topLeft.x && worldPosition.y > topLeft.y) {
+                selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y - yScale/2.0f);
+            }
+            else if(worldPosition.x > topLeft.x && worldPosition.y > topLeft.y) {
+                selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y - yScale/2.0f);
+            }
+            else {
+                selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y + yScale/2.0f);
+            }
         }
         else {
             if(!isTargeting) {
