@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2310231965825473752}
   - component: {fileID: 2310231965825473703}
-  - component: {fileID: 2310231965825473702}
   - component: {fileID: 2310231965825473701}
   - component: {fileID: 2310231965825473753}
   - component: {fileID: 82072934051239617}
@@ -87,23 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2310231965825473702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2310231965825473700}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e721ae170272d0408715e91872ccd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  spriteRenderer: {fileID: 2310231965825473703}
-  attacking: 0
-  detectedColor: {r: 1, g: 0, b: 0, a: 0.4}
-  idleColor: {r: 1, g: 1, b: 1, a: 0.4}
 --- !u!58 &2310231965825473701
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -132,12 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df90df3fe6ebe014685b3b81e68622cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitMovement: {fileID: 82072934051239617}
   target: {fileID: 0}
   spriteRenderer: {fileID: 2310231965825473703}
   attacking: 0
   detectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   idleColor: {r: 1, g: 1, b: 1, a: 0.4}
+<<<<<<< HEAD
   moveToTarget: {fileID: 82072934051239617}
+=======
+>>>>>>> ed50d7ec7c8ebe30d9a0bd101e66c26836ac7781
   parent: {fileID: 0}
   exclamationMark: {fileID: 2310231966931280781}
   targetCell: {fileID: 0}
@@ -156,7 +142,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+<<<<<<< HEAD
   speed: 2
+=======
+  owner: {fileID: 2310231965825473753}
+  speed: 2
+  moving: 0
+>>>>>>> ed50d7ec7c8ebe30d9a0bd101e66c26836ac7781
 --- !u!1 &2310231966931280781
 GameObject:
   m_ObjectHideFlags: 0
