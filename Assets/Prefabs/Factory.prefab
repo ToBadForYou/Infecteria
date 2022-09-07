@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   microBacteriaPrefab: {fileID: 5050834132167503558, guid: 5ec7fb0577afbea4aab62482160d1f67, type: 3}
+  DNAProducerPrefab: {fileID: 686625259711535221, guid: e9e20c840c683804d8841c6c77397923, type: 3}
   startTime: 5
   time: 5
 --- !u!58 &1221382061

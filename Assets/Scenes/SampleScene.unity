@@ -1372,6 +1372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCell: {fileID: 0}
+  currentFactory: {fileID: 0}
   spaceObject: {fileID: 1646384897}
   eObject: {fileID: 179469178}
   qObject: {fileID: 2016733478}

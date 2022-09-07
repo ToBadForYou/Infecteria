@@ -36,7 +36,9 @@ public class Player : MonoBehaviour
     {
         // Handling factories
         if(currentFactory) {
-            
+            if(Input.GetKeyDown(KeyCode.B)) {
+                currentFactory.Build();
+            }
         }
 
         // Infecting Cells

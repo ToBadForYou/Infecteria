@@ -40,6 +40,11 @@ public class Cell : MonoBehaviour
     private void UpdateScale() {
         float step = 0.15f * Time.deltaTime;
         transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(targetScaleX, targetScaleY), step);
+        
+        float xScaleDiff = 1 - transform.localScale.x;
+        float yScaleDiff = 1 - transform.localScale.y;
+        transform.GetChild(1).localScale = new Vector2(1.0f + xScaleDiff, 1.0f + yScaleDiff);
+
         if(Vector2.Distance(transform.localScale, new Vector2(targetScaleX, targetScaleY)) <= 0.01f) {
             SetTargetScale();
         }
