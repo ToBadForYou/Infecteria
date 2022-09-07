@@ -120,10 +120,7 @@ MonoBehaviour:
   attacking: 0
   detectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   idleColor: {r: 1, g: 1, b: 1, a: 0.4}
-<<<<<<< HEAD
   moveToTarget: {fileID: 82072934051239617}
-=======
->>>>>>> ed50d7ec7c8ebe30d9a0bd101e66c26836ac7781
   parent: {fileID: 0}
   exclamationMark: {fileID: 2310231966931280781}
   targetCell: {fileID: 0}
@@ -142,13 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-<<<<<<< HEAD
-  speed: 2
-=======
   owner: {fileID: 2310231965825473753}
   speed: 2
   moving: 0
->>>>>>> ed50d7ec7c8ebe30d9a0bd101e66c26836ac7781
 --- !u!1 &2310231966931280781
 GameObject:
   m_ObjectHideFlags: 0
