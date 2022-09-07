@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class RangedUnit : Unit
 {
     public GameObject target;
     public SpriteRenderer spriteRenderer;
@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
 
     // Update is called once per frame
     protected void Update()
-    {
+    {  
         if(target != null){
             attacking = true;
             spriteRenderer.color = detectedColor;

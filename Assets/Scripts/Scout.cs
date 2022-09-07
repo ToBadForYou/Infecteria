@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scout : Tower
+public class Scout : RangedUnit
 {
-    public MoveToTarget moveToTarget;
     public GameObject parent;
     public GameObject exclamationMark;
     public GameObject targetCell;
@@ -14,32 +13,33 @@ public class Scout : Tower
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    void Update()
-    {
-        base.Update();
-        if(moveToTarget && moveToTarget.target == null){
-            moveToTarget.target = parent.transform;
-            finished = true;
-        }
-        if(finished && Vector2.Distance(transform.position, parent.transform.position) <= 0.01f) { 
-            Destroy(gameObject); 
-        }
-    }
-
-    override public void Attack(){
+    public override void Attack(){
         if (!isAlerted && target.tag == "Player"){
-            isAlerted = true;
-            moveToTarget.target = parent.transform;
-            exclamationMark.SetActive(true);
-            finished = true;
+            SetAlerted();
         }
+    }
+
+    public void SetAlerted(){
+        isAlerted = true;
+        exclamationMark.SetActive(true);
+        unitMovement.MoveToTarget(parent);
+        finished = true;        
     }
 
     public void SetTarget(GameObject target){
-        moveToTarget.target = target.transform;
+        unitMovement.MoveToTarget(target);
         targetCell = target;
+    }
+
+    public override void OnReachedDestination(GameObject target){
+        if(target == targetCell){
+            unitMovement.MoveToTarget(parent);
+            finished = true;
+        }
+        if(finished && target == parent) { 
+            Destroy(gameObject); 
+        }      
     }
 }
