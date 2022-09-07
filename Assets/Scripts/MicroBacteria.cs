@@ -9,13 +9,6 @@ public class MicroBacteria : MonoBehaviour
     public Cell targetCell;
     public Vector2 startPosition;
 
-    void Start() {
-        //Temporary setting selected to true and choosing a random target cell
-        //isSelected = true;
-        GameObject[] cells = GameObject.FindGameObjectsWithTag("Cell");
-        targetCell = cells[Random.Range(0,cells.Length)].GetComponent<Cell>();
-    }
-
     void Update()
     {
         if(isSelected) {
@@ -26,10 +19,6 @@ public class MicroBacteria : MonoBehaviour
                     targetCell.Infect(0.2f);
                     Destroy(gameObject); 
                 }
-            }
-            else {
-                //Listen for mouse click for targetCell (maybe open some sort of mimimap with nearby cells)
-                //Set target cell to clicked cell
             }
         }
         else {
@@ -44,9 +33,5 @@ public class MicroBacteria : MonoBehaviour
         isSelected = !isSelected;
         GameObject child = transform.GetChild(0).gameObject;
         child.SetActive(!child.activeSelf);
-    }
-
-    void OnMouseDown() {
-        ToggleSelection();
     }
 }

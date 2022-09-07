@@ -5,12 +5,20 @@ using UnityEngine;
 public class SelectionHandler : MonoBehaviour
 {
     private bool isDown;
+    private bool isTargeting;
+
+    public GameObject fakeCellPrefab;
+    public GameObject windowPrefab;
+
     public Transform selectionTransform;
+    public float targetCellRadius;
 
     private Vector2 topLeft;
     private Vector2 bottomRight;
 
-    private List<MicroBacteria> selectedMicroBacterias;
+    private List<MicroBacteria> selectedMicroBacterias = new List<MicroBacteria>();
+
+    private GameObject selectionMenu;
 
     List<MicroBacteria> GetSelectedBacterias() {
         List<MicroBacteria> bacterias = new List<MicroBacteria>();
@@ -25,6 +33,15 @@ public class SelectionHandler : MonoBehaviour
         }
 
         return bacterias;
+    }
+
+    public void SetTargetAndReset(Cell targetCell) {
+        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
+            bacteria.targetCell = targetCell;
+        }
+        Destroy(selectionMenu);
+        isTargeting = false;
+        selectedMicroBacterias = new List<MicroBacteria>();
     }
 
     void Update()
@@ -58,6 +75,25 @@ public class SelectionHandler : MonoBehaviour
 
             selectionTransform.localScale = new Vector2(xScale, yScale);
             selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
+        }
+        else {
+            if(!isTargeting) {
+                if(selectedMicroBacterias.Count >= 1) {
+                    isTargeting = true;
+                    GameObject player = GameObject.Find("Player");
+                    GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
+                    selectionMenu = Instantiate(windowPrefab, new Vector3(player.transform.position.x, player.transform.position.y, -5.0f), Quaternion.identity);
+                    for(int i = 0; i < objs.Length; i++) {
+                        if(Vector2.Distance(objs[i].transform.position, player.transform.position) <= targetCellRadius) {
+                            Debug.Log("Found Cell!");
+                            Vector2 objPos = objs[i].transform.position;
+                            GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + objPos.x/2.5f, player.transform.position.y + objPos.y/2.5f, -6.0f), Quaternion.identity);
+                            fakeCell.transform.parent = selectionMenu.transform;
+                            fakeCell.GetComponent<FakeCell>().realCellReference = objs[i].GetComponent<Cell>();
+                        }
+                    }
+                }
+            }
         }
     }
 }

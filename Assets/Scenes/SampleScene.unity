@@ -1002,7 +1002,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48e0db3513fe654a947a82ecd6e2303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakeCellPrefab: {fileID: 7649639880352366611, guid: 7d1c2f24094e45b45bba6e28908507dd, type: 3}
+  windowPrefab: {fileID: 4226050407750130097, guid: db8226814ee7e974887db2e12b34ec5c, type: 3}
   selectionTransform: {fileID: 791589947}
+  targetCellRadius: 10
 --- !u!1 &647888333
 GameObject:
   m_ObjectHideFlags: 0
