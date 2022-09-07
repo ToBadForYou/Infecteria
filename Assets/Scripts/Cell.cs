@@ -19,10 +19,30 @@ public class Cell : MonoBehaviour
     public float infectionAmount;
     public bool isInfected;
 
+    public float scaleFactor;
+    private float initialScale;
+    private float targetScaleX;
+    private float targetScaleY;
+
     void Start()
     {
+        initialScale = transform.localScale.x;
+        SetTargetScale();
         originPos = transform.position;
         target = GetNewTarget();
+    }
+
+    private void SetTargetScale() {
+        targetScaleX = initialScale + Random.Range(-scaleFactor, scaleFactor);
+        targetScaleY = initialScale + Random.Range(-scaleFactor, scaleFactor);
+    }
+
+    private void UpdateScale() {
+        float step = 0.15f * Time.deltaTime;
+        transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(targetScaleX, targetScaleY), step);
+        if(Vector2.Distance(transform.localScale, new Vector2(targetScaleX, targetScaleY)) <= 0.01f) {
+            SetTargetScale();
+        }
     }
 
     public void GetAbsorbed() {
@@ -68,6 +88,8 @@ public class Cell : MonoBehaviour
             target = GetNewTarget();
         }
         transform.position = Vector2.MoveTowards(transform.position, target, step);
+
+        UpdateScale();
     }
 
     void OnTriggerEnter2D(Collider2D col)

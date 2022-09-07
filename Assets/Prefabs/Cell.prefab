@@ -301,6 +301,7 @@ MonoBehaviour:
   maxInfectionAmount: 10
   infectionAmount: 0
   isInfected: 0
+  scaleFactor: 0.2
 --- !u!58 &613358344
 CircleCollider2D:
   m_ObjectHideFlags: 0

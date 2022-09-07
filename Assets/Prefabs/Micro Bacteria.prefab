@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5050834132167503557}
   m_Layer: 0
   m_Name: Micro Bacteria
-  m_TagString: Untagged
+  m_TagString: Bacteria
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9807a3bd6d2d5fe41bf380bfdff2c5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   isSelected: 0
   targetCell: {fileID: 0}
+  startPosition: {x: 0, y: 0}
 --- !u!58 &5050834132167503557
 CircleCollider2D:
   m_ObjectHideFlags: 0

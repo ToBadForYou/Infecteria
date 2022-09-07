@@ -12,7 +12,8 @@ public class Factory : MonoBehaviour
     {
         time -= Time.deltaTime;
         if(time <= 0.0f) {
-            Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
+            obj.GetComponent<MicroBacteria>().startPosition = new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f));
             time = startTime;
         }
     }
