@@ -10,9 +10,8 @@ public class Tower : MonoBehaviour
     public Color detectedColor = new Color(1, 0, 0, 0.4f);
     public Color idleColor = new Color(1, 1, 1, 0.4f);
 
-
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if(target != null){
             attacking = true;
