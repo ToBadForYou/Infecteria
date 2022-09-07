@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectionHandler : MonoBehaviour
 {
     private bool isDown;
-    //public Transform selectionTransform;
+    public Transform selectionTransform;
 
     private Vector2 topLeft;
     private Vector2 bottomRight;
@@ -30,8 +30,7 @@ public class SelectionHandler : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(1)) {
-            Debug.Log("Down");
-            //selectionTransform.gameObject.SetActive(true);
+            selectionTransform.gameObject.SetActive(true);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
             topLeft = mousePosition;
@@ -39,8 +38,7 @@ public class SelectionHandler : MonoBehaviour
             isDown = true;
         }
         else if(Input.GetMouseButtonUp(1)) {
-            Debug.Log("Up");
-            //selectionTransform.gameObject.SetActive(false);
+            selectionTransform.gameObject.SetActive(false);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
             bottomRight = mousePosition;
@@ -51,6 +49,15 @@ public class SelectionHandler : MonoBehaviour
             }
 
             isDown = false;
+        }
+        if(isDown) {
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
+            float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
+            float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
+
+            selectionTransform.localScale = new Vector2(xScale, yScale);
+            selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
         }
     }
 }
