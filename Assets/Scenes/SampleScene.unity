@@ -1784,9 +1784,11 @@ MonoBehaviour:
   attacking: 0
   detectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   idleColor: {r: 1, g: 1, b: 1, a: 0.4}
-  parentTransform: {fileID: 1459325200}
-  followTarget: {fileID: 0}
+  moveToTarget: {fileID: 0}
+  parent: {fileID: 0}
   exclamationMark: {fileID: 480906261}
+  targetCell: {fileID: 0}
+  finished: 0
   isAlerted: 0
 --- !u!1 &1420425987
 GameObject:
@@ -2128,6 +2130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1878001691}
   - component: {fileID: 1878001690}
+  - component: {fileID: 1878001692}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -2163,8 +2166,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1878001692
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878001689}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2016733478
 GameObject:
   m_ObjectHideFlags: 0
