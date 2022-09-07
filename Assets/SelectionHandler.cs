@@ -87,7 +87,7 @@ public class SelectionHandler : MonoBehaviour
                         if(Vector2.Distance(objs[i].transform.position, player.transform.position) <= targetCellRadius) {
                             Debug.Log("Found Cell!");
                             Vector2 objPos = objs[i].transform.position;
-                            GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + objPos.x/2.5f, player.transform.position.y + objPos.y/2.5f, -6.0f), Quaternion.identity);
+                            GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + objPos.x/5.0f, player.transform.position.y + objPos.y/5.0f, -6.0f), Quaternion.identity);
                             fakeCell.transform.parent = selectionMenu.transform;
                             fakeCell.GetComponent<FakeCell>().realCellReference = objs[i].GetComponent<Cell>();
                         }
