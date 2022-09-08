@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2310231965825473700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4033577, y: -2.55, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2310231966931280782}
@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311081517874335256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 2310231965825473752}
@@ -280,6 +280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMovement: {fileID: 7764066521434246855}
+  health: 0
+  damage: 0
+  attackSpeed: 0
+  range: 0.2
   target: {fileID: 0}
   spriteRenderer: {fileID: 5792442732693720547}
   attacking: 0
