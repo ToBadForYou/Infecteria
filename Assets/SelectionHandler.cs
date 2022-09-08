@@ -24,6 +24,29 @@ public class SelectionHandler : MonoBehaviour
         List<MicroBacteria> bacterias = new List<MicroBacteria>();
 
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Bacteria");
+
+        // Handle selection directions
+        if(topLeft.x > bottomRight.x && topLeft.y < bottomRight.y) {
+            //topLeft is infact bottomRight, so flip
+            Vector2 oldTopLeft = topLeft;
+            topLeft = bottomRight;
+            bottomRight = oldTopLeft;
+        }
+        else if(topLeft.x > bottomRight.x && topLeft.y > bottomRight.y) {
+            //topLeft is infact topRight
+            float leftX = bottomRight.x;
+            float rightX = topLeft.x;
+            topLeft.x = leftX;
+            bottomRight.x = rightX;
+        }
+        else if(topLeft.x < bottomRight.x && topLeft.y < bottomRight.y) {
+            //topLeft is infact bottomLeft
+            float leftY = bottomRight.y;
+            float rightY = topLeft.y;
+            topLeft.y = leftY;
+            bottomRight.y = rightY;
+        }
+
         for(int i = 0; i < objs.Length; i++) {
             if(objs[i].transform.position.x >= topLeft.x && objs[i].transform.position.x <= bottomRight.x) {
                 if(objs[i].transform.position.y <= topLeft.y && objs[i].transform.position.y >= bottomRight.y) {
@@ -41,6 +64,7 @@ public class SelectionHandler : MonoBehaviour
         }
         Destroy(selectionMenu);
         isTargeting = false;
+        GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = false;
         selectedMicroBacterias = new List<MicroBacteria>();
     }
 
@@ -95,6 +119,7 @@ public class SelectionHandler : MonoBehaviour
             if(!isTargeting) {
                 if(selectedMicroBacterias.Count >= 1) {
                     isTargeting = true;
+                    GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = true;
                     GameObject player = GameObject.Find("Player");
                     GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
                     selectionMenu = Instantiate(windowPrefab, new Vector3(player.transform.position.x, player.transform.position.y, -5.0f), Quaternion.identity);
