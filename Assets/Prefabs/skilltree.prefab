@@ -100,6 +100,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 7135737881160502419}
   sr: {fileID: 7135737880098871986}
+  effect: 5
 --- !u!58 &73769046
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 0}
   sr: {fileID: 7135737880169314265}
+  effect: 0
 --- !u!58 &65740914
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -332,6 +334,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 7135737880913189663}
   sr: {fileID: 7135737880243177167}
+  effect: 5
 --- !u!58 &482401827
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -448,6 +451,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 7135737880569944063}
   sr: {fileID: 7135737880245770169}
+  effect: 5
 --- !u!58 &782290293
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -564,6 +568,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 0}
   sr: {fileID: 7135737880569110536}
+  effect: 0
 --- !u!58 &1667429397
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -680,6 +685,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 7135737880569110537}
   sr: {fileID: 7135737880569944062}
+  effect: 2.5
 --- !u!58 &848814055
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -796,6 +802,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 0}
   sr: {fileID: 7135737880778056162}
+  effect: 0
 --- !u!58 &1950201040
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -910,8 +917,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   cost: 0
-  prevSkill: {fileID: 7135737880913189663}
+  prevSkill: {fileID: 7135737880778056163}
   sr: {fileID: 7135737880913189662}
+  effect: 2.5
 --- !u!58 &1549374327
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1061,6 +1069,7 @@ MonoBehaviour:
   cost: 0
   prevSkill: {fileID: 7135737880169314266}
   sr: {fileID: 7135737881160502418}
+  effect: 2.5
 --- !u!58 &138883007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1175,6 +1184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58c97093cbd8b645a4189d61447ac87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeHPSkill: {fileID: 7135737880778056163}
+  activeSpeedSkill: {fileID: 7135737880169314266}
+  activeInfectionRateSkill: {fileID: 7135737880569110537}
 --- !u!1 &7135737881559630301
 GameObject:
   m_ObjectHideFlags: 0

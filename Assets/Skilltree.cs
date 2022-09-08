@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Skilltree : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Skill activeHPSkill;
+    public Skill activeSpeedSkill;
+    public Skill activeInfectionRateSkill;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

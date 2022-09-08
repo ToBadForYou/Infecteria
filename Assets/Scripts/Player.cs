@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public GameObject qObject;
     public GameObject bObject;
 
+    public GameObject skilltree;
+
     public List<Vector2> startPositions;
 
     void Start()
@@ -34,6 +36,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // Skilltree
+        if(Input.GetKeyDown(KeyCode.T)) {
+            if(!skilltree.activeSelf) {
+                skilltree.SetActive(true);
+                skilltree.transform.position = transform.position;
+                GetComponent<PlayerMovement>().isPaused = true;
+            }
+            else {
+                skilltree.SetActive(false);
+                GetComponent<PlayerMovement>().isPaused = false;
+            }
+        }
+
         // Handling factories
         if(currentFactory) {
             if(currentFactory.CanBuild()) {

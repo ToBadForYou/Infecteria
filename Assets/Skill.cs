@@ -9,6 +9,8 @@ public class Skill : MonoBehaviour
     public Skill prevSkill;
     public SpriteRenderer sr;
 
+    public float effect;
+
     void OnMouseEnter() {
         if(!isActive && prevSkill.isActive) {
             sr.color = new Color(1.0f, 1.0f, 1.0f, 0.8f);
@@ -19,7 +21,7 @@ public class Skill : MonoBehaviour
         if(!isActive && prevSkill.isActive) {
             if(Input.GetMouseButtonDown(0)) {
                 GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-                if(gm.DNAPoints > cost) {
+                if(gm.DNAPoints >= cost) {
                     gm.DNAPoints -= cost;
                     isActive = true;
                     sr.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
