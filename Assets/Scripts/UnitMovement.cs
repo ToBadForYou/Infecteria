@@ -31,4 +31,8 @@ public class UnitMovement : MonoBehaviour
         target = newTarget;
         moving = true;
     }
+
+    public void StopMoving(){
+        moving = false;
+    }
 }
