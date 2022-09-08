@@ -27,7 +27,7 @@ public class Heart : MonoBehaviour
     void SpawnScout(){
         GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
         GameObject randomTarget = cells[Random.Range(0, cells.Count)];
-        Scout scout = newScout.GetComponent<Scout>();
+        Scout scout = newScout.transform.Find("scoutRange").gameObject.GetComponent<Scout>();
         scout.parent = gameObject;
         scout.SetTarget(randomTarget);
     }

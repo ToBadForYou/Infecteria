@@ -11,7 +11,7 @@ public class Detector : RangedUnit
     // Start is called before the first frame update
     void Start()
     {
-        
+        reportTo = GameObject.Find("Heart");
     }
 
     public override void Attack(){
@@ -23,7 +23,7 @@ public class Detector : RangedUnit
 
     void SpawnScout(){
         GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
-        Scout scout = newScout.GetComponent<Scout>();
+        Scout scout = newScout.transform.Find("scoutRange").gameObject.GetComponent<Scout>();
         scout.parent = reportTo;
         scout.SetAlerted();
     }

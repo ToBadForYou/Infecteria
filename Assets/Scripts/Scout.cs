@@ -38,8 +38,9 @@ public class Scout : RangedUnit
             unitMovement.MoveToTarget(parent);
             finished = true;
         }
+
         if(finished && target == parent) { 
-            Destroy(gameObject); 
+            Destroy(transform.parent.gameObject); 
         }      
     }
 }
