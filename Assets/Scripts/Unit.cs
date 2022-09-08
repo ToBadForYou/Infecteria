@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
         }
         if (closest != null){
             if (closestDistance > range){
-                unitMovement.MoveToTarget(closest);
+                unitMovement.FollowTarget(closest);
             } else {
                 unitMovement.StopMoving();
                 attackTimer -= Time.deltaTime;

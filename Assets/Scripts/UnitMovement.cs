@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public GameObject target;
+    public GameObject followTarget;
+    public Vector2 positionTarget;
     public Unit owner;
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
@@ -15,18 +16,28 @@ public class UnitMovement : MonoBehaviour
 
     void Update()
     {
-        if(target != null && moving) {
+        if(moving) {
+            Vector2 targetPosition = positionTarget;
+            if(followTarget != null){
+                targetPosition = followTarget.transform.position;
+            }
             float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
-            if(Vector2.Distance(transform.position, target.transform.position) <= 0.2f) {
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+            if(Vector2.Distance(transform.position, targetPosition) <= 0.2f) {
                 moving = false;
-                owner.OnReachedDestination(target);
+                owner.OnReachedDestination(followTarget);
             }
         }       
     }
 
-    public void MoveToTarget(GameObject newTarget){
-        target = newTarget;
+    public void MoveToPosition(Vector2 pos){
+        positionTarget = pos;
+        followTarget = null;
+        moving = true;
+    }
+
+    public void FollowTarget(GameObject newTarget){
+        followTarget = newTarget;
         moving = true;
     }
 

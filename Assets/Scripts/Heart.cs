@@ -54,17 +54,17 @@ public class Heart : MonoBehaviour
         scout.SetTarget(randomTarget);
     }
 
-    void SpawnAntibodies(GameObject alertObject){
+    void SpawnAntibodies(Vector2 pos){
         int antibodiesAmount = Random.Range(2, maxAntibodies);
         for (int i = 0; i < antibodiesAmount; i++)
         {
             GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-            newAntibody.GetComponent<Unit>().unitMovement.MoveToTarget(alertObject);
+            newAntibody.GetComponent<Unit>().unitMovement.MoveToPosition(pos);
         }
     }
 
-    public void OnReport(GameObject alertObject){
-        SpawnAntibodies(alertObject);
+    public void OnReport(Vector2 alertPosition){
+        SpawnAntibodies(alertPosition);
     }
 
     public void AddCell(GameObject cell){
