@@ -8,13 +8,34 @@ public class Heart : MonoBehaviour
     public GameObject scoutObject;
     public float scoutSpawnTimer = 5;
     public int baseScoutSpawnTime = 5;
-    // Start is called before the first frame update
+    
+    public List<Cell> heartCells = new List<Cell>();
+    float yRange = 16.0f;
+    float xRange = 13.0f;
+
     void Start()
     {
-
+        StartCoroutine(LateStart(1.0f));
+    }
+ 
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        FillWithNearbyCells();
     }
 
-    // Update is called once per frame
+    public void FillWithNearbyCells() {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
+        for(int i = 0; i < objs.Length; i++) {
+            float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);
+            float yDiff = Mathf.Abs(objs[i].transform.position.y - transform.position.y);
+            if(xDiff <= xRange && yDiff <= yRange) {
+                heartCells.Add(objs[i].GetComponent<Cell>());
+                objs[i].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.0f, 0.0f, 1.0f);
+            }
+        }
+    }
+
     void Update()
     {
         scoutSpawnTimer -= Time.deltaTime;

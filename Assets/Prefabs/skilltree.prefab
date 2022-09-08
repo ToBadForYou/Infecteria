@@ -215,7 +215,7 @@ MonoBehaviour:
   isActive: 1
   cost: 0
   prevSkill: {fileID: 0}
-  sr: {fileID: 7135737880098871986}
+  sr: {fileID: 7135737880169314265}
 --- !u!58 &65740914
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
   isActive: 1
   cost: 0
   prevSkill: {fileID: 0}
-  sr: {fileID: 7135737880245770169}
+  sr: {fileID: 7135737880569110536}
 --- !u!58 &1667429397
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
   isActive: 0
   cost: 0
   prevSkill: {fileID: 7135737880569110537}
-  sr: {fileID: 7135737880245770169}
+  sr: {fileID: 7135737880569944062}
 --- !u!58 &848814055
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   isActive: 1
   cost: 0
   prevSkill: {fileID: 0}
-  sr: {fileID: 7135737880243177167}
+  sr: {fileID: 7135737880778056162}
 --- !u!58 &1950201040
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -911,7 +911,7 @@ MonoBehaviour:
   isActive: 0
   cost: 0
   prevSkill: {fileID: 7135737880913189663}
-  sr: {fileID: 7135737880243177167}
+  sr: {fileID: 7135737880913189662}
 --- !u!58 &1549374327
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   isActive: 0
   cost: 0
   prevSkill: {fileID: 7135737880169314266}
-  sr: {fileID: 7135737880098871986}
+  sr: {fileID: 7135737881160502418}
 --- !u!58 &138883007
 CircleCollider2D:
   m_ObjectHideFlags: 0
