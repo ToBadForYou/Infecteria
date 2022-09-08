@@ -13,8 +13,20 @@ public class GameManager : MonoBehaviour
     private int infectedCells = 0;
     private int factoryAmount = 0;
 
+    private int cellAmount;
+
+    void Start() {
+        StartCoroutine(LateStart(0.0f));
+    }
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        cellAmount = GameObject.FindGameObjectsWithTag("Cell").Length;
+    }
+
     public void UpdateTextMesh() {
-        textMesh.text = "DNA Points: " + DNAPoints + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + "\nFactories: " + factoryAmount;
+        textMesh.text = "DNA Points: " + DNAPoints + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
     }
 
     public void IncreaseDNAPoints(int amount) {
