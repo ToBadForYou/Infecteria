@@ -1240,6 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isPaused: 0
 --- !u!212 &647888335
 SpriteRenderer:
   m_ObjectHideFlags: 0

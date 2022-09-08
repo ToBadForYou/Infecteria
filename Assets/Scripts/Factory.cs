@@ -8,6 +8,9 @@ public class Factory : MonoBehaviour
     public GameObject DNAProducerPrefab;
     public float startTime = 10.0f;
     public float time = 10.0f;
+    
+    private int usedSlots = 0;
+    private int maxSlots = 1;
 
     void Update()
     {
@@ -25,7 +28,9 @@ public class Factory : MonoBehaviour
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentFactory = this;
             Player playerScript = col.gameObject.GetComponent<Player>();
-            playerScript.MakeObjActive(playerScript.bObject);
+            if(CanBuild()) {
+                playerScript.MakeObjActive(playerScript.bObject);
+            }
         }
     }
     
@@ -39,8 +44,13 @@ public class Factory : MonoBehaviour
         }
     }
 
+    public bool CanBuild() {
+        return usedSlots < maxSlots;
+    }
+
     public void Build() {
         GameObject temp = Instantiate(DNAProducerPrefab, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
         temp.transform.parent = transform;
+        usedSlots++;
     }
 }

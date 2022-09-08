@@ -36,8 +36,11 @@ public class Player : MonoBehaviour
     {
         // Handling factories
         if(currentFactory) {
-            if(Input.GetKeyDown(KeyCode.B)) {
-                currentFactory.Build();
+            if(currentFactory.CanBuild()) {
+                if(Input.GetKeyDown(KeyCode.B)) {
+                    currentFactory.Build();
+                    MakeObjDeactive(bObject);
+                }
             }
         }
 
