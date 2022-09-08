@@ -6,9 +6,9 @@ public class Detector : RangedUnit
 {
     public GameObject reportTo;
     public GameObject scoutObject;
-    public GameObject antiBodyObject;
+    public GameObject antibodyObject;
     public bool isAlerted;
-    public int maxAntiBodies = 5;
+    public int maxAntibodies = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,12 @@ public class Detector : RangedUnit
         GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
         Scout scout = newScout.transform.Find("scoutRange").gameObject.GetComponent<Scout>();
         scout.parent = reportTo;
-        scout.SetAlerted();
+        scout.SetAlerted(gameObject);
 
-        int antiBodiesAmount = Random.Range(2, maxAntiBodies);
-        for (int i = 0; i < antiBodiesAmount; i++)
+        int antibodiesAmount = Random.Range(2, maxAntibodies);
+        for (int i = 0; i < antibodiesAmount; i++)
         {
-            GameObject newAntiBody = Instantiate(antiBodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
+            GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
         }
     }
 

@@ -7,6 +7,7 @@ public class Scout : RangedUnit
     public GameObject parent;
     public GameObject exclamationMark;
     public GameObject targetCell;
+    public GameObject alertObject;
     public bool finished;
     public bool isAlerted;
 
@@ -17,15 +18,16 @@ public class Scout : RangedUnit
 
     public override void Attack(){
         if (!isAlerted && target.tag == "Player"){
-            SetAlerted();
+            SetAlerted(target);
         }
     }
 
-    public void SetAlerted(){
+    public void SetAlerted(GameObject triggerObject){
         isAlerted = true;
         exclamationMark.SetActive(true);
         unitMovement.MoveToTarget(parent);
-        finished = true;        
+        finished = true; 
+        alertObject = triggerObject;  
     }
 
     public void SetTarget(GameObject target){
@@ -39,7 +41,10 @@ public class Scout : RangedUnit
             finished = true;
         }
 
-        if(finished && target == parent) { 
+        if(finished && target == parent) {
+            if(isAlerted){
+                parent.GetComponent<Heart>().OnReport(alertObject);
+            }
             Destroy(transform.parent.gameObject); 
         }      
     }

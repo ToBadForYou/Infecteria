@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8861267063218167367}
   - component: {fileID: 4705721064329749237}
   m_Layer: 0
-  m_Name: AntiBody
+  m_Name: Antibody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
