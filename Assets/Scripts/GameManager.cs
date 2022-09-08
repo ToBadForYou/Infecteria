@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private int factoryAmount = 0;
 
     public void UpdateTextMesh() {
-        textMesh.text = "DNA Points: " + DNAPoints;
+        textMesh.text = "DNA Points: " + DNAPoints + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + "\nFactories: " + factoryAmount;
     }
 
     public void IncreaseDNAPoints(int amount) {
@@ -24,13 +24,16 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseAbsorbedCells() {
         absorbedCells++;
+        UpdateTextMesh();
     }
 
     public void IncreaseInfectedCells() {
         infectedCells++;
+        UpdateTextMesh();
     }
 
     public void IncreaseFactoryAmount() {
         factoryAmount++;
+        UpdateTextMesh();
     }
 }

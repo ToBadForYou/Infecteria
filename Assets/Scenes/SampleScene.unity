@@ -1569,6 +1569,7 @@ MonoBehaviour:
   scoutObject: {fileID: 2310231965825473700, guid: 3d6ac42986680104885d1a4d82d9153e, type: 3}
   scoutSpawnTimer: 5
   baseScoutSpawnTime: 5
+  heartCells: []
 --- !u!1 &785485918
 GameObject:
   m_ObjectHideFlags: 0
