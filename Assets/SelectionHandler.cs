@@ -99,9 +99,7 @@ public class SelectionHandler : MonoBehaviour
 
             selectionTransform.localScale = new Vector2(xScale, yScale);
             
-            //TODO: When it comes to graphics selection works correctly
-            //but when it comes to functionality it does only work when
-            //you select from topLeft to bottomRight at the moment.
+            //Draw selection box
             if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y) {
                 selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
             }
@@ -127,7 +125,11 @@ public class SelectionHandler : MonoBehaviour
                         if(Vector2.Distance(objs[i].transform.position, player.transform.position) <= targetCellRadius) {
                             Debug.Log("Found Cell!");
                             Vector2 objPos = objs[i].transform.position;
-                            GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + objPos.x/5.0f, player.transform.position.y + objPos.y/5.0f, -6.0f), Quaternion.identity);
+
+                            float diffInX = objPos.x - player.transform.position.x;
+                            float diffInY = objPos.y - player.transform.position.y;
+                            GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + diffInX/5.0f, player.transform.position.y + diffInY/5.0f, -6.0f), Quaternion.identity);
+                            
                             fakeCell.transform.parent = selectionMenu.transform;
                             fakeCell.GetComponent<FakeCell>().realCellReference = objs[i].GetComponent<Cell>();
                         }
