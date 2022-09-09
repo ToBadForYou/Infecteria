@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cells: []
+  unitSquads: []
   scoutObject: {fileID: 2310231965825473700, guid: 3d6ac42986680104885d1a4d82d9153e, type: 3}
   antibodyObject: {fileID: 2467280437432995680, guid: 7305e00807a21244382f067c444a6485, type: 3}
   scoutSpawnTimer: 5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2461731516557241643}
   - component: {fileID: 4742735260152867461}
   - component: {fileID: 1145709383805078791}
+  - component: {fileID: 9221951727196453045}
   m_Layer: 0
   m_Name: detectorRange
   m_TagString: Untagged
@@ -113,6 +114,7 @@ MonoBehaviour:
   reportTo: {fileID: 0}
   scoutObject: {fileID: 2310231965825473700, guid: 3d6ac42986680104885d1a4d82d9153e, type: 3}
   antibodyObject: {fileID: 2467280437432995680, guid: 7305e00807a21244382f067c444a6485, type: 3}
+  unitSquad: {fileID: 9221951727196453045}
   isAlerted: 0
   maxAntibodies: 3
 --- !u!58 &1145709383805078791
@@ -131,6 +133,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &9221951727196453045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218048525918559773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6322d45a468479e48be394af8541d4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units: []
 --- !u!1 &8838533147686540754
 GameObject:
   m_ObjectHideFlags: 0

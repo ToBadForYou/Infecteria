@@ -5,6 +5,7 @@ using UnityEngine;
 public class Heart : MonoBehaviour
 {
     public List<GameObject> cells = new List<GameObject>();
+    public List<UnitSquad> unitSquads;
     public GameObject scoutObject;
     public GameObject antibodyObject;
     public float scoutSpawnTimer = 5;
@@ -46,6 +47,17 @@ public class Heart : MonoBehaviour
         }        
     }
 
+    UnitSquad CreateSquad(List<Unit> units){
+        GameObject tempObj = new GameObject("UnitSquad");
+        UnitSquad newUnitSquad = tempObj.AddComponent<UnitSquad>();
+        foreach (Unit unit in units)
+        {
+            newUnitSquad.AddUnit(unit);
+        }
+        unitSquads.Add(newUnitSquad);
+        return newUnitSquad;
+    }
+
     void SpawnScout(){
         GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
         GameObject randomTarget = cells[Random.Range(0, cells.Count)];
@@ -54,17 +66,22 @@ public class Heart : MonoBehaviour
         scout.SetTarget(randomTarget);
     }
 
-    void SpawnAntibodies(Vector2 pos){
+    List<Unit> SpawnAntibodies(){
         int antibodiesAmount = Random.Range(2, maxAntibodies);
+        List<Unit> antibodies = new List<Unit>();
         for (int i = 0; i < antibodiesAmount; i++)
         {
             GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-            newAntibody.GetComponent<Unit>().unitMovement.MoveToPosition(pos);
+            Unit antibodyUnit = newAntibody.GetComponent<Unit>();
+            antibodies.Add(antibodyUnit);
         }
+        return antibodies;
     }
 
     public void OnReport(Vector2 alertPosition){
-        SpawnAntibodies(alertPosition);
+        List<Unit> antibodies = SpawnAntibodies();
+        UnitSquad newSquad = CreateSquad(antibodies);
+        newSquad.MoveTo(alertPosition);
     }
 
     public void AddCell(GameObject cell){

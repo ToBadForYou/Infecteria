@@ -7,6 +7,7 @@ public class Detector : RangedUnit
     public GameObject reportTo;
     public GameObject scoutObject;
     public GameObject antibodyObject;
+    public UnitSquad unitSquad;
     public bool isAlerted;
     public int maxAntibodies = 3;
 
@@ -33,6 +34,7 @@ public class Detector : RangedUnit
         for (int i = 0; i < antibodiesAmount; i++)
         {
             GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
+            unitSquad.AddUnit(newAntibody.GetComponent<Unit>());
         }
     }
 
