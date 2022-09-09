@@ -15,11 +15,25 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(!isPaused) {
+            float step = speed * Time.deltaTime;
             if (Input.GetMouseButton(0)) { // Holding left mouse button
                 mousePosition = Input.mousePosition; // Get mouse position
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert to world units
-                float step = speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, mousePosition, step); // Move towards
+            }
+
+            //Alternative player movement
+            if(Input.GetKey(KeyCode.W)) {
+                transform.position = new Vector3(transform.position.x, transform.position.y + step, transform.position.z);
+            }
+            if(Input.GetKey(KeyCode.A)) {
+                transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+            }
+            if(Input.GetKey(KeyCode.S)) {
+                transform.position = new Vector3(transform.position.x, transform.position.y - step, transform.position.z);
+            }
+            if(Input.GetKey(KeyCode.D)) {
+                transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
             }
         }
     }
