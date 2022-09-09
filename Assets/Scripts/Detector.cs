@@ -10,31 +10,23 @@ public class Detector : RangedUnit
     public UnitSquad unitSquad;
     public bool isAlerted;
     public int maxAntibodies = 3;
+    UnitSpawner unitSpawner;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         reportTo = GameObject.Find("Heart");
+        unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
     }
 
     public override void Attack(){
         if (!isAlerted && target.tag == "Player"){
             isAlerted = true;
-            SpawnUnits();
-        }
-    }
-
-    void SpawnUnits(){
-        GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
-        Scout scout = newScout.transform.Find("scoutRange").gameObject.GetComponent<Scout>();
-        scout.parent = reportTo;
-        scout.SetAlerted(gameObject);
-
-        int antibodiesAmount = Random.Range(2, maxAntibodies);
-        for (int i = 0; i < antibodiesAmount; i++)
-        {
-            GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-            unitSquad.AddUnit(newAntibody.GetComponent<Unit>());
+            Scout newScout = unitSpawner.SpawnScout(transform.position, reportTo);
+            newScout.SetAlerted(gameObject);
+            List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(1, maxAntibodies));
+            unitSquad.AddUnits(antibodies);
         }
     }
 

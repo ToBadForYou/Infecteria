@@ -6,17 +6,17 @@ public class Heart : MonoBehaviour
 {
     public List<GameObject> cells = new List<GameObject>();
     public List<UnitSquad> unitSquads;
-    public GameObject scoutObject;
-    public GameObject antibodyObject;
     public float scoutSpawnTimer = 5;
     public int baseScoutSpawnTime = 5;
     public int maxAntibodies = 6;
     public List<Cell> heartCells = new List<Cell>();
     float yRange = 16.0f;
     float xRange = 13.0f;
+    UnitSpawner unitSpawner;
 
     void Start()
     {
+        unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         StartCoroutine(LateStart(1.0f));
     }
  
@@ -43,43 +43,21 @@ public class Heart : MonoBehaviour
         scoutSpawnTimer -= Time.deltaTime;
         if (scoutSpawnTimer < 0){
             scoutSpawnTimer = baseScoutSpawnTime;
-            SpawnScout();
+            Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
+            newScout.SetTarget(cells[Random.Range(0, cells.Count)]);
         }        
     }
 
     UnitSquad CreateSquad(List<Unit> units){
         GameObject tempObj = new GameObject("UnitSquad");
         UnitSquad newUnitSquad = tempObj.AddComponent<UnitSquad>();
-        foreach (Unit unit in units)
-        {
-            newUnitSquad.AddUnit(unit);
-        }
+        newUnitSquad.AddUnits(units);
         unitSquads.Add(newUnitSquad);
         return newUnitSquad;
     }
 
-    void SpawnScout(){
-        GameObject newScout = Instantiate(scoutObject, transform.position, Quaternion.identity);
-        GameObject randomTarget = cells[Random.Range(0, cells.Count)];
-        Scout scout = newScout.transform.Find("scoutRange").gameObject.GetComponent<Scout>();
-        scout.parent = gameObject;
-        scout.SetTarget(randomTarget);
-    }
-
-    List<Unit> SpawnAntibodies(){
-        int antibodiesAmount = Random.Range(2, maxAntibodies);
-        List<Unit> antibodies = new List<Unit>();
-        for (int i = 0; i < antibodiesAmount; i++)
-        {
-            GameObject newAntibody = Instantiate(antibodyObject, new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
-            Unit antibodyUnit = newAntibody.GetComponent<Unit>();
-            antibodies.Add(antibodyUnit);
-        }
-        return antibodies;
-    }
-
     public void OnReport(Vector2 alertPosition){
-        List<Unit> antibodies = SpawnAntibodies();
+        List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(2, maxAntibodies));
         UnitSquad newSquad = CreateSquad(antibodies);
         newSquad.MoveTo(alertPosition);
     }

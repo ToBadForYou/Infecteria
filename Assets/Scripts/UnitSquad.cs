@@ -16,6 +16,10 @@ public class UnitSquad : MonoBehaviour
         
     }
 
+    public void AddUnits(List<Unit> unit){
+        units.AddRange(unit);
+    }
+
     public void AddUnit(Unit unit){
         units.Add(unit);
     }
