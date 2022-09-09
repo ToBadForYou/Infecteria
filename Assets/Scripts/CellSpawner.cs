@@ -5,6 +5,7 @@ using UnityEngine;
 public class CellSpawner : MonoBehaviour
 {
     public GameObject cellObject;
+    public GameObject detectorObject;
     public GameObject heartObject;
     public int distance = 5;
     public int amountX = 20;
@@ -23,7 +24,15 @@ public class CellSpawner : MonoBehaviour
                 GameObject cell = Instantiate(cellObject, new Vector2(transform.position.x + scale * x * distance , transform.position.y + scale * y * distance), Quaternion.identity);
                 heart.AddCell(cell);
             }
-        }        
+        }    
+
+         for (int x = -startX + 2; x < startX - 2; x+=6)
+        {
+            for (int y = -startY + 2; y < startY - 2; y+=4)
+            {
+                Instantiate(detectorObject, new Vector2(transform.position.x + scale * x * distance + Random.Range(-5, 5), transform.position.y + scale * y * distance + Random.Range(-5, 5)), Quaternion.identity);
+            }
+        }             
     }
 
 }
