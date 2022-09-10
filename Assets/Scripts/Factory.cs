@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Factory : MonoBehaviour
+public class Factory : Infectable
 {
     public GameObject microBacteriaPrefab;
     public GameObject DNAProducerPrefab;

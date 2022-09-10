@@ -57,7 +57,6 @@ public class Unit : MonoBehaviour
         if (currentHealth < 0){
             Destroy(gameObject);
         }
-        Debug.Log((float)currentHealth/health);
         healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
     }
 

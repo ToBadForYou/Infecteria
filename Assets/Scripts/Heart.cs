@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    public List<GameObject> cells = new List<GameObject>();
     public List<UnitSquad> unitSquads;
     public float scoutSpawnTimer = 5;
     public int baseScoutSpawnTime = 5;
@@ -44,7 +43,8 @@ public class Heart : MonoBehaviour
         if (scoutSpawnTimer < 0){
             scoutSpawnTimer = baseScoutSpawnTime;
             Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
-            newScout.SetTarget(cells[Random.Range(0, cells.Count)]);
+            GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            newScout.SetTarget(gm.cells[Random.Range(0, gm.cells.Count)]);
         }        
     }
 
@@ -60,9 +60,5 @@ public class Heart : MonoBehaviour
         List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(2, maxAntibodies));
         UnitSquad newSquad = CreateSquad(antibodies);
         newSquad.MoveTo(alertPosition);
-    }
-
-    public void AddCell(GameObject cell){
-        cells.Add(cell);
     }
 }

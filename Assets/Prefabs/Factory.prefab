@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa86c7b81972374b88fab9063746b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxInfectionAmount: 10
+  infectionAmount: 10
+  isInfected: 1
   microBacteriaPrefab: {fileID: 5050834132167503558, guid: 5ec7fb0577afbea4aab62482160d1f67, type: 3}
   DNAProducerPrefab: {fileID: 686625259711535221, guid: e9e20c840c683804d8841c6c77397923, type: 3}
   startTime: 5

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedUnit : Unit
+public class DetectorUnit : Unit
 {
     public GameObject target;
     public SpriteRenderer spriteRenderer;

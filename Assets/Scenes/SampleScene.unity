@@ -302,7 +302,7 @@ Transform:
   m_Children:
   - {fileID: 1025912526}
   m_Father: {fileID: 647888336}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &179469180
 SpriteRenderer:
@@ -564,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 336580806}
   DNAPoints: 0
+  cells: []
 --- !u!1 &336580804
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,10 +878,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
+--- !u!1 &503334638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503334639}
+  - component: {fileID: 503334640}
+  m_Layer: 0
+  m_Name: healthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &503334639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503334638}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1270743038}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &503334640
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503334638}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 0.9339623, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,10 +1157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &605807172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1386,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1270743038}
   - {fileID: 1646384898}
   - {fileID: 179469179}
   - {fileID: 2016733480}
@@ -1361,6 +1443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e7a1b460a032449964725c81419ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 1270743038}
   unitMovement: {fileID: 0}
   inRange: []
   health: 100
@@ -1479,10 +1562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &734316646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafed971be907e04e8d9ed65de2f3f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cells: []
   unitSquads: []
   scoutSpawnTimer: 5
   baseScoutSpawnTime: 5
@@ -1796,10 +1877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &852061175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,10 +2183,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &1091179297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,10 +2443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &1210429886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,6 +2561,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1270743037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270743038}
+  m_Layer: 0
+  m_Name: healthBarPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270743038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270743037}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 503334639}
+  m_Father: {fileID: 647888336}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371209308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,10 +2837,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellObject: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   detectorObject: {fileID: 8838533147686540754, guid: ebf137a2c616b9744ae78da1d1dbc47f, type: 3}
-  heartObject: {fileID: 734316646}
   distance: 5
-  amountX: 20
-  amountY: 20
+  amountX: 10
+  amountY: 10
 --- !u!1 &1472079625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +3034,7 @@ Transform:
   m_Children:
   - {fileID: 1371209309}
   m_Father: {fileID: 647888336}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1646384899
 SpriteRenderer:
@@ -3091,7 +3199,7 @@ Transform:
   m_Children:
   - {fileID: 1956470679}
   m_Father: {fileID: 647888336}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1821830341
 SpriteRenderer:
@@ -3307,7 +3415,7 @@ Transform:
   m_Children:
   - {fileID: 205168901}
   m_Father: {fileID: 647888336}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &131390280966847072
 PrefabInstance:

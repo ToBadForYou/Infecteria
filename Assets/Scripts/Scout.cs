@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scout : RangedUnit
+public class Scout : DetectorUnit
 {
     public GameObject parent;
     public GameObject exclamationMark;
@@ -11,7 +11,6 @@ public class Scout : RangedUnit
     public bool finished;
     public bool isAlerted;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
@@ -36,9 +35,20 @@ public class Scout : RangedUnit
     }
 
     public override void OnReachedDestination(GameObject target){
-        if(target == targetCell){
+        if (target == null){
             unitMovement.FollowTarget(parent);
-            finished = true;
+            finished = true;   
+        }
+        if(target == targetCell){
+            Infectable cell = targetCell.GetComponent<Infectable>();
+            if (cell != null && (cell.isInfected || cell.infectionAmount/cell.maxInfectionAmount > 0.5)){
+                // TODO heal the cell
+                SetAlerted(targetCell);
+            }
+            else {
+                unitMovement.FollowTarget(parent);
+                finished = true;
+            }
         }
 
         if(finished && target == parent) {

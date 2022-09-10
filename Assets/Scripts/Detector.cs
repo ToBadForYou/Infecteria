@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Detector : RangedUnit
+public class Detector : DetectorUnit
 {
     public GameObject reportTo;
     public GameObject scoutObject;
@@ -12,8 +12,6 @@ public class Detector : RangedUnit
     public int maxAntibodies = 3;
     UnitSpawner unitSpawner;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         reportTo = GameObject.Find("Heart");
@@ -30,7 +28,7 @@ public class Detector : RangedUnit
         }
     }
 
-    void StopAttack(){
+    public override void StopAttack(){
         
     }
 }

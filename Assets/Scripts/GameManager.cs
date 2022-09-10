@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     private int absorbedCells = 0;
     private int infectedCells = 0;
     private int factoryAmount = 0;
-
     private int cellAmount;
+    public List<GameObject> cells = new List<GameObject>();
 
     void Start() {
         StartCoroutine(LateStart(0.0f));
@@ -47,5 +47,18 @@ public class GameManager : MonoBehaviour
     public void IncreaseFactoryAmount() {
         factoryAmount++;
         UpdateTextMesh();
+    }
+
+    public void RemoveCell(GameObject cell){
+        cells.Remove(cell);
+    }
+
+    public void ReplaceCell(GameObject oldCell, GameObject replacement){
+        int index = cells.FindIndex(cell => cell == oldCell);
+        cells[index] = replacement;
+    }
+
+    public void AddCell(GameObject cell){
+        cells.Add(cell);
     }
 }
