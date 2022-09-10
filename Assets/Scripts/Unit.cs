@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
-{
+{   
+    public Transform healthBar;
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
     public int health;
@@ -13,14 +14,13 @@ public class Unit : MonoBehaviour
     public float attackTimer;
     public float range = 0.9f;
     public bool aggressive;
-    // Start is called before the first frame update
+
     void Start()
     {
         currentHealth = health;
         attackTimer = attackSpeed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GameObject closest = null;
@@ -57,6 +57,8 @@ public class Unit : MonoBehaviour
         if (currentHealth < 0){
             Destroy(gameObject);
         }
+        Debug.Log((float)currentHealth/health);
+        healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
     }
 
     void OnTriggerEnter2D(Collider2D col)
