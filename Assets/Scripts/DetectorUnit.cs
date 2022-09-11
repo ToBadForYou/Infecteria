@@ -31,15 +31,19 @@ public class DetectorUnit : Unit
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.gameObject == target){
-            target = null;
+        if(col.gameObject.GetComponent<Unit>() != null){
+            if(col.gameObject == target){
+                target = null;
+            }
         }
     }    
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if(col == null){
-            target = col.gameObject;
+        if(col.gameObject.GetComponent<Unit>() != null){
+            if(col == null){
+                target = col.gameObject;
+            }
         }
     }
 

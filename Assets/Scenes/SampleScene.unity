@@ -1453,6 +1453,7 @@ MonoBehaviour:
   attackTimer: 1
   range: 0.9
   aggressive: 0
+  owner: 0
   currentCell: {fileID: 0}
   currentFactory: {fileID: 0}
   spaceObject: {fileID: 1646384897}

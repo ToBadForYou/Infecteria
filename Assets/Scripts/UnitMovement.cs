@@ -6,7 +6,7 @@ public class UnitMovement : MonoBehaviour
 {
     public GameObject followTarget;
     public Vector2 positionTarget;
-    public Unit owner;
+    public Unit ownerUnit;
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
 
@@ -25,7 +25,7 @@ public class UnitMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
             if(Vector2.Distance(transform.position, targetPosition) <= 0.2f) {
                 moving = false;
-                owner.OnReachedDestination(followTarget);
+                ownerUnit.OnReachedDestination(followTarget);
             }
         }       
     }

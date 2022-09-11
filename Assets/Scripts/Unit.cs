@@ -23,7 +23,7 @@ public class Unit : MonoBehaviour
         attackTimer = attackSpeed;
     }
 
-    void Update()
+    protected void Update()
     {
         if (aggressive){
             GameObject closest = null;
@@ -39,6 +39,7 @@ public class Unit : MonoBehaviour
                     }
                 }
             }
+
             if (closest != null){
                 if (closestDistance > range){
                     unitMovement.FollowTarget(closest);
@@ -62,19 +63,23 @@ public class Unit : MonoBehaviour
     void TakeDamage(int takenDamage){
         currentHealth -= takenDamage;
         if (currentHealth < 0){
-            Destroy(gameObject);
+            Destroy(gameObject.transform.root.gameObject);
         }
         healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        inRange.Add(col.gameObject);
+        if(col.gameObject.GetComponent<Unit>() != null){
+            inRange.Add(col.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        inRange.Remove(col.gameObject);
+        if(col.gameObject.GetComponent<Unit>() != null){
+            inRange.Remove(col.gameObject);
+        }
     }    
 
     public virtual void OnReachedDestination(GameObject target){
