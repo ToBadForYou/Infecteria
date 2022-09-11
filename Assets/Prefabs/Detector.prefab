@@ -107,6 +107,7 @@ MonoBehaviour:
   attackTimer: 0
   range: 0.2
   aggressive: 0
+  owner: 1
   target: {fileID: 0}
   spriteRenderer: {fileID: 2461731516557241643}
   attacking: 0

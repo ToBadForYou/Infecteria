@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {   
+    public enum Faction { bacteria, immuneSystem, neutral };
     public Transform healthBar;
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
@@ -14,6 +15,7 @@ public class Unit : MonoBehaviour
     public float attackTimer;
     public float range = 0.9f;
     public bool aggressive;
+    public Faction owner;
 
     void Start()
     {
@@ -23,25 +25,30 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        GameObject closest = null;
-        float closestDistance = Mathf.Infinity;
-        foreach (GameObject closeObject in inRange)
-        {
-            float distance = Vector2.Distance(transform.position, closeObject.transform.position);
-            if(distance + 0.2f <= closestDistance) {
-                closest = closeObject;
-                closestDistance = distance;
+        if (aggressive){
+            GameObject closest = null;
+            float closestDistance = Mathf.Infinity;
+            foreach (GameObject closeObject in inRange)
+            {
+                Unit unit = closeObject.GetComponent<Unit>();
+                if(unit.owner != Faction.neutral && owner != unit.owner){
+                    float distance = Vector2.Distance(transform.position, closeObject.transform.position);
+                    if(distance + 0.2f <= closestDistance) {
+                        closest = closeObject;
+                        closestDistance = distance;
+                    }
+                }
             }
-        }
-        if (closest != null){
-            if (closestDistance > range){
-                unitMovement.FollowTarget(closest);
-            } else {
-                unitMovement.StopMoving();
-                attackTimer -= Time.deltaTime;
-                if (attackTimer < 0){
-                    AttackTarget(closest);
-                    attackTimer = attackSpeed;
+            if (closest != null){
+                if (closestDistance > range){
+                    unitMovement.FollowTarget(closest);
+                } else {
+                    unitMovement.StopMoving();
+                    attackTimer -= Time.deltaTime;
+                    if (attackTimer < 0){
+                        AttackTarget(closest);
+                        attackTimer = attackSpeed;
+                    }
                 }
             }
         }
