@@ -10,7 +10,6 @@ public class DetectorUnit : Unit
     public Color detectedColor = new Color(1, 0, 0, 0.4f);
     public Color idleColor = new Color(1, 1, 1, 0.4f);
 
-    // Update is called once per frame
     protected void Update()
     {  
         if(target != null){
@@ -26,7 +25,9 @@ public class DetectorUnit : Unit
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        target = col.gameObject;
+        if(col.gameObject.GetComponent<Unit>() != null){
+            target = col.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)

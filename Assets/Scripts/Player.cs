@@ -13,6 +13,7 @@ public class Player : Unit
     public GameObject bObject;
 
     public GameObject skilltree;
+    public GameObject factoryOverview;
 
     public List<Vector2> startPositions;
 
@@ -51,12 +52,15 @@ public class Player : Unit
 
         // Handling factories
         if(currentFactory) {
+            MakeObjActive(factoryOverview);
             if(currentFactory.CanBuild()) {
                 if(Input.GetKeyDown(KeyCode.B)) {
                     currentFactory.Build();
                     MakeObjDeactive(bObject);
                 }
             }
+        } else {
+            MakeObjDeactive(factoryOverview);
         }
 
         // Infecting Cells
@@ -75,7 +79,6 @@ public class Player : Unit
             else {
                 MakeObjActive(spaceObject);
                 if(Input.GetKey(KeyCode.Space)) {
-                    Debug.Log("Infecting");
                     currentCell.Infect(Time.deltaTime);
                 }
             }
