@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private int infectedCells = 0;
     private int factoryAmount = 0;
     private int cellAmount;
+    
     public List<GameObject> cells = new List<GameObject>();
 
     void Start() {

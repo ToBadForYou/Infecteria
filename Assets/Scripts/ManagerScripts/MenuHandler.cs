@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuHandler : MonoBehaviour
 {
     bool isActive = false;
+    
     SpriteRenderer sr;
 
     void Start() {
