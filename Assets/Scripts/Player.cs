@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Unit
 {
@@ -35,6 +36,10 @@ public class Player : Unit
         if(obj.activeSelf) {
             obj.SetActive(false);
         }
+    }
+
+    public override void OnDeath() {
+        SceneManager.LoadScene(1);
     }
 
     new void Update()

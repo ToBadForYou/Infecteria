@@ -50,4 +50,8 @@ public class MicroBacteria : Unit
     public override void OnDeath() {
         parent.RemoveMicrobacteria(this);
     }
+
+    public void MoveToPosition(Vector2 targetPosition) {
+        unitMovement.MoveToPosition(targetPosition);
+    }
 }

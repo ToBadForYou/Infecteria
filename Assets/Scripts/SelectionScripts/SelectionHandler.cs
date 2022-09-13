@@ -58,14 +58,26 @@ public class SelectionHandler : MonoBehaviour
         return bacterias;
     }
 
-    public void SetTargetAndReset(Cell targetCell) {
-        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
-            bacteria.targetCell = targetCell;
-        }
+    public void Reset() {
         Destroy(selectionMenu);
         isTargeting = false;
         GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = false;
         selectedMicroBacterias = new List<MicroBacteria>();
+    }
+
+    public void SetTargetAndReset(Cell targetCell) {
+        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
+            bacteria.targetCell = targetCell;
+        }
+        Reset();
+    }
+
+    public void SetFollowPlayerAndReset() {
+        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
+            bacteria.followPlayer = true;
+            bacteria.ToggleSelection();
+        }
+        Reset();
     }
 
     void Update()
@@ -114,7 +126,7 @@ public class SelectionHandler : MonoBehaviour
             }
         }
         else {
-            if(!isTargeting) {
+            if(!isTargeting) { 
                 if(selectedMicroBacterias.Count >= 1) {
                     isTargeting = true;
                     GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = true;
@@ -123,7 +135,6 @@ public class SelectionHandler : MonoBehaviour
                     selectionMenu = Instantiate(windowPrefab, new Vector3(player.transform.position.x, player.transform.position.y, -5.0f), Quaternion.identity);
                     for(int i = 0; i < objs.Length; i++) {
                         if(Vector2.Distance(objs[i].transform.position, player.transform.position) <= targetCellRadius) {
-                            Debug.Log("Found Cell!");
                             Vector2 objPos = objs[i].transform.position;
 
                             float diffInX = objPos.x - player.transform.position.x;
@@ -133,6 +144,23 @@ public class SelectionHandler : MonoBehaviour
                             fakeCell.transform.parent = selectionMenu.transform;
                             fakeCell.GetComponent<FakeCell>().realCellReference = objs[i].GetComponent<Cell>();
                         }
+                    }
+                }
+            } else {
+                if(selectionMenu) {
+                    if(Input.GetKeyDown(KeyCode.Escape)) {
+                        Destroy(selectionMenu);
+                    }
+                }
+                else {
+                    if(Input.GetMouseButtonDown(0)) {
+                        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        Vector2 mousePos = new Vector2(worldPosition.x, worldPosition.y);
+                        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
+                            bacteria.MoveToPosition(mousePos);
+                            bacteria.ToggleSelection();
+                        }
+                        Reset();
                     }
                 }
             }
