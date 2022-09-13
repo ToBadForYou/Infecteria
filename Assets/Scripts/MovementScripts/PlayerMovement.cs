@@ -17,25 +17,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isPaused) {
             float step = speed * Time.deltaTime;
-            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) { // Holding left mouse button
-                mousePosition = Input.mousePosition; // Get mouse position
-                mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert to world units
-                transform.position = Vector2.MoveTowards(transform.position, mousePosition, step); // Move towards
+
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
+                mousePosition = Input.mousePosition;
+                mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+                transform.position = Vector2.MoveTowards(transform.position, mousePosition, step);
             }
 
-            //Alternative player movement
-            if(Input.GetKey(KeyCode.W)) {
-                transform.position = new Vector3(transform.position.x, transform.position.y + step, transform.position.z);
-            }
-            if(Input.GetKey(KeyCode.A)) {
-                transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
-            }
-            if(Input.GetKey(KeyCode.S)) {
-                transform.position = new Vector3(transform.position.x, transform.position.y - step, transform.position.z);
-            }
-            if(Input.GetKey(KeyCode.D)) {
-                transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
-            }
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            Vector3 movementVector = new Vector3(horizontal * step, vertical * step, 0);
+            transform.position += movementVector;
         }
     }
 }

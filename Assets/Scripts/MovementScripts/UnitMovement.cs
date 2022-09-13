@@ -7,11 +7,12 @@ public class UnitMovement : MonoBehaviour
     public GameObject followTarget;
     public Vector2 positionTarget;
     public Vector2 offset;
-    private float offsetFactor = 0.75f;
-
     public Unit ownerUnit;
+
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
+    
+    private float offsetFactor = 0.75f;
 
     void Start()
     {
