@@ -16,6 +16,7 @@ public class CellSpawner : MonoBehaviour
         float scale = cellObject.GetComponent<Transform>().localScale.x;
         int startX = amountX/2;
         int startY = amountY/2;
+
         for (int x = -startX; x < startX; x++)
         {
             for (int y = -startY; y < startY; y++)
@@ -23,9 +24,9 @@ public class CellSpawner : MonoBehaviour
                 GameObject cell = Instantiate(cellObject, new Vector2(transform.position.x + scale * x * distance , transform.position.y + scale * y * distance), Quaternion.identity);
                 gm.AddCell(cell);
             }
-        }    
+        }
 
-         for (int x = -startX + 2; x < startX - 2; x+=6)
+        for (int x = -startX + 2; x < startX - 2; x+=6)
         {
             for (int y = -startY + 2; y < startY - 2; y+=4)
             {
