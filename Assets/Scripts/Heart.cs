@@ -16,7 +16,7 @@ public class Heart : MonoBehaviour
     void Start()
     {
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        StartCoroutine(LateStart(1.0f));
+        StartCoroutine(LateStart(0.0f));
     }
  
     IEnumerator LateStart(float waitTime)
