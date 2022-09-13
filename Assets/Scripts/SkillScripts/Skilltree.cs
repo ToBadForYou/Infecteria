@@ -7,14 +7,4 @@ public class Skilltree : MonoBehaviour
     public Skill activeHPSkill;
     public Skill activeSpeedSkill;
     public Skill activeInfectionRateSkill;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
