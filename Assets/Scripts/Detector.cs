@@ -19,7 +19,7 @@ public class Detector : DetectorUnit
     }
 
     public override void Attack(){
-        if (!isAlerted && target.tag == "Player"){
+        if (!isAlerted){
             isAlerted = true;
             Scout newScout = unitSpawner.SpawnScout(transform.position, reportTo);
             newScout.SetAlerted(gameObject);

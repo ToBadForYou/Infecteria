@@ -10,7 +10,7 @@ public class DetectorUnit : Unit
     public Color detectedColor = new Color(1, 0, 0, 0.4f);
     public Color idleColor = new Color(1, 1, 1, 0.4f);
 
-    protected void Update()
+    new void Update()
     {  
         if(target != null){
             attacking = true;
@@ -25,26 +25,24 @@ public class DetectorUnit : Unit
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.GetComponent<Unit>() != null){
+        Unit colUnit = col.gameObject.GetComponent<Unit>();
+        if(colUnit != null && IsHostile(colUnit)){
             target = col.gameObject;
         }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.gameObject.GetComponent<Unit>() != null){
-            if(col.gameObject == target){
-                target = null;
-            }
+        if(col.gameObject == target){
+            target = null;
         }
     }    
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if(col.gameObject.GetComponent<Unit>() != null){
-            if(col == null){
-                target = col.gameObject;
-            }
+        Unit colUnit = col.gameObject.GetComponent<Unit>();
+        if(target == null && colUnit != null && IsHostile(colUnit)){
+            target = col.gameObject;
         }
     }
 

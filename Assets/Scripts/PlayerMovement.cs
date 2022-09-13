@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isPaused) {
             float step = speed * Time.deltaTime;
-            if (Input.GetMouseButton(0)) { // Holding left mouse button
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) { // Holding left mouse button
                 mousePosition = Input.mousePosition; // Get mouse position
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert to world units
                 transform.position = Vector2.MoveTowards(transform.position, mousePosition, step); // Move towards

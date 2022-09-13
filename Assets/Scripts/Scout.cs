@@ -16,7 +16,7 @@ public class Scout : DetectorUnit
     }
 
     public override void Attack(){
-        if (!isAlerted && target.tag == "Player"){
+        if (!isAlerted){
             SetAlerted(target);
         }
     }

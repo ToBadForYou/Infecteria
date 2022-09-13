@@ -37,7 +37,7 @@ public class Player : Unit
         }
     }
 
-    void Update()
+    new void Update()
     {
         // Skilltree
         if(Input.GetKeyDown(KeyCode.T)) {
@@ -55,6 +55,7 @@ public class Player : Unit
         // Handling factories
         if(currentFactory) {
             MakeObjActive(factoryOverview);
+            factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
             if(currentFactory.CanBuild()) {
                 if(Input.GetKeyDown(KeyCode.B)) {
                     currentFactory.Build();

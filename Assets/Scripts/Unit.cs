@@ -30,8 +30,7 @@ public class Unit : MonoBehaviour
             float closestDistance = Mathf.Infinity;
             foreach (GameObject closeObject in inRange)
             {
-                Unit unit = closeObject.GetComponent<Unit>();
-                if(unit.owner != Faction.neutral && owner != unit.owner){
+                if(IsHostile(closeObject.GetComponent<Unit>())){
                     float distance = Vector2.Distance(transform.position, closeObject.transform.position);
                     if(distance + 0.2f <= closestDistance) {
                         closest = closeObject;
@@ -53,6 +52,10 @@ public class Unit : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool IsHostile(Unit unit){
+        return unit.owner != Faction.neutral && owner != unit.owner;
     }
 
     void AttackTarget(GameObject attackTarget){
