@@ -6089,6 +6089,7 @@ MonoBehaviour:
   wallObj: {fileID: 5198131474999746390, guid: 9d4fcce38da693047a7cd0f813bfaec3, type: 3}
   regionObj: {fileID: 2549742827686061769, guid: 9ab1d100bd6a96144aa34dd6d46bb1ef, type: 3}
   img: {fileID: 2800000, guid: 4b9ab2527593df546a16fe9b28880c29, type: 3}
+  xScale: 2
 --- !u!4 &2022304151
 Transform:
   m_ObjectHideFlags: 0

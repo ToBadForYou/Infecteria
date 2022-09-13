@@ -17,6 +17,8 @@ public class BorderGenerator : MonoBehaviour
     Transform bottomLeft;
     Transform bottomRight;
 
+    GameObject lastObj;
+
     void Start()
     {
         Color[] pixels = img.GetPixels();
@@ -25,7 +27,26 @@ public class BorderGenerator : MonoBehaviour
             xCounter++;
             
             if(color.Equals(Color.black)) {
-                Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
+
+                if(lastObj) { // Pixel before this was black
+                    if(lastObj.transform.position.y == yCounter-200) { // Y level is same so optimize
+                        float lastX = lastObj.transform.position.x; // Get last x position
+                        float lastScale = lastObj.transform.localScale.x; // Get last x scale
+                        Destroy(lastObj); // Destroy last object
+                        lastObj = Instantiate(wallObj, new Vector2(lastX, yCounter-200), Quaternion.identity); // Put new object where last object was
+                        lastObj.transform.localScale = new Vector2(lastObj.transform.localScale.x + lastScale, lastObj.transform.localScale.y);
+                        lastObj.transform.position = new Vector2(lastObj.transform.position.x + 0.5f, lastObj.transform.position.y);
+                    } // TO THINK ABOUT: Same X level is more tricky since they does not get placed directly after each other
+                    else{
+                        lastObj = Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
+                    }
+                }
+                else {
+                    lastObj = Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
+                }
+                lastObj.name = "BorderObj";
+                lastObj.transform.parent = transform;
+
             }
             else if(color.Equals(Color.green)) {
                 GameObject temp = Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
@@ -59,9 +80,10 @@ public class BorderGenerator : MonoBehaviour
                 }
 
                 temp.GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f);
+                lastObj = null;
             }
             else {
-
+                lastObj = null;
             }
 
             if(xCounter == width) {
