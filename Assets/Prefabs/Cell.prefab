@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 7198534172057317649}
   - component: {fileID: 2558889329692246107}
   - component: {fileID: 613358344}
+  - component: {fileID: 1933062502438874124}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Cell
@@ -293,16 +294,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fd618ee3c260543b6711080f338265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoutReference: {fileID: 0}
+  maxInfectionAmount: 10
+  infectionAmount: 0
+  isInfected: 0
   factoryPrefab: {fileID: 9200442734102122332, guid: fc09b64f442f5f044a37597d4b1919cc, type: 3}
   infectionBarPivot: {fileID: 977891674}
   offset: 4
   speed: 0.5
   insideRenderer: {fileID: 1427935810}
-  maxInfectionAmount: 10
-  infectionAmount: 0
-  isInfected: 0
-  scaleFactor: 0.2
 --- !u!58 &613358344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -319,3 +318,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1933062502438874124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198534172057317654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe9147af2dd6f640a024569bb398724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.2

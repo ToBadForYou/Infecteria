@@ -15,35 +15,10 @@ public class Cell : Infectable
 
     public SpriteRenderer insideRenderer;
 
-    public float scaleFactor;
-    private float initialScale;
-    private float targetScaleX;
-    private float targetScaleY;
-
     void Start()
     {
-        initialScale = transform.localScale.x;
-        SetTargetScale();
         originPos = transform.position;
         target = GetNewTarget();
-    }
-
-    private void SetTargetScale() {
-        targetScaleX = initialScale + Random.Range(-scaleFactor, scaleFactor);
-        targetScaleY = initialScale + Random.Range(-scaleFactor, scaleFactor);
-    }
-
-    private void UpdateScale() {
-        float step = 0.15f * Time.deltaTime;
-        transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(targetScaleX, targetScaleY), step);
-        
-        float xScaleDiff = 1 - transform.localScale.x;
-        float yScaleDiff = 1 - transform.localScale.y;
-        transform.GetChild(1).localScale = new Vector2(1.0f + xScaleDiff, 1.0f + yScaleDiff);
-
-        if(Vector2.Distance(transform.localScale, new Vector2(targetScaleX, targetScaleY)) <= 0.01f) {
-            SetTargetScale();
-        }
     }
 
     public void GetAbsorbed() {
@@ -75,8 +50,6 @@ public class Cell : Infectable
             target = GetNewTarget();
         }
         transform.position = Vector2.MoveTowards(transform.position, target, step);
-
-        UpdateScale();
     }
 
     public override void OnInfect(){
