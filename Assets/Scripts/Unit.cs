@@ -65,11 +65,16 @@ public class Unit : MonoBehaviour
 
     void TakeDamage(int takenDamage){
         currentHealth -= takenDamage;
+        OnTakeDamage();
         if (currentHealth < 0){
             OnDeath();
             Destroy(gameObject.transform.root.gameObject);
         }
         healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
+    }
+
+    public virtual void OnTakeDamage() {
+        
     }
 
     public virtual void OnDeath() {
