@@ -22,7 +22,7 @@ public class FactoryManager : MonoBehaviour
 
     public void SetFactory(Factory factory){
         currentFactory = factory;
-        UpdateMicrobacteria(2, 5);
+        UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
     }
 

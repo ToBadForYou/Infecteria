@@ -17,7 +17,7 @@ public class MicroBacteria : Unit
         player = GameObject.Find("Player");
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
         if(followPlayer && !targetCell) {
