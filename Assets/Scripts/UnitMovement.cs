@@ -6,12 +6,16 @@ public class UnitMovement : MonoBehaviour
 {
     public GameObject followTarget;
     public Vector2 positionTarget;
+    public Vector2 offset;
+    private float offsetFactor = 0.75f;
+
     public Unit ownerUnit;
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
 
     void Start()
     {
+        offset = new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor));
     }
 
     void Update()
@@ -22,8 +26,8 @@ public class UnitMovement : MonoBehaviour
                 targetPosition = followTarget.transform.position;
             }
             float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
-            if(Vector2.Distance(transform.position, targetPosition) <= 0.2f) {
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition + offset, step);
+            if(Vector2.Distance(transform.position, targetPosition + offset) <= 0.2f) {
                 moving = false;
                 ownerUnit.OnReachedDestination(followTarget);
             }

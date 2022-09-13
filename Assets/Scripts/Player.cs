@@ -11,6 +11,8 @@ public class Player : Unit
     public GameObject eObject;
     public GameObject qObject;
     public GameObject bObject;
+    public GameObject iObject;
+    public GameObject fObject;
 
     public GameObject skilltree;
     public GameObject factoryOverview;
@@ -58,6 +60,15 @@ public class Player : Unit
                     currentFactory.Build();
                     MakeObjDeactive(bObject);
                 }
+            }
+            if(currentFactory.CanAutoInfect()) {
+                if(Input.GetKeyDown(KeyCode.I)) {
+                    currentFactory.AutoInfect();
+                    MakeObjDeactive(iObject);
+                }
+            }
+            if(Input.GetKeyDown(KeyCode.F)) {
+                currentFactory.SendBacteriasToPlayer();
             }
         } else {
             MakeObjDeactive(factoryOverview);
