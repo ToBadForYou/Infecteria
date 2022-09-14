@@ -8747,6 +8747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structure: {fileID: 686625259711535221, guid: e9e20c840c683804d8841c6c77397923, type: 3}
+  structureName: DNA Producer
   cost: 0
 --- !u!4 &1973477631
 Transform:

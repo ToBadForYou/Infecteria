@@ -5,21 +5,24 @@ using UnityEngine;
 public class Factory : Infectable
 {
     public GameObject microBacteriaPrefab;
-    public GameObject DNAProducerPrefab;
-
     public int bacteriaAmount = 0;
     public int maxBacteriaAmount = 10;
 
     public float startTime = 10.0f;
     public float time = 10.0f;
     
-    private int usedSlots = 0;
-    private int maxSlots = 1;
+    public int currentLevel = 1;
+    public int maxLevel = 4;
+    private GameObject[] structures;
 
     public bool autoInfect = false;
     public Cell targetCell;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
+
+    void Start(){
+        structures = new GameObject[4];
+    }
 
     void Update()
     {
@@ -45,9 +48,6 @@ public class Factory : Infectable
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentFactory = this;
             Player playerScript = col.gameObject.GetComponent<Player>();
-            if(CanBuild()) {
-                playerScript.MakeObjActive(playerScript.bObject);
-            }
             if(CanAutoInfect()) {
                 playerScript.MakeObjActive(playerScript.iObject);
             }
@@ -71,8 +71,8 @@ public class Factory : Infectable
         return !autoInfect;
     }
 
-    public bool CanBuild() {
-        return usedSlots < maxSlots;
+    public bool CanBuild(int slot) {
+        return slot < currentLevel && structures[slot] == null;
     }
 
     public void AutoInfect() {
@@ -107,10 +107,8 @@ public class Factory : Infectable
     }
 
     public void Build(int slot, Buildable structure) {
-        if(CanBuild()){
-            GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
-            temp.transform.parent = transform;
-            usedSlots++;
-        }
+        GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
+        temp.transform.parent = transform;
+        structures[slot] = temp;
     }
 }

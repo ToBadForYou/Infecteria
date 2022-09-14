@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ using UnityEngine.UI;
 using TMPro;
 
 public class FactoryManager : MonoBehaviour
@@ -33,22 +34,34 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void DisplayBuildOptions(int buildSlot){
-        buildOptions.SetActive(!buildOptions.activeSelf);
-        if(buildOptions.activeSelf){
-            selectedSlot = buildSlot;
-            GameObject buildingSlot = buildSlots.transform.Find("buildingSlot" + buildSlot).gameObject;
-            RectTransform buildingSlotTransform = buildingSlot.GetComponent<RectTransform>();
-            RectTransform buildOptionsTransform = buildOptions.GetComponent<RectTransform>();
-            buildOptionsTransform.anchoredPosition = new Vector2(buildingSlotTransform.anchoredPosition.x - 50, buildingSlotTransform.anchoredPosition.y + 50);
+        if(currentFactory.CanBuild(buildSlot)){
+            buildOptions.SetActive(!buildOptions.activeSelf);
+            if(buildOptions.activeSelf){
+                selectedSlot = buildSlot;
+                GameObject buildingSlot = buildSlots.transform.Find("buildingSlot" + buildSlot).gameObject;
+                RectTransform buildingSlotTransform = buildingSlot.GetComponent<RectTransform>();
+                RectTransform buildOptionsTransform = buildOptions.GetComponent<RectTransform>();
+                buildOptionsTransform.anchoredPosition = new Vector2(buildingSlotTransform.anchoredPosition.x - 50, buildingSlotTransform.anchoredPosition.y + 50);
+            }
+            else {
+                selectedSlot = -1;
+            }
         }
         else {
-            selectedSlot = -1;
-        }
+            buildOptions.SetActive(false);
+        } 
     }
 
     public void BuildStructure(int structureIndex){
-        if(selectedSlot != -1 && structureIndex != -1 && structureIndex < availableStructures.Count){
+        if(currentFactory.CanBuild(selectedSlot) && selectedSlot != -1 && structureIndex != -1 && structureIndex < availableStructures.Count){
+            buildOptions.SetActive(false);
+            Buildable buildable = availableStructures[structureIndex];
             currentFactory.Build(selectedSlot, availableStructures[structureIndex]);
+            Transform buildingSlotTransform = buildSlots.transform.Find("buildingSlot" + selectedSlot);
+            buildingSlotTransform.Find("buildingText").GetComponent<TextMeshProUGUI>().text = buildable.structureName;
+            Image slotImage = buildingSlotTransform.Find("buildingIcon").GetComponent<Image>();
+            slotImage.sprite = buildable.GetSprite();
+            slotImage.color = buildable.GetColor();
         }
     }
 }

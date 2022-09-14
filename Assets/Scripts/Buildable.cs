@@ -5,13 +5,14 @@ using UnityEngine;
 public class Buildable : MonoBehaviour
 {
     public GameObject structure;
+    public string structureName;
     public int cost;
 
-    Sprite GetSprite(){
+    public Sprite GetSprite(){
         return structure.GetComponent<SpriteRenderer>().sprite;
     }
 
-    Color GetColor(){
+    public Color GetColor(){
         return structure.GetComponent<SpriteRenderer>().color;
     }
 }
