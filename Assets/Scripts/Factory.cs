@@ -106,9 +106,11 @@ public class Factory : Infectable
         bacteriaAmount--;
     }
 
-    public void Build() {
-        GameObject temp = Instantiate(DNAProducerPrefab, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
-        temp.transform.parent = transform;
-        usedSlots++;
+    public void Build(int slot, Buildable structure) {
+        if(CanBuild()){
+            GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
+            temp.transform.parent = transform;
+            usedSlots++;
+        }
     }
 }

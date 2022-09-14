@@ -62,12 +62,6 @@ public class Player : Unit
         if(currentFactory) {
             MakeObjActive(factoryOverview);
             factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
-            if(currentFactory.CanBuild()) {
-                if(Input.GetKeyDown(KeyCode.B)) {
-                    currentFactory.Build();
-                    MakeObjDeactive(bObject);
-                }
-            }
             if(currentFactory.CanAutoInfect()) {
                 if(Input.GetKeyDown(KeyCode.I)) {
                     currentFactory.AutoInfect();

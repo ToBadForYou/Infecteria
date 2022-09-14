@@ -13,6 +13,8 @@ public class FactoryManager : MonoBehaviour
     public Transform infectionBar;
     public GameObject buildOptions;
     public GameObject buildSlots;
+    public int selectedSlot;
+    public List<Buildable> availableStructures;
 
     public void SetFactory(Factory factory) {
         currentFactory = factory;
@@ -33,14 +35,20 @@ public class FactoryManager : MonoBehaviour
     public void DisplayBuildOptions(int buildSlot){
         buildOptions.SetActive(!buildOptions.activeSelf);
         if(buildOptions.activeSelf){
+            selectedSlot = buildSlot;
             GameObject buildingSlot = buildSlots.transform.Find("buildingSlot" + buildSlot).gameObject;
             RectTransform buildingSlotTransform = buildingSlot.GetComponent<RectTransform>();
             RectTransform buildOptionsTransform = buildOptions.GetComponent<RectTransform>();
             buildOptionsTransform.anchoredPosition = new Vector2(buildingSlotTransform.anchoredPosition.x - 50, buildingSlotTransform.anchoredPosition.y + 50);
         }
+        else {
+            selectedSlot = -1;
+        }
     }
 
-    public void BuildStructure(int buildSlot){
-        currentFactory.Build();
+    public void BuildStructure(int structureIndex){
+        if(selectedSlot != -1 && structureIndex != -1 && structureIndex < availableStructures.Count){
+            currentFactory.Build(selectedSlot, availableStructures[structureIndex]);
+        }
     }
 }
