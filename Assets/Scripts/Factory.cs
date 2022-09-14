@@ -13,7 +13,7 @@ public class Factory : Infectable
     
     public int currentLevel = 1;
     public int maxLevel = 4;
-    private GameObject[] structures;
+    public GameObject[] structures;
 
     public bool autoInfect = false;
     public Cell targetCell;

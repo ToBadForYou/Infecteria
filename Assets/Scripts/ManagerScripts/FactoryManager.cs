@@ -15,12 +15,35 @@ public class FactoryManager : MonoBehaviour
     public GameObject buildOptions;
     public GameObject buildSlots;
     public int selectedSlot;
+    public Sprite emptySprite;
+    public Sprite lockedSprite;
     public List<Buildable> availableStructures;
 
     public void SetFactory(Factory factory) {
         currentFactory = factory;
         UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
+        // TODO Make a script for build slots to handle setting images, colors etc
+        for (int i = 0; i < factory.structures.Length; i++){
+            string name = "Empty";
+            Sprite sprite = emptySprite;
+            Color spriteColor = Color.white;
+            bool enableButton = true;
+            if(factory.structures[i] != null){
+                // TODO read from buildable object instead
+                SpriteRenderer spriteRenderer = factory.structures[i].GetComponent<SpriteRenderer>();
+                string[] splitArray =  factory.structures[i].name.Split(char.Parse("("));
+                name = splitArray[0];
+                sprite = spriteRenderer.sprite;
+                spriteColor = spriteRenderer.color;
+                enableButton = false;
+            } else if(factory.currentLevel <= i){
+                name = "Locked";
+                sprite = lockedSprite;
+                enableButton = false;
+            }
+            SetStructure(i, enableButton, name, sprite, spriteColor);
+        }
     }
 
     public void UpdateInfection(float amount, float maxAmount){
@@ -31,6 +54,19 @@ public class FactoryManager : MonoBehaviour
 
     public void UpdateMicrobacteria(int amount, int maxAmount){
         microbacteriaText.text = "Microbacteria: " + amount + "/" + maxAmount;
+    }
+
+    void SetStructure(int slot, bool enableButton, string text, Sprite sprite, Color spriteColor){
+        Transform buildingSlotTransform = buildSlots.transform.Find("buildingSlot" + slot);
+        if(text == "Locked"){
+            // Temp whacky check until it has its own script
+            buildingSlotTransform.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.33f);
+        }
+        buildingSlotTransform.gameObject.GetComponent<Button>().enabled = enableButton;
+        Image slotImage = buildingSlotTransform.Find("buildingIcon").GetComponent<Image>();
+        buildingSlotTransform.Find("buildingText").GetComponent<TextMeshProUGUI>().text = text;
+        slotImage.sprite = sprite;
+        slotImage.color = spriteColor;
     }
 
     public void DisplayBuildOptions(int buildSlot){
@@ -57,11 +93,7 @@ public class FactoryManager : MonoBehaviour
             buildOptions.SetActive(false);
             Buildable buildable = availableStructures[structureIndex];
             currentFactory.Build(selectedSlot, availableStructures[structureIndex]);
-            Transform buildingSlotTransform = buildSlots.transform.Find("buildingSlot" + selectedSlot);
-            buildingSlotTransform.Find("buildingText").GetComponent<TextMeshProUGUI>().text = buildable.structureName;
-            Image slotImage = buildingSlotTransform.Find("buildingIcon").GetComponent<Image>();
-            slotImage.sprite = buildable.GetSprite();
-            slotImage.color = buildable.GetColor();
+            SetStructure(selectedSlot, false, buildable.structureName, buildable.GetSprite(), buildable.GetColor());
         }
     }
 }
