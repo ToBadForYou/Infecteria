@@ -9032,6 +9032,7 @@ MonoBehaviour:
   infectionText: {fileID: 613312028}
   infectionBar: {fileID: 613312027}
   buildOptions: {fileID: 933105315}
+  buildSlots: {fileID: 230121895}
 --- !u!1 &2016733478
 GameObject:
   m_ObjectHideFlags: 0
