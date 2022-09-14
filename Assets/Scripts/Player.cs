@@ -17,6 +17,7 @@ public class Player : Unit
 
     public GameObject skilltree;
     public GameObject factoryOverview;
+    public GameObject buildOptions;
 
     public List<Vector2> startPositions;
 
@@ -78,6 +79,7 @@ public class Player : Unit
             }
         } else {
             MakeObjDeactive(factoryOverview);
+            MakeObjDeactive(buildOptions);
         }
 
         // Infecting Cells
