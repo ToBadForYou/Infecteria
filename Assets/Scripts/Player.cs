@@ -11,7 +11,6 @@ public class Player : Unit
     public GameObject spaceObject;
     public GameObject eObject;
     public GameObject qObject;
-    public GameObject bObject;
     public GameObject iObject;
     public GameObject fObject;
 
@@ -23,7 +22,6 @@ public class Player : Unit
 
     void Start()
     {
-        //temporarily commented out for debug purposes
         //transform.position = startPositions[Random.Range(0, startPositions.Count)];
     }
 

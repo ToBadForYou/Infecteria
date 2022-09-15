@@ -61,7 +61,6 @@ public class Factory : Infectable
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
             col.gameObject.GetComponent<Player>().currentFactory = null;
             Player playerScript = col.gameObject.GetComponent<Player>();
-            playerScript.MakeObjDeactive(playerScript.bObject);
             playerScript.MakeObjDeactive(playerScript.iObject);
             playerScript.MakeObjDeactive(playerScript.fObject);
         }
