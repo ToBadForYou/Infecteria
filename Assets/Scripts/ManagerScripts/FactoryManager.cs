@@ -10,6 +10,7 @@ public class FactoryManager : MonoBehaviour
 
     public TextMeshProUGUI microbacteriaText;
     public TextMeshProUGUI infectionText;
+    public TextMeshProUGUI levelTextMesh;
 
     public Transform infectionBar;
     public GameObject buildOptions;
@@ -54,6 +55,11 @@ public class FactoryManager : MonoBehaviour
 
     public void UpdateMicrobacteria(int amount, int maxAmount){
         microbacteriaText.text = "Microbacteria: " + amount + "/" + maxAmount;
+    }
+
+    public void UpgradeFactory() {
+        currentFactory.Upgrade();
+        levelTextMesh.text = "Level " + currentFactory.currentLevel;
     }
 
     void SetStructure(int slot, bool enableButton, string text, Sprite sprite, Color spriteColor){

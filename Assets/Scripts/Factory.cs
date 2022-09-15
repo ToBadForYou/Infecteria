@@ -11,6 +11,7 @@ public class Factory : Infectable
     public float startTime = 10.0f;
     public float time = 10.0f;
     
+    public int upgradeCost = 100;
     public int currentLevel = 1;
     public int maxLevel = 4;
     public GameObject[] structures;
@@ -66,12 +67,26 @@ public class Factory : Infectable
         }
     }
 
+    public bool CanUpgrade() {
+        bool levelsLeft = currentLevel < maxLevel;
+        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints >= upgradeCost;
+        return levelsLeft && hasPoints;
+    }
+
     public bool CanAutoInfect() {
         return !autoInfect;
     }
 
     public bool CanBuild(int slot) {
         return slot < currentLevel && structures[slot] == null;
+    }
+
+    public void Upgrade() {
+        if(CanUpgrade()) {
+            currentLevel++;
+            GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints -= upgradeCost;
+            upgradeCost *= 2;
+        }
     }
 
     public void AutoInfect() {

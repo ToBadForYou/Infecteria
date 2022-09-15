@@ -3163,7 +3163,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 578760291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2009071186}
+        m_TargetAssemblyTypeName: FactoryManager, Assembly-CSharp
+        m_MethodName: UpgradeFactory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &578760291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9062,6 +9074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   microbacteriaText: {fileID: 1746636570}
   infectionText: {fileID: 613312028}
+  levelTextMesh: {fileID: 2033668327}
   infectionBar: {fileID: 613312027}
   buildOptions: {fileID: 933105315}
   buildSlots: {fileID: 230121895}
@@ -9257,7 +9270,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level X
+  m_text: Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
