@@ -16,61 +16,73 @@ public class Unit : MonoBehaviour
     public float range = 0.9f;
     public bool aggressive;
     public Faction owner;
+    public Task currentTask;
 
     void Start()
     {
         currentHealth = health;
-        attackTimer = attackSpeed;
     }
 
     protected void Update()
     {
         if (aggressive){
-            GameObject closest = null;
-            float closestDistance = Mathf.Infinity;
-            foreach (GameObject closeObject in inRange)
-            {
-                if(IsHostile(closeObject.GetComponent<Unit>())){
-                    float distance = Vector2.Distance(transform.position, closeObject.transform.position);
-                    if(distance + 0.2f <= closestDistance) {
-                        closest = closeObject;
-                        closestDistance = distance;
+            if(!CanAttack()){
+                attackTimer -= Time.deltaTime;
+            }
+            if(currentTask == null){
+                GameObject closest = null;
+                float closestDistance = Mathf.Infinity;
+                foreach (GameObject closeObject in inRange)
+                {
+                    if(IsHostile(closeObject.GetComponent<Unit>())){
+                        float distance = Vector2.Distance(transform.position, closeObject.transform.position);
+                        if(distance + 0.2f <= closestDistance) {
+                            closest = closeObject;
+                            closestDistance = distance;
+                        }
                     }
                 }
-            }
 
-            if (closest != null){
-                if (closestDistance > range){
-                    unitMovement.FollowTarget(closest);
-                } else {
-                    unitMovement.StopMoving();
-                    attackTimer -= Time.deltaTime;
-                    if (attackTimer < 0){
-                        AttackTarget(closest);
-                        attackTimer = attackSpeed;
-                    }
+                if (closest != null){
+                    currentTask = gameObject.AddComponent<AttackTask>();
+                    currentTask.unit = this;
+                    currentTask.SetTarget(closest);
                 }
             }
         }
+    }
+
+    public bool InRange(Vector2 position){
+        return Vector2.Distance(transform.position, position) <= range;
     }
 
     public bool IsHostile(Unit unit){
         return unit.owner != Faction.neutral && owner != unit.owner;
     }
 
-    void AttackTarget(GameObject attackTarget){
-        Unit unit = attackTarget.GetComponent<Unit>();
-        unit.TakeDamage(damage);
+    public bool CanAttack(){
+        return attackTimer <= 0;
     }
 
-    void TakeDamage(int takenDamage){
+    public bool AttackTarget(GameObject attackTarget){
+        if(CanAttack()){
+            attackTimer = attackSpeed;
+            Unit unit = attackTarget.GetComponent<Unit>();
+            return unit.TakeDamage(damage);
+        }
+        return false;
+    }
+
+    bool TakeDamage(int takenDamage){
         currentHealth -= takenDamage;
         OnTakeDamage();
-        if (currentHealth < 0){
+        healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
+        if (currentHealth <= 0){
             OnDeath();
             Destroy(gameObject.transform.root.gameObject);
-        }
-        healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
+            return true;
+        } 
+        return false;
     }
 
     public virtual void OnTakeDamage() {
@@ -94,6 +106,22 @@ public class Unit : MonoBehaviour
             inRange.Remove(col.gameObject);
         }
     }    
+
+    public void MoveToPosition(Vector2 targetPosition) {
+        unitMovement.MoveToPosition(targetPosition);
+    }
+
+    public bool IsMoving(){
+        return unitMovement.moving;
+    }
+
+    public void StopMoving(){
+        unitMovement.StopMoving();
+    }
+ 
+    public void FollowTarget(GameObject targetObject) {
+        unitMovement.FollowTarget(targetObject);
+    }   
 
     public virtual void OnReachedDestination(GameObject target){
 

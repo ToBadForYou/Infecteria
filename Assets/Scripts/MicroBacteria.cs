@@ -21,11 +21,11 @@ public class MicroBacteria : Unit
     {
         base.Update();
         if(followPlayer && !targetCell) {
-            unitMovement.FollowTarget(player);
+            FollowTarget(player);
         }
         else if(isSelected) {
             if(targetCell && !unitMovement.moving) {
-                unitMovement.FollowTarget(targetCell.gameObject);
+                FollowTarget(targetCell.gameObject);
             }
         }
     }
@@ -49,9 +49,5 @@ public class MicroBacteria : Unit
 
     public override void OnDeath() {
         parent.RemoveMicrobacteria(this);
-    }
-
-    public void MoveToPosition(Vector2 targetPosition) {
-        unitMovement.MoveToPosition(targetPosition);
     }
 }

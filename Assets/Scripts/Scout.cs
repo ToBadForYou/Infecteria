@@ -20,19 +20,19 @@ public class Scout : DetectorUnit
     public void SetAlerted(GameObject triggerObject){
         isAlerted = true;
         exclamationMark.SetActive(true);
-        unitMovement.FollowTarget(parent);
+        FollowTarget(parent);
         finished = true; 
         alertPosition = triggerObject.transform.position;  
     }
 
     public void SetTarget(GameObject target){
-        unitMovement.FollowTarget(target);
+        FollowTarget(target);
         targetCell = target;
     }
 
     public override void OnReachedDestination(GameObject target){
         if (target == null){
-            unitMovement.FollowTarget(parent);
+            FollowTarget(parent);
             finished = true;   
         }
         if(target == targetCell){
@@ -42,7 +42,7 @@ public class Scout : DetectorUnit
                 SetAlerted(targetCell);
             }
             else {
-                unitMovement.FollowTarget(parent);
+                FollowTarget(parent);
                 finished = true;
             }
         }
