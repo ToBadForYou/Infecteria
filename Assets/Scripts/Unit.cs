@@ -16,7 +16,7 @@ public class Unit : MonoBehaviour
     public float range = 0.9f;
     public bool aggressive;
     public Faction owner;
-    public Task currentTask;
+    public List<Task> currentTasks = new List<Task>();
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class Unit : MonoBehaviour
             if(!CanAttack()){
                 attackTimer -= Time.deltaTime;
             }
-            if(currentTask == null){
+            if(currentTasks.Count == 0){
                 GameObject closest = null;
                 float closestDistance = Mathf.Infinity;
                 foreach (GameObject closeObject in inRange)
@@ -44,9 +44,14 @@ public class Unit : MonoBehaviour
                 }
 
                 if (closest != null){
-                    currentTask = gameObject.AddComponent<AttackTask>();
-                    currentTask.unit = this;
-                    currentTask.SetTarget(closest);
+                    currentTasks.Insert(0, new AttackTask(this, closest));
+                }
+            }
+            else {
+                Task currentTask = currentTasks[0];
+                currentTask.Update();
+                if(currentTask.finished){
+                    currentTasks.Remove(currentTask);
                 }
             }
         }

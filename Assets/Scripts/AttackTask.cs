@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class AttackTask : Task
 {
+    public AttackTask(Unit owner, GameObject targetObject) : base(owner) {
+        target = targetObject;
+    }
 
-    void Update(){
+    public override void Update(){
         if (target != null){
             bool targetInRange = unit.InRange(target.transform.position);
             if (!unit.IsMoving() && !targetInRange){
