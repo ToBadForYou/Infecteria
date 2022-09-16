@@ -18,10 +18,11 @@ public abstract class Task
     }
 
     public virtual void Update(){
-
+        Debug.Log("Calling here?");
     }
 
     public void FinishTask(){
+        Debug.Log("I'm done");
         finished = true;
     }
 }

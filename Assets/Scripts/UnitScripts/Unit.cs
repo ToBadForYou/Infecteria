@@ -30,6 +30,7 @@ public class Unit : MonoBehaviour
                 attackTimer -= Time.deltaTime;
             }
             if(currentTasks.Count == 0){
+                Debug.Log("Find nearest!");
                 GameObject closest = null;
                 float closestDistance = Mathf.Infinity;
                 foreach (GameObject closeObject in inRange)
@@ -49,12 +50,18 @@ public class Unit : MonoBehaviour
             }
             else {
                 Task currentTask = currentTasks[0];
-                currentTask.Update();
                 if(currentTask.finished){
+                    Debug.Log("Task has finished!");
                     currentTasks.Remove(currentTask);
+                } else {
+                    currentTask.Update();
                 }
             }
         }
+    }
+
+    public void GiveTask(Task task){
+        currentTasks.Add(task);
     }
 
     public bool InRange(Vector2 position){
@@ -118,6 +125,10 @@ public class Unit : MonoBehaviour
 
     public bool IsMoving(){
         return unitMovement.moving;
+    }
+
+    public bool AtPosition(Vector2 position){
+        return Vector2.Distance(transform.position, position) <= 0.2f;
     }
 
     public void StopMoving(){

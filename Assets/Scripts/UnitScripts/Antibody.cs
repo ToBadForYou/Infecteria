@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Antibody : Unit
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public override void OnReachedDestination(GameObject target){
         
     }
 }

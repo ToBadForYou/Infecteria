@@ -16,7 +16,9 @@ public class UnitMovement : MonoBehaviour
 
     void Start()
     {
-        offset = new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor));
+        //Temp disabled until task system is finished
+        //offset = new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor));
+        offset = new Vector2(0,0);
     }
 
     void Update()

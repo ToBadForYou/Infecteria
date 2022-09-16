@@ -17,7 +17,7 @@ public class UnitSquad : MonoBehaviour
     public void MoveTo(Vector2 pos){
         foreach (Unit unit in units)
         {
-            unit.unitMovement.MoveToPosition(pos);
+            unit.GiveTask(new MoveTask(unit, pos));
         }
     }
 }
