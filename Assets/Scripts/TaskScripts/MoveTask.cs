@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class MoveTask : Task
 { 
-    new Vector2 target;
+    Vector2 targetPosition;
 
     public MoveTask(Unit owner, Vector2 targetVector) : base(owner) {
-        target = targetVector;
+        targetPosition = targetVector;
     }
 
+    public MoveTask(Unit owner, GameObject targetObject) : base(owner) {
+        target = targetObject;
+    }    
+
     public override void Update(){
+        bool objectTarget = target != null;
         if (!unit.IsMoving()){
-            unit.MoveToPosition(target);
+            if(objectTarget){
+                unit.FollowTarget(target);
+            }
+            else {
+                unit.MoveToPosition(targetPosition);
+            }
         }
-        if(unit.AtPosition(target)){
+        
+        Vector2 targetPos;
+        if(objectTarget){
+            targetPos = target.transform.position;
+        }
+        else {
+            targetPos = targetPosition;
+        }
+        if(unit.AtPosition(targetPos)){
             FinishTask();
         }
     }

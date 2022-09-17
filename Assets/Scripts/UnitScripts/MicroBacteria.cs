@@ -25,7 +25,7 @@ public class MicroBacteria : Unit
         }
         else if(isSelected) {
             if(targetCell && !unitMovement.moving) {
-                FollowTarget(targetCell.gameObject);
+                GiveTask(new MoveTask(this, targetCell.gameObject));
             }
         }
     }
