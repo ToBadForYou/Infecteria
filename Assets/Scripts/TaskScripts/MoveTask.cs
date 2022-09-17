@@ -6,13 +6,11 @@ public class MoveTask : Task
 { 
     Vector2 targetPosition;
 
-    public MoveTask(Unit owner, Vector2 targetVector) : base(owner) {
+    public MoveTask(Unit owner, Vector2 targetVector) : base(owner, null) {
         targetPosition = targetVector;
     }
 
-    public MoveTask(Unit owner, GameObject targetObject) : base(owner) {
-        target = targetObject;
-    }    
+    public MoveTask(Unit owner, GameObject targetObject) : base(owner, targetObject) {}    
 
     public override void Update(){
         bool objectTarget = target != null;

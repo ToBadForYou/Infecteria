@@ -8,9 +8,10 @@ public abstract class Task
     public bool finished;
     public GameObject target;
 
-    protected Task(Unit owner){
+    protected Task(Unit owner, GameObject targetObject){
         owner.StopMoving();
         unit = owner;
+        target = targetObject;
     }
 
     public GameObject GetTarget(){

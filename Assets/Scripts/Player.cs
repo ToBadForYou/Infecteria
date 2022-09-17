@@ -38,7 +38,7 @@ public class Player : Unit
     }
 
     public override void OnDeath() {
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 
     new void Update()
