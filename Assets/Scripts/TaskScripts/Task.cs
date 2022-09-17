@@ -13,16 +13,18 @@ public abstract class Task
         unit = owner;
     }
 
+    public GameObject GetTarget(){
+        return target;
+    }
+
     public void SetTarget(GameObject gameObject){
         target = gameObject;
     }
 
     public virtual void Update(){
-        Debug.Log("Calling here?");
     }
 
     public void FinishTask(){
-        Debug.Log("I'm done");
         finished = true;
     }
 }

@@ -15,7 +15,6 @@ public class MoveTask : Task
             unit.MoveToPosition(target);
         }
         if(unit.AtPosition(target)){
-            Debug.Log("Finished!");
             FinishTask();
         }
     }

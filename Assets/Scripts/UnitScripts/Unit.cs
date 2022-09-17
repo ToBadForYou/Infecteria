@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour
     public bool aggressive;
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();
+    public Task proximityHostile;
 
     void Start()
     {
@@ -29,33 +30,48 @@ public class Unit : MonoBehaviour
             if(!CanAttack()){
                 attackTimer -= Time.deltaTime;
             }
-            if(currentTasks.Count == 0){
-                Debug.Log("Find nearest!");
-                GameObject closest = null;
-                float closestDistance = Mathf.Infinity;
-                foreach (GameObject closeObject in inRange)
-                {
-                    if(IsHostile(closeObject.GetComponent<Unit>())){
-                        float distance = Vector2.Distance(transform.position, closeObject.transform.position);
-                        if(distance + 0.2f <= closestDistance) {
-                            closest = closeObject;
-                            closestDistance = distance;
-                        }
-                    }
-                }
+            FindHostileInProximity();
+        }
+        UpdateCurrentTask();
+    }
 
-                if (closest != null){
-                    currentTasks.Insert(0, new AttackTask(this, closest));
+    public void FindHostileInProximity(){
+        GameObject closest = null;
+        float closestDistance = Mathf.Infinity;
+        foreach (GameObject closeObject in inRange)
+        {
+            if(IsHostile(closeObject.GetComponent<Unit>())){
+                float distance = Vector2.Distance(transform.position, closeObject.transform.position);
+                if(distance + 0.2f <= closestDistance) {
+                    closest = closeObject;
+                    closestDistance = distance;
                 }
             }
-            else {
-                Task currentTask = currentTasks[0];
-                if(currentTask.finished){
-                    Debug.Log("Task has finished!");
-                    currentTasks.Remove(currentTask);
-                } else {
-                    currentTask.Update();
+        }
+
+        if (closest != null && (proximityHostile == null || closest != proximityHostile.GetTarget())){
+            proximityHostile = new AttackTask(this, closest);
+        }       
+    }
+
+    public void UpdateCurrentTask(){
+        Task currentTask = null;
+        if(proximityHostile != null){
+            currentTask = proximityHostile;
+        }
+        else if(currentTasks.Count > 0){
+            currentTask = currentTasks[0];
+        }
+        if(currentTask != null){
+            if(currentTask.finished){
+                if(currentTask == proximityHostile){
+                    proximityHostile = null;
                 }
+                else {
+                    currentTasks.Remove(currentTask);
+                }
+            } else {
+                currentTask.Update();
             }
         }
     }

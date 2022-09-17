@@ -26,8 +26,4 @@ public class AttackTask : Task
             FinishTask();
         }
     }
-
-    public GameObject GetTarget(){
-        return target;
-    }
 }
