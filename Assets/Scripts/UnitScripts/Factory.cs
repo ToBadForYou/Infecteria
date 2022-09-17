@@ -14,16 +14,12 @@ public class Factory : Infectable
     public int upgradeCost = 100;
     public int currentLevel = 1;
     public int maxLevel = 4;
-    public GameObject[] structures;
+    public GameObject[] structures = new GameObject[4];
 
     public bool autoInfect = false;
     public Cell targetCell;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
-
-    void Start(){
-        structures = new GameObject[4];
-    }
 
     void Update()
     {
@@ -99,6 +95,13 @@ public class Factory : Infectable
         }
 
         autoInfect = true;
+    }
+
+    public void JoinPlayerSquad(GameObject playerObject, UnitSquad unitSquad){
+        foreach(Unit bacteria in microbacterias) {
+            unitSquad.AddUnit(bacteria);
+            bacteria.GiveTask(new FollowTask(bacteria, playerObject));
+        }        
     }
 
     public void SendBacteriasToPlayer() {

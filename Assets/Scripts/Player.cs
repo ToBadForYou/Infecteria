@@ -19,6 +19,7 @@ public class Player : Unit
     public GameObject buildOptions;
 
     public List<Vector2> startPositions;
+    public UnitSquad units;
 
     void Start()
     {
@@ -67,7 +68,7 @@ public class Player : Unit
                 }
             }
             if(Input.GetKeyDown(KeyCode.F)) {
-                currentFactory.SendBacteriasToPlayer();
+                currentFactory.JoinPlayerSquad(gameObject, units);
             }
         } else {
             MakeObjDeactive(factoryOverview);

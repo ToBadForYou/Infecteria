@@ -31,13 +31,12 @@ public class MicroBacteria : Unit
     }
 
     public override void OnReachedDestination(GameObject target){
-        if(followPlayer && !targetCell) {
-
-        }
-        else if(target != null && target == targetCell.gameObject){
-            targetCell.Infect(0.2f);
-            parent.RemoveMicrobacteria(this);
-            Destroy(gameObject);
+        if(targetCell != null){
+            if (target != null && target == targetCell.gameObject){
+                targetCell.Infect(0.2f);
+                parent.RemoveMicrobacteria(this);
+                Destroy(gameObject);
+            }
         }
     }
 
