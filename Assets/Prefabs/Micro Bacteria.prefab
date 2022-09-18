@@ -306,6 +306,9 @@ MonoBehaviour:
   range: 0.9
   aggressive: 1
   owner: 0
+  infectionAmount: 0.2
+  parent: {fileID: 0}
+  followPlayer: 0
   isSelected: 0
   targetCell: {fileID: 0}
   startPosition: {x: 0, y: 0}
@@ -339,6 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   positionTarget: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   ownerUnit: {fileID: 5050834132167503554}
   speed: 2
   moving: 0

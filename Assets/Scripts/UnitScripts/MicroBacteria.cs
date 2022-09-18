@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MicroBacteria : Unit
+public class MicroBacteria : InfectUnit
 {
     public Factory parent;
 
@@ -20,24 +20,21 @@ public class MicroBacteria : Unit
     new void Update()
     {
         base.Update();
-        if(followPlayer && !targetCell) {
-            FollowTarget(player);
-        }
-        else if(isSelected) {
-            if(targetCell && !unitMovement.moving) {
-                GiveTask(new MoveTask(this, targetCell.gameObject));
+        if(isSelected) {
+            if(targetCell && !IsMoving()) {
+                GiveTask(new InfectTask(this, targetCell.gameObject));
             }
         }
     }
 
     public override void OnReachedDestination(GameObject target){
-        if(targetCell != null){
-            if (target != null && target == targetCell.gameObject){
-                targetCell.Infect(0.2f);
-                parent.RemoveMicrobacteria(this);
-                Destroy(gameObject);
-            }
-        }
+
+    }
+
+    public override void InfectTarget(Infectable target){
+        target.Infect(infectionAmount);
+        parent.RemoveMicrobacteria(this);
+        Destroy(gameObject);
     }
 
     public void ToggleSelection() {

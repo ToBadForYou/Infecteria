@@ -90,6 +90,7 @@ MonoBehaviour:
   range: 1
   aggressive: 1
   owner: 1
+  infectionAmount: -1
 --- !u!114 &-3502876324055183019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   positionTarget: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   ownerUnit: {fileID: -9024463097163357159}
   speed: 2
   moving: 0
