@@ -11,14 +11,10 @@ public class UnitMovement : MonoBehaviour
 
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
-    
-    private float offsetFactor = 0.75f;
 
     void Start()
     {
-        //Temp disabled until task system is finished
-        //offset = new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor));
-        offset = new Vector2(0,0);
+        offset = Vector2.zero;
     }
 
     void Update()
@@ -40,11 +36,19 @@ public class UnitMovement : MonoBehaviour
     public void MoveToPosition(Vector2 pos){
         positionTarget = pos;
         followTarget = null;
+        offset = Vector2.zero;
         moving = true;
     }
 
     public void FollowTarget(GameObject newTarget){
         followTarget = newTarget;
+        offset = Vector2.zero;
+        moving = true;
+    }
+
+    public void FollowTarget(GameObject newTarget, Vector2 targetOffset){
+        followTarget = newTarget;
+        offset = targetOffset;
         moving = true;
     }
 

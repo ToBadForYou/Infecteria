@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   positionTarget: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   ownerUnit: {fileID: 7047261104836626860}
   speed: 2
   moving: 0
@@ -395,7 +396,9 @@ MonoBehaviour:
   attackTimer: 1
   range: 0.2
   aggressive: 0
+  additionalHp: 0
   owner: 1
+  hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   target: {fileID: 0}
   spriteRenderer: {fileID: 5792442732693720547}
   attacking: 0

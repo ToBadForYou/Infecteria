@@ -89,15 +89,14 @@ public class Factory : Infectable
         foreach(MicroBacteria bacteria in microbacterias){
             bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject));
         }
-
         autoInfect = true;
     }
 
     public void JoinPlayerSquad(GameObject playerObject, UnitSquad unitSquad){
-        foreach(Unit bacteria in microbacterias) {
-            unitSquad.AddUnit(bacteria);
-            bacteria.GiveTask(new FollowTask(bacteria, playerObject));
-        }        
+        foreach (Unit microbacteria in microbacterias){
+            unitSquad.AddUnit(microbacteria);
+        }
+        unitSquad.Follow(playerObject);
     }
 
     public void SendBacteriasToPlayer() {

@@ -42,6 +42,10 @@ public class Unit : MonoBehaviour
         UpdateCurrentTask();
     }
 
+    public void CancelTasks(){
+        currentTasks.Clear();
+    }
+
     public void FindHostileInProximity(){
         GameObject closest = null;
         float closestDistance = Mathf.Infinity;
@@ -161,6 +165,10 @@ public class Unit : MonoBehaviour
     public void FollowTarget(GameObject targetObject) {
         unitMovement.FollowTarget(targetObject);
     }   
+
+    public void FollowTarget(GameObject targetObject, Vector2 offset) {
+        unitMovement.FollowTarget(targetObject, offset);
+    }     
 
     public virtual void OnReachedDestination(GameObject target){
 

@@ -5,13 +5,16 @@ using UnityEngine;
 public class UnitSquad : MonoBehaviour
 {
     public List<Unit> units = new List<Unit>();
+    private float offsetFactor = 0.75f;
 
     public void AddUnits(List<Unit> unit){
         units.AddRange(unit);
     }
 
     public void AddUnit(Unit unit){
-        units.Add(unit);
+        if(!units.Contains(unit)){
+            units.Add(unit);
+        }
     }
 
     public void Attack(GameObject target){
@@ -22,7 +25,8 @@ public class UnitSquad : MonoBehaviour
 
     public void Follow(GameObject target){
         foreach (Unit unit in units){
-            unit.GiveTask(new FollowTask(unit, target));
+            unit.CancelTasks();
+            unit.GiveTask(new FollowTask(unit, target, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))));
         }
     }
 

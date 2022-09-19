@@ -107,7 +107,9 @@ MonoBehaviour:
   attackTimer: 1
   range: 0.2
   aggressive: 0
+  additionalHp: 0
   owner: 1
+  hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   target: {fileID: 0}
   spriteRenderer: {fileID: 2461731516557241643}
   attacking: 0

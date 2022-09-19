@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class FollowTask : Task
 {
-    public FollowTask(Unit owner, GameObject targetObject) : base(owner, targetObject) {}
+    Vector2 offset;
+
+    public FollowTask(Unit owner, GameObject targetObject, Vector2 targetOffset) : base(owner, targetObject) {
+        offset = targetOffset;
+    }
 
     public override void Update(){
-        unit.FollowTarget(target);
+        unit.FollowTarget(target, offset);
     }    
 }
