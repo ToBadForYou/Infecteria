@@ -20,6 +20,8 @@ public class FactoryManager : MonoBehaviour
     public Sprite lockedSprite;
     public List<Buildable> availableStructures;
 
+    public SelectCell selectCell;
+
     public void SetFactory(Factory factory) {
         currentFactory = factory;
         UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
@@ -63,7 +65,7 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void ToggleInfectCell(){
-
+        selectCell.ViewNearbyCells(currentFactory);
     }
 
     void SetStructure(int slot, bool enableButton, string text, Sprite sprite, Color spriteColor){

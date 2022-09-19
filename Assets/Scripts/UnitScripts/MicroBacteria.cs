@@ -17,16 +17,6 @@ public class MicroBacteria : InfectUnit
         player = GameObject.Find("Player");
     }
 
-    new void Update()
-    {
-        base.Update();
-        if(isSelected) {
-            if(targetCell && !IsMoving()) {
-                GiveTask(new InfectTask(this, targetCell.gameObject));
-            }
-        }
-    }
-
     public override void OnReachedDestination(GameObject target){
 
     }

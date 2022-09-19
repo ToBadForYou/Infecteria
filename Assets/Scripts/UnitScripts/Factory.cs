@@ -17,7 +17,7 @@ public class Factory : Infectable
     public GameObject[] structures = new GameObject[4];
 
     public bool autoInfect = false;
-    public Cell targetCell;
+    public Infectable infectTarget;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
 
@@ -31,8 +31,7 @@ public class Factory : Infectable
                 MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
                 AddMicrobacteria(bacteria);
                 if(autoInfect) {
-                    bacteria.isSelected = true;
-                    bacteria.targetCell = targetCell;
+                    bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject));
                 }
                 time = startTime;
             }
@@ -85,13 +84,10 @@ public class Factory : Infectable
         }
     }
 
-    public void AutoInfect() {
-        targetCell = GameObject.Find("Cell(Clone)").GetComponent<Cell>(); //Temporarily just get random cell
-
-        foreach(MicroBacteria bacteria in microbacterias) {
-            bacteria.isSelected = true;
-            bacteria.targetCell = targetCell;
-            bacteria.followPlayer = false;
+    public void AutoInfect(Infectable newTarget) {
+        infectTarget = newTarget;
+        foreach(MicroBacteria bacteria in microbacterias){
+            bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject));
         }
 
         autoInfect = true;
@@ -106,7 +102,7 @@ public class Factory : Infectable
 
     public void SendBacteriasToPlayer() {
         autoInfect = false;
-        targetCell = null;
+        infectTarget = null;
         foreach(MicroBacteria bacteria in microbacterias) {
             bacteria.followPlayer = true;
         }

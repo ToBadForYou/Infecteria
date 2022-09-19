@@ -63,7 +63,7 @@ public class Player : Unit
             factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
             if(currentFactory.CanAutoInfect()) {
                 if(Input.GetKeyDown(KeyCode.I)) {
-                    currentFactory.AutoInfect();
+                    //currentFactory.AutoInfect();
                     MakeObjDeactive(iObject);
                 }
             }

@@ -12,7 +12,7 @@ public class FakeCell : MonoBehaviour
     }
 
     void OnMouseDown() {
-        GameObject.Find("SelectionHandler").GetComponent<SelectionHandler>().SetTargetAndReset(realCellReference);
+        GameObject.Find("SelectCell").GetComponent<SelectCell>().SetTargetCell(realCellReference);
     }
 
     void OnMouseExit() {
