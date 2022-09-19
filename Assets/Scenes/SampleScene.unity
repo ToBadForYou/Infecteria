@@ -474,7 +474,7 @@ RectTransform:
   - {fileID: 164600040}
   - {fileID: 2009071183}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1899,7 +1899,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &265274703
 MonoBehaviour:
@@ -3572,7 +3572,7 @@ Transform:
   - {fileID: 988289012}
   - {fileID: 1131303025}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &647888337
 CircleCollider2D:
@@ -3646,11 +3646,6 @@ MonoBehaviour:
   skilltree: {fileID: 945094047}
   factoryOverview: {fileID: 2009071182}
   buildOptions: {fileID: 933105315}
-  startPositions:
-  - {x: 100, y: 100}
-  - {x: -100, y: 100}
-  - {x: 100, y: -100}
-  - {x: -100, y: -100}
   units: {fileID: 647888340}
   additionalInfection: 0
 --- !u!114 &647888340
@@ -6606,7 +6601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495987585
 GameObject:
@@ -9591,7 +9586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7135737881280437562, guid: 1cfb0ddb350c96a4fbfd4760934dc602, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7135737881280437562, guid: 1cfb0ddb350c96a4fbfd4760934dc602, type: 3}
       propertyPath: m_LocalPosition.x
