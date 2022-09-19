@@ -73,6 +73,9 @@ public class FactoryManager : MonoBehaviour
         if(text == "Locked"){
             // Temp whacky check until it has its own script
             buildingSlotTransform.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.33f);
+        } 
+        else {
+            buildingSlotTransform.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
         buildingSlotTransform.gameObject.GetComponent<Button>().enabled = enableButton;
         Image slotImage = buildingSlotTransform.Find("buildingIcon").GetComponent<Image>();

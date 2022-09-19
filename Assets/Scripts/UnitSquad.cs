@@ -14,9 +14,26 @@ public class UnitSquad : MonoBehaviour
         units.Add(unit);
     }
 
+    public void Attack(GameObject target){
+         foreach (Unit unit in units){
+            unit.GiveTask(new AttackTask(unit, target));
+        }       
+    }
+
+    public void Follow(GameObject target){
+        foreach (Unit unit in units){
+            unit.GiveTask(new FollowTask(unit, target));
+        }
+    }
+
+    public void MoveTo(GameObject target){
+        foreach (Unit unit in units){
+            unit.GiveTask(new MoveTask(unit, target));
+        }
+    }
+
     public void MoveTo(Vector2 pos){
-        foreach (Unit unit in units)
-        {
+        foreach (Unit unit in units){
             unit.GiveTask(new MoveTask(unit, pos));
         }
     }
