@@ -62,6 +62,10 @@ public class FactoryManager : MonoBehaviour
         levelTextMesh.text = "Level " + currentFactory.currentLevel;
     }
 
+    public void ToggleInfectCell(){
+
+    }
+
     void SetStructure(int slot, bool enableButton, string text, Sprite sprite, Color spriteColor){
         Transform buildingSlotTransform = buildSlots.transform.Find("buildingSlot" + slot);
         if(text == "Locked"){
