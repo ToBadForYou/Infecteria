@@ -306,6 +306,7 @@ MonoBehaviour:
   range: 0.9
   aggressive: 1
   owner: 0
+  hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   infectionAmount: 0.2
   parent: {fileID: 0}
   followPlayer: 0

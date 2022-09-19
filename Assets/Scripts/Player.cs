@@ -18,13 +18,9 @@ public class Player : Unit
     public GameObject factoryOverview;
     public GameObject buildOptions;
 
-    public List<Vector2> startPositions;
     public UnitSquad units;
 
-    void Start()
-    {
-        //transform.position = startPositions[Random.Range(0, startPositions.Count)];
-    }
+    public float additionalInfection = 0.0f;
 
     public void MakeObjActive(GameObject obj) {
         if(!obj.activeSelf) {
@@ -91,7 +87,7 @@ public class Player : Unit
             else {
                 MakeObjActive(spaceObject);
                 if(Input.GetKey(KeyCode.Space)) {
-                    currentCell.Infect(Time.deltaTime);
+                    currentCell.Infect(Time.deltaTime + additionalInfection);
                 }
             }
         }

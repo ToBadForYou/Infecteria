@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector3 mousePosition;
     public float speed = 5.0f;
+    public float additionalSpeed = 0.0f;
     public bool isPaused;
 
     public void SetSpeed(float movementSpeed) {

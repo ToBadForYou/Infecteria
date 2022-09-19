@@ -8,6 +8,8 @@ public class Unit : MonoBehaviour
     public Transform healthBar;
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
+
+    //TODO: use 'public UnitStats stats;' instead
     public int health;
     public int currentHealth;
     public int damage;
@@ -15,12 +17,17 @@ public class Unit : MonoBehaviour
     public float attackTimer;
     public float range = 0.9f;
     public bool aggressive;
+
+    public float additionalHp = 0.0f;
+
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();
     public Task proximityHostile;
+    public GameObject hitEffect;
 
     void Start()
     {
+        //TODO: stats = new UnitStats();
         currentHealth = health;
     }
 
@@ -114,7 +121,7 @@ public class Unit : MonoBehaviour
     }
 
     public virtual void OnTakeDamage() {
-        
+        Instantiate(hitEffect, new Vector2(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
     }
 
     public virtual void OnDeath() {

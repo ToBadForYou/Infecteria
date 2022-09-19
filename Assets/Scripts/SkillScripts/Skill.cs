@@ -25,6 +25,21 @@ public class Skill : MonoBehaviour
                     gm.DNAPoints -= cost;
                     isActive = true;
                     sr.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                    Skilltree tree = GameObject.Find("skilltree").GetComponent<Skilltree>();
+                    switch (gameObject.name)
+                    {
+                        case "hp":
+                            tree.activeHPSkill = this;
+                            break;
+                        case "speed":
+                            tree.activeSpeedSkill = this;
+                            break;
+                        case "infection":
+                            tree.activeInfectionRateSkill = this;
+                            break;
+                    }
+                    tree.NotifyPlayer();
                 }
             }
         }

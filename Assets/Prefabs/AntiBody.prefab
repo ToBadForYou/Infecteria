@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4705721064329749237}
   - component: {fileID: 4884734129937456385}
   m_Layer: 0
-  m_Name: Antibody
+  m_Name: AntiBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   range: 1
   aggressive: 1
   owner: 1
+  hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   infectionAmount: -1
 --- !u!114 &-3502876324055183019
 MonoBehaviour:
