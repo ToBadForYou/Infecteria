@@ -2,40 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heart : MonoBehaviour
+public class Heart : Organ
 {
-    public List<UnitSquad> unitSquads;
     public float scoutSpawnTimer = 5;
     public int baseScoutSpawnTime = 5;
     public int maxAntibodies = 6;
-    public List<Cell> heartCells = new List<Cell>();
-    float yRange = 16.0f;
-    float xRange = 13.0f;
-    UnitSpawner unitSpawner;
-
-    void Start()
-    {
-        unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        StartCoroutine(LateStart(0.0f));
-    }
- 
-    IEnumerator LateStart(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        FillWithNearbyCells();
-    }
-
-    public void FillWithNearbyCells() {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
-        for(int i = 0; i < objs.Length; i++) {
-            float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);
-            float yDiff = Mathf.Abs(objs[i].transform.position.y - transform.position.y);
-            if(xDiff <= xRange && yDiff <= yRange) {
-                heartCells.Add(objs[i].GetComponent<Cell>());
-                objs[i].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.0f, 0.0f, 1.0f);
-            }
-        }
-    }
 
     void Update()
     {
