@@ -9,10 +9,22 @@ public class Organ : MonoBehaviour
     public UnitSpawner unitSpawner;
     float yRange = 13.0f;
     float xRange = 16.0f;
+    public int maxStoredAntibodies = 50;
+    public int currentAntibodies = 20;
+    int antibodyProductionTime = 20;
+    float nextAntibody = 0;
 
     void Start(){
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         StartCoroutine(LateStart(0.0f));
+    }
+
+    protected void Update(){
+        nextAntibody -= Time.deltaTime;
+        if(currentAntibodies < maxStoredAntibodies && nextAntibody < 0){
+            nextAntibody = antibodyProductionTime;
+            currentAntibodies += 1;
+        }
     }
 
     IEnumerator LateStart(float waitTime)
