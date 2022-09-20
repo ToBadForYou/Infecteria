@@ -17,15 +17,15 @@ public class SpawnerTest : MonoBehaviour
 
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        for(int x = (int)topLeft.position.x; x < (int)topRight.position.x; x+=step) {
-            for(int y = (int)topLeft.position.y; y > (int)bottomRight.position.y; y-=step) {
+        for(int x = (int)topLeft.position.x + step/2; x < (int)topRight.position.x; x+=step) {
+            for(int y = (int)topLeft.position.y - step/2; y > (int)bottomRight.position.y; y-=step) {
                 GameObject cell = Instantiate(cellObj, new Vector2(x, y), Quaternion.identity);
                 gm.AddCell(cell);
             }
         }
 
-        for(int x = (int)topLeft.position.x+5; x < (int)topRight.position.x-5; x+=step*6) {
-            for(int y = (int)topLeft.position.y-5; y > (int)bottomRight.position.y+5; y-=step*4) {
+        for(int x = (int)topLeft.position.x + step; x < (int)topRight.position.x; x+=step*4) {
+            for(int y = (int)topLeft.position.y - step; y > (int)bottomRight.position.y; y-=step*4) {
                 Instantiate(detectorObj, new Vector2(x + Random.Range(-5.0f, 5.0f), y + Random.Range(-5.0f, 5.0f)), Quaternion.identity);
             }
         }
