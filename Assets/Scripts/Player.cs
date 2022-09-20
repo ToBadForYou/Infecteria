@@ -42,6 +42,7 @@ public class Player : Unit
     {
         // Skilltree
         if(Input.GetKeyDown(KeyCode.T)) {
+            units.Search(gameObject.transform.position);
             if(!skilltree.activeSelf) {
                 skilltree.SetActive(true);
                 skilltree.transform.position = transform.position;
