@@ -19,6 +19,8 @@ public class BorderGenerator : MonoBehaviour
 
     GameObject lastObj;
 
+    Dictionary<float, List<GameObject>> xLines = new Dictionary<float, List<GameObject>>();
+
     void Start()
     {
         Color[] pixels = img.GetPixels();
@@ -36,13 +38,21 @@ public class BorderGenerator : MonoBehaviour
                         lastObj = Instantiate(wallObj, new Vector2(lastX, yCounter-200), Quaternion.identity); // Put new object where last object was
                         lastObj.transform.localScale = new Vector2(lastObj.transform.localScale.x + lastScale, lastObj.transform.localScale.y);
                         lastObj.transform.position = new Vector2(lastObj.transform.position.x + 0.5f, lastObj.transform.position.y);
-                    } // TO THINK ABOUT: Same X level is more tricky since they does not get placed directly after each other
+                    }
                     else{
                         lastObj = Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
                     }
                 }
                 else {
                     lastObj = Instantiate(wallObj, new Vector2(xCounter-200, yCounter-200), Quaternion.identity);
+                    if(xLines.ContainsKey(xCounter-200)) {
+                        xLines[xCounter-200].Add(lastObj);
+                    }
+                    else {
+                        List<GameObject> objs = new List<GameObject>();
+                        objs.Add(lastObj);
+                        xLines.Add(xCounter-200, objs);
+                    }
                 }
                 lastObj.name = "BorderObj";
                 lastObj.transform.parent = transform;
@@ -89,6 +99,38 @@ public class BorderGenerator : MonoBehaviour
             if(xCounter == width) {
                 yCounter++;
                 xCounter = 0;
+            }
+        }
+        HandleXLines();
+    }
+
+    void HandleXLines() {
+        foreach(KeyValuePair<float, List<GameObject>> entry in xLines) {
+            int len = entry.Value.Count;
+            if(len < 5) { // Skipping non-lines
+                continue;
+            }
+            else {
+                GameObject last = null;
+                int counter = 0;
+                
+                foreach(GameObject obj in entry.Value) {
+                    if(!last) {
+                        last = obj;
+                        continue;
+                    }
+                    if(counter == len-1) {
+                        continue;
+                    }
+                    float lastY = last.transform.position.y; // Get last y position
+                    float lastScale = last.transform.localScale.y; // Get last y scale
+                    Destroy(last); // Destroy last object
+                    Destroy(obj); // Destroy last object
+                    last = Instantiate(wallObj, new Vector2(entry.Key, lastY), Quaternion.identity); // Put new object where last object was
+                    last.transform.localScale = new Vector2(last.transform.localScale.x, last.transform.localScale.y + lastScale);
+                    last.transform.position = new Vector2(last.transform.position.x, last.transform.position.y + 0.5f);
+                    counter++;
+                }
             }
         }
     }
