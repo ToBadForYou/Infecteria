@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346878933}
   - component: {fileID: 1346878934}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: micro-bacteria-outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7954984367268263511}
   - component: {fileID: 4808746904495374446}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: healthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6889270317133700018}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: healthBarPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962407253893417147}
   - component: {fileID: 2508562585524925657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 5050834132167503557}
   - component: {fileID: 4234963448959617461}
   - component: {fileID: 8885981277831321491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Micro Bacteria
   m_TagString: Bacteria
   m_Icon: {fileID: 0}
@@ -346,13 +346,6 @@ MonoBehaviour:
   healthBar: {fileID: 6889270317133700018}
   unitMovement: {fileID: 4234963448959617461}
   inRange: []
-  health: 10
-  currentHealth: 10
-  damage: 1
-  attackSpeed: 1
-  attackTimer: 1
-  range: 0.9
-  aggressive: 1
   additionalHp: 0
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}

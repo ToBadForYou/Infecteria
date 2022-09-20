@@ -304,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 82409983}
   - component: {fileID: 82409982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: i
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 127757706}
   - component: {fileID: 127757705}
   - component: {fileID: 127757704}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1224,7 +1224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179469179}
   - component: {fileID: 179469180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,7 +1309,7 @@ GameObject:
   - component: {fileID: 191036567}
   - component: {fileID: 191036569}
   - component: {fileID: 191036568}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-i
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 253297349}
   - component: {fileID: 253297348}
   - component: {fileID: 253297347}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1927,7 +1927,7 @@ GameObject:
   - component: {fileID: 287319626}
   - component: {fileID: 287319628}
   - component: {fileID: 287319627}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2332,7 +2332,7 @@ GameObject:
   - component: {fileID: 355118524}
   - component: {fileID: 355118523}
   - component: {fileID: 355118522}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2513,7 +2513,7 @@ GameObject:
   - component: {fileID: 419506778}
   - component: {fileID: 419506780}
   - component: {fileID: 419506779}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-q
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2648,7 +2648,7 @@ GameObject:
   - component: {fileID: 464482266}
   - component: {fileID: 464482265}
   - component: {fileID: 464482264}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2794,7 +2794,7 @@ GameObject:
   - component: {fileID: 493848855}
   - component: {fileID: 493848857}
   - component: {fileID: 493848856}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2928,7 +2928,7 @@ GameObject:
   - component: {fileID: 525938042}
   - component: {fileID: 525938044}
   - component: {fileID: 525938043}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3196,7 +3196,7 @@ GameObject:
   - component: {fileID: 587209259}
   - component: {fileID: 587209258}
   - component: {fileID: 587209257}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3481,7 +3481,7 @@ GameObject:
   - component: {fileID: 647888339}
   - component: {fileID: 647888340}
   - component: {fileID: 647888341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3627,14 +3627,6 @@ MonoBehaviour:
   healthBar: {fileID: 164600040}
   unitMovement: {fileID: 0}
   inRange: []
-  stats: {fileID: 0}
-  health: 100
-  currentHealth: 100
-  damage: 1
-  attackSpeed: 1
-  attackTimer: 1
-  range: 0.9
-  aggressive: 0
   additionalHp: 0
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
@@ -3675,7 +3667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7908f9e49ff320e4aacf28884b9e2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnableRegion: []
 --- !u!1 &657953316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,7 +3711,7 @@ GameObject:
   - component: {fileID: 669650750}
   - component: {fileID: 669650752}
   - component: {fileID: 669650751}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3930,7 +3921,7 @@ GameObject:
   - component: {fileID: 681579928}
   - component: {fileID: 681579927}
   - component: {fileID: 681579926}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4030,7 +4021,7 @@ GameObject:
   - component: {fileID: 703865991}
   - component: {fileID: 703865990}
   - component: {fileID: 703865989}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4129,7 +4120,7 @@ GameObject:
   - component: {fileID: 705019792}
   - component: {fileID: 705019794}
   - component: {fileID: 705019793}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4528,7 +4519,7 @@ GameObject:
   - component: {fileID: 847533921}
   - component: {fileID: 847533920}
   - component: {fileID: 847533919}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5022,7 +5013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 988289012}
   - component: {fileID: 988289011}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mouse-tooltip-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5107,7 +5098,7 @@ GameObject:
   - component: {fileID: 1030226407}
   - component: {fileID: 1030226409}
   - component: {fileID: 1030226408}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5384,7 +5375,7 @@ GameObject:
   - component: {fileID: 1065830525}
   - component: {fileID: 1065830524}
   - component: {fileID: 1065830523}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5484,7 +5475,7 @@ GameObject:
   - component: {fileID: 1075240467}
   - component: {fileID: 1075240466}
   - component: {fileID: 1075240465}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5791,7 +5782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131303025}
   - component: {fileID: 1131303026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mouse-tooltip-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6396,7 +6387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366763191}
   - component: {fileID: 1366763192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6480,7 +6471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371209309}
   - component: {fileID: 1371209310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6994,7 +6985,7 @@ GameObject:
   - component: {fileID: 1549670799}
   - component: {fileID: 1549670801}
   - component: {fileID: 1549670800}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: tooltip-mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7128,7 +7119,7 @@ GameObject:
   - component: {fileID: 1619354391}
   - component: {fileID: 1619354393}
   - component: {fileID: 1619354392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left-mouse-button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7222,7 +7213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646384898}
   - component: {fileID: 1646384899}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8836,7 +8827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016733480}
   - component: {fileID: 2016733479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: q
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9101,7 +9092,7 @@ GameObject:
   - component: {fileID: 2051041385}
   - component: {fileID: 2051041387}
   - component: {fileID: 2051041386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left-mouse-button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9331,7 +9322,7 @@ GameObject:
   - component: {fileID: 2117846475}
   - component: {fileID: 2117846477}
   - component: {fileID: 2117846476}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
