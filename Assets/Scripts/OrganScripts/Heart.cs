@@ -60,5 +60,6 @@ public class Heart : MonoBehaviour
         List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(2, maxAntibodies));
         UnitSquad newSquad = CreateSquad(antibodies);
         newSquad.MoveTo(alertPosition);
+        newSquad.Search(alertPosition);
     }
 }

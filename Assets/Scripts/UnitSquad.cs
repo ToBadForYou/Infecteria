@@ -29,7 +29,6 @@ public class UnitSquad : MonoBehaviour
         }
 
         foreach (InfectUnit unit in units){
-            unit.CancelTasks();
             unit.GiveTask(new SearchTask(unit, potentialInfections));
         }  
     }
