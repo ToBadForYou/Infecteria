@@ -11,6 +11,10 @@ public class Scout : DetectorUnit
     public bool finished;
     public bool isAlerted;
 
+    void Start() {
+        SetUnitStats(5, 5, 0, 1, 1.0f, 0.2f, false);
+    }
+
     public override void Attack(){
         if (!isAlerted){
             SetAlerted(target);

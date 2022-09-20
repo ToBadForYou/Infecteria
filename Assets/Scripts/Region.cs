@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Region : MonoBehaviour
+public class Region
 {
     public Vector2 xRange;
     public Vector2 yRange;

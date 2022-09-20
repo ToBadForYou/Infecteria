@@ -3627,6 +3627,7 @@ MonoBehaviour:
   healthBar: {fileID: 164600040}
   unitMovement: {fileID: 0}
   inRange: []
+  stats: {fileID: 0}
   health: 100
   currentHealth: 100
   damage: 1

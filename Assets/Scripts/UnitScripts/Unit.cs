@@ -9,33 +9,23 @@ public class Unit : MonoBehaviour
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
 
-    //TODO: use 'public UnitStats stats;' instead
-    public int health;
-    public int currentHealth;
-    public int damage;
-    public int attackSpeed;
-    public float attackTimer;
-    public float range = 0.9f;
-    public bool aggressive;
-
-    public float additionalHp = 0.0f;
+    public UnitStats stats;
+    public float additionalHp = 0.0f; //TODO: Move to player
 
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();
     public Task proximityHostile;
     public GameObject hitEffect;
 
-    void Start()
-    {
-        //TODO: stats = new UnitStats();
-        currentHealth = health;
+    public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
+        stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
     }
 
     protected void Update()
     {
-        if (aggressive){
+        if (stats.IsAggressive()){
             if(!CanAttack()){
-                attackTimer -= Time.deltaTime;
+                stats.DecreaseAttackTimer(Time.deltaTime);
             }
             FindHostileInProximity();
         }
@@ -92,7 +82,7 @@ public class Unit : MonoBehaviour
     }
 
     public bool InRange(Vector2 position){
-        return Vector2.Distance(transform.position, position) <= range;
+        return Vector2.Distance(transform.position, position) <= stats.GetRange();
     }
 
     public bool IsHostile(Unit unit){
@@ -100,23 +90,23 @@ public class Unit : MonoBehaviour
     }
 
     public bool CanAttack(){
-        return attackTimer <= 0;
+        return stats.GetAttackTimer() <= 0;
     }
 
     public bool AttackTarget(GameObject attackTarget){
         if(CanAttack()){
-            attackTimer = attackSpeed;
+            stats.SetAttackTimer(stats.GetAttackSpeed());
             Unit unit = attackTarget.GetComponent<Unit>();
-            return unit.TakeDamage(damage);
+            return unit.TakeDamage(stats.GetDamage());
         }
         return false;
     }
 
     bool TakeDamage(int takenDamage){
-        currentHealth -= takenDamage;
+        stats.DecreaseCurrentHealth(takenDamage);
         OnTakeDamage();
-        healthBar.localScale = new Vector2((float)currentHealth/health, healthBar.localScale.y);
-        if (currentHealth <= 0){
+        healthBar.localScale = new Vector2((float)stats.GetCurrentHealth()/stats.GetHealth(), healthBar.localScale.y);
+        if (stats.GetCurrentHealth() <= 0){
             OnDeath();
             Destroy(gameObject.transform.root.gameObject);
             return true;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitStats : MonoBehaviour
+public class UnitStats
 {
     // FIELDS
     private int health;
@@ -10,7 +10,7 @@ public class UnitStats : MonoBehaviour
     private int damage;
     private int attackSpeed;
     private float attackTimer;
-    private float range = 0.9f;
+    private float range;
     private bool aggressive;
 
     public UnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
@@ -27,6 +27,7 @@ public class UnitStats : MonoBehaviour
     public void SetDamage(int dmg) { damage = dmg; }
     public void SetHealth(int hp) { health = hp; }
     public void SetCurrentHealth(int hp) { currentHealth = hp; }
+    public void DecreaseCurrentHealth(int amount) { currentHealth -= amount; }
     public void SetAttackSpeed(int speed) { attackSpeed = speed; }
     public void SetAttackTimer(float time) { attackTimer = time; }
     public void DecreaseAttackTimer(float amount) { attackTimer -= amount; }

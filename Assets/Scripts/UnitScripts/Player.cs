@@ -22,6 +22,10 @@ public class Player : Unit
 
     public float additionalInfection = 0.0f;
 
+    void Start() {
+        SetUnitStats(100, 100, 1, 1, 1.0f, 0.9f, false);
+    }
+
     public void MakeObjActive(GameObject obj) {
         if(!obj.activeSelf) {
             obj.SetActive(true);
