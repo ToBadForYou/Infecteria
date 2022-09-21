@@ -11,7 +11,6 @@ public class Player : Unit
     public GameObject spaceObject;
     public GameObject eObject;
     public GameObject qObject;
-    public GameObject iObject;
     public GameObject fObject;
 
     public GameObject skilltree;
@@ -61,12 +60,6 @@ public class Player : Unit
         if(currentFactory) {
             MakeObjActive(factoryOverview);
             factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
-            if(currentFactory.CanAutoInfect()) {
-                if(Input.GetKeyDown(KeyCode.I)) {
-                    //currentFactory.AutoInfect();
-                    MakeObjDeactive(iObject);
-                }
-            }
             if(Input.GetKeyDown(KeyCode.F)) {
                 currentFactory.JoinPlayerSquad(gameObject, units);
             }
