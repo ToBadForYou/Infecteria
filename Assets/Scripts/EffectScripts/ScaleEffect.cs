@@ -28,7 +28,10 @@ public class ScaleEffect : MonoBehaviour
         
         float xScaleDiff = 1 - transform.localScale.x;
         float yScaleDiff = 1 - transform.localScale.y;
-        transform.GetChild(1).localScale = new Vector2(1.0f + additionalScale + xScaleDiff, 1.0f + additionalScale + yScaleDiff);
+
+        if(transform.childCount > 1) {
+            transform.GetChild(1).localScale = new Vector2(1.0f + additionalScale + xScaleDiff, 1.0f + additionalScale + yScaleDiff);
+        }
 
         if(Vector2.Distance(transform.localScale, new Vector2(targetScaleX, targetScaleY)) <= 0.01f) {
             SetTargetScale();

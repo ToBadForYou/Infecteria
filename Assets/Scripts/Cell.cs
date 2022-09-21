@@ -26,7 +26,9 @@ public class Cell : Infectable
         gm.IncreaseDNAPoints(100);
         gm.IncreaseAbsorbedCells();
         gm.RemoveCell(gameObject);
-        Destroy(gameObject);
+
+        Destroy(this);
+        GetComponent<AbsorbEffect>().isActive = true;
     }
 
     public void TurnIntoFactory() {
