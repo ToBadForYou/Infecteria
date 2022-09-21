@@ -37,5 +37,5 @@ public class Heart : Organ
             newSquad.MoveTo(alertPosition);
             newSquad.Search(alertPosition);
         }
-    }
+    } 
 }

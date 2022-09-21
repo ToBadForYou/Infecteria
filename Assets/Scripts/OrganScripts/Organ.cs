@@ -48,4 +48,10 @@ public class Organ : MonoBehaviour
             }
         }
     }
+
+    public virtual void OnUnitReturn(Unit returnUnit){
+        // TODO Add support for multiple types of units
+        currentAntibodies += 1;
+        Destroy(returnUnit.gameObject);
+    }
 }
