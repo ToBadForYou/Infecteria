@@ -51,7 +51,8 @@ public class Organ : MonoBehaviour
 
     public virtual void OnUnitReturn(Unit returnUnit){
         // TODO Add support for multiple types of units
+        // TODO Use for scouts returning
         currentAntibodies += 1;
-        Destroy(returnUnit.gameObject);
+        Destroy(returnUnit.transform.root.gameObject);
     }
 }

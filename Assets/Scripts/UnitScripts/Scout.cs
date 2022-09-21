@@ -6,7 +6,7 @@ public class Scout : DetectorUnit
 {
     public GameObject parent;
     public GameObject exclamationMark;
-    public GameObject targetCell;
+    public GameObject targetCell = null;
     public Vector2 alertPosition;
     public bool finished;
     public bool isAlerted;
@@ -35,11 +35,7 @@ public class Scout : DetectorUnit
     }
 
     public override void OnReachedDestination(GameObject target){
-        if (target == null){
-            FollowTarget(parent);
-            finished = true;   
-        }
-        if(target == targetCell){
+        if(targetCell != null && target == targetCell){
             Infectable cell = targetCell.GetComponent<Infectable>();
             if (cell != null && (cell.isInfected || cell.infectionAmount/cell.maxInfectionAmount > 0.5)){
                 // TODO heal the cell
@@ -55,7 +51,7 @@ public class Scout : DetectorUnit
             if(isAlerted){
                 parent.GetComponent<Heart>().OnReport(alertPosition);
             }
-            Destroy(transform.parent.gameObject); 
+            Destroy(transform.root.gameObject); 
         }      
     }
 }

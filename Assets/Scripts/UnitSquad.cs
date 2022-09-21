@@ -17,7 +17,17 @@ public class UnitSquad : MonoBehaviour
         }
     }
 
-    public void Search(Vector2 pos){
+    public void Infect(Infectable target){
+        foreach (Unit unit in units){
+            InfectUnit infectUnit = unit.gameObject.GetComponent<InfectUnit>();
+            if(infectUnit != null){
+                unit.CancelTasks();
+                unit.GiveTask(new InfectTask(infectUnit, target.gameObject));
+            }
+        }        
+    }
+
+    public void Search(Vector2 pos, Scout searchUnit){
         List<Infectable> potentialInfections = new List<Infectable>();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 15);
         foreach (Collider2D collider in colliders)
@@ -28,8 +38,12 @@ public class UnitSquad : MonoBehaviour
             }
         }
 
-        foreach (InfectUnit unit in units){
-            unit.GiveTask(new SearchTask(unit, potentialInfections));
+        searchUnit.GiveTask(new SearchTask(searchUnit, potentialInfections, this)); 
+        foreach (Unit unit in units){
+            if(unit != (Unit)searchUnit){
+                unit.CancelTasks();
+                unit.GiveTask(new FollowTask(unit, searchUnit.gameObject, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))));
+            }
         }  
     }
 

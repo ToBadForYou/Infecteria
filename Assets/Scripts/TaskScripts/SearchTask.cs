@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SearchTask : Task
 {
-    new InfectUnit unit;
+    new Scout unit;
     List<Infectable> searchList;
+    UnitSquad ownerSquad;
 
-    public SearchTask(InfectUnit owner, List<Infectable> potentialInfections) : base(owner, null) {
+    public SearchTask(Scout owner, List<Infectable> potentialInfections, UnitSquad belongTo) : base(owner, null) {
         unit = owner;
+        ownerSquad = belongTo;
         searchList = potentialInfections;
     }
 
@@ -29,7 +31,9 @@ public class SearchTask : Task
             if(unit.AtPosition(target.transform.position)){
                 Infectable infectable = target.GetComponent<Infectable>();
                 if(infectable.isInfected || infectable.infectionAmount/infectable.maxInfectionAmount > 0.5){
-                    unit.InfectTarget(infectable);
+                    ownerSquad.Infect(infectable);
+                    unit.GiveTask(new ReturnTask(unit, unit.parent));
+                    FinishTask();
                 }
                 target = null;
             }

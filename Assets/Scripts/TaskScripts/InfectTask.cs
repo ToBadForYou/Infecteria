@@ -19,7 +19,7 @@ public class InfectTask : Task
         if(unit.AtPosition(target.transform.position)){
             Infectable infectTarget = target.GetComponent<Infectable>();
             if(infectTarget != null){
-                unit.InfectTarget(target.GetComponent<Infectable>());
+                unit.InfectTarget(infectTarget);
             }
             FinishTask();
         }

@@ -26,7 +26,6 @@ public class Detector : DetectorUnit
             newScout.SetAlerted(gameObject);
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(1, maxAntibodies));
             unitSquad.AddUnits(antibodies);
-            unitSquad.Search(transform.position);
         }
     }
 

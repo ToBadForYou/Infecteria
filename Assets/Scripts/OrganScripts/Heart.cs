@@ -33,9 +33,11 @@ public class Heart : Organ
         if(randomAmount <= currentAntibodies){
             currentAntibodies -= randomAmount;
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, randomAmount);
+            Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
             UnitSquad newSquad = CreateSquad(antibodies);
+            newSquad.AddUnit(newScout);
             newSquad.MoveTo(alertPosition);
-            newSquad.Search(alertPosition);
+            newSquad.Search(alertPosition, newScout);
         }
     } 
 }

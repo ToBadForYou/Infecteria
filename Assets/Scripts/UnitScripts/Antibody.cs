@@ -8,6 +8,11 @@ public class Antibody : InfectUnit
         SetUnitStats(10, 10, 1, 1, 1.0f, 1.0f, true);
     }
 
+    public override void InfectTarget(Infectable target){
+        target.Infect(infectionAmount);
+        Destroy(gameObject);
+    }
+
     public override void OnReachedDestination(GameObject target){
         
     }
