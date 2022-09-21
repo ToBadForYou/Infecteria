@@ -78,8 +78,62 @@ public class SelectionHandler : MonoBehaviour
         Reset();
     }
 
+    void DeselectAllBacterias() {
+        foreach(MicroBacteria bacteria in selectedMicroBacterias){ 
+            bacteria.ToggleSelection();
+        }
+        selectedMicroBacterias = new List<MicroBacteria>();
+    }
+
+    void AssignFollowTask() {
+        GameObject playerUnit = GameObject.Find("Player");
+        foreach(MicroBacteria bacteria in selectedMicroBacterias){
+            bacteria.CancelTasks();
+            Vector2 offset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+            bacteria.GiveTask(new FollowTask(bacteria, playerUnit, offset));
+        }
+        DeselectAllBacterias();
+    }
+
+    void AssignReturnTask() {
+        foreach(MicroBacteria bacteria in selectedMicroBacterias){
+            bacteria.CancelTasks();
+            bacteria.GiveTask(new MoveTask(bacteria, bacteria.startPosition));
+        }
+        DeselectAllBacterias();
+    }
+
+    void AssignMoveTask() {
+        Vector2 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        foreach(MicroBacteria bacteria in selectedMicroBacterias){
+            bacteria.CancelTasks();
+            Vector2 offset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+            bacteria.GiveTask(new MoveTask(bacteria, mousePosition + offset));
+        }
+        DeselectAllBacterias();
+    }
+
+    void AssignInfectTask() {
+        //TODO: Make selected microbacterias infect chosen cell
+        DeselectAllBacterias();
+    }
+
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.I)) { // Infect cell
+            AssignInfectTask();
+        }
+        else if(Input.GetKeyDown(KeyCode.F)) { // Follow player
+            AssignFollowTask();
+        }
+        else if(Input.GetKeyDown(KeyCode.M)) { // Move to mouse position
+            AssignMoveTask();
+        }
+        else if(Input.GetKeyDown(KeyCode.R)) { // Return to factory
+            AssignReturnTask();
+        }
+
         if(Input.GetMouseButtonDown(1)) {
             selectionTransform.gameObject.SetActive(true);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

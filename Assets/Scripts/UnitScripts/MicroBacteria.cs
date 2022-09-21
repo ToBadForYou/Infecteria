@@ -14,6 +14,7 @@ public class MicroBacteria : InfectUnit
     public Vector2 startPosition;
 
     void Start() {
+        startPosition = transform.position;
         SetUnitStats(10, 10, 1, 1, 1.0f, 0.9f, true);
         player = GameObject.Find("Player");
     }
