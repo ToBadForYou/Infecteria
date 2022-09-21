@@ -34,13 +34,17 @@ public class Organ : MonoBehaviour
     }
 
     void FillWithNearbyCells() {
+        Color organColor = gameObject.GetComponent<SpriteRenderer>().color;
+        Color cellColor = new Color(organColor.r + 0.1f, organColor.g + 0.1f, organColor.b + 0.1f, organColor.a);
+        //Color innerColor = new Color(organColor.r * 1.5f, organColor.g * 1.5f, organColor.b * 1.5f, organColor.a);
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
         for(int i = 0; i < objs.Length; i++) {
             float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);
             float yDiff = Mathf.Abs(objs[i].transform.position.y - transform.position.y);
             if(xDiff <= xRange && yDiff <= yRange) {
                 cells.Add(objs[i].GetComponent<Cell>());
-                objs[i].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.0f, 0.0f, 1.0f);
+                objs[i].GetComponent<SpriteRenderer>().color = cellColor;
+                //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
             }
         }
     }
