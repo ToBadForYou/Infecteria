@@ -9,7 +9,6 @@ public class MicroBacteria : InfectUnit
     public bool followPlayer;
     private GameObject player;
 
-    public bool isSelected;
     public Cell targetCell;
     public Vector2 startPosition;
 
@@ -27,12 +26,6 @@ public class MicroBacteria : InfectUnit
         target.Infect(infectionAmount);
         parent.RemoveMicrobacteria(this);
         Destroy(gameObject);
-    }
-
-    public void ToggleSelection() {
-        isSelected = !isSelected;
-        GameObject child = transform.GetChild(0).gameObject;
-        child.SetActive(!child.activeSelf);
     }
 
     public override void OnDeath() {

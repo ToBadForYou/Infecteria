@@ -17,6 +17,12 @@ public class UnitSquad : MonoBehaviour
         }
     }
 
+    public void ToggleSelection(bool toggle){
+        foreach (Unit unit in units){
+            unit.ToggleSelection(toggle);
+        } 
+    }
+
     public void Infect(Infectable target){
         foreach (Unit unit in units){
             InfectUnit infectUnit = unit.gameObject.GetComponent<InfectUnit>();

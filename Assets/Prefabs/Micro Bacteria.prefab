@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1346878933}
   - component: {fileID: 1346878934}
   m_Layer: 7
-  m_Name: micro-bacteria-outline
+  m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 45e4b6d5a68ac554cb18145631b7d915, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -188,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3495502380216908944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.26, z: 0}
+  m_LocalPosition: {x: -0.3, y: 0.3, z: 0}
   m_LocalScale: {x: 0.6, y: 0.4, z: 1}
   m_Children:
   - {fileID: 7954984367268263511}
@@ -349,10 +349,10 @@ MonoBehaviour:
   additionalHp: 0
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
+  isSelected: 0
   infectionAmount: 0.2
   parent: {fileID: 0}
   followPlayer: 0
-  isSelected: 0
   targetCell: {fileID: 0}
   startPosition: {x: 0, y: 0}
 --- !u!58 &5050834132167503557

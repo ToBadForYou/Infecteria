@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour
     public List<Task> currentTasks = new List<Task>();
     public Task proximityHostile;
     public GameObject hitEffect;
+    public bool isSelected;
 
     public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
@@ -135,6 +136,12 @@ public class Unit : MonoBehaviour
             inRange.Remove(col.gameObject);
         }
     }    
+
+    public void ToggleSelection(bool toggle) {
+        isSelected = toggle;
+        GameObject outlineObject = transform.Find("outline").gameObject;
+        outlineObject.SetActive(toggle);
+    }  
 
     public void MoveToPosition(Vector2 targetPosition) {
         unitMovement.MoveToPosition(targetPosition);

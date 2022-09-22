@@ -11,7 +11,7 @@ public class FakePlayer : MonoBehaviour
     }
 
     void OnMouseDown() {
-        GameObject.Find("SelectionHandler").GetComponent<SelectionHandler>().SetFollowPlayerAndReset();
+        //GameObject.Find("SelectionHandler").GetComponent<SelectionHandler>().SetFollowPlayerAndReset();
     }
 
     void OnMouseExit() {

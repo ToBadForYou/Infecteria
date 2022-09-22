@@ -56,31 +56,9 @@ public class SelectionHandler : MonoBehaviour
         return bacterias;
     }
 
-    public void Reset() {
-
-        isTargeting = false;
-        GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = false;
-        selectedMicroBacterias = new List<MicroBacteria>();
-    }
-
-    public void SetTargetAndReset(Cell targetCell) {
-        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
-            bacteria.targetCell = targetCell;
-        }
-        Reset();
-    }
-
-    public void SetFollowPlayerAndReset() {
-        foreach (MicroBacteria bacteria in selectedMicroBacterias) {
-            bacteria.followPlayer = true;
-            bacteria.ToggleSelection();
-        }
-        Reset();
-    }
-
     void DeselectAllBacterias() {
         foreach(MicroBacteria bacteria in selectedMicroBacterias){ 
-            bacteria.ToggleSelection();
+            bacteria.ToggleSelection(false);
         }
         selectedMicroBacterias = new List<MicroBacteria>();
     }
@@ -148,9 +126,10 @@ public class SelectionHandler : MonoBehaviour
             Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
             bottomRight = mousePosition;
 
+            DeselectAllBacterias();
             selectedMicroBacterias = GetSelectedBacterias();
             foreach (MicroBacteria bacteria in selectedMicroBacterias) {
-                bacteria.ToggleSelection();
+                bacteria.ToggleSelection(true);
             }
 
             isDown = false;
