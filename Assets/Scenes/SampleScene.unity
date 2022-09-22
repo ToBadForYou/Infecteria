@@ -3508,6 +3508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 605807173}
   - component: {fileID: 605807174}
+  - component: {fileID: 605807175}
   m_Layer: 0
   m_Name: SelectionHandler
   m_TagString: Untagged
@@ -3545,6 +3546,20 @@ MonoBehaviour:
   windowPrefab: {fileID: 4226050407750130097, guid: db8226814ee7e974887db2e12b34ec5c, type: 3}
   selectionTransform: {fileID: 791589947}
   targetCellRadius: 20
+  selectedUnits: {fileID: 605807175}
+--- !u!114 &605807175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605807172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6322d45a468479e48be394af8541d4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units: []
 --- !u!1 &613312026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +3861,7 @@ MonoBehaviour:
   additionalHp: 0
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
+  isSelected: 0
   currentCell: {fileID: 0}
   currentFactory: {fileID: 0}
   spaceObject: {fileID: 1646384897}

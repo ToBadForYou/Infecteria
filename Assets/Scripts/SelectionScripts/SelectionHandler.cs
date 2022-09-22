@@ -15,10 +15,9 @@ public class SelectionHandler : MonoBehaviour
 
     private Vector2 topLeft;
     private Vector2 bottomRight;
+    public UnitSquad selectedUnits;
 
-    private List<MicroBacteria> selectedMicroBacterias = new List<MicroBacteria>();
-
-    List<MicroBacteria> GetSelectedBacterias() {
+    void SelectUnits() {
         List<MicroBacteria> bacterias = new List<MicroBacteria>();
 
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Bacteria");
@@ -48,47 +47,36 @@ public class SelectionHandler : MonoBehaviour
         for(int i = 0; i < objs.Length; i++) {
             if(objs[i].transform.position.x >= topLeft.x && objs[i].transform.position.x <= bottomRight.x) {
                 if(objs[i].transform.position.y <= topLeft.y && objs[i].transform.position.y >= bottomRight.y) {
-                    bacterias.Add(objs[i].GetComponent<MicroBacteria>());
+                    Unit bacteria = objs[i].GetComponent<Unit>();
+                    bacteria.ToggleSelection(true);
+                    selectedUnits.AddUnit(bacteria);
                 }
             }
         }
-
-        return bacterias;
     }
 
     void DeselectAllBacterias() {
-        foreach(MicroBacteria bacteria in selectedMicroBacterias){ 
-            bacteria.ToggleSelection(false);
-        }
-        selectedMicroBacterias = new List<MicroBacteria>();
+        selectedUnits.ToggleSelection(false);
+        selectedUnits.Clear();
     }
 
     void AssignFollowTask() {
-        GameObject playerUnit = GameObject.Find("Player");
-        foreach(MicroBacteria bacteria in selectedMicroBacterias){
-            bacteria.CancelTasks();
-            Vector2 offset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-            bacteria.GiveTask(new FollowTask(bacteria, playerUnit, offset));
-        }
+        //TODO: Add to player units squad
+        selectedUnits.Follow(GameObject.Find("Player"));
         DeselectAllBacterias();
     }
 
     void AssignReturnTask() {
-        foreach(MicroBacteria bacteria in selectedMicroBacterias){
-            bacteria.CancelTasks();
-            bacteria.GiveTask(new MoveTask(bacteria, bacteria.startPosition));
-        }
+        //TODO: Use ReturnTask (currently only supports antibodies)
+        //Temp use first index values start position
+        selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition);
         DeselectAllBacterias();
     }
 
     void AssignMoveTask() {
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        foreach(MicroBacteria bacteria in selectedMicroBacterias){
-            bacteria.CancelTasks();
-            Vector2 offset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-            bacteria.GiveTask(new MoveTask(bacteria, mousePosition + offset));
-        }
+        selectedUnits.MoveTo(mousePosition);
         DeselectAllBacterias();
     }
 
@@ -97,19 +85,20 @@ public class SelectionHandler : MonoBehaviour
         DeselectAllBacterias();
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.I)) { // Infect cell
-            AssignInfectTask();
-        }
-        else if(Input.GetKeyDown(KeyCode.F)) { // Follow player
-            AssignFollowTask();
-        }
-        else if(Input.GetKeyDown(KeyCode.M)) { // Move to mouse position
-            AssignMoveTask();
-        }
-        else if(Input.GetKeyDown(KeyCode.R)) { // Return to factory
-            AssignReturnTask();
+    void Update(){
+        if(selectedUnits.units.Count > 0){
+            if(Input.GetKeyDown(KeyCode.I)) { // Infect cell
+                AssignInfectTask();
+            }
+            else if(Input.GetKeyDown(KeyCode.F)) { // Follow player
+                AssignFollowTask();
+            }
+            else if(Input.GetKeyDown(KeyCode.M)) { // Move to mouse position
+                AssignMoveTask();
+            }
+            else if(Input.GetKeyDown(KeyCode.R)) { // Return to factory
+                AssignReturnTask();
+            }
         }
 
         if(Input.GetMouseButtonDown(1)) {
@@ -127,10 +116,7 @@ public class SelectionHandler : MonoBehaviour
             bottomRight = mousePosition;
 
             DeselectAllBacterias();
-            selectedMicroBacterias = GetSelectedBacterias();
-            foreach (MicroBacteria bacteria in selectedMicroBacterias) {
-                bacteria.ToggleSelection(true);
-            }
+            SelectUnits();
 
             isDown = false;
         }

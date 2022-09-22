@@ -7,6 +7,10 @@ public class UnitSquad : MonoBehaviour
     public List<Unit> units = new List<Unit>();
     private float offsetFactor = 0.75f;
 
+    public void Clear(){
+        units.Clear();
+    }
+
     public void AddUnits(List<Unit> unit){
         units.AddRange(unit);
     }
