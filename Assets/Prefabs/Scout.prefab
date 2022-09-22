@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 5311081517874335256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 9, y: 9, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2310231965825473752}
   m_RootOrder: 1
@@ -380,7 +380,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cfe2d326f838aba4aa3fbf9633e76c6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
@@ -406,13 +406,6 @@ MonoBehaviour:
   healthBar: {fileID: 2184995927482469593}
   unitMovement: {fileID: 7764066521434246855}
   inRange: []
-  health: 5
-  currentHealth: 5
-  damage: 0
-  attackSpeed: 1
-  attackTimer: 1
-  range: 0.2
-  aggressive: 0
   additionalHp: 0
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
@@ -442,7 +435,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!1 &8152614086710397668
 GameObject:
   m_ObjectHideFlags: 0
