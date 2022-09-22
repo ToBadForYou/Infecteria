@@ -36,7 +36,7 @@ public class Cell : Infectable
 
     public void TurnIntoFactory() {
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gm.IncreaseFactoryAmount();
+        gm.IncreaseFactoryAmount(1);
         GameObject factory = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
         gm.ReplaceCell(gameObject, factory);
         Destroy(gameObject);
@@ -59,7 +59,7 @@ public class Cell : Infectable
 
     public override void OnInfect(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gm.IncreaseInfectedCells();
+        gm.IncreaseInfectedCells(1);
     }
 
     public override void OnInfectUpdate(float amount){

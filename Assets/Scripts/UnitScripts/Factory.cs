@@ -18,6 +18,7 @@ public class Factory : Infectable
 
     public bool autoInfect = false;
     public Infectable infectTarget;
+    public GameObject cellPrefab;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
 
@@ -36,6 +37,16 @@ public class Factory : Infectable
                 time = startTime;
             }
         }
+    }
+
+    public override void OnCure(){
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.IncreaseInfectedCells(-1);
+        gm.IncreaseFactoryAmount(-1);
+
+        GameObject cell = Instantiate(cellPrefab, transform.position, Quaternion.identity);
+        gm.ReplaceCell(gameObject, cell);      
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)

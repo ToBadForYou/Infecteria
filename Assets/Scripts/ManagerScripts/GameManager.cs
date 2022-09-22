@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         UpdateTextMesh();
     }
 
-    public void IncreaseInfectedCells() {
-        infectedCells++;
+    public void IncreaseInfectedCells(int amount) {
+        infectedCells += amount;
         UpdateTextMesh();
     }
 
-    public void IncreaseFactoryAmount() {
-        factoryAmount++;
+    public void IncreaseFactoryAmount(int amount) {
+        factoryAmount += amount;
         UpdateTextMesh();
     }
 
