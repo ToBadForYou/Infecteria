@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float additionalSpeed = 0.0f;
     public bool isPaused;
 
+    public Vector3 lastMoveDir;
+
     public void SetSpeed(float movementSpeed) {
         speed = movementSpeed;
     }
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             Vector3 movementVector = new Vector3(horizontal * step, vertical * step, 0);
+            lastMoveDir = movementVector.normalized;
             transform.position += movementVector;
         }
     }

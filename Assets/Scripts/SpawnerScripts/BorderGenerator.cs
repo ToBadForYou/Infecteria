@@ -89,7 +89,6 @@ public class BorderGenerator : MonoBehaviour
                     bottomRight = null;
                 }
 
-                temp.GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f);
                 lastObj = null;
             }
             else {

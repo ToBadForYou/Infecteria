@@ -12,4 +12,8 @@ public class Region
         yRange = new Vector2(startY, endY);
     }
 
+    public bool IsInside(Vector2 pos) {
+        return (pos.x >= xRange.x && pos.x <= xRange.y && pos.y >= yRange.x && pos.y <= yRange.y);
+    }
+
 }
