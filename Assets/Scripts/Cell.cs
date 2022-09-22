@@ -15,10 +15,13 @@ public class Cell : Infectable
 
     public SpriteRenderer insideRenderer;
 
+    public AudioSource source;
+
     void Start()
     {
         originPos = transform.position;
         target = GetNewTarget();
+        source = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
     }
 
     public void GetAbsorbed() {
@@ -67,6 +70,7 @@ public class Cell : Infectable
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player") {
+            source.Play();
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentCell = this;
         }
@@ -75,6 +79,7 @@ public class Cell : Infectable
     void OnTriggerExit2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player") {
+            source.Play();  
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
             col.gameObject.GetComponent<Player>().currentCell = null;
         }
