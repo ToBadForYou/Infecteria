@@ -16,6 +16,7 @@ public class Cell : Infectable
     public SpriteRenderer insideRenderer;
 
     public AudioSource source;
+    public AudioClip soundEffect;
 
     void Start()
     {
@@ -70,6 +71,7 @@ public class Cell : Infectable
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player") {
+            source.clip = soundEffect;
             source.Play();
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentCell = this;
@@ -79,7 +81,8 @@ public class Cell : Infectable
     void OnTriggerExit2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player") {
-            source.Play();  
+            source.clip = soundEffect;
+            source.Play();
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
             col.gameObject.GetComponent<Player>().currentCell = null;
         }

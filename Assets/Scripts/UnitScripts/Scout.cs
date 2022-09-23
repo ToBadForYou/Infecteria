@@ -11,6 +11,9 @@ public class Scout : DetectorUnit
     public bool finished;
     public bool isAlerted;
 
+    public AudioSource audioSrc;
+    public AudioClip soundEffect;
+
     void Start() {
         SetUnitStats(5, 5, 0, 1, 1.0f, 0.2f, false);
     }
@@ -26,7 +29,10 @@ public class Scout : DetectorUnit
         exclamationMark.SetActive(true);
         FollowTarget(parent);
         finished = true; 
-        alertPosition = triggerObject.transform.position;  
+        alertPosition = triggerObject.transform.position;
+        audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
+        audioSrc.clip = soundEffect;
+        audioSrc.Play();
     }
 
     public void SetTarget(GameObject target){

@@ -4245,6 +4245,13 @@ MonoBehaviour:
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
+  hostileDetectionPos: {x: 0, y: 0}
+  hitSoundEffects:
+  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
+  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
+  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
+  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
   currentCell: {fileID: 0}
   currentFactory: {fileID: 0}
   spaceObject: {fileID: 1646384897}
@@ -4256,6 +4263,8 @@ MonoBehaviour:
   buildOptions: {fileID: 933105315}
   units: {fileID: 647888340}
   additionalInfection: 0
+  audioSrc: {fileID: 439333272}
+  absorbSoundEffect: {fileID: 8300000, guid: 8362a415b071e6d49a542f9966aec884, type: 3}
 --- !u!114 &647888340
 MonoBehaviour:
   m_ObjectHideFlags: 0

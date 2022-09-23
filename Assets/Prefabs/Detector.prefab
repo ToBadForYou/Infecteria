@@ -104,6 +104,13 @@ MonoBehaviour:
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
+  hostileDetectionPos: {x: 0, y: 0}
+  hitSoundEffects:
+  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
+  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
+  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
+  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
   target: {fileID: 0}
   spriteRenderer: {fileID: 2461731516557241643}
   attacking: 0
@@ -115,6 +122,8 @@ MonoBehaviour:
   unitSquad: {fileID: 9221951727196453045}
   isAlerted: 0
   maxAntibodies: 3
+  audioSrc: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: c1675db8fbb2d4c4e951385340df4225, type: 3}
 --- !u!58 &1145709383805078791
 CircleCollider2D:
   m_ObjectHideFlags: 0

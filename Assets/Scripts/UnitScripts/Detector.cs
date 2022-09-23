@@ -12,6 +12,9 @@ public class Detector : DetectorUnit
     public int maxAntibodies = 3;
     UnitSpawner unitSpawner;
     
+    public AudioSource audioSrc;
+    public AudioClip soundEffect;
+    
     void Start()
     {
         SetUnitStats(50, 50, 0, 1, 1.0f, 0.2f, false);
@@ -26,6 +29,10 @@ public class Detector : DetectorUnit
             newScout.SetAlerted(gameObject);
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, Random.Range(1, maxAntibodies));
             unitSquad.AddUnits(antibodies);
+
+            audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
+            audioSrc.clip = soundEffect;
+            audioSrc.Play();
         }
     }
 

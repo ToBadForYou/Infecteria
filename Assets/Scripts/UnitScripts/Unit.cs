@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     public bool isSelected;
     public Vector2 hostileDetectionPos;
 
+    public List<AudioClip> hitSoundEffects;
+
     public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
     }
@@ -126,6 +128,9 @@ public class Unit : MonoBehaviour
 
     public virtual void OnTakeDamage() {
         Instantiate(hitEffect, new Vector2(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+        AudioSource audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
+        audioSrc.clip = hitSoundEffects[Random.Range(0, hitSoundEffects.Count)];
+        audioSrc.Play();
     }
 
     public virtual void OnDeath() {

@@ -21,6 +21,9 @@ public class Player : Unit
 
     public float additionalInfection = 0.0f;
 
+    public AudioSource audioSrc;
+    public AudioClip absorbSoundEffect;
+
     void Start() {
         SetUnitStats(100, 100, 1, 1, 1.0f, 0.9f, false);
     }
@@ -75,6 +78,8 @@ public class Player : Unit
                 MakeObjActive(eObject);
                 MakeObjActive(qObject);
                 if(Input.GetKeyDown(KeyCode.E)) {
+                    audioSrc.clip = absorbSoundEffect;
+                    audioSrc.Play();
                     currentCell.GetAbsorbed();
                 }
                 else if(Input.GetKeyDown(KeyCode.Q)) {
