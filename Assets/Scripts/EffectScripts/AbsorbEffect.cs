@@ -31,6 +31,7 @@ public class AbsorbEffect : MonoBehaviour
             childTransform.Rotate(0, 0, 50*Time.deltaTime);
 
             if(sr.color.a <= 0.0f) {
+                Destroy(childTransform.gameObject);
                 Destroy(gameObject);
             }
         }

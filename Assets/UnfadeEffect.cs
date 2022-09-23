@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnfadeEffect : MonoBehaviour
 {
-    SpriteRenderer sr;
+    Image image;
 
     void Start() {
-        sr = GetComponent<SpriteRenderer>();
+        image = GetComponent<Image>();
     }
 
     void Update()
     {
-        if(sr.color.a > 0.0f) {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a-Time.deltaTime);
+        if(image.color.a > 0.0f) {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a-Time.deltaTime);
         }
         else {
             Destroy(gameObject);
