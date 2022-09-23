@@ -33,6 +33,7 @@ public class Organ : MonoBehaviour
             cells.Remove(cell);
         }
         if(cells.Count == 0) {
+            DontDestroyOnLoad(GameObject.Find("GameManager"));
             SceneManager.LoadScene("Ending");
         }
     }

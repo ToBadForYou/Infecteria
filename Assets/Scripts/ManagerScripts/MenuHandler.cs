@@ -25,6 +25,10 @@ public class MenuHandler : MonoBehaviour
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a+Time.deltaTime);
             }
             else {
+                GameObject temp = GameObject.Find("GameManager");
+                if(temp) {
+                    Destroy(temp);
+                }
                 SceneManager.LoadScene("SampleScene");
             }
         }
