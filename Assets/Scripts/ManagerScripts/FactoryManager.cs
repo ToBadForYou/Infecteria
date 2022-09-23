@@ -65,7 +65,9 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void ToggleInfectCell(){
-        selectCell.ViewNearbyCells(currentFactory);
+        if(selectCell.currentFactory == null){
+            selectCell.ViewNearbyCells(currentFactory);
+        }
     }
 
     void SetStructure(int slot, bool enableButton, string text, Sprite sprite, Color spriteColor){

@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour
     public Task proximityHostile;
     public GameObject hitEffect;
     public bool isSelected;
+    public Vector2 hostileDetectionPos;
 
     public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
@@ -53,13 +54,21 @@ public class Unit : MonoBehaviour
 
         if (closest != null && (proximityHostile == null || closest != proximityHostile.GetTarget())){
             proximityHostile = new AttackTask(this, closest);
+            hostileDetectionPos = transform.position;
         }       
     }
 
     public void UpdateCurrentTask(){
         Task currentTask = null;
         if(proximityHostile != null){
-            currentTask = proximityHostile;
+            //Temp fix for not chasing units forever
+            if(Vector2.Distance(transform.position, hostileDetectionPos) > 10){
+                proximityHostile = null;
+                GiveTask(new MoveTask(this, hostileDetectionPos));
+            }
+            else {
+                currentTask = proximityHostile;
+            }
         }
         else if(currentTasks.Count > 0){
             currentTask = currentTasks[0];
