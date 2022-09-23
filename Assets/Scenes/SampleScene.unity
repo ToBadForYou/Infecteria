@@ -1645,7 +1645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 234402279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605807174}
+        m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
+        m_MethodName: AssignInfectTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &242474081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,6 +3505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeCellPrefab: {fileID: 7649639880352366611, guid: 7d1c2f24094e45b45bba6e28908507dd, type: 3}
   windowPrefab: {fileID: 4226050407750130097, guid: db8226814ee7e974887db2e12b34ec5c, type: 3}
+  controlPanel: {fileID: 1264500776}
   selectionTransform: {fileID: 791589947}
   targetCellRadius: 20
   selectedUnits: {fileID: 605807175}
@@ -8674,7 +8687,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1866286223}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605807174}
+        m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
+        m_MethodName: AssignFollowTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1867852094
 GameObject:
   m_ObjectHideFlags: 0
@@ -10187,7 +10212,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2074174966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605807174}
+        m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
+        m_MethodName: AssignReturnTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2079083743
 GameObject:
   m_ObjectHideFlags: 0
@@ -10308,7 +10345,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2079083745}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605807174}
+        m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
+        m_MethodName: AssignMoveTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2083856990
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class SelectionHandler : MonoBehaviour
 
     public GameObject fakeCellPrefab;
     public GameObject windowPrefab;
+    public GameObject controlPanel;
 
     public Transform selectionTransform;
     public float targetCellRadius;
@@ -60,33 +61,38 @@ public class SelectionHandler : MonoBehaviour
         selectedUnits.Clear();
     }
 
-    void AssignFollowTask() {
+    public void AssignFollowTask() {
         //TODO: Add to player units squad
         selectedUnits.Follow(GameObject.Find("Player"));
         DeselectAllBacterias();
     }
 
-    void AssignReturnTask() {
+    public void AssignReturnTask() {
         //TODO: Use ReturnTask (currently only supports antibodies)
         //Temp use first index values start position
         selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition);
         DeselectAllBacterias();
     }
 
-    void AssignMoveTask() {
+    public void AssignMoveTask() {
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         selectedUnits.MoveTo(mousePosition);
         DeselectAllBacterias();
     }
 
-    void AssignInfectTask() {
+    public void AssignInfectTask() {
         //TODO: Make selected microbacterias infect chosen cell
         DeselectAllBacterias();
     }
 
     void Update(){
         if(selectedUnits.units.Count > 0){
+
+            if(!controlPanel.activeSelf) {
+                controlPanel.SetActive(true);
+            }
+
             if(Input.GetKeyDown(KeyCode.I)) { // Infect cell
                 AssignInfectTask();
             }
@@ -98,6 +104,11 @@ public class SelectionHandler : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.R)) { // Return to factory
                 AssignReturnTask();
+            }
+        }
+        else {
+            if(controlPanel.activeSelf) {
+                controlPanel.SetActive(false);
             }
         }
 
