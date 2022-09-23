@@ -12,6 +12,7 @@ public class Player : Unit
     public GameObject eObject;
     public GameObject qObject;
     public GameObject fObject;
+    public GameObject mouseObject;
 
     public GameObject skilltree;
     public GameObject factoryOverview;
@@ -29,14 +30,18 @@ public class Player : Unit
     }
 
     public void MakeObjActive(GameObject obj) {
-        if(!obj.activeSelf) {
-            obj.SetActive(true);
+        if(obj) {
+            if(!obj.activeSelf) {
+                obj.SetActive(true);
+            }
         }
     }
 
     public void MakeObjDeactive(GameObject obj) {
-        if(obj.activeSelf) {
-            obj.SetActive(false);
+        if(obj) {
+            if(obj.activeSelf) {
+                obj.SetActive(false);
+            }
         }
     }
 
@@ -83,6 +88,11 @@ public class Player : Unit
                     currentCell.GetAbsorbed();
                 }
                 else if(Input.GetKeyDown(KeyCode.Q)) {
+                    if(mouseObject) {
+                        if(!mouseObject.activeSelf) {
+                            MakeObjActive(mouseObject);
+                        }
+                    }
                     currentCell.TurnIntoFactory();
                 }
             }
