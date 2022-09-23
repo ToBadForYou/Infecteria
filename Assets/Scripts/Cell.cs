@@ -31,6 +31,9 @@ public class Cell : Infectable
         gm.IncreaseAbsorbedCells();
         gm.RemoveCell(gameObject);
 
+        Heart heart = GameObject.Find("Heart").GetComponent<Heart>();
+        heart.RemoveCell(this); // Removes only if this cell is in the list
+
         Destroy(this);
         GetComponent<AbsorbEffect>().isActive = true;
     }

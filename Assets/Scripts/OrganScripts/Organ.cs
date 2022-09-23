@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Organ : MonoBehaviour
 {
@@ -24,6 +25,15 @@ public class Organ : MonoBehaviour
         if(currentAntibodies < maxStoredAntibodies && nextAntibody < 0){
             nextAntibody = antibodyProductionTime;
             currentAntibodies += 1;
+        }
+    }
+
+    public void RemoveCell(Cell cell) {
+        if(cells.Contains(cell)) {
+            cells.Remove(cell);
+        }
+        if(cells.Count == 0) {
+            SceneManager.LoadScene("Ending");
         }
     }
 
