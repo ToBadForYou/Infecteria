@@ -10,7 +10,7 @@ public class AlertedPatrol: AI
     public AlertedPatrol(UnitSquad alertedUnits, Vector2 alertPosition, Scout searchScout){
         units = alertedUnits;
         scout = searchScout;
-        units.MoveTo(alertPosition);
+        units.MoveTo(alertPosition, false);
         units.Search(alertPosition, searchScout);       
     }
 

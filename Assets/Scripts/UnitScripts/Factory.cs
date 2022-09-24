@@ -103,7 +103,7 @@ public class Factory : Infectable
         foreach (Unit microbacteria in microbacterias){
             unitSquad.AddUnit(microbacteria);
         }
-        unitSquad.Follow(playerObject);
+        unitSquad.Follow(playerObject, true);
     }
 
     public void SendBacteriasToPlayer() {

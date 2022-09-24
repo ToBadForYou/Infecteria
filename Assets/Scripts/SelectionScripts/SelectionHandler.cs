@@ -63,21 +63,21 @@ public class SelectionHandler : MonoBehaviour
 
     public void AssignFollowTask() {
         //TODO: Add to player units squad
-        selectedUnits.Follow(GameObject.Find("Player"));
+        selectedUnits.Follow(GameObject.Find("Player"), true);
         DeselectAllBacterias();
     }
 
     public void AssignReturnTask() {
         //TODO: Use ReturnTask (currently only supports antibodies)
         //Temp use first index values start position
-        selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition);
+        selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition, true);
         DeselectAllBacterias();
     }
 
     public void AssignMoveTask() {
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        selectedUnits.MoveTo(mousePosition);
+        selectedUnits.MoveTo(mousePosition, true);
         DeselectAllBacterias();
     }
 

@@ -68,27 +68,38 @@ public class UnitSquad : MonoBehaviour
         }  
     }
 
-    public void Attack(GameObject target){
+    public void Attack(GameObject target, bool cancelTasks){
         foreach (Unit unit in units){
+            if(cancelTasks){
+                unit.CancelTasks();
+            }            
             unit.GiveTask(new AttackTask(unit, target));
         }       
     }
 
-    public void Follow(GameObject target){
+    public void Follow(GameObject target, bool cancelTasks){
         foreach (Unit unit in units){
-            unit.CancelTasks();
+            if(cancelTasks){
+                unit.CancelTasks();
+            }
             unit.GiveTask(new FollowTask(unit, target, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))));
         }
     }
 
-    public void MoveTo(GameObject target){
+    public void MoveTo(GameObject target, bool cancelTasks){
         foreach (Unit unit in units){
+            if(cancelTasks){
+                unit.CancelTasks();
+            }
             unit.GiveTask(new MoveTask(unit, target));
         }
     }
 
-    public void MoveTo(Vector2 pos){
+    public void MoveTo(Vector2 pos, bool cancelTasks){
         foreach (Unit unit in units){
+            if(cancelTasks){
+                unit.CancelTasks();
+            }
             unit.GiveTask(new MoveTask(unit, pos));
         }
     }
