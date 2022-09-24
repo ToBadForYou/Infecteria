@@ -36,8 +36,8 @@ public class Heart : Organ
             Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
             UnitSquad newSquad = CreateSquad(antibodies);
             newSquad.AddUnit(newScout);
-            newSquad.MoveTo(alertPosition);
-            newSquad.Search(alertPosition, newScout);
+            AI behaviour = new AlertedPatrol(newSquad, alertPosition, newScout);
+            newSquad.AIBehaviour = behaviour;
         }
     } 
 }
