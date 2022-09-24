@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ReturnTask : Task
 {
-    public ReturnTask(Unit owner, GameObject target) : base(owner, target) {}
+    public ReturnTask(Unit owner, GameObject target) : base(owner, target) {
+        taskType = TaskType.RETURN;
+    }
 
     public override void Update(){
         if(!unit.IsMoving()){

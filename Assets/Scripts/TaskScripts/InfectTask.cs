@@ -7,6 +7,7 @@ public class InfectTask : Task
     new InfectUnit unit;
 
     public InfectTask(InfectUnit owner, GameObject targetObject) : base((Unit)owner, targetObject) {
+        taskType = TaskType.INFECT;
         unit = owner;
         target = targetObject;
     }    
@@ -18,7 +19,7 @@ public class InfectTask : Task
         
         if(unit.AtPosition(target.transform.position)){
             Infectable infectTarget = target.GetComponent<Infectable>();
-            if(infectTarget != null){
+            if(infectTarget != null && infectTarget.isInfected){
                 unit.InfectTarget(infectTarget);
             }
             FinishTask();

@@ -7,6 +7,7 @@ public abstract class Task
     public Unit unit;
     public bool finished;
     public GameObject target;
+    public TaskType taskType = TaskType.IDLE;
 
     protected Task(Unit owner, GameObject targetObject){
         owner.StopMoving();

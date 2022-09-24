@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AttackTask : Task
 {
-    public AttackTask(Unit owner, GameObject targetObject) : base(owner, targetObject) {}
+    public AttackTask(Unit owner, GameObject targetObject) : base(owner, targetObject) {
+        taskType = TaskType.ATTACK;
+    }
 
     public override void Update(){
         if (target != null){

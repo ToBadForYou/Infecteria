@@ -9,6 +9,7 @@ public class SearchTask : Task
     UnitSquad ownerSquad;
 
     public SearchTask(Scout owner, List<Infectable> potentialInfections, UnitSquad belongTo) : base(owner, null) {
+        taskType = TaskType.SEARCH;
         unit = owner;
         ownerSquad = belongTo;
         searchList = potentialInfections;

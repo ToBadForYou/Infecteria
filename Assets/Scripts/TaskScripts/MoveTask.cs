@@ -7,6 +7,7 @@ public class MoveTask : Task
     Vector2 targetPosition;
 
     public MoveTask(Unit owner, Vector2 targetVector) : base(owner, null) {
+        taskType = TaskType.MOVE;
         targetPosition = targetVector;
     }
 

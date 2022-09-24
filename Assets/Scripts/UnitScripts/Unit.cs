@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {   
-    public enum Faction { bacteria, immuneSystem, neutral };
+    public enum Faction { BACTERIA, IMMUNESYSTEM, NEUTRAL };
     public Transform healthBar;
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
@@ -34,6 +34,14 @@ public class Unit : MonoBehaviour
             FindHostileInProximity();
         }
         UpdateCurrentTask();
+    }
+
+    public TaskType GetTaskType(){
+        TaskType currentTaskType = TaskType.IDLE;
+        if(currentTasks.Count > 0){
+            currentTaskType = currentTasks[0].taskType;
+        }
+        return currentTaskType;
     }
 
     public void CancelTasks(){
@@ -98,7 +106,7 @@ public class Unit : MonoBehaviour
     }
 
     public bool IsHostile(Unit unit){
-        return unit.owner != Faction.neutral && owner != unit.owner;
+        return unit.owner != Faction.NEUTRAL && owner != unit.owner;
     }
 
     public bool CanAttack(){
