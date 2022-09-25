@@ -93,6 +93,7 @@ public class Factory : Infectable
     public void AutoInfect(Infectable newTarget) {
         infectTarget = newTarget;
         foreach(MicroBacteria bacteria in microbacterias){
+            bacteria.CancelTasks();
             bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject));
         }
         autoInfect = true;
