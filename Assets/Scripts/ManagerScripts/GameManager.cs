@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textMesh;
 
     public int DNAPoints = 0;
+    public int sugar = 0;
     
     public int absorbedCells = 0;
     public int infectedCells = 0;
@@ -28,13 +29,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateTextMesh() {
-        textMesh.text = "DNA Points: " + DNAPoints + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
+        textMesh.text = "DNA Points: " + DNAPoints + "\nSugar: " + sugar + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
+    }
+
+    public void IncreaseSugar(int amount) {
+        sugar += amount;
+        UpdateTextMesh();
     }
 
     public void IncreaseDNAPoints(int amount) {
         DNAPoints += amount;
         UpdateTextMesh();
-    }
+    }   
 
     public void IncreaseAbsorbedCells() {
         absorbedCells++;
