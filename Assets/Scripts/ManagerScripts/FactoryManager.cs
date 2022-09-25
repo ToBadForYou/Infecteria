@@ -25,7 +25,7 @@ public class FactoryManager : MonoBehaviour
 
     public void SetFactory(Factory factory) {
         currentFactory = factory;
-        upgradeTooltip.text = factory.upgradeCost + " DNA points to upgrade";
+        upgradeTooltip.text = factory.upgradeCost + " sugar to upgrade";
         UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
         // TODO Make a script for build slots to handle setting images, colors etc
@@ -64,7 +64,7 @@ public class FactoryManager : MonoBehaviour
     public void UpgradeFactory() {
         currentFactory.Upgrade();
         levelTextMesh.text = "Level " + currentFactory.currentLevel;
-        upgradeTooltip.text = currentFactory.upgradeCost + " DNA points to upgrade";
+        upgradeTooltip.text = currentFactory.upgradeCost + " sugar to upgrade";
     }
 
     public void ToggleInfectCell(){

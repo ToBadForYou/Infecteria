@@ -69,7 +69,7 @@ public class Factory : Infectable
 
     public bool CanUpgrade(){
         bool levelsLeft = currentLevel < maxLevel;
-        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints >= upgradeCost;
+        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().sugar >= upgradeCost;
         return levelsLeft && hasPoints;
     }
 
