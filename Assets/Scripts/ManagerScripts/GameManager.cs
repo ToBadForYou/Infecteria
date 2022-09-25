@@ -5,6 +5,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI DNAPointsText;
+    public TextMeshProUGUI sugarText;
     public TextMeshProUGUI textMesh;
 
     public int DNAPoints = 0;
@@ -29,17 +31,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateTextMesh() {
-        textMesh.text = "DNA Points: " + DNAPoints + "\nSugar: " + sugar + "\nAbsorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
+        textMesh.text = "Absorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
     }
 
     public void IncreaseSugar(int amount) {
         sugar += amount;
-        UpdateTextMesh();
+        sugarText.text = sugar.ToString();
     }
 
     public void IncreaseDNAPoints(int amount) {
         DNAPoints += amount;
-        UpdateTextMesh();
+        DNAPointsText.text = DNAPoints.ToString();
     }   
 
     public void IncreaseAbsorbedCells() {
