@@ -19,11 +19,11 @@ public class Factory : Infectable
     public bool autoInfect = false;
     public Infectable infectTarget;
     public GameObject cellPrefab;
+    public List<GameObject> upgradeVisuals;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
 
-    void Update()
-    {
+    void Update(){
         if(bacteriaAmount < maxBacteriaAmount) {
             time -= Time.deltaTime;
             if(time <= 0.0f) {
@@ -49,8 +49,7 @@ public class Factory : Infectable
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentFactory = this;
@@ -59,8 +58,7 @@ public class Factory : Infectable
         }
     }
     
-    void OnTriggerExit2D(Collider2D col)
-    {
+    void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
             col.gameObject.GetComponent<Player>().currentFactory = null;
@@ -69,7 +67,7 @@ public class Factory : Infectable
         }
     }
 
-    public bool CanUpgrade() {
+    public bool CanUpgrade(){
         bool levelsLeft = currentLevel < maxLevel;
         bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints >= upgradeCost;
         return levelsLeft && hasPoints;
@@ -85,6 +83,7 @@ public class Factory : Infectable
 
     public void Upgrade() {
         if(CanUpgrade()) {
+            upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
             GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints -= upgradeCost;
             upgradeCost *= 2;
