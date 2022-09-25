@@ -11,6 +11,7 @@ public class FactoryManager : MonoBehaviour
     public TextMeshProUGUI microbacteriaText;
     public TextMeshProUGUI infectionText;
     public TextMeshProUGUI levelTextMesh;
+    public TextMeshProUGUI upgradeTooltip;
 
     public Transform infectionBar;
     public GameObject buildOptions;
@@ -24,6 +25,7 @@ public class FactoryManager : MonoBehaviour
 
     public void SetFactory(Factory factory) {
         currentFactory = factory;
+        upgradeTooltip.text = factory.upgradeCost + " DNA points to upgrade";
         UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
         // TODO Make a script for build slots to handle setting images, colors etc
@@ -62,11 +64,15 @@ public class FactoryManager : MonoBehaviour
     public void UpgradeFactory() {
         currentFactory.Upgrade();
         levelTextMesh.text = "Level " + currentFactory.currentLevel;
+        upgradeTooltip.text = currentFactory.upgradeCost + " DNA points to upgrade";
     }
 
     public void ToggleInfectCell(){
         if(selectCell.currentFactory == null){
             selectCell.ViewNearbyCells(currentFactory);
+        }
+        else {
+            selectCell.CloseSelection();
         }
     }
 

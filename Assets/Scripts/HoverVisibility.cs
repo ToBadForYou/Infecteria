@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CommandTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HoverVisibility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject commandTooltip;
+    public GameObject target;
 
     public void OnPointerEnter(PointerEventData eventData){
-        commandTooltip.SetActive(true);
+        target.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        commandTooltip.SetActive(false);
+        target.SetActive(false);
     }
 }
