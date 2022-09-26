@@ -21,7 +21,7 @@ public class DamageEffect : MonoBehaviour
         if(isHit) {
             if (timePassed < totalDuration) {
                 timePassed+=Time.deltaTime;
-                GetComponent<SpriteRenderer>().color = Color.Lerp(new Color(1.0f, 0.0f, 0.0f, 1.0f), originColor, timePassed / totalDuration);
+                sr.color = Color.Lerp(new Color(1.0f, 0.0f, 0.0f, 1.0f), originColor, timePassed / totalDuration);
             }
             else {
                 isHit = false;
