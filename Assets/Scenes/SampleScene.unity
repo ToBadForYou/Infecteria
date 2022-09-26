@@ -3427,12 +3427,12 @@ GameObject:
   - component: {fileID: 336580807}
   - component: {fileID: 336580806}
   m_Layer: 5
-  m_Name: Points Textmesh
+  m_Name: Debug Textmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &336580805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9642,7 +9642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCodes: 66000000
-  maxCount: 3
+  maxCount: 2
   mesh: {fileID: 1030226408}
   mesh2: {fileID: 287319627}
   sr: {fileID: 1366763192}
