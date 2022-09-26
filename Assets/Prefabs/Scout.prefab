@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 5792442732693720547}
   - component: {fileID: 7047261104836626860}
   - component: {fileID: 4719285353734411330}
+  - component: {fileID: 1335396875}
   m_Layer: 0
   m_Name: scoutRange
   m_TagString: Untagged
@@ -612,6 +613,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &1335396875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311081517874335256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee1d50ed8871234db6986544d9f96f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 2310231965825473703}
 --- !u!1 &8152614086710397668
 GameObject:
   m_ObjectHideFlags: 0
