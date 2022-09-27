@@ -86,6 +86,8 @@ public class Player : Unit
                     audioSrc.clip = absorbSoundEffect;
                     audioSrc.Play();
                     currentCell.GetAbsorbed();
+
+                    GetComponent<PlayerMovement>().SetSpeed(5.0f);
                 }
                 else if(Input.GetKeyDown(KeyCode.Q)) {
                     if(mouseObject) {
