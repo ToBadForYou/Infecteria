@@ -6,6 +6,7 @@ public class CellSpawner : MonoBehaviour
 {
     public GameObject cellObject;
     public GameObject detectorObject;
+
     public int distance = 5;
     public int amountX = 2;
     public int amountY = 2;
@@ -13,6 +14,8 @@ public class CellSpawner : MonoBehaviour
     void Start()
     {
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Vector2 playerPosition = GameObject.Find("Player").transform.position;
+
         float scale = cellObject.GetComponent<Transform>().localScale.x;
         int startX = amountX/2;
         int startY = amountY/2;
@@ -30,7 +33,13 @@ public class CellSpawner : MonoBehaviour
         {
             for (int y = -startY + 2; y < startY - 2; y+=4)
             {
-                Instantiate(detectorObject, new Vector2(transform.position.x + scale * x * distance + Random.Range(-5, 5), transform.position.y + scale * y * distance + Random.Range(-5, 5)), Quaternion.identity);
+                float xPos = transform.position.x + scale * x * distance + Random.Range(-5, 5);
+                float yPos = transform.position.y + scale * y * distance + Random.Range(-5, 5);
+                Vector2 position = new Vector2(xPos, yPos);
+
+                if(Vector2.Distance(playerPosition, position) > 3.5f) { // In order to avoid spawning in detector
+                    Instantiate(detectorObject, position, Quaternion.identity);
+                }
             }
         }             
     }

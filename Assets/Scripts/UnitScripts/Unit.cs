@@ -135,10 +135,10 @@ public class Unit : MonoBehaviour
     }
 
     public virtual void OnTakeDamage() {
-        //Instantiate(hitEffect, new Vector2(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
         AudioSource audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
         audioSrc.clip = hitSoundEffects[Random.Range(0, hitSoundEffects.Count)];
         audioSrc.Play();
+        
         GetComponent<DamageEffect>().Activate();
     }
 
