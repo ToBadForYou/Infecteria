@@ -10,11 +10,14 @@ public class AttackTask : Task
 
     public override void Update(){
         if (target != null){
+            Debug.Log("Y");
+            Debug.Log(unit);
+            Debug.Log(target);
             bool targetInRange = unit.InRange(target.transform.position);
-            if (!unit.IsMoving() && !targetInRange){
+            if (unit.CanMove() && !unit.IsMoving() && !targetInRange){
                 unit.FollowTarget(target);
             } else if (targetInRange) {
-                if(unit.IsMoving()){
+                if(unit.CanMove() && unit.IsMoving()){
                     unit.StopMoving();
                 }
                 if (unit.AttackTarget(target)){

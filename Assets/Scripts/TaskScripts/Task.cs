@@ -10,7 +10,9 @@ public abstract class Task
     public TaskType taskType = TaskType.IDLE;
 
     protected Task(Unit owner, GameObject targetObject){
-        owner.StopMoving();
+        if(owner.CanMove()){
+            owner.StopMoving();
+        }
         unit = owner;
         target = targetObject;
     }

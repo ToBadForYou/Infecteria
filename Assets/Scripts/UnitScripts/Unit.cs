@@ -178,6 +178,10 @@ public class Unit : MonoBehaviour
         return Vector2.Distance(transform.position, position) <= 0.2f;
     }
 
+    public bool CanMove(){
+        return unitMovement != null;
+    }
+
     public void StopMoving(){
         unitMovement.StopMoving();
     }
