@@ -18,15 +18,19 @@ public class Unit : MonoBehaviour
     public GameObject hitEffect;
     public bool isSelected;
     public Vector2 hostileDetectionPos;
+    public float maxHPBar;
 
     public List<AudioClip> hitSoundEffects;
+
+    protected void Start(){
+        maxHPBar = healthBar.localScale.x;
+    }
 
     public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
     }
 
-    protected void Update()
-    {
+    protected void Update(){
         if (stats.IsAggressive()){
             if(!CanAttack()){
                 stats.DecreaseAttackTimer(Time.deltaTime);
@@ -125,7 +129,7 @@ public class Unit : MonoBehaviour
     bool TakeDamage(int takenDamage){
         stats.DecreaseCurrentHealth(takenDamage);
         OnTakeDamage();
-        healthBar.localScale = new Vector2((float)stats.GetCurrentHealth()/stats.GetHealth(), healthBar.localScale.y);
+        healthBar.localScale = new Vector2(((float)stats.GetCurrentHealth()/stats.GetHealth()) * maxHPBar, healthBar.localScale.y);
         if (stats.GetCurrentHealth() <= 0){
             OnDeath();
             Destroy(gameObject.transform.root.gameObject);

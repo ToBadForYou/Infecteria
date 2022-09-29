@@ -25,7 +25,8 @@ public class Player : Unit
     public AudioSource audioSrc;
     public AudioClip absorbSoundEffect;
 
-    void Start() {
+    new void Start() {
+        base.Start();
         SetUnitStats(100, 100, 1, 1, 1.0f, 0.9f, false);
     }
 

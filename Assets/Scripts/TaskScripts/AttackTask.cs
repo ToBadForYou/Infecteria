@@ -10,9 +10,6 @@ public class AttackTask : Task
 
     public override void Update(){
         if (target != null){
-            Debug.Log("Y");
-            Debug.Log(unit);
-            Debug.Log(target);
             bool targetInRange = unit.InRange(target.transform.position);
             if (unit.CanMove() && !unit.IsMoving() && !targetInRange){
                 unit.FollowTarget(target);

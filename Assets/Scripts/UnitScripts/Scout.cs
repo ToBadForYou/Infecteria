@@ -14,7 +14,8 @@ public class Scout : DetectorUnit
     public AudioSource audioSrc;
     public AudioClip soundEffect;
 
-    void Start() {
+    new void Start() {
+        base.Start();
         SetUnitStats(5, 5, 0, 1, 1.0f, 0.2f, false);
     }
 

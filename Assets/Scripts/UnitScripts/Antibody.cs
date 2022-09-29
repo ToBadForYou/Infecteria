@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Antibody : InfectUnit
 {
-    void Start() {
+    new void Start() {
+        base.Start();
         SetUnitStats(10, 10, 1, 1, 1.0f, 1.0f, true);
     }
 

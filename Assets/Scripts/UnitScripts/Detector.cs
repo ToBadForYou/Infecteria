@@ -15,8 +15,8 @@ public class Detector : DetectorUnit
     public AudioSource audioSrc;
     public AudioClip soundEffect;
     
-    void Start()
-    {
+    new void Start(){
+        base.Start();
         SetUnitStats(50, 50, 0, 1, 1.0f, 0.2f, false);
         reportTo = GameObject.Find("Heart");
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
