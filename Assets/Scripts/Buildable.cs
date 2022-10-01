@@ -7,6 +7,7 @@ public class Buildable : MonoBehaviour
     public GameObject structure;
     public string structureName;
     public int cost;
+    public int microbacteriaProduction;
 
     public Sprite GetSprite(){
         return structure.GetComponent<SpriteRenderer>().sprite;

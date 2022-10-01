@@ -123,5 +123,6 @@ public class Factory : Infectable
         GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
         temp.transform.parent = transform;
         structures[slot] = temp;
+        maxBacteriaAmount += structure.microbacteriaProduction;
     }
 }

@@ -966,10 +966,10 @@ RectTransform:
   m_Father: {fileID: 230121896}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -150}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98840933
 MonoBehaviour:
@@ -2819,7 +2819,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &265274703
 MonoBehaviour:
@@ -4396,6 +4396,7 @@ MonoBehaviour:
   structure: {fileID: 4946185802045496117, guid: f194eba8bf4728849a757d9926ea633d, type: 3}
   structureName: Microbacteria Producer
   cost: 50
+  microbacteriaProduction: 2
 --- !u!4 &469264843
 Transform:
   m_ObjectHideFlags: 0
@@ -5392,7 +5393,7 @@ Transform:
   - {fileID: 1941573045}
   - {fileID: 1144809885}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &647888337
 CircleCollider2D:
@@ -6939,6 +6940,7 @@ MonoBehaviour:
   structure: {fileID: 6736939045442007741, guid: 9c3c9bc75c4d6d94d9240aed502360c7, type: 3}
   structureName: Sugar Producer
   cost: 0
+  microbacteriaProduction: 0
 --- !u!4 &895079648
 Transform:
   m_ObjectHideFlags: 0
@@ -8586,10 +8588,10 @@ RectTransform:
   m_Father: {fileID: 230121896}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098904681
 MonoBehaviour:
@@ -9246,10 +9248,10 @@ RectTransform:
   m_Father: {fileID: 230121896}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -150}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214290118
 MonoBehaviour:
@@ -10296,7 +10298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427319732
 GameObject:
@@ -13658,6 +13660,7 @@ MonoBehaviour:
   structure: {fileID: 686625259711535221, guid: e9e20c840c683804d8841c6c77397923, type: 3}
   structureName: DNA Producer
   cost: 50
+  microbacteriaProduction: 0
 --- !u!4 &1973477631
 Transform:
   m_ObjectHideFlags: 0
@@ -13786,6 +13789,7 @@ MonoBehaviour:
   structure: {fileID: 7904048588931265571, guid: 3381f025cb8f31e48a63fccd49c21c57, type: 3}
   structureName: Tower
   cost: 100
+  microbacteriaProduction: 0
 --- !u!4 &1976241924
 Transform:
   m_ObjectHideFlags: 0
@@ -13952,7 +13956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2009071183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15589,10 +15593,10 @@ RectTransform:
   m_Father: {fileID: 230121896}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139823910
 MonoBehaviour:
