@@ -320,8 +320,10 @@ MonoBehaviour:
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
   hostileDetectionPos: {x: 0, y: 0}
+  maxHPBar: 0
   hitSoundEffects:
   - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  projectilePrefab: {fileID: 7162702545806815734, guid: 0f4597cf437ee1b4880b688667080b20, type: 3}
 --- !u!114 &6228556966842320861
 MonoBehaviour:
   m_ObjectHideFlags: 0

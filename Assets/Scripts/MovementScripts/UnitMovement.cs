@@ -12,13 +12,11 @@ public class UnitMovement : MonoBehaviour
     public float speed = 2.0f; // TODO Read speed value from owner object
     public bool moving;
 
-    void Start()
-    {
+    void Start(){
         offset = Vector2.zero;
     }
 
-    void Update()
-    {
+    void Update(){
         if(moving) {
             Vector2 targetPosition = positionTarget;
             if(followTarget != null){

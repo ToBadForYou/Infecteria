@@ -117,7 +117,7 @@ public class Unit : MonoBehaviour
         return stats.GetAttackTimer() <= 0;
     }
 
-    public bool AttackTarget(GameObject attackTarget){
+    public virtual bool AttackTarget(GameObject attackTarget){
         if(CanAttack()){
             stats.SetAttackTimer(stats.GetAttackSpeed());
             Unit unit = attackTarget.GetComponent<Unit>();
@@ -126,7 +126,7 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    bool TakeDamage(int takenDamage){
+    public bool TakeDamage(int takenDamage){
         stats.DecreaseCurrentHealth(takenDamage);
         OnTakeDamage();
         healthBar.localScale = new Vector2(((float)stats.GetCurrentHealth()/stats.GetHealth()) * maxHPBar, healthBar.localScale.y);
@@ -138,7 +138,7 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    public virtual void OnTakeDamage() {
+    public virtual void OnTakeDamage(){
         AudioSource audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
         audioSrc.clip = hitSoundEffects[Random.Range(0, hitSoundEffects.Count)];
         audioSrc.Play();
@@ -150,15 +150,13 @@ public class Unit : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.GetComponent<Unit>() != null){
             inRange.Add(col.gameObject);
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
-    {
+    void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.GetComponent<Unit>() != null){
             inRange.Remove(col.gameObject);
         }

@@ -71,8 +71,7 @@ public class Cell : Infectable
         infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             source.clip = soundEffect;
             source.Play();
