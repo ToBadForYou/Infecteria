@@ -6,7 +6,7 @@ public class Factory : Infectable
 {
     public GameObject microBacteriaPrefab;
     public int bacteriaAmount = 0;
-    public int maxBacteriaAmount = 10;
+    public int maxBacteriaAmount = 0;
 
     public float startTime = 10.0f;
     public float time = 10.0f;
@@ -43,7 +43,9 @@ public class Factory : Infectable
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(-1);
         gm.IncreaseFactoryAmount(-1);
-
+        foreach(GameObject structure in structures){
+            Destroy(structure);
+        }
         GameObject cell = Instantiate(cellPrefab, transform.position, Quaternion.identity);
         gm.ReplaceCell(gameObject, cell);      
         Destroy(gameObject);
@@ -104,14 +106,6 @@ public class Factory : Infectable
             unitSquad.AddUnit(microbacteria);
         }
         unitSquad.Follow(playerObject, true);
-    }
-
-    public void SendBacteriasToPlayer() {
-        autoInfect = false;
-        infectTarget = null;
-        foreach(MicroBacteria bacteria in microbacterias) {
-            bacteria.followPlayer = true;
-        }
     }
 
     public void AddMicrobacteria(MicroBacteria bacteria) {
