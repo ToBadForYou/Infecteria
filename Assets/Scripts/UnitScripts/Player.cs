@@ -52,64 +52,66 @@ public class Player : Unit
 
     new void Update()
     {
-        // Skilltree
-        if(Input.GetKeyDown(KeyCode.T)) {
-            if(!skilltree.activeSelf) {
-                skilltree.SetActive(true);
-                skilltree.transform.position = transform.position;
-                GetComponent<PlayerMovement>().isPaused = true;
-            }
-            else {
-                skilltree.SetActive(false);
-                GetComponent<PlayerMovement>().isPaused = false;
-            }
-        }
-
-        // Handling factories
-        if(currentFactory) {
-            MakeObjActive(factoryOverview);
-            factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
-            if(Input.GetKeyDown(KeyCode.F)) {
-                currentFactory.JoinPlayerSquad(gameObject, units);
-            }
-        } else {
-            MakeObjDeactive(factoryOverview);
-            MakeObjDeactive(buildOptions);
-        }
-
-        // Infecting Cells
-        if(currentCell) {
-            if(currentCell.isInfected) {
-                MakeObjDeactive(spaceObject);
-                MakeObjActive(eObject);
-                MakeObjActive(qObject);
-                if(Input.GetKeyDown(KeyCode.E)) {
-                    audioSrc.clip = absorbSoundEffect;
-                    audioSrc.Play();
-                    currentCell.GetAbsorbed();
-
-                    GetComponent<PlayerMovement>().SetSpeed(5.0f);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            // Skilltree
+            if(Input.GetKeyDown(KeyCode.T)) {
+                if(!skilltree.activeSelf) {
+                    skilltree.SetActive(true);
+                    skilltree.transform.position = transform.position;
+                    GetComponent<PlayerMovement>().isPaused = true;
                 }
-                else if(Input.GetKeyDown(KeyCode.Q)) {
-                    if(mouseObject) {
-                        if(!mouseObject.activeSelf) {
-                            MakeObjActive(mouseObject);
-                        }
+                else {
+                    skilltree.SetActive(false);
+                    GetComponent<PlayerMovement>().isPaused = false;
+                }
+            }
+
+            // Handling factories
+            if(currentFactory) {
+                MakeObjActive(factoryOverview);
+                factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
+                if(Input.GetKeyDown(KeyCode.F)) {
+                    currentFactory.JoinPlayerSquad(gameObject, units);
+                }
+            } else {
+                MakeObjDeactive(factoryOverview);
+                MakeObjDeactive(buildOptions);
+            }
+
+            // Infecting Cells
+            if(currentCell) {
+                if(currentCell.isInfected) {
+                    MakeObjDeactive(spaceObject);
+                    MakeObjActive(eObject);
+                    MakeObjActive(qObject);
+                    if(Input.GetKeyDown(KeyCode.E)) {
+                        audioSrc.clip = absorbSoundEffect;
+                        audioSrc.Play();
+                        currentCell.GetAbsorbed();
+
+                        GetComponent<PlayerMovement>().SetSpeed(5.0f);
                     }
-                    currentCell.TurnIntoFactory();
+                    else if(Input.GetKeyDown(KeyCode.Q)) {
+                        if(mouseObject) {
+                            if(!mouseObject.activeSelf) {
+                                MakeObjActive(mouseObject);
+                            }
+                        }
+                        currentCell.TurnIntoFactory();
+                    }
+                }
+                else {
+                    MakeObjActive(spaceObject);
+                    if(Input.GetKey(KeyCode.Space)) {
+                        currentCell.Infect(Time.deltaTime + additionalInfection);
+                    }
                 }
             }
             else {
-                MakeObjActive(spaceObject);
-                if(Input.GetKey(KeyCode.Space)) {
-                    currentCell.Infect(Time.deltaTime + additionalInfection);
-                }
+                MakeObjDeactive(spaceObject);
+                MakeObjDeactive(eObject);
+                MakeObjDeactive(qObject);
             }
-        }
-        else {
-            MakeObjDeactive(spaceObject);
-            MakeObjDeactive(eObject);
-            MakeObjDeactive(qObject);
         }
     }
 }

@@ -11,10 +11,11 @@ public class HitEffect : MonoBehaviour
 
     void Update()
     {
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * fadeSpeed);
-        transform.position = new Vector2(transform.position.x, transform.position.y + Time.deltaTime * travelSpeed);
-        if(sr.color.a <= 0.0f) {
-            Destroy(gameObject);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * fadeSpeed);
+            transform.position = new Vector2(transform.position.x, transform.position.y + Time.deltaTime * travelSpeed);
+            if(sr.color.a <= 0.0f)
+                Destroy(gameObject);
         }
     }
 }

@@ -14,10 +14,12 @@ public class DNAProducer : MonoBehaviour
     }
 
     void Update(){
-        productionTimer -= Time.deltaTime;
-        if (productionTimer < 0){
-            gameManager.IncreaseDNAPoints(baseProduction);
-            productionTimer = baseTimer;
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            productionTimer -= Time.deltaTime;
+            if (productionTimer < 0){
+                gameManager.IncreaseDNAPoints(baseProduction);
+                productionTimer = baseTimer;
+            }
         }
     }
 }

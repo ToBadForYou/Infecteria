@@ -13,11 +13,9 @@ public class UnfadeEffect : MonoBehaviour
 
     void Update()
     {
-        if(image.color.a > 0.0f) {
-                image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a-Time.deltaTime);
-        }
-        else {
+        if(image.color.a > 0.0f)
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a-Time.deltaTime);
+        else
             Destroy(gameObject);
-        }
     }
 }

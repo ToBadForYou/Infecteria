@@ -24,16 +24,18 @@ public class BlinkEffect : MonoBehaviour
 
     void Update()
     {
-        float newAlpha = sr.color.a + Time.deltaTime * multiplier;
-        SetAlpha(newAlpha);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            float newAlpha = sr.color.a + Time.deltaTime * multiplier;
+            SetAlpha(newAlpha);
 
-        if(sr.color.a > maxAlpha) {
-            SetAlpha(maxAlpha);
-            InvertMultiplier();
-        }
-        else if(sr.color.a < minAlpha) {
-            SetAlpha(minAlpha);
-            InvertMultiplier();
+            if(sr.color.a > maxAlpha) {
+                SetAlpha(maxAlpha);
+                InvertMultiplier();
+            }
+            else if(sr.color.a < minAlpha) {
+                SetAlpha(minAlpha);
+                InvertMultiplier();
+            }
         }
     }
 }

@@ -18,14 +18,16 @@ public class DamageEffect : MonoBehaviour
 
     void Update()
     {
-        if(isHit) {
-            if (timePassed < totalDuration) {
-                timePassed+=Time.deltaTime;
-                sr.color = Color.Lerp(new Color(1.0f, 0.0f, 0.0f, 1.0f), originColor, timePassed / totalDuration);
-            }
-            else {
-                isHit = false;
-                timePassed = 0.0f;
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(isHit) {
+                if (timePassed < totalDuration) {
+                    timePassed+=Time.deltaTime;
+                    sr.color = Color.Lerp(new Color(1.0f, 0.0f, 0.0f, 1.0f), originColor, timePassed / totalDuration);
+                }
+                else {
+                    isHit = false;
+                    timePassed = 0.0f;
+                }
             }
         }
     }

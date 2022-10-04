@@ -22,13 +22,12 @@ public class RandomMoveTowards : MonoBehaviour
 
     void Update()
     {
-        float step = speed * Time.deltaTime;
-        
-        float diff = Vector2.Distance(transform.position, target);
-        if(diff <= 0.01f) {
-            target = GetNewTarget();
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            float step = speed * Time.deltaTime;
+            float diff = Vector2.Distance(transform.position, target);
+            if(diff <= 0.01f)
+                target = GetNewTarget();
+            transform.position = Vector2.MoveTowards(transform.position, target, step);
         }
-        
-        transform.position = Vector2.MoveTowards(transform.position, target, step);
     }
 }

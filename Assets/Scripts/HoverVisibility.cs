@@ -8,7 +8,8 @@ public class HoverVisibility : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public GameObject target;
 
     public void OnPointerEnter(PointerEventData eventData){
-        target.SetActive(true);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            target.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData){

@@ -18,21 +18,23 @@ public class AbsorbEffect : MonoBehaviour
 
     void Update()
     {
-        if(isActive) {
-            if(transform.childCount > 1) {
-                transform.GetChild(0).gameObject.SetActive(false);
-                childTransform.parent = null;
-            }
-            
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime*0.5f);
-            childSr.color = new Color(childSr.color.r, childSr.color.g, childSr.color.b, childSr.color.a - Time.deltaTime*0.5f);
-            
-            transform.Rotate(0, 0, 25*Time.deltaTime);
-            childTransform.Rotate(0, 0, 50*Time.deltaTime);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(isActive) {
+                if(transform.childCount > 1) {
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    childTransform.parent = null;
+                }
+                
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime*0.5f);
+                childSr.color = new Color(childSr.color.r, childSr.color.g, childSr.color.b, childSr.color.a - Time.deltaTime*0.5f);
+                
+                transform.Rotate(0, 0, 25*Time.deltaTime);
+                childTransform.Rotate(0, 0, 50*Time.deltaTime);
 
-            if(sr.color.a <= 0.0f) {
-                Destroy(childTransform.gameObject);
-                Destroy(gameObject);
+                if(sr.color.a <= 0.0f) {
+                    Destroy(childTransform.gameObject);
+                    Destroy(gameObject);
+                }
             }
         }
     }

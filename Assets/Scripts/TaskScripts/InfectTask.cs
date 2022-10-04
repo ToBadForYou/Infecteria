@@ -13,16 +13,16 @@ public class InfectTask : Task
     }    
 
     public override void Update(){
-        if (!unit.IsMoving()){
-            unit.FollowTarget(target);
-        }
-        
-        if(unit.AtPosition(target.transform.position)){
-            Infectable infectTarget = target.GetComponent<Infectable>();
-            if(infectTarget != null){
-                unit.InfectTarget(infectTarget);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if (!unit.IsMoving())
+                unit.FollowTarget(target);
+            
+            if(unit.AtPosition(target.transform.position)) {
+                Infectable infectTarget = target.GetComponent<Infectable>();
+                if(infectTarget != null)
+                    unit.InfectTarget(infectTarget);
+                FinishTask();
             }
-            FinishTask();
         }
     } 
 }

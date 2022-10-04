@@ -9,15 +9,16 @@ public class ReturnTask : Task
     }
 
     public override void Update(){
-        if(!unit.IsMoving()){
-            unit.FollowTarget(target);
-        }
-        if(unit.AtPosition(target.transform.position)){
-            Organ organ = target.GetComponent<Organ>();
-            if(organ != null){
-                organ.OnUnitReturn(unit);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(!unit.IsMoving())
+                unit.FollowTarget(target);
+
+            if(unit.AtPosition(target.transform.position)){
+                Organ organ = target.GetComponent<Organ>();
+                if(organ != null)
+                    organ.OnUnitReturn(unit);
+                FinishTask();
             }
-            FinishTask();
         }
     }    
 }

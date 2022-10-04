@@ -21,10 +21,11 @@ public class KnockbackEffect : MonoBehaviour
     }
 
     void Update() {
-        if(isGettingKnocked) {
-            tempGameObj.transform.position = Vector2.MoveTowards(tempGameObj.transform.position, knockbackPosition, knockbackSpeed * Time.deltaTime);
-            if(Vector2.Distance(tempGameObj.transform.position, knockbackPosition) < 0.01f) {
-                isGettingKnocked = false;
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(isGettingKnocked) {
+                tempGameObj.transform.position = Vector2.MoveTowards(tempGameObj.transform.position, knockbackPosition, knockbackSpeed * Time.deltaTime);
+                if(Vector2.Distance(tempGameObj.transform.position, knockbackPosition) < 0.01f)
+                    isGettingKnocked = false;
             }
         }
     }

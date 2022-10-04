@@ -24,17 +24,19 @@ public class Factory : Infectable
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
 
     void Update(){
-        if(bacteriaAmount < maxBacteriaAmount) {
-            time -= Time.deltaTime;
-            if(time <= 0.0f) {
-                GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
-                obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
-                MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
-                AddMicrobacteria(bacteria);
-                if(autoInfect) {
-                    bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject));
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(bacteriaAmount < maxBacteriaAmount) {
+                time -= Time.deltaTime;
+                if(time <= 0.0f) {
+                    GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
+                    obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
+                    MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
+                    AddMicrobacteria(bacteria);
+                    if(autoInfect) {
+                        bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject));
+                    }
+                    time = startTime;
                 }
-                time = startTime;
             }
         }
     }

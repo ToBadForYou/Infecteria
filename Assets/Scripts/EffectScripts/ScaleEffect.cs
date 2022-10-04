@@ -40,6 +40,7 @@ public class ScaleEffect : MonoBehaviour
 
     void Update()
     {
-        UpdateScale();
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            UpdateScale();
     }
 }

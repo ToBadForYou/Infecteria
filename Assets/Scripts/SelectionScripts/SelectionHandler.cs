@@ -96,70 +96,60 @@ public class SelectionHandler : MonoBehaviour
     }
 
     void Update(){
-        if(selectedUnits.units.Count > 0){
-
-            if(!controlPanel.activeSelf) {
-                controlPanel.SetActive(true);
-            }
-
-            if(Input.GetKeyDown(KeyCode.I)) { // Infect cell
-                AssignInfectTask();
-            }
-            else if(Input.GetKeyDown(KeyCode.F)) { // Follow player
-                AssignFollowTask();
-            }
-            else if(Input.GetKeyDown(KeyCode.M)) { // Move to mouse position
-                AssignMoveTask();
-            }
-            else if(Input.GetKeyDown(KeyCode.R)) { // Return to factory
-                AssignReturnTask();
-            }
-        }
-        else {
-            if(controlPanel.activeSelf) {
-                controlPanel.SetActive(false);
-            }
-        }
-
-        if(Input.GetMouseButtonDown(1)) {
-            selectionTransform.gameObject.SetActive(true);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
-            topLeft = mousePosition;
-            
-            isDown = true;
-        }
-        else if(Input.GetMouseButtonUp(1)) {
-            selectionTransform.gameObject.SetActive(false);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
-            bottomRight = mousePosition;
-
-            DeselectAllBacterias();
-            SelectUnits();
-
-            isDown = false;
-        }
-        if(isDown) {
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
-            float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
-            float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
-
-            selectionTransform.localScale = new Vector2(xScale, yScale);
-            
-            //Draw selection box
-            if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y) {
-                selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
-            }
-            else if(worldPosition.x < topLeft.x && worldPosition.y > topLeft.y) {
-                selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y - yScale/2.0f);
-            }
-            else if(worldPosition.x > topLeft.x && worldPosition.y > topLeft.y) {
-                selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y - yScale/2.0f);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(selectedUnits.units.Count > 0){
+                if(!controlPanel.activeSelf)
+                    controlPanel.SetActive(true);
+                if(Input.GetKeyDown(KeyCode.I)) // Infect cell
+                    AssignInfectTask();
+                else if(Input.GetKeyDown(KeyCode.F)) // Follow player
+                    AssignFollowTask();
+                else if(Input.GetKeyDown(KeyCode.M)) // Move to mouse position
+                    AssignMoveTask();
+                else if(Input.GetKeyDown(KeyCode.R)) // Return to factory
+                    AssignReturnTask();
             }
             else {
-                selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y + yScale/2.0f);
+                if(controlPanel.activeSelf)
+                    controlPanel.SetActive(false);
+            }
+
+            if(Input.GetMouseButtonDown(1)) {
+                selectionTransform.gameObject.SetActive(true);
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
+                topLeft = mousePosition;
+                
+                isDown = true;
+            }
+            else if(Input.GetMouseButtonUp(1)) {
+                selectionTransform.gameObject.SetActive(false);
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
+                bottomRight = mousePosition;
+
+                DeselectAllBacterias();
+                SelectUnits();
+
+                isDown = false;
+            }
+            if(isDown) {
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
+                float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
+                float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
+
+                selectionTransform.localScale = new Vector2(xScale, yScale);
+                
+                //Draw selection box
+                if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
+                else if(worldPosition.x < topLeft.x && worldPosition.y > topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y - yScale/2.0f);
+                else if(worldPosition.x > topLeft.x && worldPosition.y > topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y - yScale/2.0f);
+                else
+                    selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y + yScale/2.0f);
             }
         }
     }

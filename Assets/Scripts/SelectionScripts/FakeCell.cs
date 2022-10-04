@@ -8,7 +8,8 @@ public class FakeCell : MonoBehaviour
     public SpriteRenderer sr;
 
     void OnMouseEnter() {
-        sr.color = new Color(0.0f, 1.0f, 0.0f);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            sr.color = new Color(0.0f, 1.0f, 0.0f);
     }
 
     void OnMouseDown() {

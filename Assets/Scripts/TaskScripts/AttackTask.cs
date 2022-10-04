@@ -9,21 +9,21 @@ public class AttackTask : Task
     }
 
     public override void Update(){
-        if (target != null){
-            bool targetInRange = unit.InRange(target.transform.position);
-            if (unit.CanMove() && !unit.IsMoving() && !targetInRange){
-                unit.FollowTarget(target);
-            } else if (targetInRange) {
-                if(unit.CanMove() && unit.IsMoving()){
-                    unit.StopMoving();
-                }
-                if (unit.AttackTarget(target)){
-                    FinishTask();
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if (target != null){
+                bool targetInRange = unit.InRange(target.transform.position);
+                if (unit.CanMove() && !unit.IsMoving() && !targetInRange){
+                    unit.FollowTarget(target);
+                } else if (targetInRange) {
+                    if(unit.CanMove() && unit.IsMoving())
+                        unit.StopMoving();
+                    if (unit.AttackTarget(target))
+                        FinishTask();
                 }
             }
-        }
-        else{
-            FinishTask();
+            else{
+                FinishTask();
+            }
         }
     }
 }

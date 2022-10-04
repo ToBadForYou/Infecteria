@@ -11,15 +11,17 @@ public class DetectorUnit : Unit
     public Color idleColor = new Color(1, 1, 1, 0.4f);
 
     new void Update(){
-        base.Update();  
-        if(target != null){
-            attacking = true;
-            spriteRenderer.color = detectedColor;
-            Attack();
-        } else if (attacking){
-            attacking = false;
-            spriteRenderer.color = idleColor;
-            StopAttack();
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            base.Update();  
+            if(target != null){
+                attacking = true;
+                spriteRenderer.color = detectedColor;
+                Attack();
+            } else if (attacking){
+                attacking = false;
+                spriteRenderer.color = idleColor;
+                StopAttack();
+            }
         }
     }
 

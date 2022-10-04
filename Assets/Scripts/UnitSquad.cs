@@ -9,8 +9,9 @@ public class UnitSquad : MonoBehaviour
     public AI AIBehaviour;
 
     void Update(){
-        if(AIBehaviour != null){
-            AIBehaviour.Update();
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(AIBehaviour != null)
+                AIBehaviour.Update();
         }
     }
 

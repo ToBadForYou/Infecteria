@@ -17,18 +17,19 @@ public class UnitMovement : MonoBehaviour
     }
 
     void Update(){
-        if(moving) {
-            Vector2 targetPosition = positionTarget;
-            if(followTarget != null){
-                targetPosition = followTarget.transform.position;
-            }
-            float step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition + offset, step);
-            if(Vector2.Distance(transform.position, targetPosition + offset) <= 0.2f) {
-                moving = false;
-                ownerUnit.OnReachedDestination(followTarget);
-            }
-        }       
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(moving) {
+                Vector2 targetPosition = positionTarget;
+                if(followTarget != null)
+                    targetPosition = followTarget.transform.position;
+                float step = speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition + offset, step);
+                if(Vector2.Distance(transform.position, targetPosition + offset) <= 0.2f) {
+                    moving = false;
+                    ownerUnit.OnReachedDestination(followTarget);
+                }
+            }       
+        }
     }
 
     public void MoveToPosition(Vector2 pos){

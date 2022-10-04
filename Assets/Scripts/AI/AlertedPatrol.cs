@@ -15,8 +15,8 @@ public class AlertedPatrol: AI
     }
 
     public override void Update(){
-        if(scout.GetTaskType() == TaskType.SEARCH){
-            Debug.Log("Searching...");
-        }
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            if(scout.GetTaskType() == TaskType.SEARCH)
+                Debug.Log("Searching...");
     }
 }

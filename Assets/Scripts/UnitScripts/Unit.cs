@@ -31,13 +31,14 @@ public class Unit : MonoBehaviour
     }
 
     protected void Update(){
-        if (stats.IsAggressive()){
-            if(!CanAttack()){
-                stats.DecreaseAttackTimer(Time.deltaTime);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if (stats.IsAggressive()){
+                if(!CanAttack())
+                    stats.DecreaseAttackTimer(Time.deltaTime);
+                FindHostileInProximity();
             }
-            FindHostileInProximity();
+            UpdateCurrentTask();
         }
-        UpdateCurrentTask();
     }
 
     public TaskType GetTaskType(){

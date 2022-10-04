@@ -44,11 +44,10 @@ public class SelectCell : MonoBehaviour
     }
 
     void Update(){
-        if(selectionMenu) {
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-                CloseSelection();
-            }
-        }
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            if(selectionMenu)
+                if(Input.GetKeyDown(KeyCode.Escape))
+                    CloseSelection();
     }
 
 }

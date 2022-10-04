@@ -16,27 +16,29 @@ public class SearchTask : Task
     }
 
     public override void Update(){
-        if(target == null){
-            if(searchList.Count > 1){
-                target = searchList[0].gameObject;
-                searchList.RemoveAt(0);
-            }
-            else {
-                FinishTask();
-            }
-        }
-        else {
-            if(!unit.IsMoving()){
-                unit.FollowTarget(target);
-            }
-            if(unit.AtPosition(target.transform.position)){
-                Infectable infectable = target.GetComponent<Infectable>();
-                if(infectable.isInfected || infectable.infectionAmount/infectable.maxInfectionAmount > 0.5){
-                    ownerSquad.Infect(infectable);
-                    unit.GiveTask(new ReturnTask(unit, unit.parent));
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            if(target == null){
+                if(searchList.Count > 1){
+                    target = searchList[0].gameObject;
+                    searchList.RemoveAt(0);
+                }
+                else {
                     FinishTask();
                 }
-                target = null;
+            }
+            else {
+                if(!unit.IsMoving()){
+                    unit.FollowTarget(target);
+                }
+                if(unit.AtPosition(target.transform.position)){
+                    Infectable infectable = target.GetComponent<Infectable>();
+                    if(infectable.isInfected || infectable.infectionAmount/infectable.maxInfectionAmount > 0.5){
+                        ownerSquad.Infect(infectable);
+                        unit.GiveTask(new ReturnTask(unit, unit.parent));
+                        FinishTask();
+                    }
+                    target = null;
+                }
             }
         }
     }

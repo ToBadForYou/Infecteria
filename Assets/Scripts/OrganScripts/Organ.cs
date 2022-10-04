@@ -21,10 +21,12 @@ public class Organ : MonoBehaviour
     }
 
     protected void Update(){
-        nextAntibody -= Time.deltaTime;
-        if(currentAntibodies < maxStoredAntibodies && nextAntibody < 0){
-            nextAntibody = antibodyProductionTime;
-            currentAntibodies += 1;
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+            nextAntibody -= Time.deltaTime;
+            if(currentAntibodies < maxStoredAntibodies && nextAntibody < 0){
+                nextAntibody = antibodyProductionTime;
+                currentAntibodies += 1;
+            }
         }
     }
 
