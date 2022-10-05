@@ -41,6 +41,56 @@ public class Factory : Infectable
             }
         }
     }
+    
+    public string GetAttackDirection() {
+        Vector2 playerPos = GameObject.Find("Player").transform.position;
+        
+        float upDownRange = 4.5f;
+        float leftRightRange = 8.5f;
+
+        if(transform.position.x < playerPos.x + leftRightRange && transform.position.x > playerPos.x - leftRightRange) {
+            if(transform.position.y > playerPos.y)
+                return "up";
+            else
+                return "down";
+        }
+        else if(transform.position.y < playerPos.y + upDownRange && transform.position.y > playerPos.y - upDownRange) {
+            if(transform.position.x > playerPos.x)
+                return "right";
+            else
+                return "left";
+        }
+
+        return "none";
+    }
+
+    [SerializeField] private GameObject warningPrefab;
+    public override void OnGettingCured() {
+        string attackDir = GetAttackDirection();
+        GameObject player = GameObject.Find("Player");
+        Vector2 playerPos = player.transform.position;
+        Vector2 pos = new Vector2();
+        GameObject temp = null;
+        switch(attackDir) {
+            case "up":
+                pos = new Vector2(transform.position.x, playerPos.y + 4.0f);
+                temp = Instantiate(warningPrefab, pos, Quaternion.identity);
+                break;
+            case "down":
+                pos = new Vector2(transform.position.x, playerPos.y - 4.0f);
+                temp = Instantiate(warningPrefab, pos, Quaternion.identity);
+                break;
+            case "left":
+                pos = new Vector2(playerPos.x - 8.0f, transform.position.y);
+                temp = Instantiate(warningPrefab, pos, Quaternion.identity);
+                break;
+            case "right":
+                pos = new Vector2(playerPos.x + 8.0f, transform.position.y);
+                temp = Instantiate(warningPrefab, pos, Quaternion.identity);
+                break;
+        }
+        temp.transform.parent = player.transform;
+    }
 
     public override void OnCure(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();

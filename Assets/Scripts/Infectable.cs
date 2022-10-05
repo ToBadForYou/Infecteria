@@ -9,6 +9,9 @@ public class Infectable : MonoBehaviour
     public bool isInfected;
 
     public void Infect(float amount) {
+        if(amount < 0.0f)
+            OnGettingCured();
+
         infectionAmount = Mathf.Clamp(infectionAmount + amount, 0f, 10f);
         if(!isInfected && infectionAmount >= maxInfectionAmount) {
             infectionAmount = maxInfectionAmount;
@@ -23,6 +26,10 @@ public class Infectable : MonoBehaviour
     }
 
     public virtual void OnCure(){
+
+    }
+
+    public virtual void OnGettingCured() {
 
     }
 

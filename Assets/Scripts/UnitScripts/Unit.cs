@@ -142,7 +142,6 @@ public class Unit : MonoBehaviour
         AudioSource audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
         audioSrc.clip = hitSoundEffects[Random.Range(0, hitSoundEffects.Count)];
         audioSrc.Play();
-        
         GetComponent<DamageEffect>().Activate();
     }
 

@@ -846,8 +846,8 @@ RectTransform:
   - {fileID: 1435045090}
   - {fileID: 1338986324}
   - {fileID: 336580805}
-  - {fileID: 313478587}
   - {fileID: 164600040}
+  - {fileID: 313478587}
   - {fileID: 1255069935}
   - {fileID: 2009071183}
   - {fileID: 262452549}
@@ -3744,7 +3744,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
