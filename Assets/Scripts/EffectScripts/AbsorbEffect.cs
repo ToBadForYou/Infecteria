@@ -9,13 +9,12 @@ public class AbsorbEffect : MonoBehaviour
     public Transform childTransform;
 
     SpriteRenderer sr;
-    SpriteRenderer childSr;
 
     void Start() {
         sr = GetComponent<SpriteRenderer>();
-        childSr = childTransform.gameObject.GetComponent<SpriteRenderer>();
     }
 
+    public List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     void Update()
     {
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
@@ -26,7 +25,9 @@ public class AbsorbEffect : MonoBehaviour
                 }
                 
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime*0.5f);
-                childSr.color = new Color(childSr.color.r, childSr.color.g, childSr.color.b, childSr.color.a - Time.deltaTime*0.5f);
+                for(int i = 0; i < spriteRenderers.Count; i++) {
+                    spriteRenderers[i].color = new Color(spriteRenderers[i].color.r, spriteRenderers[i].color.g, spriteRenderers[i].color.b, spriteRenderers[i].color.a - Time.deltaTime*0.5f);
+                }
                 
                 transform.Rotate(0, 0, 25*Time.deltaTime);
                 childTransform.Rotate(0, 0, 50*Time.deltaTime);
