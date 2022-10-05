@@ -18,6 +18,8 @@ public class Cell : Infectable
     public AudioSource source;
     public AudioClip soundEffect;
 
+    public bool belongsToHeart;
+
     void Start()
     {
         originPos = transform.position;
@@ -42,6 +44,7 @@ public class Cell : Infectable
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseFactoryAmount(1);
         GameObject factory = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
+        factory.GetComponent<Factory>().belongsToHeart = belongsToHeart;
         gm.ReplaceCell(gameObject, factory);
         Destroy(gameObject);
     }

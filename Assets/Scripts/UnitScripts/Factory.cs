@@ -16,6 +16,7 @@ public class Factory : Infectable
     public int maxLevel = 4;
     public GameObject[] structures = new GameObject[4];
 
+    public bool belongsToHeart;
     public bool autoInfect = false;
     public Infectable infectTarget;
     public GameObject cellPrefab;
@@ -49,7 +50,11 @@ public class Factory : Infectable
             Destroy(structure);
         }
         GameObject cell = Instantiate(cellPrefab, transform.position, Quaternion.identity);
-        gm.ReplaceCell(gameObject, cell);      
+
+        if(belongsToHeart)
+            GameObject.Find("Heart").GetComponent<Organ>().cells.Add(cell.GetComponent<Cell>());
+
+        gm.ReplaceCell(gameObject, cell);
         Destroy(gameObject);
     }
 

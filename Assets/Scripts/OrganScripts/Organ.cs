@@ -55,6 +55,7 @@ public class Organ : MonoBehaviour
             float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);
             float yDiff = Mathf.Abs(objs[i].transform.position.y - transform.position.y);
             if(xDiff <= xRange && yDiff <= yRange) {
+                objs[i].GetComponent<Cell>().belongsToHeart = true;
                 cells.Add(objs[i].GetComponent<Cell>());
                 objs[i].GetComponent<SpriteRenderer>().color = cellColor;
                 //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
