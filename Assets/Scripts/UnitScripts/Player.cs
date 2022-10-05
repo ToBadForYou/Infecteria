@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : Unit
 {
+    public TextMeshProUGUI hpTextMesh;
+
     public Cell currentCell;
     public Factory currentFactory;
 
@@ -52,6 +55,8 @@ public class Player : Unit
 
     new void Update()
     {
+        hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
+
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             // Skilltree
             if(Input.GetKeyDown(KeyCode.T)) {
