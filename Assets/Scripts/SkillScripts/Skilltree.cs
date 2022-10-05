@@ -10,8 +10,11 @@ public class Skilltree : MonoBehaviour
 
     public void NotifyPlayer() {
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<PlayerMovement>().additionalSpeed = activeSpeedSkill.effect;
-        player.GetComponent<Player>().additionalInfection = activeInfectionRateSkill.effect;
-        player.GetComponent<Player>().stats.IncreaseAdditionalHealth((int)activeHPSkill.effect);
+        if(activeSpeedSkill)
+            player.GetComponent<PlayerMovement>().additionalSpeed = activeSpeedSkill.effect;
+        if(activeInfectionRateSkill)
+            player.GetComponent<Player>().additionalInfection = activeInfectionRateSkill.effect;
+        if(activeHPSkill)
+            player.GetComponent<Player>().stats.IncreaseAdditionalHealth((int)activeHPSkill.effect);
     }
 }

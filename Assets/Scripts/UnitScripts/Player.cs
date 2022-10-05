@@ -62,7 +62,6 @@ public class Player : Unit
             if(Input.GetKeyDown(KeyCode.T)) {
                 if(!skilltree.activeSelf) {
                     skilltree.SetActive(true);
-                    skilltree.transform.position = transform.position;
                     GetComponent<PlayerMovement>().isPaused = true;
                 }
                 else {
