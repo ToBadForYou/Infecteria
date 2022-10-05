@@ -30,6 +30,13 @@ public class GameManager : MonoBehaviour
         cellAmount = GameObject.FindGameObjectsWithTag("Cell").Length;
     }
 
+    public void SetWinStats() {
+        string infectedStats = "infected cells:       " + infectedCells + "\n";
+        string absorbedStats = "absorbed cells:       " + absorbedCells + "\n";
+        string factoriesStats = "factories:            " + factoryAmount + "\n";
+        GameObject.Find("stats").GetComponent<TextMeshProUGUI>().text = infectedStats + absorbedStats + factoriesStats;
+    }
+
     public void UpdateTextMesh() {
         textMesh.text = "Absorbed Cells: " + absorbedCells + "\nInfected Cells: " + infectedCells + " / " + cellAmount + "\nFactories: " + factoryAmount;
     }
@@ -46,10 +53,12 @@ public class GameManager : MonoBehaviour
         DNAPoints -= amount;
         DNAPointsText.text = DNAPoints.ToString();
     }
+
     public void IncreaseDNAPoints(int amount) {
         DNAPoints += amount;
         DNAPointsText.text = DNAPoints.ToString();
     }
+
     public int GetDNAPointAmount() {
         return DNAPoints;
     }
