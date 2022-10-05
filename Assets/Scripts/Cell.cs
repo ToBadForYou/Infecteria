@@ -66,6 +66,9 @@ public class Cell : Infectable
     public override void OnInfect(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(1);
+        
+        Heart heart = GameObject.Find("Heart").GetComponent<Heart>();
+        heart.RemoveCell(this); // Removes only if this cell is in the list
     }
 
     public override void OnInfectUpdate(float amount){
