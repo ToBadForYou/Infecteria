@@ -10,7 +10,6 @@ public class Unit : MonoBehaviour
     public List<GameObject> inRange;
 
     public UnitStats stats;
-    public float additionalHp = 0.0f; //TODO: Move to player
 
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();

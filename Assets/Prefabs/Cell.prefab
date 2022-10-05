@@ -406,7 +406,7 @@ Transform:
   - {fileID: 1427935809}
   - {fileID: 10664365}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7198534172057317649
 SpriteRenderer:
@@ -526,3 +526,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   childTransform: {fileID: 1427935809}
+  spriteRenderers:
+  - {fileID: 1427935810}
+  - {fileID: 7336420520501473442}

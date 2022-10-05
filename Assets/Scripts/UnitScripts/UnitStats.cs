@@ -13,6 +13,8 @@ public class UnitStats
     private float range;
     private bool aggressive;
 
+    private int additionalHp = 0;
+
     public UnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
         SetHealth(hp);
         SetCurrentHealth(currentHp);
@@ -26,6 +28,10 @@ public class UnitStats
     // SETTERS
     public void SetDamage(int dmg) { damage = dmg; }
     public void SetHealth(int hp) { health = hp; }
+    public void IncreaseAdditionalHealth(int amount) {
+        additionalHp += amount;
+        currentHealth += amount;
+    }
     public void SetCurrentHealth(int hp) { currentHealth = hp; }
     public void DecreaseCurrentHealth(int amount) { currentHealth -= amount; }
     public void SetAttackSpeed(int speed) { attackSpeed = speed; }
@@ -36,7 +42,7 @@ public class UnitStats
 
     // GETTERS
     public int GetDamage() { return damage; }
-    public int GetHealth() { return health; }
+    public int GetHealth() { return health + additionalHp; }
     public int GetCurrentHealth() { return currentHealth; }
     public int GetAttackSpeed() { return attackSpeed; }
     public float GetAttackTimer() { return attackTimer; }

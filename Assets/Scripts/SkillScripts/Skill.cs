@@ -4,53 +4,47 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Skill : MonoBehaviour
 {
-    public bool isActive;
+    [SerializeField] private Skilltree skilltree;
+    [SerializeField] private Button nextButton;
+
     public int cost;
-    public Skill prevSkill;
-    public Image sr;
-    public bool hovering;
-
     public float effect;
+    
+    bool isClicked;
 
-    public void OnPointerEnter(PointerEventData eventData) {
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(!isActive && prevSkill.isActive)
-                sr.color = new Color(1.0f, 1.0f, 1.0f, 0.8f);
+    public void ActivateNextButton() {
+        if(nextButton) {
+            nextButton.interactable = true;
         }
     }
 
-    public void Upgrade() {
+    public void MakeActive() {
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(!isActive && prevSkill.isActive) {
+            if(!isClicked) {
                 GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
                 if(gm.DNAPoints >= cost) {
                     gm.DNAPoints -= cost;
-                    isActive = true;
-                    sr.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                    Skilltree tree = GameObject.Find("skilltree").GetComponent<Skilltree>();
                     switch (gameObject.name)
                     {
                         case "hp":
-                            tree.activeHPSkill = this;
+                            skilltree.activeHPSkill = this;
+                            ActivateNextButton();
                             break;
-                        case "speed":
-                            tree.activeSpeedSkill = this;
+                         case "speed":
+                            skilltree.activeSpeedSkill = this;
+                            ActivateNextButton();
                             break;
                         case "infection":
-                            tree.activeInfectionRateSkill = this;
+                            skilltree.activeInfectionRateSkill = this;
+                            ActivateNextButton();
                             break;
                     }
-                    tree.NotifyPlayer();
-                }  
+                    skilltree.NotifyPlayer();
+                    isClicked = true;
+                }
             }
         }
-    }
-
-    public void OnPointerExit(PointerEventData eventData) {
-        if(!isActive && prevSkill.isActive)
-            sr.color = new Color(1.0f, 1.0f, 1.0f, 0.4f);
     }
 }
