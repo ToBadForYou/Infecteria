@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mousePosition;
     public float speed = 5.0f;
     public float additionalSpeed = 0.0f;
+    public GameObject knockbackObject;
     public bool isPaused;
 
     public Vector3 lastMoveDir;
@@ -16,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
         speed = movementSpeed;
     }
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if(!isPaused) {
                 float step = speed * Time.deltaTime;
@@ -31,8 +31,10 @@ public class PlayerMovement : MonoBehaviour
                 float horizontal = Input.GetAxis("Horizontal");
                 float vertical = Input.GetAxis("Vertical");
                 Vector3 movementVector = new Vector3(horizontal * step, vertical * step, 0);
-                lastMoveDir = movementVector.normalized;
-                transform.position += movementVector;
+                if(movementVector.magnitude > 0){
+                    lastMoveDir = movementVector.normalized;
+                    transform.position += movementVector;
+                }
             }
         }
     }
