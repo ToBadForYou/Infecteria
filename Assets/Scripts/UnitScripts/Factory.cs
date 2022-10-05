@@ -73,7 +73,7 @@ public class Factory : Infectable
 
     public bool CanUpgrade(){
         bool levelsLeft = currentLevel < maxLevel;
-        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().sugar >= upgradeCost;
+        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().GetSugarAmount() >= upgradeCost;
         return levelsLeft && hasPoints;
     }
 
@@ -89,7 +89,7 @@ public class Factory : Infectable
         if(CanUpgrade()) {
             upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
-            GameObject.Find("GameManager").GetComponent<GameManager>().DNAPoints -= upgradeCost;
+            GameObject.Find("GameManager").GetComponent<GameManager>().DecreaseDNAPoints(upgradeCost);
             upgradeCost *= 2;
         }
     }

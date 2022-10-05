@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI sugarText;
     public TextMeshProUGUI textMesh;
 
-    public int DNAPoints = 0;
-    public int sugar = 0;
+    [SerializeField] private int DNAPoints = 0;
+    [SerializeField] private int sugar = 0;
     
     public int absorbedCells = 0;
     public int infectedCells = 0;
@@ -38,11 +38,21 @@ public class GameManager : MonoBehaviour
         sugar += amount;
         sugarText.text = sugar.ToString();
     }
+    public int GetSugarAmount() {
+        return sugar;
+    }
 
+    public void DecreaseDNAPoints(int amount) {
+        DNAPoints -= amount;
+        DNAPointsText.text = DNAPoints.ToString();
+    }
     public void IncreaseDNAPoints(int amount) {
         DNAPoints += amount;
         DNAPointsText.text = DNAPoints.ToString();
-    }   
+    }
+    public int GetDNAPointAmount() {
+        return DNAPoints;
+    }
 
     public void IncreaseAbsorbedCells() {
         absorbedCells++;

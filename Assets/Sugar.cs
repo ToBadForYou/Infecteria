@@ -19,7 +19,7 @@ public class Sugar : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.name == "Player") {
-            GameObject.Find("GameManager").GetComponent<GameManager>().sugar++;
+            GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(1);
             Destroy(gameObject);
         }
     }

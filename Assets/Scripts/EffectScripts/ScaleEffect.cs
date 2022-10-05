@@ -22,6 +22,20 @@ public class ScaleEffect : MonoBehaviour
         targetScaleY = initialScale + Random.Range(-scaleFactor, scaleFactor);
     }
 
+    private void FixFactoryProducers() {
+        List<Transform> transforms = new List<Transform>();
+        if (transform.childCount > 0)
+            for(int i = 0; i < transform.childCount; i++)
+                if(transform.GetChild(i).gameObject.name.Contains("Producer"))
+                    transforms.Add(transform.GetChild(i));
+        for(int i = 0; i < transforms.Count; i++) {
+            float xScaleDiff = transform.localScale.x - 1;
+            float yScaleDiff = transform.localScale.y - 1;
+            transforms[i].localScale = new Vector2(1.0f-xScaleDiff, 1.0f-yScaleDiff);
+            Debug.Log("GOING IN");
+        }
+    }
+
     private void UpdateScale() {
         float step = 0.15f * Time.deltaTime;
         transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(targetScaleX, targetScaleY), step);
@@ -36,6 +50,8 @@ public class ScaleEffect : MonoBehaviour
         if(Vector2.Distance(transform.localScale, new Vector2(targetScaleX, targetScaleY)) <= 0.01f) {
             SetTargetScale();
         }
+
+        FixFactoryProducers();
     }
 
     void Update()

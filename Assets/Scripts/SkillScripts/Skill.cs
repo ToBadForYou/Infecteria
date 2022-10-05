@@ -24,8 +24,8 @@ public class Skill : MonoBehaviour
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if(!isClicked) {
                 GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-                if(gm.DNAPoints >= cost) {
-                    gm.DNAPoints -= cost;
+                if(gm.GetDNAPointAmount() >= cost) {
+                    gm.DecreaseDNAPoints(cost);
                     switch (gameObject.name)
                     {
                         case "hp":
