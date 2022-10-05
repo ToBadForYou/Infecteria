@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Microbacteria
   - Minimap
-  - 
-  - 
+  - FogOfWar
+  - AdditionalFogOfWar
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Overlay
     uniqueID: 4272607857
+    locked: 0
+  - name: FogOfWar
+    uniqueID: 1262695485
     locked: 0
