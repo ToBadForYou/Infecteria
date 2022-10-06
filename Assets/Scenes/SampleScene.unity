@@ -16133,6 +16133,7 @@ MonoBehaviour:
   wallObj: {fileID: 5198131474999746390, guid: 9d4fcce38da693047a7cd0f813bfaec3, type: 3}
   regionObj: {fileID: 2549742827686061769, guid: 9ab1d100bd6a96144aa34dd6d46bb1ef, type: 3}
   checkpointObj: {fileID: 950520524478648260, guid: dfe5a101794661747be53012666d7a06, type: 3}
+  checkpointNodeObj: {fileID: 1057881899675549492, guid: ff878b4298532a742968cf1a351023b0, type: 3}
   img: {fileID: 2800000, guid: 4b9ab2527593df546a16fe9b28880c29, type: 3}
 --- !u!4 &2022304151
 Transform:
