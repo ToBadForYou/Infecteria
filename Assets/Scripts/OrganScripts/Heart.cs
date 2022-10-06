@@ -9,16 +9,26 @@ public class Heart : Organ
     public int maxReportAntibodies = 6;
     public int minimumSpawn = 5;
 
+    public int scoutAntibodies = 20;
+    public int maxScoutAntibodies = 50;
+    public float nextScoutAntibody = 5;
+    public int scoutAntibodyProductionTime = 30;
+
     new void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             base.Update();
             nextScout -= Time.deltaTime;
+            nextScoutAntibody -= Time.deltaTime;
             if (nextScout < 0){
                 nextScout = scoutProductionTime;
                 Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
                 GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
                 newScout.SetTarget(gm.cells[Random.Range(0, gm.cells.Count)]);
-            } 
+            }
+            if (scoutAntibodies < maxScoutAntibodies && nextScoutAntibody < 0){
+                nextScoutAntibody = scoutAntibodyProductionTime;
+                scoutAntibodies += 1;
+            }
         }
     }
 
@@ -44,8 +54,8 @@ public class Heart : Organ
                 antibody.GiveTask(new ReturnTask(antibody, gameObject));
             } 
         }
-        else if(randomAmount <= currentAntibodies){
-            currentAntibodies -= randomAmount;
+        else if(randomAmount <= scoutAntibodies){
+            scoutAntibodies -= randomAmount;
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, randomAmount);
             Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
             UnitSquad newSquad = CreateSquad(antibodies);
