@@ -113,12 +113,12 @@ public class BorderGenerator : MonoBehaviour
 
         foreach(KeyValuePair<int, int[]> entry in bluePairs){
             int yDiff = entry.Value[1] - entry.Value[0];
-            GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200 + 1), Quaternion.identity); // Put new object where last object was
-            checkpoint.transform.localScale = new Vector2(1, 2*yDiff + 4);
+            GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200 + 0.5f), Quaternion.identity); // Put new object where last object was
+            checkpoint.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, 1f * yDiff + 1);
 
             Checkpoint checkpointScript = checkpoint.GetComponent<Checkpoint>();
-            for (int i = 0; i < (yDiff+8)/4; i++){
-                GameObject checkpointNode = Instantiate(checkpointNodeObj, new Vector2(entry.Key - 200, entry.Value[1] - i * 4 - 200), Quaternion.identity);
+            for (int i = 0; i < (yDiff+4)/4; i++){
+                GameObject checkpointNode = Instantiate(checkpointNodeObj, new Vector2(entry.Key - 200, entry.Value[1] - i * 4 - 202), Quaternion.identity);
                 checkpointScript.AddNode(checkpointNode);
                 checkpointNode.GetComponent<CheckpointNode>().SetCheckpoint(checkpointScript);
             }
