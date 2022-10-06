@@ -116,8 +116,11 @@ public class BorderGenerator : MonoBehaviour
             GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200 + 1), Quaternion.identity); // Put new object where last object was
             checkpoint.transform.localScale = new Vector2(1, 2*yDiff + 4);
 
+            Checkpoint checkpointScript = checkpoint.GetComponent<Checkpoint>();
             for (int i = 0; i < (yDiff+8)/4; i++){
-                Instantiate(checkpointNodeObj, new Vector2(entry.Key - 200, entry.Value[1] - i * 4 - 200), Quaternion.identity);
+                GameObject checkpointNode = Instantiate(checkpointNodeObj, new Vector2(entry.Key - 200, entry.Value[1] - i * 4 - 200), Quaternion.identity);
+                checkpointScript.AddNode(checkpointNode);
+                checkpointNode.GetComponent<CheckpointNode>().SetCheckpoint(checkpointScript);
             }
         }
     }

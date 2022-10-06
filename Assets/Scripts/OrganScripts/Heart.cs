@@ -9,8 +9,7 @@ public class Heart : Organ
     public int maxReportAntibodies = 6;
     public int minimumSpawn = 5;
 
-    new void Update()
-    {
+    new void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             base.Update();
             nextScout -= Time.deltaTime;

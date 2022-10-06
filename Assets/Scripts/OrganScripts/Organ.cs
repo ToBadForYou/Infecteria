@@ -40,8 +40,7 @@ public class Organ : MonoBehaviour
         }
     }
 
-    IEnumerator LateStart(float waitTime)
-    {
+    IEnumerator LateStart(float waitTime){
         yield return new WaitForSeconds(waitTime);
         FillWithNearbyCells();
     }

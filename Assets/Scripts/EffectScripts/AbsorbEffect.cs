@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbsorbEffect : MonoBehaviour
 {
     public bool isActive = false;
+    public bool noRotate;
 
     public Transform childTransform;
 
@@ -15,8 +16,7 @@ public class AbsorbEffect : MonoBehaviour
     }
 
     public List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if(isActive) {
                 if(transform.childCount > 1) {
@@ -29,8 +29,10 @@ public class AbsorbEffect : MonoBehaviour
                     spriteRenderers[i].color = new Color(spriteRenderers[i].color.r, spriteRenderers[i].color.g, spriteRenderers[i].color.b, spriteRenderers[i].color.a - Time.deltaTime*0.5f);
                 }
                 
-                transform.Rotate(0, 0, 25*Time.deltaTime);
-                childTransform.Rotate(0, 0, 50*Time.deltaTime);
+                if(!noRotate){
+                    transform.Rotate(0, 0, 25*Time.deltaTime);
+                    childTransform.Rotate(0, 0, 50*Time.deltaTime);
+                }
 
                 if(sr.color.a <= 0.0f) {
                     Destroy(childTransform.gameObject);
