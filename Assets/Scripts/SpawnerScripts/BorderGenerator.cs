@@ -7,6 +7,7 @@ public class BorderGenerator : MonoBehaviour
     public GameObject wallObj;
     public GameObject regionObj;
     public GameObject checkpointObj;
+    public GameObject checkpointNodeObj;
     public Texture2D img;
 
     private int width = 399;
@@ -112,8 +113,12 @@ public class BorderGenerator : MonoBehaviour
 
         foreach(KeyValuePair<int, int[]> entry in bluePairs){
             int yDiff = entry.Value[1] - entry.Value[0];
-            GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200), Quaternion.identity); // Put new object where last object was
-            checkpoint.transform.localScale = new Vector2(1, 2*yDiff);
+            GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200 + 1), Quaternion.identity); // Put new object where last object was
+            checkpoint.transform.localScale = new Vector2(1, 2*yDiff + 4);
+
+            for (int i = 0; i < (yDiff+8)/4; i++){
+                Instantiate(checkpointNodeObj, new Vector2(entry.Key - 200, entry.Value[1] - i * 4 - 200), Quaternion.identity);
+            }
         }
     }
 
