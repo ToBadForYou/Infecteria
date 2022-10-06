@@ -6,6 +6,7 @@ public class BorderGenerator : MonoBehaviour
 {
     public GameObject wallObj;
     public GameObject regionObj;
+    public GameObject checkpointObj;
     public Texture2D img;
 
     private int width = 399;
@@ -21,11 +22,10 @@ public class BorderGenerator : MonoBehaviour
 
     Dictionary<float, List<GameObject>> xLines = new Dictionary<float, List<GameObject>>();
 
-    void Start()
-    {
+    void Start(){
         Color[] pixels = img.GetPixels();
-        foreach (Color color in pixels)
-        {
+        Dictionary<int, int[]> bluePairs = new Dictionary<int, int[]>();
+        foreach (Color color in pixels){
             xCounter++;
             
             if(color.Equals(Color.black)) {
@@ -91,6 +91,14 @@ public class BorderGenerator : MonoBehaviour
 
                 lastObj = null;
             }
+            else if(color.Equals(Color.blue)){
+                if(bluePairs.ContainsKey(xCounter)){
+                    bluePairs[xCounter][1] = yCounter;
+                } 
+                else {
+                    bluePairs[xCounter] = new int[] {yCounter, 0};
+                }
+            }
             else {
                 lastObj = null;
             }
@@ -101,6 +109,12 @@ public class BorderGenerator : MonoBehaviour
             }
         }
         HandleXLines();
+
+        foreach(KeyValuePair<int, int[]> entry in bluePairs){
+            int yDiff = entry.Value[1] - entry.Value[0];
+            GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200), Quaternion.identity); // Put new object where last object was
+            checkpoint.transform.localScale = new Vector2(1, 2*yDiff);
+        }
     }
 
     void HandleXLines() {
