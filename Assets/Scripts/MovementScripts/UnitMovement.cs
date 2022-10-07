@@ -26,7 +26,8 @@ public class UnitMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition + offset, step);
                 if(Vector2.Distance(transform.position, targetPosition + offset) <= 0.2f) {
                     moving = false;
-                    ownerUnit.OnReachedDestination(followTarget);
+                    if(ownerUnit != null)
+                        ownerUnit.OnReachedDestination(followTarget);
                 }
             }       
         }

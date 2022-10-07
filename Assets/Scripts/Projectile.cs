@@ -21,9 +21,11 @@ public class Projectile : MonoBehaviour
         damage = projectileDamage;
     }
 
-    void OnTriggerEnter2D(Collider2D col){
-        Unit hit = col.gameObject.GetComponent<Unit>();
-        if(col.gameObject == targetObject){
+    void OnCollisionEnter2D(Collision2D col){
+        Unit hit = targetObject.gameObject.GetComponent<Unit>();
+        if(targetObject.name.Contains("Range"))
+            targetObject.name = col.gameObject.name;
+        if(col.gameObject.name == targetObject.name){
             if(hit != null){
                 hit.TakeDamage(damage);
             }

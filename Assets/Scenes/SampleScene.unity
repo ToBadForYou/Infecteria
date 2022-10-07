@@ -7066,6 +7066,10 @@ MonoBehaviour:
   scoutProductionTime: 5
   maxReportAntibodies: 6
   minimumSpawn: 5
+  scoutAntibodies: 20
+  maxScoutAntibodies: 50
+  nextScoutAntibody: 5
+  scoutAntibodyProductionTime: 30
 --- !u!1 &743672305
 GameObject:
   m_ObjectHideFlags: 0
