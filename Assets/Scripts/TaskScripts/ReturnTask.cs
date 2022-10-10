@@ -9,16 +9,14 @@ public class ReturnTask : Task
     }
 
     public override void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(!unit.IsMoving())
-                unit.FollowTarget(target);
+        if(!unit.IsMoving())
+            unit.FollowTarget(target);
 
-            if(unit.AtPosition(target.transform.position)){
-                UnitProducer producer = target.GetComponent<UnitProducer>();
-                if(producer != null)
-                    producer.OnUnitReturn(unit);
-                FinishTask();
-            }
+        if(unit.AtPosition(target.transform.position)){
+            UnitProducer producer = target.GetComponent<UnitProducer>();
+            if(producer != null)
+                producer.OnUnitReturn(unit);
+            FinishTask();
         }
     }    
 }

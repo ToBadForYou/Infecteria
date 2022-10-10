@@ -14,23 +14,21 @@ public class MoveTask : Task
     public MoveTask(Unit owner, GameObject targetObject) : base(owner, targetObject) {}    
 
     public override void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            bool objectTarget = target != null;
-            if (!unit.IsMoving()){
-                if(objectTarget)
-                    unit.FollowTarget(target);
-                else
-                    unit.MoveToPosition(targetPosition);
-            }
-            
-            Vector2 targetPos;
+        bool objectTarget = target != null;
+        if (!unit.IsMoving()){
             if(objectTarget)
-                targetPos = target.transform.position;
+                unit.FollowTarget(target);
             else
-                targetPos = targetPosition;
-
-            if(unit.AtPosition(targetPos))
-                FinishTask();
+                unit.MoveToPosition(targetPosition);
         }
+        
+        Vector2 targetPos;
+        if(objectTarget)
+            targetPos = target.transform.position;
+        else
+            targetPos = targetPosition;
+
+        if(unit.AtPosition(targetPos))
+            FinishTask();
     }
 }

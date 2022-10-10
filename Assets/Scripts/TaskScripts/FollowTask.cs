@@ -12,7 +12,6 @@ public class FollowTask : Task
     }
 
     public override void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
-            unit.FollowTarget(target, offset);
+        unit.FollowTarget(target, offset);
     }    
 }
