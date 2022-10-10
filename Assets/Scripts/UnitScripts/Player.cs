@@ -21,6 +21,8 @@ public class Player : Unit
     public GameObject factoryOverview;
     public GameObject buildOptions;
 
+    public GameObject zoomMap;
+
     public UnitSquad units;
 
     public float additionalInfection = 0.0f;
@@ -55,8 +57,6 @@ public class Player : Unit
 
     new void Update(){
         hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
-
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             // Skilltree
             if(Input.GetKeyDown(KeyCode.T)) {
                 if(!skilltree.activeSelf) {
@@ -65,6 +65,18 @@ public class Player : Unit
                 }
                 else {
                     skilltree.SetActive(false);
+                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+                }
+            }
+
+            // Zoom Map
+            if(Input.GetKeyDown(KeyCode.Z)) {
+                if(!zoomMap.activeSelf) {
+                    zoomMap.SetActive(true);
+                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
+                }
+                else {
+                    zoomMap.SetActive(false);
                     PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
                 }
             }
@@ -115,6 +127,5 @@ public class Player : Unit
                 MakeObjDeactive(eObject);
                 MakeObjDeactive(qObject);
             }
-        }
     }
 }
