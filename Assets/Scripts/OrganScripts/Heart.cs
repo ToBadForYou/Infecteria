@@ -41,7 +41,7 @@ public class Heart : Organ
             unitSquads.Add(newSquad);
             newSquad.MoveTo(alertPosition, false);
             foreach (Unit antibody in antibodies){
-                antibody.GiveTask(new ReturnTask(antibody, gameObject));
+                antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
             } 
         }
         else if(randomAmount <= scoutAntibodies){

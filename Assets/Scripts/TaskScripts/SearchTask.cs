@@ -34,7 +34,7 @@ public class SearchTask : Task
                     Infectable infectable = target.GetComponent<Infectable>();
                     if(infectable.isInfected || infectable.infectionAmount/infectable.maxInfectionAmount > 0.5){
                         ownerSquad.Infect(infectable);
-                        unit.GiveTask(new ReturnTask(unit, unit.parent));
+                        unit.GiveTask(new ReturnTask(unit, unit.parent), false);
                         FinishTask();
                     }
                     target = null;

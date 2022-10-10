@@ -53,8 +53,7 @@ public class Player : Unit
         SceneManager.LoadScene(1);
     }
 
-    new void Update()
-    {
+    new void Update(){
         hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
 
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {

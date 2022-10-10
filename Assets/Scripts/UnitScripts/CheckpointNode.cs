@@ -30,7 +30,7 @@ public class CheckpointNode : Unit
             UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
             newSquad.MoveTo(alertPosition, false);
             foreach (Unit antibody in antibodies){
-                antibody.GiveTask(new ReturnTask(antibody, gameObject));
+                antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
             } 
         }
     }

@@ -10,8 +10,9 @@ public class UnitSquad : MonoBehaviour
 
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(AIBehaviour != null)
+            if(AIBehaviour != null){
                 AIBehaviour.Update();
+            }
         }
     }
 
@@ -23,13 +24,17 @@ public class UnitSquad : MonoBehaviour
         units.Clear();
     }
 
-    public void AddUnits(List<Unit> unit){
-        units.AddRange(unit);
+    public void AddUnits(List<Unit> newUnits){
+        foreach (Unit unit in newUnits){
+            units.Add(unit);
+            unit.squad = this;
+        }
     }
 
     public void AddUnit(Unit unit){
         if(!units.Contains(unit)){
             units.Add(unit);
+            unit.squad = this;
         }
     }
 
@@ -39,12 +44,20 @@ public class UnitSquad : MonoBehaviour
         } 
     }
 
+    public void HostileDetected(GameObject hostile){
+        foreach (Unit unit in units){
+            if(unit.GetTaskType() != TaskType.ATTACK){
+                unit.GiveTask(new AttackTask(unit, hostile), true);
+            }
+        }
+    }
+
     public void Infect(Infectable target){
         foreach (Unit unit in units){
             InfectUnit infectUnit = unit.gameObject.GetComponent<InfectUnit>();
             if(infectUnit != null){
                 unit.CancelTasks();
-                unit.GiveTask(new InfectTask(infectUnit, target.gameObject));
+                unit.GiveTask(new InfectTask(infectUnit, target.gameObject), false);
             }
         }        
     }
@@ -60,11 +73,11 @@ public class UnitSquad : MonoBehaviour
             }
         }
 
-        searchUnit.GiveTask(new SearchTask(searchUnit, potentialInfections, this)); 
+        searchUnit.GiveTask(new SearchTask(searchUnit, potentialInfections, this), false); 
         foreach (Unit unit in units){
             if(unit != (Unit)searchUnit){
                 unit.CancelTasks();
-                unit.GiveTask(new FollowTask(unit, searchUnit.gameObject, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))));
+                unit.GiveTask(new FollowTask(unit, searchUnit.gameObject, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))), false);
             }
         }  
     }
@@ -74,7 +87,7 @@ public class UnitSquad : MonoBehaviour
             if(cancelTasks){
                 unit.CancelTasks();
             }            
-            unit.GiveTask(new AttackTask(unit, target));
+            unit.GiveTask(new AttackTask(unit, target), false);
         }       
     }
 
@@ -83,7 +96,7 @@ public class UnitSquad : MonoBehaviour
             if(cancelTasks){
                 unit.CancelTasks();
             }
-            unit.GiveTask(new FollowTask(unit, target, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))));
+            unit.GiveTask(new FollowTask(unit, target, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))), false);
         }
     }
 
@@ -92,7 +105,7 @@ public class UnitSquad : MonoBehaviour
             if(cancelTasks){
                 unit.CancelTasks();
             }
-            unit.GiveTask(new MoveTask(unit, target));
+            unit.GiveTask(new MoveTask(unit, target), false);
         }
     }
 
@@ -101,7 +114,7 @@ public class UnitSquad : MonoBehaviour
             if(cancelTasks){
                 unit.CancelTasks();
             }
-            unit.GiveTask(new MoveTask(unit, pos));
+            unit.GiveTask(new MoveTask(unit, pos), false);
         }
     }
 }

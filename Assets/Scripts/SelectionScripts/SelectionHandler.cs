@@ -56,29 +56,35 @@ public class SelectionHandler : MonoBehaviour
         }
     }
 
-    void DeselectAllBacterias() {
+    void DeselectAllBacterias(bool AddToPlayer) {
         selectedUnits.ToggleSelection(false);
+        if(AddToPlayer){
+            UnitSquad playerSquad = GameObject.Find("Player").GetComponent<Player>().units;
+            foreach (Unit microbacteria in selectedUnits.GetUnits()){
+                playerSquad.AddUnit(microbacteria);
+            }
+        }
         selectedUnits.Clear();
     }
 
     public void AssignFollowTask() {
         //TODO: Add to player units squad
         selectedUnits.Follow(GameObject.Find("Player"), true);
-        DeselectAllBacterias();
+        DeselectAllBacterias(true);
     }
 
     public void AssignReturnTask() {
         //TODO: Use ReturnTask (currently only supports antibodies)
         //Temp use first index values start position
         selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition, true);
-        DeselectAllBacterias();
+        DeselectAllBacterias(false);
     }
 
     public void AssignMoveTask() {
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         selectedUnits.MoveTo(mousePosition, true);
-        DeselectAllBacterias();
+        DeselectAllBacterias(false);
     }
 
     public void AssignInfectTask() {
@@ -92,7 +98,7 @@ public class SelectionHandler : MonoBehaviour
                 selectedUnits.Infect(infectableTarget);
             }
         }       
-        DeselectAllBacterias();
+        DeselectAllBacterias(false);
     }
 
     void Update(){
@@ -128,7 +134,7 @@ public class SelectionHandler : MonoBehaviour
                 Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
                 bottomRight = mousePosition;
 
-                DeselectAllBacterias();
+                DeselectAllBacterias(false);
                 SelectUnits();
 
                 isDown = false;

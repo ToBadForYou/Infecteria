@@ -34,7 +34,7 @@ public class Factory : Infectable
                     MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
                     AddMicrobacteria(bacteria);
                     if(autoInfect) {
-                        bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject));
+                        bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
                     }
                     time = startTime;
                 }
@@ -153,7 +153,7 @@ public class Factory : Infectable
         infectTarget = newTarget;
         foreach(MicroBacteria bacteria in microbacterias){
             bacteria.CancelTasks();
-            bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject));
+            bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject), false);
         }
         autoInfect = true;
     }

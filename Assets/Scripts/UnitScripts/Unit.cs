@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour
     public Transform healthBar;
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
+    public UnitSquad squad;
 
     public UnitStats stats;
 
@@ -68,6 +69,9 @@ public class Unit : MonoBehaviour
         if (closest != null && (proximityHostile == null || closest != proximityHostile.GetTarget())){
             proximityHostile = new AttackTask(this, closest);
             hostileDetectionPos = transform.position;
+            if(squad != null){
+                squad.HostileDetected(closest);
+            }
         }       
     }
 
@@ -77,7 +81,7 @@ public class Unit : MonoBehaviour
             //Temp fix for not chasing units forever
             if(Vector2.Distance(transform.position, hostileDetectionPos) > 10){
                 proximityHostile = null;
-                GiveTask(new MoveTask(this, hostileDetectionPos));
+                GiveTask(new MoveTask(this, hostileDetectionPos), true);
             }
             else {
                 currentTask = proximityHostile;
@@ -100,8 +104,13 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void GiveTask(Task task){
-        currentTasks.Add(task);
+    public void GiveTask(Task task, bool priority){
+        if(priority){
+            currentTasks.Insert(0, task);
+        }
+        else {
+            currentTasks.Add(task);
+        }
     }
 
     public bool InRange(Vector2 position){
