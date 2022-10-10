@@ -21,13 +21,15 @@ public class SelectCell : MonoBehaviour
     public void CloseSelection(){
         newSelectionMenu.SetActive(false);
         currentFactory = null;
-        GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = false;
+        PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
     }
 
     public void ViewNearbyCells(Factory factory){
         currentFactory = factory;
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<PlayerMovement>().isPaused = true;
+
+        PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
+
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
         
         newSelectionMenu.SetActive(true);
@@ -50,10 +52,9 @@ public class SelectCell : MonoBehaviour
     }
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
-            if(selectionMenu)
-                if(Input.GetKeyDown(KeyCode.Escape))
-                    CloseSelection();
+        if(newSelectionMenu)
+            if(Input.GetKeyDown(KeyCode.Escape))
+                CloseSelection();
     }
 
 }

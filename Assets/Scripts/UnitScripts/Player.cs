@@ -50,7 +50,7 @@ public class Player : Unit
     }
 
     public override void OnDeath() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     new void Update(){
@@ -61,11 +61,11 @@ public class Player : Unit
             if(Input.GetKeyDown(KeyCode.T)) {
                 if(!skilltree.activeSelf) {
                     skilltree.SetActive(true);
-                    GetComponent<PlayerMovement>().isPaused = true;
+                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
                 }
                 else {
                     skilltree.SetActive(false);
-                    GetComponent<PlayerMovement>().isPaused = false;
+                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
                 }
             }
 

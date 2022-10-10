@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour
 {
     bool isActive = false;
     
-    SpriteRenderer sr;
+    RawImage sr;
 
     void Start() {
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponent<RawImage>();
         if(GameObject.Find("GameManager"))
             GameObject.Find("GameManager").GetComponent<GameManager>().SetWinStats();
     }
