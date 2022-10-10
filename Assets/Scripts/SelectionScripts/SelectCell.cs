@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SelectCell : MonoBehaviour
 {
-    public GameObject fakeCellPrefab;
-    public GameObject windowPrefab;
     public Factory currentFactory;
 
     public float targetCellRadius;
 
     private GameObject selectionMenu;
+
+    public GameObject newSelectionCell;
+    public GameObject newSelectionMenu;
 
     public void SetTargetCell(Cell targetCell){
         currentFactory.AutoInfect(targetCell);
@@ -18,7 +19,7 @@ public class SelectCell : MonoBehaviour
     }
 
     public void CloseSelection(){
-        Destroy(selectionMenu);
+        newSelectionMenu.SetActive(false);
         currentFactory = null;
         GameObject.Find("Player").GetComponent<PlayerMovement>().isPaused = false;
     }
@@ -28,17 +29,22 @@ public class SelectCell : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         player.GetComponent<PlayerMovement>().isPaused = true;
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
-        selectionMenu = Instantiate(windowPrefab, new Vector3(player.transform.position.x, player.transform.position.y, -5.0f), Quaternion.identity);
+        
+        newSelectionMenu.SetActive(true);
+
         for(int i = 0; i < objs.Length; i++) {
             if(Vector2.Distance(objs[i].transform.position, player.transform.position) <= targetCellRadius) {
                 Vector2 objPos = objs[i].transform.position;
 
                 float diffInX = objPos.x - player.transform.position.x;
                 float diffInY = objPos.y - player.transform.position.y;
-                GameObject fakeCell = Instantiate(fakeCellPrefab, new Vector3(player.transform.position.x + diffInX/5.0f, player.transform.position.y + diffInY/5.0f, -6.0f), Quaternion.identity);
-                
-                fakeCell.transform.parent = selectionMenu.transform;
-                fakeCell.GetComponent<FakeCell>().realCellReference = objs[i].GetComponent<Cell>();
+
+                GameObject fakeCell = Instantiate(newSelectionCell);
+                RectTransform myRectTransform = fakeCell.GetComponent<RectTransform>();
+                myRectTransform.localPosition = new Vector2(diffInX*10.0f, diffInY*10.0f);
+                myRectTransform.SetParent(newSelectionMenu.transform, false);
+
+                fakeCell.GetComponent<SelectionCell>().realCellReference = objs[i].GetComponent<Cell>();
             }
         }
     }

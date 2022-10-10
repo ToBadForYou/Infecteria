@@ -11,7 +11,8 @@ public class MenuHandler : MonoBehaviour
 
     void Start() {
         sr = GetComponent<SpriteRenderer>();
-        GameObject.Find("GameManager").GetComponent<GameManager>().SetWinStats();
+        if(GameObject.Find("GameManager"))
+            GameObject.Find("GameManager").GetComponent<GameManager>().SetWinStats();
     }
 
     void Update()
