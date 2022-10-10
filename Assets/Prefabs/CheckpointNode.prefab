@@ -168,7 +168,7 @@ Transform:
   - {fileID: 78621277121395591}
   - {fileID: 724500410}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1428964638349890496
 SpriteRenderer:
@@ -244,6 +244,7 @@ MonoBehaviour:
   maxHPBar: 0
   hitSoundEffects:
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  maxStoredAntibodies: 5
 --- !u!114 &-6447514502470855729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5
 --- !u!1 &1929576358592922081
 GameObject:
   m_ObjectHideFlags: 0

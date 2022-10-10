@@ -24,4 +24,11 @@ public class UnitSpawner : MonoBehaviour
         }
         return antibodies;
     }
+
+    public UnitSquad CreateSquad(List<Unit> units){
+        GameObject tempObj = new GameObject("UnitSquad");
+        UnitSquad newUnitSquad = tempObj.AddComponent<UnitSquad>();
+        newUnitSquad.AddUnits(units);
+        return newUnitSquad;
+    }   
 }

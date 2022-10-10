@@ -55,8 +55,7 @@ public class Unit : MonoBehaviour
     public void FindHostileInProximity(){
         GameObject closest = null;
         float closestDistance = Mathf.Infinity;
-        foreach (GameObject closeObject in inRange)
-        {
+        foreach (GameObject closeObject in inRange){
             if(IsHostile(closeObject.GetComponent<Unit>())){
                 float distance = Vector2.Distance(transform.position, closeObject.transform.position);
                 if(distance + 0.2f <= closestDistance) {

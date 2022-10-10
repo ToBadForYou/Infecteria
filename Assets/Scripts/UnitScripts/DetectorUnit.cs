@@ -25,23 +25,20 @@ public class DetectorUnit : Unit
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D(Collider2D col){
         Unit colUnit = col.gameObject.GetComponent<Unit>();
         if(colUnit != null && IsHostile(colUnit)){
             target = col.gameObject;
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
-    {
+    void OnTriggerExit2D(Collider2D col){
         if(col.gameObject == target){
             target = null;
         }
     }    
 
-    void OnTriggerStay2D(Collider2D col)
-    {
+    void OnTriggerStay2D(Collider2D col){
         Unit colUnit = col.gameObject.GetComponent<Unit>();
         if(target == null && colUnit != null && IsHostile(colUnit)){
             target = col.gameObject;

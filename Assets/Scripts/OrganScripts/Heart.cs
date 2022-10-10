@@ -32,14 +32,6 @@ public class Heart : Organ
         }
     }
 
-    UnitSquad CreateSquad(List<Unit> units){
-        GameObject tempObj = new GameObject("UnitSquad");
-        UnitSquad newUnitSquad = tempObj.AddComponent<UnitSquad>();
-        newUnitSquad.AddUnits(units);
-        unitSquads.Add(newUnitSquad);
-        return newUnitSquad;
-    }
-
     public void OnReport(Vector2 alertPosition){
         int randomAmount = Random.Range(2, maxReportAntibodies);
         // TODO Add a limit or different source of scouting antibodies
@@ -48,7 +40,8 @@ public class Heart : Organ
             // TODO Recall all antibodies
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
             currentAntibodies = 0;
-            UnitSquad newSquad = CreateSquad(antibodies);
+            UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
+            unitSquads.Add(newSquad);
             newSquad.MoveTo(alertPosition, false);
             foreach (Unit antibody in antibodies){
                 antibody.GiveTask(new ReturnTask(antibody, gameObject));
@@ -58,8 +51,9 @@ public class Heart : Organ
             scoutAntibodies -= randomAmount;
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, randomAmount);
             Scout newScout = unitSpawner.SpawnScout(transform.position, gameObject);
-            UnitSquad newSquad = CreateSquad(antibodies);
+            UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
             newSquad.AddUnit(newScout);
+            unitSquads.Add(newSquad);
             AI behaviour = new AlertedPatrol(newSquad, alertPosition, newScout);
             newSquad.AIBehaviour = behaviour;
         }
