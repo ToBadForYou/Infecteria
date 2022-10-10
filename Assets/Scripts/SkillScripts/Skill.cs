@@ -21,29 +21,27 @@ public class Skill : MonoBehaviour
     }
 
     public void MakeActive() {
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(!isClicked) {
-                GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-                if(gm.GetDNAPointAmount() >= cost) {
-                    gm.DecreaseDNAPoints(cost);
-                    switch (gameObject.name)
-                    {
-                        case "hp":
-                            skilltree.activeHPSkill = this;
-                            ActivateNextButton();
-                            break;
-                         case "speed":
-                            skilltree.activeSpeedSkill = this;
-                            ActivateNextButton();
-                            break;
-                        case "infection":
-                            skilltree.activeInfectionRateSkill = this;
-                            ActivateNextButton();
-                            break;
-                    }
-                    skilltree.NotifyPlayer();
-                    isClicked = true;
+        if(!isClicked) {
+            GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            if(gm.GetDNAPointAmount() >= cost) {
+                gm.DecreaseDNAPoints(cost);
+                switch (gameObject.name)
+                {
+                    case "hp":
+                        skilltree.activeHPSkill = this;
+                        ActivateNextButton();
+                        break;
+                     case "speed":
+                        skilltree.activeSpeedSkill = this;
+                        ActivateNextButton();
+                        break;
+                    case "infection":
+                        skilltree.activeInfectionRateSkill = this;
+                        ActivateNextButton();
+                        break;
                 }
+                skilltree.NotifyPlayer();
+                isClicked = true;
             }
         }
     }

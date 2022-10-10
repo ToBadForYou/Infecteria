@@ -7259,7 +7259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use the left mouse button or WASD to move.
+  m_text: Use WASD or arrows on your keyboard to move.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -9502,7 +9502,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 676eafad97ac56b41a6c2bcb8f3b53f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47a500bf47978b243bc8665b76ddedee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9542,8 +9542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9acd92116917b48a035ae2ed476d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCodes: 7700000061000000730000006400000043010000
-  maxCount: 5
+  keyCodes: 7700000061000000730000006400000011010000120100001401000013010000
+  maxCount: 1
   mesh: {fileID: 705019793}
   mesh2: {fileID: 0}
   sr: {fileID: 988289011}
