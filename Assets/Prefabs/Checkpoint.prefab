@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 948026541604132687}
   - component: {fileID: 3201236264640996622}
   - component: {fileID: 6034230138292963804}
+  - component: {fileID: 3774467262544685349}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   childTransform: {fileID: 9034238454614557210}
   spriteRenderers:
   - {fileID: 6118031446035689648}
+--- !u!114 &3774467262544685349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950520524478648260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436ffff863e9dfe4d99275b0c2829fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackSpeed: 18
+  knockbackMultiplier: 2.5

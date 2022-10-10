@@ -115,6 +115,7 @@ public class BorderGenerator : MonoBehaviour
             int yDiff = entry.Value[1] - entry.Value[0];
             GameObject checkpoint = Instantiate(checkpointObj, new Vector2(entry.Key - 200, entry.Value[0] + yDiff/2 - 200 + 0.5f), Quaternion.identity); // Put new object where last object was
             checkpoint.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, 1f * yDiff + 1);
+            checkpoint.GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 1f * yDiff + 1);
 
             Checkpoint checkpointScript = checkpoint.GetComponent<Checkpoint>();
             for (int i = 0; i < (yDiff+4)/4; i++){

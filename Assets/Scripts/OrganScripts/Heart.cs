@@ -14,7 +14,7 @@ public class Heart : Organ
     public float nextScoutAntibody = 5;
     public int scoutAntibodyProductionTime = 30;
 
-    new void Update(){
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             nextScout -= Time.deltaTime;
             nextScoutAntibody -= Time.deltaTime;
