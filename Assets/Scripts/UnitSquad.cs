@@ -46,7 +46,7 @@ public class UnitSquad : MonoBehaviour
 
     public void HostileDetected(GameObject hostile){
         foreach (Unit unit in units){
-            if(unit.GetTaskType() != TaskType.ATTACK){
+            if(unit.stats.IsAggressive() && unit.GetTaskType() != TaskType.ATTACK){
                 unit.GiveTask(new AttackTask(unit, hostile), true);
             }
         }
