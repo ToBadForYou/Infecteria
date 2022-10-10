@@ -16,7 +16,6 @@ public class Heart : Organ
 
     new void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            base.Update();
             nextScout -= Time.deltaTime;
             nextScoutAntibody -= Time.deltaTime;
             if (nextScout < 0){
@@ -34,12 +33,10 @@ public class Heart : Organ
 
     public void OnReport(Vector2 alertPosition){
         int randomAmount = Random.Range(2, maxReportAntibodies);
-        // TODO Add a limit or different source of scouting antibodies
-        // to ensure not being able to exhaust organs by being detected far away
+        int currentAntibodies = unitProducer.WithdrawAll();
         if(currentAntibodies > minimumSpawn && Vector2.Distance(transform.position, alertPosition) < 14){
             // TODO Recall all antibodies
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
-            currentAntibodies = 0;
             UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
             unitSquads.Add(newSquad);
             newSquad.MoveTo(alertPosition, false);

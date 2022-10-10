@@ -8,26 +8,13 @@ public class Organ : MonoBehaviour
     public List<UnitSquad> unitSquads;
     public List<Cell> cells = new List<Cell>();
     public UnitSpawner unitSpawner;
+    public UnitProducer unitProducer;
     float yRange = 13.0f;
     float xRange = 16.0f;
-    public int maxStoredAntibodies = 50;
-    public int currentAntibodies = 20;
-    int antibodyProductionTime = 20;
-    float nextAntibody = 0;
 
     void Start(){
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         StartCoroutine(LateStart(0.0f));
-    }
-
-    protected void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            nextAntibody -= Time.deltaTime;
-            if(currentAntibodies < maxStoredAntibodies && nextAntibody < 0){
-                nextAntibody = antibodyProductionTime;
-                currentAntibodies += 1;
-            }
-        }
     }
 
     public void RemoveCell(Cell cell) {
@@ -60,12 +47,5 @@ public class Organ : MonoBehaviour
                 //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
             }
         }
-    }
-
-    public virtual void OnUnitReturn(Unit returnUnit){
-        // TODO Add support for multiple types of units
-        // TODO Use for scouts returning
-        currentAntibodies += 1;
-        Destroy(returnUnit.transform.root.gameObject);
     }
 }

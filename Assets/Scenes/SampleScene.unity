@@ -296,8 +296,7 @@ MonoBehaviour:
   unitSquads: []
   cells: []
   unitSpawner: {fileID: 0}
-  maxStoredAntibodies: 50
-  currentAntibodies: 20
+  unitProducer: {fileID: 0}
 --- !u!1 &46662805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6971,6 +6970,7 @@ GameObject:
   - component: {fileID: 734316648}
   - component: {fileID: 734316647}
   - component: {fileID: 734316649}
+  - component: {fileID: 734316650}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -7060,8 +7060,7 @@ MonoBehaviour:
   unitSquads: []
   cells: []
   unitSpawner: {fileID: 0}
-  maxStoredAntibodies: 50
-  currentAntibodies: 20
+  unitProducer: {fileID: 734316650}
   nextScout: 5
   scoutProductionTime: 5
   maxReportAntibodies: 6
@@ -7070,6 +7069,21 @@ MonoBehaviour:
   maxScoutAntibodies: 50
   nextScoutAntibody: 5
   scoutAntibodyProductionTime: 30
+--- !u!114 &734316650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734316646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: -9024463097163357159, guid: 7305e00807a21244382f067c444a6485, type: 3}
+  maxUnits: 50
+  productionTime: 20
 --- !u!1 &743672305
 GameObject:
   m_ObjectHideFlags: 0

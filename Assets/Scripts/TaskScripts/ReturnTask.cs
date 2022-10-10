@@ -14,9 +14,9 @@ public class ReturnTask : Task
                 unit.FollowTarget(target);
 
             if(unit.AtPosition(target.transform.position)){
-                Organ organ = target.GetComponent<Organ>();
-                if(organ != null)
-                    organ.OnUnitReturn(unit);
+                UnitProducer producer = target.GetComponent<UnitProducer>();
+                if(producer != null)
+                    producer.OnUnitReturn(unit);
                 FinishTask();
             }
         }

@@ -16,8 +16,7 @@ public class UnitSpawner : MonoBehaviour
 
     public List<Unit> SpawnAntibodies(Vector2 pos, int amount){
         List<Unit> antibodies = new List<Unit>();
-        for (int i = 0; i < amount; i++)
-        {
+        for (int i = 0; i < amount; i++){
             GameObject newAntibody = Instantiate(antibodyObject, new Vector2(pos.x + Random.Range(-1.0f, 1.0f), pos.y + Random.Range(-1.0f, 1.0f)), Quaternion.identity);
             Unit antibodyUnit = newAntibody.GetComponent<Unit>();
             antibodies.Add(antibodyUnit);

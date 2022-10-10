@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7921673704020491943}
   - component: {fileID: -6447514502470855729}
   - component: {fileID: 2308820361922498250}
+  - component: {fileID: 8497116098107129721}
   m_Layer: 0
   m_Name: CheckpointNode
   m_TagString: Untagged
@@ -244,7 +245,7 @@ MonoBehaviour:
   maxHPBar: 0
   hitSoundEffects:
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
-  maxStoredAntibodies: 5
+  unitProducer: {fileID: 8497116098107129721}
 --- !u!114 &-6447514502470855729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &8497116098107129721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057881899675549492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: -9024463097163357159, guid: 7305e00807a21244382f067c444a6485, type: 3}
+  maxUnits: 5
+  productionTime: 15
 --- !u!1 &1929576358592922081
 GameObject:
   m_ObjectHideFlags: 0
