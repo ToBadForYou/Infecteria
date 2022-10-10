@@ -32,7 +32,6 @@ public class ScaleEffect : MonoBehaviour
             float xScaleDiff = transform.localScale.x - 1;
             float yScaleDiff = transform.localScale.y - 1;
             transforms[i].localScale = new Vector2(1.0f-xScaleDiff, 1.0f-yScaleDiff);
-            Debug.Log("GOING IN");
         }
     }
 

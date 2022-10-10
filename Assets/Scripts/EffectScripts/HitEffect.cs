@@ -9,8 +9,7 @@ public class HitEffect : MonoBehaviour
 
     public SpriteRenderer sr;
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * fadeSpeed);
             transform.position = new Vector2(transform.position.x, transform.position.y + Time.deltaTime * travelSpeed);

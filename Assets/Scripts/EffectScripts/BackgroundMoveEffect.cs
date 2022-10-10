@@ -18,8 +18,7 @@ public class BackgroundMoveEffect : MonoBehaviour
         UpdateSpeed();
     }
 
-    void Update()
-    {
+    void Update(){
         if(!isPaused) {
             float step = speed * Time.deltaTime;
 

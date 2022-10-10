@@ -16,8 +16,7 @@ public class DamageEffect : MonoBehaviour
         originColor = sr.color;
     }
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if(isHit) {
                 if (timePassed < totalDuration) {

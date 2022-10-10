@@ -22,8 +22,7 @@ public class BlinkEffect : MonoBehaviour
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
     }
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             float newAlpha = sr.color.a + Time.deltaTime * multiplier;
             SetAlpha(newAlpha);
