@@ -371,7 +371,7 @@ Transform:
   - {fileID: 7962407253893417147}
   - {fileID: 1537758696}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5050834132167503559
 SpriteRenderer:
@@ -441,6 +441,7 @@ MonoBehaviour:
   unitMovement: {fileID: 4234963448959617461}
   inRange: []
   squad: {fileID: 0}
+  unitType: 1
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0

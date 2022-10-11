@@ -15,7 +15,7 @@ public class ReturnTask : Task
         if(unit.AtPosition(target.transform.position)){
             UnitProducer producer = target.GetComponent<UnitProducer>();
             if(producer != null)
-                producer.OnUnitReturn(unit);
+                producer.OnReturn(unit);
             FinishTask();
         }
     }    

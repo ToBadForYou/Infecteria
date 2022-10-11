@@ -14,6 +14,7 @@ public class Organ : MonoBehaviour
 
     void Start(){
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
+        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(5, 5, 20));
         StartCoroutine(LateStart(0.0f));
     }
 

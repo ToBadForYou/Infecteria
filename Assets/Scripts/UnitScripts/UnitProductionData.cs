@@ -15,13 +15,33 @@ public class UnitProductionData
         productionTime = unitProductionTime;
     }
 
-    void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
-            nextUnit -= Time.deltaTime;
-            if(currentUnits < maxUnits && nextUnit < 0){
-                nextUnit = productionTime;
-                currentUnits += 1;
-            }
+    public void Update(){
+        nextUnit -= Time.deltaTime;
+        if(currentUnits < maxUnits && nextUnit < 0){
+            nextUnit = productionTime;
+            currentUnits += 1;
         }
     }
+
+    public int GetAmount(){
+        return currentUnits;
+    }
+
+    public int WithdrawAll(){
+        int temp = currentUnits;
+        currentUnits = 0;
+        return temp;
+    }    
+
+    public int WithdrawAmount(int amount){
+        if(amount <= currentUnits){
+            currentUnits -= amount;
+            return amount;
+        }
+        return 0;
+    } 
+
+    public void OnReturn(){
+        currentUnits += 1;
+    }  
 }

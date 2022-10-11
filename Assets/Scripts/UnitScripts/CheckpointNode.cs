@@ -12,6 +12,7 @@ public class CheckpointNode : Unit
         base.Start();
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         SetUnitStats(50, 50, 0, 1, 1.0f, 0.2f, false);
+        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(5, 5, 20));
     }
 
     public void SetCheckpoint(Checkpoint parent){
@@ -24,11 +25,10 @@ public class CheckpointNode : Unit
     }
 
     void TriggerAntibodies(Vector2 alertPosition){
-        int currentAntibodies = unitProducer.WithdrawAll();
+        int currentAntibodies = unitProducer.WithdrawAll(UnitType.ANTIBODY);
         if(currentAntibodies > 0){
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
             UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
-            newSquad.MoveTo(alertPosition, false);
             foreach (Unit antibody in antibodies){
                 antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
             } 

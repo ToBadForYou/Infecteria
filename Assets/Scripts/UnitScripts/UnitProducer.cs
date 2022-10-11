@@ -5,42 +5,34 @@ using UnityEngine;
 
 public class UnitProducer : MonoBehaviour
 {
-    public Unit unit; // TODO restrict to specific unit
-    int currentUnits;
-    public int maxUnits = 5;
-    public int productionTime = 15;
-    float nextUnit = 0;
-    public Dictionary<Unit, UnitProductionData> unitsProduction = new Dictionary<Unit, UnitProductionData>();
-
-    void Start(){
-        currentUnits = maxUnits;
-    }
+    public Dictionary<UnitType, UnitProductionData> productionData = new Dictionary<UnitType, UnitProductionData>();
 
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
-            nextUnit -= Time.deltaTime;
-            if(currentUnits < maxUnits && nextUnit < 0){
-                nextUnit = productionTime;
-                currentUnits += 1;
+            foreach(KeyValuePair<UnitType, UnitProductionData> entry in productionData){
+                entry.Value.Update();
             }
         }
     }
 
-    public int WithdrawAll(){
-        int current = currentUnits;
-        currentUnits = 0;
-        return current;
+    public void AddProduction(UnitType unitType, UnitProductionData newProductionData){
+        productionData.Add(unitType, newProductionData);
     }
 
-    public int WithdrawUnits(int amount){
-        if(amount <= currentUnits){
-            return amount;
-        }
-        return 0;
+    public int GetAmount(UnitType unitType){
+        return productionData[unitType].GetAmount();
     }
 
-    public void OnUnitReturn(Unit returnedUnit){
-        currentUnits += 1;
+    public int WithdrawAll(UnitType unitType){
+        return productionData[unitType].WithdrawAll();
+    }
+
+    public int WithdrawAmount(UnitType unitType, int amount){
+        return productionData[unitType].WithdrawAmount(amount);
+    }    
+
+    public void OnReturn(Unit returnedUnit){
+        productionData[returnedUnit.unitType].OnReturn();
         Destroy(returnedUnit.transform.root.gameObject);
     }
 }

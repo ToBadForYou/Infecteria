@@ -9,8 +9,8 @@ public class Unit : MonoBehaviour
     public UnitMovement unitMovement;
     public List<GameObject> inRange;
     public UnitSquad squad;
-
     public UnitStats stats;
+    public UnitType unitType;
 
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();
@@ -23,6 +23,7 @@ public class Unit : MonoBehaviour
     public List<AudioClip> hitSoundEffects;
 
     GameObject healthBarBackground = null;
+
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
         
@@ -80,9 +81,9 @@ public class Unit : MonoBehaviour
         if (closest != null && (proximityHostile == null || closest != proximityHostile.GetTarget())){
             proximityHostile = new AttackTask(this, closest);
             hostileDetectionPos = transform.position;
-            if(squad != null){
-                squad.HostileDetected(closest);
-            }
+            //if(squad != null){
+              //  squad.HostileDetected(closest);
+            //}
         }       
     }
 
