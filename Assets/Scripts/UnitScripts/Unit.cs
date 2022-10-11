@@ -22,8 +22,19 @@ public class Unit : MonoBehaviour
 
     public List<AudioClip> hitSoundEffects;
 
+    GameObject healthBarBackground = null;
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
+        
+        for(int i = 0; i < healthBar.parent.childCount; i++) {
+            if(healthBar.parent.GetChild(i).gameObject.name == "healthBarBackground")
+                healthBarBackground = healthBar.parent.GetChild(i).gameObject;
+        }
+
+        if(healthBarBackground) {
+            healthBar.gameObject.SetActive(false);
+            healthBarBackground.SetActive(false);
+        }
     }
 
     public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
@@ -137,6 +148,12 @@ public class Unit : MonoBehaviour
     public bool TakeDamage(int takenDamage){
         stats.DecreaseCurrentHealth(takenDamage);
         OnTakeDamage();
+
+        if(!healthBar.gameObject.activeSelf) { // Hide healthbar before taken hit
+            healthBar.gameObject.SetActive(true);
+            healthBarBackground.SetActive(true);
+        }
+
         healthBar.localScale = new Vector2(((float)stats.GetCurrentHealth()/stats.GetHealth()) * maxHPBar, healthBar.localScale.y);
         if (stats.GetCurrentHealth() <= 0){
             OnDeath();
