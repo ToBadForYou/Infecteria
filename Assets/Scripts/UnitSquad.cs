@@ -82,6 +82,15 @@ public class UnitSquad : MonoBehaviour
         }  
     }
 
+    public void Patrol(Vector2 start, Vector2 end, bool cancelTasks){
+        foreach (Unit unit in units){
+            if(cancelTasks){
+                unit.CancelTasks();
+            }            
+            unit.GiveTask(new PatrolTask(unit, start, end), false);
+        }       
+    }
+
     public void Attack(GameObject target, bool cancelTasks){
         foreach (Unit unit in units){
             if(cancelTasks){
