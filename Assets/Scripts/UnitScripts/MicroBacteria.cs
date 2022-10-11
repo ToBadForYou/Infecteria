@@ -12,7 +12,7 @@ public class MicroBacteria : InfectUnit
     public Cell targetCell;
     public Vector2 startPosition;
 
-    new void Start() {
+    new void Start(){
         base.Start();
         startPosition = transform.position;
         SetUnitStats(10, 10, 1, 1, 1.0f, 0.9f, true);
@@ -29,7 +29,7 @@ public class MicroBacteria : InfectUnit
         Destroy(gameObject);
     }
 
-    public override void OnDeath() {
+    public override void OnDeath(){
         parent.RemoveMicrobacteria(this);
     }
 }

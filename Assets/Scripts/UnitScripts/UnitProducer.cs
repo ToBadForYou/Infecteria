@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class UnitProducer : MonoBehaviour
 {
     public Unit unit; // TODO restrict to specific unit
@@ -9,6 +10,7 @@ public class UnitProducer : MonoBehaviour
     public int maxUnits = 5;
     public int productionTime = 15;
     float nextUnit = 0;
+    public Dictionary<Unit, UnitProductionData> unitsProduction = new Dictionary<Unit, UnitProductionData>();
 
     void Start(){
         currentUnits = maxUnits;
