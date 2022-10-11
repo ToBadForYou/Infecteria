@@ -10,6 +10,12 @@ public class BlinkEffect : MonoBehaviour
     private float maxAlpha = 1.0f;
     private float minAlpha = 0.0f;
 
+    private bool turnedOff;
+
+    public void TurnOff() {
+        turnedOff = true;
+    }
+
     void Start() {
         sr = GetComponent<SpriteRenderer>();
     }
@@ -24,16 +30,18 @@ public class BlinkEffect : MonoBehaviour
 
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            float newAlpha = sr.color.a + Time.deltaTime * multiplier;
-            SetAlpha(newAlpha);
+            if(!turnedOff) {
+                float newAlpha = sr.color.a + Time.deltaTime * multiplier;
+                SetAlpha(newAlpha);
 
-            if(sr.color.a > maxAlpha) {
-                SetAlpha(maxAlpha);
-                InvertMultiplier();
-            }
-            else if(sr.color.a < minAlpha) {
-                SetAlpha(minAlpha);
-                InvertMultiplier();
+                if(sr.color.a > maxAlpha) {
+                    SetAlpha(maxAlpha);
+                    InvertMultiplier();
+                }
+                else if(sr.color.a < minAlpha) {
+                    SetAlpha(minAlpha);
+                    InvertMultiplier();
+                }   
             }
         }
     }

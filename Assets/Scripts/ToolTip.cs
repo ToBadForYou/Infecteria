@@ -25,8 +25,11 @@ public class ToolTip : MonoBehaviour
                     count++;
             }
 
-            if(count >= maxCount)
+            if(count >= maxCount) {
                 fadeOut = true;
+                if(sr2)
+                    sr2.gameObject.GetComponent<BlinkEffect>().TurnOff();
+            }
 
             if(fadeOut) {
                 mesh.color = new Color(mesh.color.r, mesh.color.g, mesh.color.b, mesh.color.a - Time.deltaTime);
