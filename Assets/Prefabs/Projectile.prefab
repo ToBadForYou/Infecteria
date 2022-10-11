@@ -116,7 +116,7 @@ MonoBehaviour:
   positionTarget: {x: 0, y: 0}
   offset: {x: 0, y: 0}
   ownerUnit: {fileID: 0}
-  speed: 2
+  speed: 4
   moving: 0
 --- !u!58 &5263972492511309558
 CircleCollider2D:
