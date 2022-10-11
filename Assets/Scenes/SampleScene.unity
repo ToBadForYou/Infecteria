@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 46662806}
   - component: {fileID: 46662808}
   - component: {fileID: 46662807}
+  - component: {fileID: 46662809}
   m_Layer: 5
   m_Name: buildingIcon
   m_TagString: Untagged
@@ -373,6 +374,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46662805}
   m_CullTransparentMesh: 1
+--- !u!114 &46662809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46662805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d64ca67c3aa74bb303536d34c7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2139515989}
 --- !u!1 &53409464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1377,7 @@ GameObject:
   - component: {fileID: 155691147}
   - component: {fileID: 155691149}
   - component: {fileID: 155691148}
+  - component: {fileID: 155691150}
   m_Layer: 5
   m_Name: buildingIcon
   m_TagString: Untagged
@@ -1428,6 +1443,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155691146}
   m_CullTransparentMesh: 1
+--- !u!114 &155691150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155691146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d64ca67c3aa74bb303536d34c7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 665376364}
 --- !u!1 &162157774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,6 +6653,7 @@ MonoBehaviour:
   unitMovement: {fileID: 0}
   inRange: []
   squad: {fileID: 0}
+  unitType: 0
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
@@ -6926,6 +6955,7 @@ GameObject:
   - component: {fileID: 681519856}
   - component: {fileID: 681519858}
   - component: {fileID: 681519857}
+  - component: {fileID: 681519859}
   m_Layer: 5
   m_Name: buildingIcon
   m_TagString: Untagged
@@ -6991,6 +7021,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681519855}
   m_CullTransparentMesh: 1
+--- !u!114 &681519859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681519855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d64ca67c3aa74bb303536d34c7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1826455702}
 --- !u!1 &681579924
 GameObject:
   m_ObjectHideFlags: 0
@@ -7620,9 +7663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: -9024463097163357159, guid: 7305e00807a21244382f067c444a6485, type: 3}
-  maxUnits: 50
-  productionTime: 20
 --- !u!1 &743672305
 GameObject:
   m_ObjectHideFlags: 0
@@ -11196,6 +11236,7 @@ GameObject:
   - component: {fileID: 1203738596}
   - component: {fileID: 1203738595}
   - component: {fileID: 1203738594}
+  - component: {fileID: 1203738597}
   m_Layer: 5
   m_Name: option2
   m_TagString: Untagged
@@ -11331,6 +11372,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203738592}
   m_CullTransparentMesh: 1
+--- !u!114 &1203738597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203738592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d64ca67c3aa74bb303536d34c7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 665376364}
 --- !u!1 &1214290116
 GameObject:
   m_ObjectHideFlags: 0
@@ -13102,6 +13156,7 @@ GameObject:
   - component: {fileID: 1513502545}
   - component: {fileID: 1513502547}
   - component: {fileID: 1513502546}
+  - component: {fileID: 1513502548}
   m_Layer: 5
   m_Name: buildingIcon
   m_TagString: Untagged
@@ -13167,6 +13222,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513502544}
   m_CullTransparentMesh: 1
+--- !u!114 &1513502548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513502544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d64ca67c3aa74bb303536d34c7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1348080379}
 --- !u!1 &1532222680
 GameObject:
   m_ObjectHideFlags: 0
