@@ -22,10 +22,12 @@ public class Checkpoint : MonoBehaviour
         // TODO: Patrols can respawn and alert nearby nodes, add scout unit
         List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, 2);
         UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
+        newSquad.MoveTo(new Vector2(xPos + 1.5f, yPos), false);
         newSquad.Patrol(new Vector2(xPos + 1.5f, yPos + totalHeight/2), new Vector2(xPos + 1.5f, yPos - totalHeight/2), false);
 
         List<Unit> antibodies2 = unitSpawner.SpawnAntibodies(transform.position, 2);
         UnitSquad newSquad2 = unitSpawner.CreateSquad(antibodies2);
+        newSquad2.MoveTo(new Vector2(xPos - 1.5f, yPos), false);
         newSquad2.Patrol(new Vector2(xPos - 1.5f, yPos - totalHeight/2), new Vector2(xPos - 1.5f, yPos + totalHeight/2), false);        
     }
 
