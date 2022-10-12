@@ -35,4 +35,8 @@ public class UnitProducer : MonoBehaviour
         productionData[returnedUnit.unitType].OnReturn();
         Destroy(returnedUnit.transform.root.gameObject);
     }
+
+    public void OnDeath(Unit deadUnit){
+        productionData[deadUnit.unitType].OnDeath();
+    }    
 }

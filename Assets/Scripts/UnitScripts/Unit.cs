@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
     public UnitSquad squad;
     public UnitStats stats;
     public UnitType unitType;
+    public UnitProducer producer;
 
     public Faction owner;
     public List<Task> currentTasks = new List<Task>();
@@ -171,8 +172,10 @@ public class Unit : MonoBehaviour
         GetComponent<DamageEffect>().Activate();
     }
 
-    public virtual void OnDeath() {
-
+    public virtual void OnDeath(){
+        if(producer != null){
+            producer.OnDeath(this);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col){

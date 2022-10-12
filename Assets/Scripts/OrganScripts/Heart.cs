@@ -42,6 +42,7 @@ public class Heart : Organ
             unitSquads.Add(newSquad);
             newSquad.MoveTo(alertPosition, false);
             foreach (Unit antibody in antibodies){
+                antibody.producer = unitProducer;
                 antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
             } 
         }

@@ -4,44 +4,51 @@ using UnityEngine;
 
 public class UnitProductionData
 {
-    int currentUnits;
+    int availableUnits;
     int maxUnits;
     int productionTime;
+    int spawnedUnits = 0;
     float nextUnit = 0;
 
     public UnitProductionData(int startingUnits, int maximumUnits, int unitProductionTime){
-        currentUnits = startingUnits;
+        availableUnits = startingUnits;
         maxUnits = maximumUnits;
         productionTime = unitProductionTime;
     }
 
     public void Update(){
         nextUnit -= Time.deltaTime;
-        if(currentUnits < maxUnits && nextUnit < 0){
+        if(availableUnits < maxUnits && nextUnit < 0){
             nextUnit = productionTime;
-            currentUnits += 1;
+            availableUnits += 1;
         }
     }
 
     public int GetAmount(){
-        return currentUnits;
+        return availableUnits - spawnedUnits;
     }
 
     public int WithdrawAll(){
-        int temp = currentUnits;
-        currentUnits = 0;
-        return temp;
+        int withdrawAmount = availableUnits - spawnedUnits;
+        spawnedUnits += withdrawAmount;
+        return withdrawAmount;
     }    
 
     public int WithdrawAmount(int amount){
-        if(amount <= currentUnits){
-            currentUnits -= amount;
+        int available = availableUnits - spawnedUnits;
+        if(amount <= available){
+            spawnedUnits += amount;
             return amount;
         }
         return 0;
     } 
 
     public void OnReturn(){
-        currentUnits += 1;
-    }  
+        spawnedUnits -= 1;
+    } 
+
+    public void OnDeath(){
+        availableUnits -= 1;
+        spawnedUnits -= 1;
+    }
 }
