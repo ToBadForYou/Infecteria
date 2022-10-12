@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1145709383805078791}
   - component: {fileID: 9221951727196453045}
   - component: {fileID: 320320704}
+  - component: {fileID: 7256309753811360726}
   m_Layer: 0
   m_Name: detectorRange
   m_TagString: Untagged
@@ -320,7 +321,9 @@ MonoBehaviour:
   healthBar: {fileID: 3053203296831029333}
   unitMovement: {fileID: 0}
   inRange: []
-  squad: {fileID: 0}
+  squad: {fileID: 9221951727196453045}
+  unitType: 0
+  producer: {fileID: 0}
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
@@ -342,7 +345,7 @@ MonoBehaviour:
   antibodyObject: {fileID: 2467280437432995680, guid: 7305e00807a21244382f067c444a6485, type: 3}
   unitSquad: {fileID: 9221951727196453045}
   isAlerted: 0
-  maxAntibodies: 3
+  unitProducer: {fileID: 7256309753811360726}
   audioSrc: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: c1675db8fbb2d4c4e951385340df4225, type: 3}
 --- !u!58 &1145709383805078791
@@ -387,6 +390,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: -6339431088290239499}
+--- !u!114 &7256309753811360726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218048525918559773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4278691253781211458
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +638,7 @@ Transform:
   - {fileID: 1833783504}
   - {fileID: 1016434092}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &-6339431088290239499
 SpriteRenderer:
