@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MicroBacteria : InfectUnit
 {
-    public Factory parent;
-
     public bool followPlayer;
     private GameObject player;
 
@@ -25,11 +23,7 @@ public class MicroBacteria : InfectUnit
 
     public override void InfectTarget(Infectable target){
         target.Infect(infectionAmount);
-        parent.RemoveMicrobacteria(this);
+        OnDeath();
         Destroy(gameObject);
-    }
-
-    public override void OnDeath(){
-        parent.RemoveMicrobacteria(this);
     }
 }

@@ -24,7 +24,19 @@ public class UnitProductionData
         }
     }
 
-    public int GetAmount(){
+    public void IncreaseMaximum(int amount){
+        maxUnits += amount;
+    }
+
+    public int GetMaximumAmount(){
+        return maxUnits;
+    }
+
+    public int GetSpawnedAmount(){
+        return spawnedUnits;
+    }
+
+    public int GetAvailableAmount(){
         return availableUnits - spawnedUnits;
     }
 

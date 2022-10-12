@@ -26,7 +26,7 @@ public class FactoryManager : MonoBehaviour
     public void SetFactory(Factory factory) {
         currentFactory = factory;
         upgradeTooltip.text = factory.upgradeCost + " sugar to upgrade";
-        UpdateMicrobacteria(factory.bacteriaAmount, factory.maxBacteriaAmount);
+        UpdateMicrobacteria(factory.GetBacteriaAmount(), factory.GetMaximumBacteria());
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
         // TODO Make a script for build slots to handle setting images, colors etc
         for (int i = 0; i < factory.structures.Length; i++){

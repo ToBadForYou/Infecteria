@@ -33,7 +33,7 @@ public class Heart : Organ
 
     public void OnReport(Vector2 alertPosition){
         int randomAmount = Random.Range(2, maxReportAntibodies);
-        int currentAntibodies = unitProducer.GetAmount(UnitType.ANTIBODY);
+        int currentAntibodies = unitProducer.GetAvailableAmount(UnitType.ANTIBODY);
         if(currentAntibodies > minimumSpawn && Vector2.Distance(transform.position, alertPosition) < 14){
             currentAntibodies = unitProducer.WithdrawAll(UnitType.ANTIBODY);
             // TODO Recall all antibodies

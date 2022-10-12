@@ -15,12 +15,24 @@ public class UnitProducer : MonoBehaviour
         }
     }
 
+    public void IncreaseMaximumUnit(UnitType unitType, int amount){
+        productionData[unitType].IncreaseMaximum(amount);
+    }
+
     public void AddProduction(UnitType unitType, UnitProductionData newProductionData){
         productionData.Add(unitType, newProductionData);
     }
 
-    public int GetAmount(UnitType unitType){
-        return productionData[unitType].GetAmount();
+    public int GetAvailableAmount(UnitType unitType){
+        return productionData[unitType].GetAvailableAmount();
+    }
+
+     public int GetMaximumAmount(UnitType unitType){
+        return productionData[unitType].GetMaximumAmount();
+    }   
+
+    public int GetSpawnedAmount(UnitType unitType){
+        return productionData[unitType].GetSpawnedAmount();
     }
 
     public int WithdrawAll(UnitType unitType){

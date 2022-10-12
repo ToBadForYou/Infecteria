@@ -5,11 +5,7 @@ using UnityEngine;
 public class Factory : Infectable
 {
     public GameObject microBacteriaPrefab;
-    public int bacteriaAmount = 0;
-    public int maxBacteriaAmount = 0;
-
-    public float startTime = 10.0f;
-    public float time = 10.0f;
+    public UnitProducer unitProducer;
     
     public int upgradeCost = 100;
     public int currentLevel = 1;
@@ -24,22 +20,31 @@ public class Factory : Infectable
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
 
+    void Start(){
+        unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 0, 15));
+    }
+
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            if(bacteriaAmount < maxBacteriaAmount) {
-                time -= Time.deltaTime;
-                if(time <= 0.0f) {
-                    GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
-                    obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
-                    MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
-                    AddMicrobacteria(bacteria);
-                    if(autoInfect) {
-                        bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
-                    }
-                    time = startTime;
+            int withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
+            if(withdrawAmount > 0) {
+                GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
+                obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
+                MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
+                AddMicrobacteria(bacteria);
+                if(autoInfect) {
+                    bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
                 }
             }
         }
+    }
+
+    public int GetBacteriaAmount(){
+        return unitProducer.GetSpawnedAmount(UnitType.MICROBACTERIA);
+    }
+
+    public int GetMaximumBacteria(){
+        return unitProducer.GetMaximumAmount(UnitType.MICROBACTERIA);
     }
     
     public string GetAttackDirection() {
@@ -166,20 +171,14 @@ public class Factory : Infectable
     }
 
     public void AddMicrobacteria(MicroBacteria bacteria) {
-        bacteria.parent = this;
+        bacteria.producer = unitProducer;
         microbacterias.Add(bacteria);
-        bacteriaAmount++;
-    }
-
-    public void RemoveMicrobacteria(MicroBacteria bacteria) {
-        microbacterias.Remove(bacteria);
-        bacteriaAmount--;
     }
 
     public void Build(int slot, Buildable structure) {
         GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
         temp.transform.parent = transform;
         structures[slot] = temp;
-        maxBacteriaAmount += structure.microbacteriaProduction;
+        unitProducer.IncreaseMaximumUnit(UnitType.MICROBACTERIA, structure.microbacteriaProduction);
     }
 }

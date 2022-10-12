@@ -41,6 +41,7 @@ public class Scout : DetectorUnit
         targetCell = target;
     }
 
+    // TODO replace with task
     public override void OnReachedDestination(GameObject target){
         if(targetCell != null && target == targetCell){
             Infectable cell = targetCell.GetComponent<Infectable>();
@@ -58,6 +59,7 @@ public class Scout : DetectorUnit
             if(isAlerted){
                 parent.GetComponent<Heart>().OnReport(alertPosition);
             }
+            OnDeath();
             Destroy(transform.root.gameObject); 
         }      
     }
