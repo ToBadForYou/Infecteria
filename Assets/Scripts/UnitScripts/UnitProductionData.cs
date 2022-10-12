@@ -13,14 +13,17 @@ public class UnitProductionData
     public UnitProductionData(int startingUnits, int maximumUnits, int unitProductionTime){
         availableUnits = startingUnits;
         maxUnits = maximumUnits;
+        nextUnit = unitProductionTime;
         productionTime = unitProductionTime;
     }
 
     public void Update(){
-        nextUnit -= Time.deltaTime;
-        if(availableUnits < maxUnits && nextUnit < 0){
-            nextUnit = productionTime;
-            availableUnits += 1;
+        if(availableUnits < maxUnits){
+            nextUnit -= Time.deltaTime;
+            if(nextUnit < 0){
+                nextUnit = productionTime;
+                availableUnits += 1;
+            }
         }
     }
 
