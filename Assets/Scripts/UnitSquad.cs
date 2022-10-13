@@ -38,6 +38,12 @@ public class UnitSquad : MonoBehaviour
         }
     }
 
+    public void RemoveUnit(Unit unit){
+        if(units.Contains(unit)){
+            units.Remove(unit);
+        }
+    }
+
     public void ToggleSelection(bool toggle){
         foreach (Unit unit in units){
             unit.ToggleSelection(toggle);

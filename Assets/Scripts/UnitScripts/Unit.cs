@@ -176,6 +176,9 @@ public class Unit : MonoBehaviour
         if(producer != null){
             producer.OnDeath(this);
         }
+        if(squad != null){
+            squad.RemoveUnit(this);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col){
