@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 206605740749628633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9200442734102122334}
@@ -241,8 +241,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 197a0e38216ae6947b974b3a311cb648, type: 3}
-  m_Color: {r: 0.15517426, g: 1, b: 0, a: 0.39215687}
+  m_Sprite: {fileID: 21300000, guid: 4ec0170bf52a96e4a96059e4b53dd2d6, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304197344299955014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325,8 +325,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84d9a84b862c66c4c8473d8e332de310, type: 3}
-  m_Color: {r: 0.15517426, g: 1, b: 0, a: 0.8627451}
+  m_Sprite: {fileID: 21300000, guid: 870769327e55e054eb14e4afb8e5cf45, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -392,8 +392,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5020937355176580595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9200442734102122334}
@@ -440,8 +440,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ef4cd53fab876c40ae3b8aa56b91be4, type: 3}
-  m_Color: {r: 0.15517426, g: 1, b: 0, a: 0.49019608}
+  m_Sprite: {fileID: 21300000, guid: 7fd19a3014ff7eb41b6eebf3a503cb89, type: 3}
+  m_Color: {r: 0.15517426, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -491,7 +491,7 @@ Transform:
   - {fileID: 3750863409725220215}
   - {fileID: 589377080}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9200442734102122333
 SpriteRenderer:
@@ -561,11 +561,7 @@ MonoBehaviour:
   infectionAmount: 10
   isInfected: 1
   microBacteriaPrefab: {fileID: 5050834132167503558, guid: 5ec7fb0577afbea4aab62482160d1f67, type: 3}
-  bacteriaAmount: 0
-  maxBacteriaAmount: 0
   unitProducer: {fileID: 2994520214812468025}
-  startTime: 5
-  time: 5
   upgradeCost: 100
   currentLevel: 1
   maxLevel: 4

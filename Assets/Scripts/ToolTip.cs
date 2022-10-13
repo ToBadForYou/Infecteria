@@ -28,7 +28,8 @@ public class ToolTip : MonoBehaviour
             if(count >= maxCount) {
                 fadeOut = true;
                 if(sr2)
-                    sr2.gameObject.GetComponent<BlinkEffect>().TurnOff();
+                    if(sr.gameObject.GetComponent<BlinkEffect>())
+                        sr2.gameObject.GetComponent<BlinkEffect>().TurnOff();
             }
 
             if(fadeOut) {
