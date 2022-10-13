@@ -14,6 +14,10 @@ public class Antibody : InfectUnit
         Destroy(gameObject);
     }
 
+    public override bool CanInfect(Infectable target){
+        return target.isInfected || target.infectionAmount > 0;
+    }
+
     public override void OnReachedDestination(GameObject target){
         
     }

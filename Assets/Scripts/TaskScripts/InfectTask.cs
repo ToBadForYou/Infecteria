@@ -18,8 +18,12 @@ public class InfectTask : Task
         
         if(unit.AtPosition(target.transform.position)) {
             Infectable infectTarget = target.GetComponent<Infectable>();
-            if(infectTarget != null)
+            if(infectTarget != null && unit.CanInfect(infectTarget)){
                 unit.InfectTarget(infectTarget);
+            }
+            else{
+                unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
+            }
             FinishTask();
         }
     } 

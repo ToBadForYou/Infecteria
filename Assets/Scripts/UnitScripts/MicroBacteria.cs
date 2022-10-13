@@ -26,4 +26,8 @@ public class MicroBacteria : InfectUnit
         OnDeath();
         Destroy(gameObject);
     }
+
+    public override bool CanInfect(Infectable target){
+        return !target.isInfected;
+    }    
 }

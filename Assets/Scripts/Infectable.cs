@@ -12,7 +12,7 @@ public class Infectable : MonoBehaviour
         if(amount < 0.0f)
             OnGettingCured();
 
-        infectionAmount = Mathf.Clamp(infectionAmount + amount, 0f, 10f);
+        infectionAmount = Mathf.Clamp(infectionAmount + amount, 0f, maxInfectionAmount);
         if(!isInfected && infectionAmount >= maxInfectionAmount) {
             infectionAmount = maxInfectionAmount;
             isInfected = true;
@@ -20,6 +20,7 @@ public class Infectable : MonoBehaviour
         }
         else if (isInfected && infectionAmount <= 0){
             isInfected = false;
+            infectionAmount = 0;
             OnCure();
         }
         OnInfectUpdate(amount);

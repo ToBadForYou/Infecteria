@@ -9,4 +9,8 @@ public class InfectUnit : Unit
     public virtual void InfectTarget(Infectable target){
 
     }
+
+    public virtual bool CanInfect(Infectable target){
+        return false;
+    }
 }
