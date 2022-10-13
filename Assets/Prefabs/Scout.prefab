@@ -442,7 +442,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -721,6 +721,7 @@ MonoBehaviour:
   inRange: []
   squad: {fileID: 0}
   unitType: 2
+  producer: {fileID: 0}
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
