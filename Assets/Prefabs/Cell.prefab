@@ -357,7 +357,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 2efd63714526cc04997128599c799bf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_FlipX: 0
@@ -406,7 +406,7 @@ Transform:
   - {fileID: 1427935809}
   - {fileID: 10664365}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7198534172057317649
 SpriteRenderer:
@@ -482,6 +482,7 @@ MonoBehaviour:
   insideRenderer: {fileID: 1427935810}
   source: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: b314b13b645e4a449968cd89d5b09c71, type: 3}
+  belongsToHeart: 0
 --- !u!58 &613358344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -525,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  noRotate: 0
   childTransform: {fileID: 1427935809}
   spriteRenderers:
   - {fileID: 1427935810}
