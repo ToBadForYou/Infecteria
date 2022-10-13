@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5198131474999746393}
   - component: {fileID: 1123717669}
   - component: {fileID: 8883679430121395164}
+  - component: {fileID: 1017985213}
   m_Layer: 0
   m_Name: border object
   m_TagString: Untagged
@@ -211,3 +212,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackSpeed: 18
   knockbackMultiplier: 2.5
+--- !u!114 &1017985213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198131474999746390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7809ae1c671b83046843e34689500fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinPrefab: {fileID: 7180107808692805251, guid: ebc5afc54a0b5b84e83de11b1f012b5d, type: 3}
