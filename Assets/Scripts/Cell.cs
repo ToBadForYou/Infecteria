@@ -79,8 +79,10 @@ public class Cell : Infectable
         infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
     }
 
+    public GameObject particleSystem;
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
+            Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
             source.clip = soundEffect;
             source.Play();
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
@@ -91,6 +93,7 @@ public class Cell : Infectable
     void OnTriggerExit2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player") {
+            Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
             source.clip = soundEffect;
             source.Play();
             col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
