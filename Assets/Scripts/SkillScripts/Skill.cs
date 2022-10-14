@@ -14,6 +14,17 @@ public class Skill : MonoBehaviour
     
     bool isClicked;
 
+    public void SetButtonBought() {
+        Button button = GetComponent<Button>();
+
+        ColorBlock cb = button.colors;
+        cb.normalColor = new Color(1.0f, 1.0f, 0.5f);
+        cb.highlightedColor = new Color(1.0f, 1.0f, 0.5f);
+        cb.pressedColor = new Color(1.0f, 1.0f, 0.5f);
+        cb.selectedColor = new Color(1.0f, 1.0f, 0.5f);
+        button.colors = cb;
+    }
+
     public void ActivateNextButton() {
         if(nextButton) {
             nextButton.interactable = true;
@@ -29,14 +40,17 @@ public class Skill : MonoBehaviour
                 {
                     case "hp":
                         skilltree.activeHPSkill = this;
+                        SetButtonBought();
                         ActivateNextButton();
                         break;
                      case "speed":
                         skilltree.activeSpeedSkill = this;
+                        SetButtonBought();
                         ActivateNextButton();
                         break;
                     case "infection":
                         skilltree.activeInfectionRateSkill = this;
+                        SetButtonBought();
                         ActivateNextButton();
                         break;
                 }

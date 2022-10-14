@@ -427,7 +427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 397.99997, y: -223.8}
+  m_AnchoredPosition: {x: 418.99997, y: -235.79999}
   m_SizeDelta: {x: 132, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53409466
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 94729531}
   - component: {fileID: 94729534}
   m_Layer: 5
-  m_Name: New Skill Tree Canvas
+  m_Name: Skill Tree Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8267,7 +8267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 132.66666, y: -223.8}
+  m_AnchoredPosition: {x: 139.66666, y: -235.79999}
   m_SizeDelta: {x: 132, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866490487
@@ -18225,7 +18225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 663.33325, y: -223.8}
+  m_AnchoredPosition: {x: 698.33325, y: -235.79999}
   m_SizeDelta: {x: 132, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544321280
