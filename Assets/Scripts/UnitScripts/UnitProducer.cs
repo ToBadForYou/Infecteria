@@ -8,11 +8,9 @@ public class UnitProducer : MonoBehaviour
     public Dictionary<UnitType, UnitProductionData> productionData = new Dictionary<UnitType, UnitProductionData>();
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
-            foreach(KeyValuePair<UnitType, UnitProductionData> entry in productionData){
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE)
+            foreach(KeyValuePair<UnitType, UnitProductionData> entry in productionData)
                 entry.Value.Update();
-            }
-        }
     }
 
     public void IncreaseMaximumUnit(UnitType unitType, int amount){
@@ -36,7 +34,9 @@ public class UnitProducer : MonoBehaviour
     }
 
     public int WithdrawAll(UnitType unitType){
-        return productionData[unitType].WithdrawAll();
+        if(productionData.ContainsKey(unitType))
+            return productionData[unitType].WithdrawAll();
+        return -1;
     }
 
     public int WithdrawAmount(UnitType unitType, int amount){
