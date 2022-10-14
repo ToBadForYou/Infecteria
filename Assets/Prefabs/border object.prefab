@@ -212,6 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackSpeed: 18
   knockbackMultiplier: 2.5
+  audioSrc: {fileID: 0}
+  soundClip: {fileID: 8300000, guid: aee3821c5c1776a4c8a6cd1a81f36b17, type: 3}
 --- !u!114 &1017985213
 MonoBehaviour:
   m_ObjectHideFlags: 0

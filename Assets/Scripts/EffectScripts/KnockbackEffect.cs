@@ -9,6 +9,13 @@ public class KnockbackEffect : MonoBehaviour
 
     public float knockbackSpeed = 18.0f;
     public float knockbackMultiplier = 2.5f; 
+    
+    public AudioSource audioSrc;
+    public AudioClip soundClip;
+
+    void Start() {
+        audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
+    }
 
     void OnCollisionEnter2D(Collision2D col){
         PlayerMovement playerMov = col.gameObject.GetComponent<PlayerMovement>();
@@ -16,6 +23,9 @@ public class KnockbackEffect : MonoBehaviour
             tempGameObj = col.gameObject;
             knockbackPosition = tempGameObj.transform.position - playerMov.lastMoveDir * knockbackMultiplier;
             playerMov.knockbackObject = gameObject;
+
+            audioSrc.clip = soundClip;
+            audioSrc.Play();
         }
     }
 

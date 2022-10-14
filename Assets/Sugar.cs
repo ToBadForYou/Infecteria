@@ -6,9 +6,13 @@ public class Sugar : MonoBehaviour
 {
     private SpriteRenderer sr;
 
+    public AudioSource audioSrc;
+    public AudioClip soundClip;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -20,6 +24,9 @@ public class Sugar : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.name == "Player") {
             GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(1);
+            
+            audioSrc.clip = soundClip;
+            audioSrc.Play();
             Destroy(gameObject);
         }
     }
