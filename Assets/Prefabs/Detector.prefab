@@ -322,7 +322,7 @@ MonoBehaviour:
   unitMovement: {fileID: 0}
   inRange: []
   squad: {fileID: 9221951727196453045}
-  unitType: 0
+  unitType: 3
   producer: {fileID: 0}
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
