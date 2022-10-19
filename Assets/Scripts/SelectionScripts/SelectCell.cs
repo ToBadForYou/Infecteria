@@ -50,8 +50,12 @@ public class SelectCell : MonoBehaviour
                 RectTransform myRectTransform = fakeCell.GetComponent<RectTransform>();
                 myRectTransform.localPosition = new Vector2(diffInX*10.0f, diffInY*10.0f);
                 myRectTransform.SetParent(newSelectionMenu.transform, false);
-
-                fakeCell.GetComponent<SelectionCell>().realCellReference = objs[i].GetComponent<Cell>();
+                
+                SelectionCell selectionCell = fakeCell.GetComponent<SelectionCell>();
+                selectionCell.realCellReference = objs[i].GetComponent<Cell>();
+                if(factory.infectTarget != null && factory.infectTarget.gameObject == objs[i]){
+                    selectionCell.infectText.text = "Infecting";
+                }
                 fakeCells.Add(fakeCell);
             }
         }
