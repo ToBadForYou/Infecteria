@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectCell : MonoBehaviour
 {
@@ -50,9 +51,12 @@ public class SelectCell : MonoBehaviour
                 RectTransform myRectTransform = fakeCell.GetComponent<RectTransform>();
                 myRectTransform.localPosition = new Vector2(diffInX*10.0f, diffInY*10.0f);
                 myRectTransform.SetParent(newSelectionMenu.transform, false);
+                Cell cell = objs[i].GetComponent<Cell>();
+                float infectAmount = cell.infectionAmount/10.0f;
+                fakeCell.GetComponent<Image>().color = new Color(1 - infectAmount, 1, 1 - infectAmount, 1);
                 
                 SelectionCell selectionCell = fakeCell.GetComponent<SelectionCell>();
-                selectionCell.realCellReference = objs[i].GetComponent<Cell>();
+                selectionCell.realCellReference = cell;
                 if(factory.infectTarget != null && factory.infectTarget.gameObject == objs[i]){
                     selectionCell.infectText.text = "Infecting";
                 }
