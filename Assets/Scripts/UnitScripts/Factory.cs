@@ -17,8 +17,11 @@ public class Factory : Infectable
     public Infectable infectTarget;
     public GameObject cellPrefab;
     public List<GameObject> upgradeVisuals;
+    float healCD = 8;
+    float nextHeal = 0;
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
+    public List<MicroBacteria> bacteriaInside = new List<MicroBacteria>();
 
     void Start(){
         unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 0, 15));
@@ -36,6 +39,15 @@ public class Factory : Infectable
                     bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
                 }
             }
+            nextHeal -= Time.deltaTime;
+            if(nextHeal < 0){
+                nextHeal = healCD;
+                if(bacteriaInside.Count > 0){
+                    foreach(MicroBacteria bacteria in bacteriaInside){
+                        bacteria.Heal(1);
+                    }
+                }
+            }           
         }
     }
 
@@ -120,6 +132,10 @@ public class Factory : Infectable
             Player playerScript = col.gameObject.GetComponent<Player>();
             playerScript.MakeObjActive(playerScript.fObject);
         }
+        MicroBacteria micro = col.GetComponent<MicroBacteria>();
+        if(micro != null && !bacteriaInside.Contains(micro)){
+            bacteriaInside.Add(micro);
+        }
     }
     
     void OnTriggerExit2D(Collider2D col){
@@ -129,6 +145,10 @@ public class Factory : Infectable
             Player playerScript = col.gameObject.GetComponent<Player>();
             playerScript.MakeObjDeactive(playerScript.fObject);
         }
+        MicroBacteria micro = col.GetComponent<MicroBacteria>();
+        if(micro != null && bacteriaInside.Contains(micro)){
+            bacteriaInside.Remove(micro);
+        }        
     }
 
     public bool CanUpgrade(){
@@ -137,15 +157,15 @@ public class Factory : Infectable
         return levelsLeft && hasPoints;
     }
 
-    public bool CanAutoInfect() {
+    public bool CanAutoInfect(){
         return !autoInfect;
     }
 
-    public bool CanBuild(int slot) {
+    public bool CanBuild(int slot){
         return slot < currentLevel && structures[slot] == null;
     }
 
-    public void Upgrade() {
+    public void Upgrade(){
         if(CanUpgrade()) {
             upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
@@ -154,7 +174,7 @@ public class Factory : Infectable
         }
     }
 
-    public void AutoInfect(Infectable newTarget) {
+    public void AutoInfect(Infectable newTarget){
         infectTarget = newTarget;
         foreach(MicroBacteria bacteria in microbacterias){
             bacteria.CancelTasks();
@@ -170,12 +190,12 @@ public class Factory : Infectable
         unitSquad.Follow(playerObject, true);
     }
 
-    public void AddMicrobacteria(MicroBacteria bacteria) {
+    public void AddMicrobacteria(MicroBacteria bacteria){
         bacteria.producer = unitProducer;
         microbacterias.Add(bacteria);
     }
 
-    public void Build(int slot, Buildable structure) {
+    public void Build(int slot, Buildable structure){
         GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
         structures[slot] = temp;
         unitProducer.IncreaseMaximumUnit(UnitType.MICROBACTERIA, structure.microbacteriaProduction);

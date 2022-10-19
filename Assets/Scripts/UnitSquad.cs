@@ -71,8 +71,7 @@ public class UnitSquad : MonoBehaviour
     public void Search(Vector2 pos, Scout searchUnit){
         List<Infectable> potentialInfections = new List<Infectable>();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 15);
-        foreach (Collider2D collider in colliders)
-        {
+        foreach (Collider2D collider in colliders){
             Infectable infectable = collider.gameObject.GetComponent<Infectable>();
             if(infectable != null){
                 potentialInfections.Add(infectable);

@@ -148,6 +148,20 @@ public class Unit : MonoBehaviour
         return false;
     }
 
+    public void Heal(int amount){
+        int maxHP = stats.GetHealth();
+        int currentHP = stats.GetCurrentHealth();
+        if(currentHP < maxHP){
+            int newHP = currentHP + amount;
+            stats.SetCurrentHealth(newHP);
+            healthBar.localScale = new Vector2(((float)newHP/maxHP) * maxHPBar, healthBar.localScale.y);
+            if(newHP == maxHP && healthBarBackground){
+                healthBar.gameObject.SetActive(false);
+                healthBarBackground.SetActive(false);
+            }
+        }
+    }
+
     public bool TakeDamage(int takenDamage){
         stats.DecreaseCurrentHealth(takenDamage);
         OnTakeDamage();

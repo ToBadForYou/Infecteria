@@ -20,14 +20,13 @@ public class Cell : Infectable
 
     public bool belongsToHeart;
 
-    void Start()
-    {
+    void Start(){
         originPos = transform.position;
         target = GetNewTarget();
         source = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
     }
 
-    public void GetAbsorbed() {
+    public void GetAbsorbed(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseDNAPoints(100);
         gm.IncreaseAbsorbedCells();
@@ -40,7 +39,7 @@ public class Cell : Infectable
         GetComponent<AbsorbEffect>().isActive = true;
     }
 
-    public void TurnIntoFactory() {
+    public void TurnIntoFactory(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseFactoryAmount(1);
         GameObject factory = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
@@ -49,12 +48,11 @@ public class Cell : Infectable
         Destroy(gameObject);
     }
 
-    Vector2 GetNewTarget() {
+    Vector2 GetNewTarget(){
         return new Vector2(Random.Range(originPos.x-offset, originPos.x+offset), Random.Range(originPos.y-offset, originPos.y+offset));
     }
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             float step = speed * Time.deltaTime;
             
@@ -90,8 +88,7 @@ public class Cell : Infectable
         }
     }
     
-    void OnTriggerExit2D(Collider2D col)
-    {
+    void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
             source.clip = soundEffect;
