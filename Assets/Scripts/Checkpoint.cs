@@ -13,6 +13,12 @@ public class Checkpoint : MonoBehaviour
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
     }
 
+    public void InitSize(int yDiff){
+        GetComponent<SpriteRenderer>().size = new Vector2(0.5f, 1f * yDiff + 1);
+        GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 1f * yDiff + 1);
+        transform.Find("minimap-icon").transform.localScale = new Vector2(0.5f, 1f * yDiff + 1);
+    }
+
     public void InitPatrol(int height){
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         totalHeight = height;
