@@ -27,15 +27,16 @@ public class Unit : MonoBehaviour
 
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
-        
-        for(int i = 0; i < healthBar.parent.childCount; i++) {
-            if(healthBar.parent.GetChild(i).gameObject.name == "healthBarBackground")
-                healthBarBackground = healthBar.parent.GetChild(i).gameObject;
-        }
+        if(unitMovement != null){
+            for(int i = 0; i < healthBar.parent.childCount; i++) {
+                if(healthBar.parent.GetChild(i).gameObject.name == "healthBarBackground")
+                    healthBarBackground = healthBar.parent.GetChild(i).gameObject;
+            }
 
-        if(healthBarBackground) {
-            healthBar.gameObject.SetActive(false);
-            healthBarBackground.SetActive(false);
+            if(healthBarBackground){
+                healthBar.gameObject.SetActive(false);
+                healthBarBackground.SetActive(false);
+            }
         }
     }
 

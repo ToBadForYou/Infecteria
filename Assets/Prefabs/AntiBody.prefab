@@ -372,7 +372,7 @@ Transform:
   - {fileID: 2037527412}
   - {fileID: 1256533064}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-9024463097163357159
 MonoBehaviour:
@@ -390,6 +390,8 @@ MonoBehaviour:
   unitMovement: {fileID: -3502876324055183019}
   inRange: []
   squad: {fileID: 0}
+  unitType: 0
+  producer: {fileID: 0}
   owner: 1
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
   isSelected: 0
