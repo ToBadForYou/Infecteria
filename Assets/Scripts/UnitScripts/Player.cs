@@ -96,7 +96,6 @@ public class Player : Unit
             // Infecting Cells
             if(currentCell) {
                 if(currentCell.isInfected) {
-                    MakeObjDeactive(spaceObject);
                     MakeObjActive(eObject);
                     MakeObjActive(qObject);
                     if(Input.GetKeyDown(KeyCode.E)) {
@@ -116,10 +115,7 @@ public class Player : Unit
                     }
                 }
                 else {
-                    MakeObjActive(spaceObject);
-                    if(Input.GetKey(KeyCode.Space)) {
-                        currentCell.Infect(Time.deltaTime + additionalInfection);
-                    }
+                    currentCell.Infect(Time.deltaTime + additionalInfection);
                 }
             }
             else {
