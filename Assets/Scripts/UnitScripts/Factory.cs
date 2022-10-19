@@ -149,7 +149,7 @@ public class Factory : Infectable
         if(CanUpgrade()) {
             upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
-            GameObject.Find("GameManager").GetComponent<GameManager>().DecreaseDNAPoints(upgradeCost);
+            GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(-upgradeCost);
             upgradeCost *= 2;
         }
     }
