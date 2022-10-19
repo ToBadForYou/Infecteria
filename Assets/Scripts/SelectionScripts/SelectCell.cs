@@ -12,6 +12,7 @@ public class SelectCell : MonoBehaviour
 
     public GameObject newSelectionCell;
     public GameObject newSelectionMenu;
+    public List<GameObject> fakeCells = new List<GameObject>();
 
     public void SetTargetCell(Cell targetCell){
         currentFactory.AutoInfect(targetCell);
@@ -20,6 +21,10 @@ public class SelectCell : MonoBehaviour
 
     public void CloseSelection(){
         newSelectionMenu.SetActive(false);
+        foreach (GameObject fakeCell in fakeCells){
+            Destroy(fakeCell);
+        }
+        fakeCells.Clear();
         currentFactory = null;
         PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
     }
@@ -47,6 +52,7 @@ public class SelectCell : MonoBehaviour
                 myRectTransform.SetParent(newSelectionMenu.transform, false);
 
                 fakeCell.GetComponent<SelectionCell>().realCellReference = objs[i].GetComponent<Cell>();
+                fakeCells.Add(fakeCell);
             }
         }
     }
