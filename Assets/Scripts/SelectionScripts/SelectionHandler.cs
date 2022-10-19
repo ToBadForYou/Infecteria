@@ -13,6 +13,7 @@ public class SelectionHandler : MonoBehaviour
 
     public Transform selectionTransform;
     public float targetCellRadius;
+    public string setCommand = "";
 
     private Vector2 topLeft;
     private Vector2 bottomRight;
@@ -101,23 +102,30 @@ public class SelectionHandler : MonoBehaviour
         DeselectAllBacterias(false);
     }
 
+    public void SetCommand(string command){
+        setCommand = command;
+    }
+
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if(selectedUnits.units.Count > 0){
                 if(!controlPanel.activeSelf)
                     controlPanel.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.I)) // Infect cell
-                    AssignInfectTask();
+                if(Input.GetKeyDown(KeyCode.R)) // Return to factory
+                    AssignReturnTask();
                 else if(Input.GetKeyDown(KeyCode.F)) // Follow player
                     AssignFollowTask();
-                else if(Input.GetKeyDown(KeyCode.M)) // Move to mouse position
+                else if(Input.GetKeyDown(KeyCode.M) || (Input.GetMouseButtonDown(0) && setCommand == "move")) // Move to mouse position
                     AssignMoveTask();
-                else if(Input.GetKeyDown(KeyCode.R)) // Return to factory
-                    AssignReturnTask();
+                else if(Input.GetKeyDown(KeyCode.I) || (Input.GetMouseButtonDown(0) && setCommand == "infect")) // Infect cell
+                    AssignInfectTask();
             }
             else {
                 if(controlPanel.activeSelf)
                     controlPanel.SetActive(false);
+            }
+            if(Input.GetMouseButtonDown(0)){
+                setCommand = "";
             }
 
             if(Input.GetMouseButtonDown(1)) {

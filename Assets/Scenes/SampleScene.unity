@@ -2841,14 +2841,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 605807174}
         m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
-        m_MethodName: AssignInfectTask
-        m_Mode: 1
+        m_MethodName: SetCommand
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: infect
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 294472247}
@@ -6155,6 +6155,7 @@ MonoBehaviour:
   controlPanel: {fileID: 1264500776}
   selectionTransform: {fileID: 791589947}
   targetCellRadius: 20
+  setCommand: 
   selectedUnits: {fileID: 605807175}
 --- !u!114 &605807175
 MonoBehaviour:
@@ -18455,14 +18456,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 605807174}
         m_TargetAssemblyTypeName: SelectionHandler, Assembly-CSharp
-        m_MethodName: AssignMoveTask
-        m_Mode: 1
+        m_MethodName: SetCommand
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: move
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1434286166}
