@@ -16,8 +16,7 @@ public class MenuHandler : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().SetWinStats();
     }
 
-    void Update()
-    {
+    void Update(){
         if(!isActive) {
             if(Input.GetKeyDown(KeyCode.Space)) {
                 isActive = true;

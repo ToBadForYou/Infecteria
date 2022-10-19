@@ -70,7 +70,7 @@ public class Player : Unit
             }
 
             // Zoom Map
-            if(Input.GetKeyDown(KeyCode.Z)) {
+            if(Input.GetKeyDown(KeyCode.M)) {
                 if(!zoomMap.activeSelf) {
                     zoomMap.SetActive(true);
                     PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
