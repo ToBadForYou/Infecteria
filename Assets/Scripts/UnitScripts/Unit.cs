@@ -24,6 +24,7 @@ public class Unit : MonoBehaviour
     public List<AudioClip> hitSoundEffects;
 
     GameObject healthBarBackground = null;
+    public GameObject healingIcon;
 
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
@@ -161,6 +162,7 @@ public class Unit : MonoBehaviour
             if(newHP == maxHP && healthBarBackground){
                 healthBar.gameObject.SetActive(false);
                 healthBarBackground.SetActive(false);
+                healingIcon.SetActive(false);
             }
         }
     }

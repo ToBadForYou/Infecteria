@@ -134,6 +134,9 @@ public class Factory : Infectable
         }
         MicroBacteria micro = col.GetComponent<MicroBacteria>();
         if(micro != null && !bacteriaInside.Contains(micro)){
+            if(micro.stats.GetHealth() > micro.stats.GetCurrentHealth()){
+                micro.healingIcon.SetActive(true);
+            }
             bacteriaInside.Add(micro);
         }
     }
@@ -147,6 +150,7 @@ public class Factory : Infectable
         }
         MicroBacteria micro = col.GetComponent<MicroBacteria>();
         if(micro != null && bacteriaInside.Contains(micro)){
+            micro.healingIcon.SetActive(false);
             bacteriaInside.Remove(micro);
         }        
     }
