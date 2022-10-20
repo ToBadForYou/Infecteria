@@ -52,7 +52,7 @@ public class UnitSquad : MonoBehaviour
 
     public void SetStance(bool aggressive){
         foreach (Unit unit in units){
-
+            unit.SetStance(aggressive);
         }     
     }
 

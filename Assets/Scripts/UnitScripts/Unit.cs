@@ -25,6 +25,11 @@ public class Unit : MonoBehaviour
 
     GameObject healthBarBackground = null;
     public GameObject healingIcon;
+    public SpriteRenderer stanceIcon;
+    
+    public Sprite aggressive;
+    public Sprite defensive;
+    bool aggressiveStance = false;
 
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
@@ -53,6 +58,18 @@ public class Unit : MonoBehaviour
                 FindHostileInProximity();
             }
             UpdateCurrentTask();
+        }
+    }
+
+    public void SetStance(bool setAggressive){
+        if(setAggressive != aggressiveStance){
+            if(setAggressive){
+                stanceIcon.sprite = aggressive;
+            }
+            else {
+                stanceIcon.sprite = defensive;
+            }
+            aggressiveStance = setAggressive;
         }
     }
 

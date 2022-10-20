@@ -542,6 +542,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
   healingIcon: {fileID: 7242210107626665906}
+  stanceIcon: {fileID: 7956605633334047245}
+  aggressive: {fileID: 21300000, guid: ff5b7d6586534db4887179eecda9a4d7, type: 3}
+  defensive: {fileID: 21300000, guid: f24381260cde84c45a1a79f3fe491e17, type: 3}
   infectionAmount: 0.2
   followPlayer: 0
   targetCell: {fileID: 0}
