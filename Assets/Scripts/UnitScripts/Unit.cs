@@ -99,8 +99,10 @@ public class Unit : MonoBehaviour
         }
 
         if (closest != null && (proximityHostile == null || closest != proximityHostile.GetTarget())){
+            if(proximityHostile == null){
+                hostileDetectionPos = transform.position;
+            }
             proximityHostile = new AttackTask(this, closest);
-            hostileDetectionPos = transform.position;
             //if(squad != null){
               //  squad.HostileDetected(closest);
             //}
@@ -111,7 +113,7 @@ public class Unit : MonoBehaviour
         Task currentTask = null;
         if(proximityHostile != null){
             //Temp fix for not chasing units forever
-            if(Vector2.Distance(transform.position, hostileDetectionPos) > 10){
+            if(!aggressiveStance && Vector2.Distance(transform.position, hostileDetectionPos) > 10){
                 proximityHostile = null;
                 GiveTask(new MoveTask(this, hostileDetectionPos), true);
             }
