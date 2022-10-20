@@ -50,6 +50,12 @@ public class UnitSquad : MonoBehaviour
         } 
     }
 
+    public void SetStance(bool aggressive){
+        foreach (Unit unit in units){
+
+        }     
+    }
+
     public void HostileDetected(GameObject hostile){
         foreach (Unit unit in units){
             if(unit.stats.IsAggressive() && unit.GetTaskType() != TaskType.ATTACK){
