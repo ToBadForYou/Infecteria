@@ -6759,6 +6759,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
   healingIcon: {fileID: 0}
+  stanceIcon: {fileID: 0}
+  aggressive: {fileID: 0}
+  defensive: {fileID: 0}
   hpTextMesh: {fileID: 313478588}
   currentCell: {fileID: 0}
   currentFactory: {fileID: 0}
@@ -12254,10 +12257,10 @@ RectTransform:
   m_Father: {fileID: 1651694285}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -409.1471}
-  m_SizeDelta: {x: 200, y: 22.8529}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 36.852905}
+  m_SizeDelta: {x: 200, y: 22.852905}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1270892657
 MonoBehaviour:
