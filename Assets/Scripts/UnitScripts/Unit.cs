@@ -153,6 +153,9 @@ public class Unit : MonoBehaviour
         int currentHP = stats.GetCurrentHealth();
         if(currentHP < maxHP){
             int newHP = currentHP + amount;
+            if(newHP > maxHP){
+                newHP = maxHP;
+            }
             stats.SetCurrentHealth(newHP);
             healthBar.localScale = new Vector2(((float)newHP/maxHP) * maxHPBar, healthBar.localScale.y);
             if(newHP == maxHP && healthBarBackground){

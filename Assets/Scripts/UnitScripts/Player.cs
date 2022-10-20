@@ -102,6 +102,7 @@ public class Player : Unit
                         audioSrc.clip = absorbSoundEffect;
                         audioSrc.Play();
                         currentCell.GetAbsorbed();
+                        Heal(25);
 
                         GetComponent<PlayerMovement>().SetSpeed(5.0f);
                     }
