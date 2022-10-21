@@ -297,6 +297,9 @@ MonoBehaviour:
   cells: []
   unitSpawner: {fileID: 0}
   unitProducer: {fileID: 0}
+  nextInspection: 0
+  inspectionCD: 120
+  owner: 1
 --- !u!1 &46662805
 GameObject:
   m_ObjectHideFlags: 0
@@ -7267,8 +7270,9 @@ GameObject:
   - component: {fileID: 734316647}
   - component: {fileID: 734316649}
   - component: {fileID: 734316650}
-  - component: {fileID: 734316652}
   - component: {fileID: 734316651}
+  - component: {fileID: 734316653}
+  - component: {fileID: 734316652}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -7359,6 +7363,9 @@ MonoBehaviour:
   cells: []
   unitSpawner: {fileID: 0}
   unitProducer: {fileID: 734316650}
+  nextInspection: 0
+  inspectionCD: 120
+  owner: 1
   nextScout: 5
   scoutProductionTime: 5
   maxReportAntibodies: 6
@@ -7409,6 +7416,110 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &734316653
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734316646}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 8}
+    newSize: {x: 6, y: 8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.59375, y: -3.28125}
+      - {x: 1.671875, y: -2.921875}
+      - {x: 1.765625, y: -2.6875}
+      - {x: 1.84375, y: -2.46875}
+      - {x: 2.015625, y: -2.234375}
+      - {x: 2.125, y: -1.6875}
+      - {x: 2.140625, y: -1.40625}
+      - {x: 2.140625, y: -0.8125}
+      - {x: 2.25, y: -0.703125}
+      - {x: 2.328125, y: -0.34375}
+      - {x: 2.3125, y: 0.109375}
+      - {x: 2.234375, y: 0.40625}
+      - {x: 2.125, y: 0.65625}
+      - {x: 2.015625, y: 0.875}
+      - {x: 1.921875, y: 1.03125}
+      - {x: 2.140625, y: 1.015625}
+      - {x: 2.3125, y: 1.015625}
+      - {x: 2.53125, y: 1.171875}
+      - {x: 2.625, y: 1.421875}
+      - {x: 2.65625, y: 1.5625}
+      - {x: 2.65625, y: 1.90625}
+      - {x: 2.484375, y: 2.109375}
+      - {x: 2.203125, y: 2.28125}
+      - {x: 2.1875, y: 2.703125}
+      - {x: 2.125, y: 2.828125}
+      - {x: 2.015625, y: 2.921875}
+      - {x: 1.84375, y: 3.015625}
+      - {x: 1.921875, y: 3.109375}
+      - {x: 1.921875, y: 3.359375}
+      - {x: 1.78125, y: 3.484375}
+      - {x: 1.703125, y: 3.484375}
+      - {x: 1.46875, y: 3.578125}
+      - {x: 1.265625, y: 3.578125}
+      - {x: 1.21875, y: 3.546875}
+      - {x: 1.046875, y: 3.453125}
+      - {x: 1.015625, y: 3.84375}
+      - {x: 0.921875, y: 3.953125}
+      - {x: 0.796875, y: 4}
+      - {x: 0.4375, y: 4}
+      - {x: 0.25, y: 3.875}
+      - {x: 0.203125, y: 3.75}
+      - {x: 0.15625, y: 3.328125}
+      - {x: 0.078125, y: 3.28125}
+      - {x: -0.21875, y: 3.390625}
+      - {x: -0.5, y: 3.421875}
+      - {x: -0.75, y: 3.40625}
+      - {x: -0.90625, y: 3.34375}
+      - {x: -1.21875, y: 2.953125}
+      - {x: -1.265625, y: 2.8125}
+      - {x: -1.421875, y: 2.1875}
+      - {x: -1.953125, y: 1.796875}
+      - {x: -2.109375, y: 1.640625}
+      - {x: -2.203125, y: 1.5}
+      - {x: -2.4375, y: 0.96875}
+      - {x: -2.5, y: 0.734375}
+      - {x: -2.53125, y: 0.515625}
+      - {x: -2.578125, y: 0.0625}
+      - {x: -2.609375, y: -0.3125}
+      - {x: -2.609375, y: -0.625}
+      - {x: -2.578125, y: -0.734375}
+      - {x: -2.5, y: -0.984375}
+      - {x: -2.40625, y: -1.21875}
+      - {x: -2.265625, y: -1.578125}
+      - {x: -2.15625, y: -1.75}
+      - {x: -2.015625, y: -1.90625}
+      - {x: -1.890625, y: -2.15625}
+      - {x: -1.671875, y: -2.5}
+      - {x: -1.234375, y: -2.921875}
+      - {x: -0.984375, y: -3.125}
+      - {x: -0.828125, y: -3.3125}
+      - {x: -0.515625, y: -3.625}
+      - {x: -0.25, y: -3.796875}
+      - {x: -0.03125, y: -3.890625}
+      - {x: 0.34375, y: -4}
+      - {x: 0.90625, y: -4}
+      - {x: 1.1875, y: -3.859375}
+      - {x: 1.421875, y: -3.59375}
+      - {x: 1.5625, y: -3.390625}
+  m_UseDelaunayMesh: 0
 --- !u!1 &743672305
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,7 +7538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &743672306
 MonoBehaviour:
   m_ObjectHideFlags: 0

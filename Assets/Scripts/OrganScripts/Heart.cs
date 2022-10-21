@@ -16,7 +16,7 @@ public class Heart : Organ
         alertedProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 20));
     }
 
-    void Update(){
+    new void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
             base.Update();
             nextScout -= Time.deltaTime;

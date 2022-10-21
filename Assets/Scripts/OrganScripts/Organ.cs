@@ -13,6 +13,7 @@ public class Organ : MonoBehaviour
     float xRange = 16.0f;
     public float nextInspection;
     public int inspectionCD = 120;
+    public Unit.Faction owner = Unit.Faction.IMMUNESYSTEM;
 
     protected void Start(){
         nextInspection = inspectionCD;
@@ -23,7 +24,7 @@ public class Organ : MonoBehaviour
 
     protected void Update(){
         nextInspection -= Time.deltaTime;
-        # TODO actually check cells
+        // TODO actually check cells
         if(nextInspection < 0){
             nextInspection = inspectionCD;
         }
@@ -60,6 +61,13 @@ public class Organ : MonoBehaviour
                 objs[i].GetComponent<SpriteRenderer>().color = cellColor;
                 //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
+        Unit unit = col.gameObject.GetComponent<Unit>();
+        if(unit != null && unit.owner != owner){
+            Debug.Log("Leave");
         }
     }
 }
