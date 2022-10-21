@@ -11,11 +11,22 @@ public class Organ : MonoBehaviour
     public UnitProducer unitProducer;
     float yRange = 13.0f;
     float xRange = 16.0f;
+    public float nextInspection;
+    public int inspectionCD = 120;
 
     protected void Start(){
+        nextInspection = inspectionCD;
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 20));
         StartCoroutine(LateStart(0.0f));
+    }
+
+    protected void Update(){
+        nextInspection -= Time.deltaTime;
+        # TODO actually check cells
+        if(nextInspection < 0){
+            nextInspection = inspectionCD;
+        }
     }
 
     public void RemoveCell(Cell cell) {

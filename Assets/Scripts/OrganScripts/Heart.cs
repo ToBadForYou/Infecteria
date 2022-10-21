@@ -17,7 +17,8 @@ public class Heart : Organ
     }
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
+            base.Update();
             nextScout -= Time.deltaTime;
             if (nextScout < 0){
                 nextScout = scoutProductionTime;

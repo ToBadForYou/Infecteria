@@ -83,14 +83,17 @@ public class UnitSquad : MonoBehaviour
                 potentialInfections.Add(infectable);
             }
         }
+        Search(searchUnit, potentialInfections);
+    }
 
+    public void Search(Scout searchUnit, List<Infectable> potentialInfections){
         searchUnit.GiveTask(new SearchTask(searchUnit, potentialInfections, this), false); 
         foreach (Unit unit in units){
             if(unit != (Unit)searchUnit){
                 unit.CancelTasks();
                 unit.GiveTask(new FollowTask(unit, searchUnit.gameObject, new Vector2(Random.Range(-offsetFactor, offsetFactor), Random.Range(-offsetFactor, offsetFactor))), false);
             }
-        }  
+        }          
     }
 
     public void Patrol(Vector2 start, Vector2 end, bool cancelTasks){
