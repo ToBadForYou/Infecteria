@@ -403,7 +403,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
   - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
-  infectionAmount: -1
+  healingIcon: {fileID: 0}
+  stanceIcon: {fileID: 0}
+  aggressive: {fileID: 0}
+  defensive: {fileID: 0}
+  infectionAmount: -5
 --- !u!114 &-3502876324055183019
 MonoBehaviour:
   m_ObjectHideFlags: 0

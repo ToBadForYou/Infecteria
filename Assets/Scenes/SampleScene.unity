@@ -5665,7 +5665,7 @@ MonoBehaviour:
   skilltree: {fileID: 94729534}
   nextButton: {fileID: 0}
   cost: 0
-  effect: 15
+  effect: 1.5
 --- !u!1 &578760288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6232,7 +6232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee55a4ad5e53320439334e616b786062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2.5
   additionalSpeed: 0
   knockbackObject: {fileID: 0}
   lastMoveDir: {x: 0, y: 0, z: 0}
@@ -6365,7 +6365,7 @@ MonoBehaviour:
   unitMovement: {fileID: 0}
   inRange: []
   squad: {fileID: 0}
-  unitType: 0
+  unitType: 3
   producer: {fileID: 0}
   owner: 0
   hitEffect: {fileID: 3962789461294512618, guid: c5a59a253aa04014db320f8f6f4f268a, type: 3}
@@ -7369,7 +7369,6 @@ MonoBehaviour:
   nextScout: 5
   scoutProductionTime: 5
   maxReportAntibodies: 6
-  minimumSpawn: 5
   alertedProducer: {fileID: 734316651}
 --- !u!114 &734316650
 MonoBehaviour:
@@ -7538,7 +7537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &743672306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9257,7 +9256,7 @@ MonoBehaviour:
   skilltree: {fileID: 94729534}
   nextButton: {fileID: 1323144680}
   cost: 0
-  effect: 5
+  effect: 0.5
 --- !u!1 &961177626
 GameObject:
   m_ObjectHideFlags: 0
@@ -12639,7 +12638,7 @@ MonoBehaviour:
   skilltree: {fileID: 94729534}
   nextButton: {fileID: 566673335}
   cost: 0
-  effect: 10
+  effect: 1
 --- !u!1 &1338986323
 GameObject:
   m_ObjectHideFlags: 0

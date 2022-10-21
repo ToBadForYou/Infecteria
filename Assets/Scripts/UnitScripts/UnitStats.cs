@@ -8,14 +8,14 @@ public class UnitStats
     private int health;
     private int currentHealth;
     private int damage;
-    private int attackSpeed;
+    private float attackSpeed;
     private float attackTimer;
     private float range;
     private bool aggressive;
 
     private int additionalHp = 0;
 
-    public UnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
+    public UnitStats(int hp, int currentHp, int dmg, float speed, float time, float r, bool state) {
         SetHealth(hp);
         SetCurrentHealth(currentHp);
         SetDamage(dmg);
@@ -34,7 +34,7 @@ public class UnitStats
     }
     public void SetCurrentHealth(int hp) { currentHealth = hp; }
     public void DecreaseCurrentHealth(int amount) { currentHealth -= amount; }
-    public void SetAttackSpeed(int speed) { attackSpeed = speed; }
+    public void SetAttackSpeed(float speed) { attackSpeed = speed; }
     public void SetAttackTimer(float time) { attackTimer = time; }
     public void DecreaseAttackTimer(float amount) { attackTimer -= amount; }
     public void SetRange(float r) { range = r; }
@@ -44,7 +44,7 @@ public class UnitStats
     public int GetDamage() { return damage; }
     public int GetHealth() { return health + additionalHp; }
     public int GetCurrentHealth() { return currentHealth; }
-    public int GetAttackSpeed() { return attackSpeed; }
+    public float GetAttackSpeed() { return attackSpeed; }
     public float GetAttackTimer() { return attackTimer; }
     public float GetRange() { return range; }
     public bool IsAggressive() { return aggressive; }

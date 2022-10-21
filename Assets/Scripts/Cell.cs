@@ -86,7 +86,7 @@ public class Cell : Infectable
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
             source.clip = soundEffect;
             source.Play();
-            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
+            col.gameObject.GetComponent<PlayerMovement>().SetSpeedPenalty(1f);
             col.gameObject.GetComponent<Player>().currentCell = this;
         }
     }
@@ -96,7 +96,7 @@ public class Cell : Infectable
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
             source.clip = soundEffect;
             source.Play();
-            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
+            col.gameObject.GetComponent<PlayerMovement>().SetSpeedPenalty(0f);
             col.gameObject.GetComponent<Player>().currentCell = null;
         }
     }

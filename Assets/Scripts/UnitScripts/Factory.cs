@@ -126,7 +126,6 @@ public class Factory : Infectable
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
-            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(2.5f);
             col.gameObject.GetComponent<Player>().currentFactory = this;
             Player playerScript = col.gameObject.GetComponent<Player>();
             playerScript.MakeObjActive(playerScript.fObject);
@@ -142,7 +141,6 @@ public class Factory : Infectable
     
     void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
-            col.gameObject.GetComponent<PlayerMovement>().SetSpeed(5.0f);
             col.gameObject.GetComponent<Player>().currentFactory = null;
             Player playerScript = col.gameObject.GetComponent<Player>();
             playerScript.MakeObjDeactive(playerScript.fObject);

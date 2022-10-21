@@ -46,7 +46,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void SetUnitStats(int hp, int currentHp, int dmg, int speed, float time, float r, bool state) {
+    public void SetUnitStats(int hp, int currentHp, int dmg, float speed, float time, float r, bool state) {
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
     }
 
