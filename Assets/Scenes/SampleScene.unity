@@ -11952,6 +11952,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1270802030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8843844189022694385, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+  m_PrefabInstance: {fileID: 8843844188025343391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1270892655
 GameObject:
   m_ObjectHideFlags: 0
@@ -19512,6 +19523,34 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 90895842}
     m_Modifications:
+    - target: {fileID: 3441366343769014904, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: organ
+      value: 
+      objectReference: {fileID: 734316649}
+    - target: {fileID: 3441366343769014904, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: maxAmount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441366343769014904, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: progressMesh
+      value: 
+      objectReference: {fileID: 1270802030}
+    - target: {fileID: 8843844188931589019, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_text
+      value: Infect Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843844188931589019, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843844188931589019, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843844189022694385, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_text
+      value: 0/9
+      objectReference: {fileID: 0}
     - target: {fileID: 8843844189138762307, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -19598,7 +19637,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843844189138762308, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
       propertyPath: m_Name
-      value: Quest Template
+      value: Quest 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843844189373760888, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_text
+      value: Infect and absorb all heart cells.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843844189373760889, guid: 8fd625c41980ea140bad40086e66ae07, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 190
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
