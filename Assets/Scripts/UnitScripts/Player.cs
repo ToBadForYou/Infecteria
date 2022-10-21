@@ -56,22 +56,25 @@ public class Player : Unit
         SceneManager.LoadScene("Ending");
     }
 
+    public void ToggleSkillTree(bool show){
+        skilltree.SetActive(show);
+        if(show){
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);        
+        }
+        else {
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+        }
+    }
+
     new void Update(){
         hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
             // Skilltree
-            if(Input.GetKeyDown(KeyCode.T)) {
-                if(!skilltree.activeSelf) {
-                    skilltree.SetActive(true);
-                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
-                }
-                else {
-                    skilltree.SetActive(false);
-                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
-                }
+            if(Input.GetKeyDown(KeyCode.T)){
+                ToggleSkillTree(!skilltree.activeSelf);
             }
 
             // Zoom Map
-            if(Input.GetKeyDown(KeyCode.M)) {
+            if(Input.GetKeyDown(KeyCode.M)){
                 if(!zoomMap.activeSelf) {
                     zoomMap.SetActive(true);
                     PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
