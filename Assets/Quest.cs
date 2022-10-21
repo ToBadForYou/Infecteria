@@ -12,6 +12,16 @@ public class Quest : MonoBehaviour
 
     public bool isFinished;
 
+    void Start(){
+        isFinished = true;
+        StartCoroutine(LateStart(0.1f));
+    }
+
+    IEnumerator LateStart(float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        isFinished = false;
+    }
+
     void Update()
     {
         if(!isFinished) {
