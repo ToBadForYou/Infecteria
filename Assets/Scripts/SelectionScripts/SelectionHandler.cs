@@ -81,29 +81,24 @@ public class SelectionHandler : MonoBehaviour
         DeselectAllBacterias(false);
     }
 
-    public void AssignMoveTask() {
-        Vector2 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        selectedUnits.MoveTo(mousePosition, true);
-        DeselectAllBacterias(false);
-    }
-
-    public void AssignInfectTask() {
+    public void AssignMoveTask(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
         Transform hitTransform = hit.transform;
-        if (hitTransform != null) {
-            Infectable infectableTarget = hitTransform.gameObject.GetComponent<Infectable>();
-            if(infectableTarget != null){
-                selectedUnits.Infect(infectableTarget);
-            }
-        }       
+        Infectable infectableTarget = null;
+        if(hitTransform != null){
+            infectableTarget = hitTransform.gameObject.GetComponent<Infectable>();
+        }
+        if(infectableTarget != null){
+            selectedUnits.Infect(infectableTarget);
+        }
+        else {  
+            Vector2 mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            selectedUnits.MoveTo(mousePosition, true);
+        }
         DeselectAllBacterias(false);
-    }
-
-    public void SetCommand(string command){
-        setCommand = command;
     }
 
     void Update(){
@@ -115,20 +110,15 @@ public class SelectionHandler : MonoBehaviour
                     AssignReturnTask();
                 else if(Input.GetKeyDown(KeyCode.F)) // Follow player
                     AssignFollowTask();
-                else if(Input.GetKeyDown(KeyCode.M) || (Input.GetMouseButtonDown(0) && setCommand == "move")) // Move to mouse position
+                else if(Input.GetMouseButtonDown(1)) // Move to mouse position
                     AssignMoveTask();
-                else if(Input.GetKeyDown(KeyCode.I) || (Input.GetMouseButtonDown(0) && setCommand == "infect")) // Infect cell
-                    AssignInfectTask();
             }
             else {
                 if(controlPanel.activeSelf)
                     controlPanel.SetActive(false);
             }
-            if(Input.GetMouseButtonDown(0)){
-                setCommand = "";
-            }
 
-            if(Input.GetMouseButtonDown(1)) {
+            if(Input.GetMouseButtonDown(0)){
                 selectionTransform.gameObject.SetActive(true);
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
@@ -136,7 +126,7 @@ public class SelectionHandler : MonoBehaviour
                 
                 isDown = true;
             }
-            else if(Input.GetMouseButtonUp(1)) {
+            else if(Input.GetMouseButtonUp(0)){
                 selectionTransform.gameObject.SetActive(false);
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
@@ -147,7 +137,7 @@ public class SelectionHandler : MonoBehaviour
 
                 isDown = false;
             }
-            if(isDown) {
+            if(isDown){
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 
                 float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
