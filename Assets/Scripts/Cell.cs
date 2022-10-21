@@ -53,7 +53,7 @@ public class Cell : Infectable
     }
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
             float step = speed * Time.deltaTime;
             
             float diff = Vector2.Distance(transform.position, target);

@@ -9,15 +9,16 @@ public class SugarSpawner : MonoBehaviour
     float timePassed = 0.0f;
     float maxTime = 20.0f;
 
-    float offset = 10.0f;
+    float offset = 12.0f;
 
-    void Update()
-    {
-        timePassed+=Time.deltaTime;
-        if(timePassed >= maxTime) {
-            timePassed = 0.0f;
-            Vector2 pos = new Vector2(Random.Range(transform.position.x - offset, transform.position.x + offset), Random.Range(transform.position.y - offset, transform.position.y + offset));
-            Instantiate(sugarPrefab, pos, Quaternion.identity);
+    void Update(){
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
+            timePassed += Time.deltaTime;
+            if(timePassed >= maxTime) {
+                timePassed = 0.0f;
+                Vector2 pos = new Vector2(Random.Range(transform.position.x - offset, transform.position.x + offset), Random.Range(transform.position.y - offset, transform.position.y + offset));
+                Instantiate(sugarPrefab, pos, Quaternion.identity);
+            }
         }
     }
 }
