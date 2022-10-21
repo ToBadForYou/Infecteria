@@ -7,7 +7,6 @@ public class Heart : Organ
     public float nextScout = 5;
     public int scoutProductionTime = 5;
     public int maxReportAntibodies = 6;
-    public int minimumSpawn = 5;
 
     public UnitProducer alertedProducer;
 
@@ -31,19 +30,7 @@ public class Heart : Organ
 
     public void OnReport(Vector2 alertPosition){
         if(Vector2.Distance(transform.position, alertPosition) < 14){
-            int currentAntibodies = unitProducer.GetAvailableAmount(UnitType.ANTIBODY);
-            if(currentAntibodies > minimumSpawn){
-                currentAntibodies = unitProducer.WithdrawAll(UnitType.ANTIBODY);
-                // TODO Recall all antibodies
-                List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
-                UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
-                unitSquads.Add(newSquad);
-                newSquad.MoveTo(alertPosition, false);
-                foreach (Unit antibody in antibodies){
-                    antibody.producer = unitProducer;
-                    antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
-                }
-            }
+            DeployAntibodies(alertPosition);
         }
         else {
             int randomAmount = Random.Range(2, maxReportAntibodies);

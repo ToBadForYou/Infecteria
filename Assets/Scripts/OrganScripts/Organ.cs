@@ -14,6 +14,7 @@ public class Organ : MonoBehaviour
     public float nextInspection;
     public int inspectionCD = 120;
     public Unit.Faction owner = Unit.Faction.IMMUNESYSTEM;
+    int minimumSpawn = 5;
 
     protected void Start(){
         nextInspection = inspectionCD;
@@ -64,10 +65,26 @@ public class Organ : MonoBehaviour
         }
     }
 
+    protected void DeployAntibodies(Vector2 alertPosition){
+        int currentAntibodies = unitProducer.GetAvailableAmount(UnitType.ANTIBODY);
+        if(currentAntibodies > minimumSpawn){
+            currentAntibodies = unitProducer.WithdrawAll(UnitType.ANTIBODY);
+            // TODO Recall all antibodies
+            List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
+            UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
+            unitSquads.Add(newSquad);
+            newSquad.MoveTo(alertPosition, false);
+            foreach (Unit antibody in antibodies){
+                antibody.producer = unitProducer;
+                antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col){
         Unit unit = col.gameObject.GetComponent<Unit>();
         if(unit != null && unit.owner != owner){
-            Debug.Log("Leave");
+            DeployAntibodies(col.transform.position);
         }
     }
 }
