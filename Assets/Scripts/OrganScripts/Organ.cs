@@ -23,7 +23,9 @@ public class Organ : MonoBehaviour
             cells.Remove(cell);
         }
         if(cells.Count == 0) {
-            DontDestroyOnLoad(GameObject.Find("GameManager"));
+            GameObject manager = GameObject.Find("GameManager");
+            manager.GetComponent<GameManager>().won = true;
+            DontDestroyOnLoad(manager);
             SceneManager.LoadScene("Ending");
         }
     }

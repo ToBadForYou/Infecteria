@@ -52,7 +52,8 @@ public class Player : Unit
     }
 
     public override void OnDeath() {
-        SceneManager.LoadScene(0);
+        DontDestroyOnLoad(GameObject.Find("GameManager"));
+        SceneManager.LoadScene("Ending");
     }
 
     new void Update(){

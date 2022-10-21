@@ -15,26 +15,28 @@ public class GameManager : MonoBehaviour
     public int absorbedCells = 0;
     public int infectedCells = 0;
     public int factoryAmount = 0;
-
     private int cellAmount;
+    public bool won;
     
     public List<GameObject> cells = new List<GameObject>();
 
-    void Start() {
+    void Start(){
         StartCoroutine(LateStart(0.0f));
     }
 
-    IEnumerator LateStart(float waitTime)
-    {
+    IEnumerator LateStart(float waitTime){
         yield return new WaitForSeconds(waitTime);
         cellAmount = GameObject.FindGameObjectsWithTag("Cell").Length;
     }
 
-    public void SetWinStats() {
+    public void SetWinStats(){
         string infectedStats = "infected cells:       " + infectedCells + "\n";
         string absorbedStats = "absorbed cells:       " + absorbedCells + "\n";
         string factoriesStats = "factories:            " + factoryAmount + "\n";
         GameObject.Find("stats").GetComponent<TextMeshProUGUI>().text = infectedStats + absorbedStats + factoriesStats;
+        if(!won){
+            GameObject.Find("title").GetComponent<TextMeshProUGUI>().text = "Dead: you loose!";
+        }
     }
 
     public void UpdateTextMesh() {
