@@ -44,17 +44,21 @@ public class PauseManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    bool guard = false;
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            if (CurrPauseState != PauseState.FULL) {
+        if(CurrPauseState != PauseState.FULL && !guard) {
+            if (Input.GetButtonUp("Cancel")) {
                 SetPauseState(PauseState.FULL);
                 pauseUIObj.SetActive(true);
+                guard = true;
             }
-            else {
-                SetPauseState(PrevPauseState);
+        }
+        else if(guard){
+            if (Input.GetButtonUp("Cancel")) {
+                SetPauseState(PauseState.NONE);
                 pauseUIObj.SetActive(false);
+                guard = false;
             }
         }
     }
