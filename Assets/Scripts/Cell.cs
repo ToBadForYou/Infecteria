@@ -67,6 +67,9 @@ public class Cell : Infectable
     public override void OnInfect(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(1);
+
+        infectionBarPivot.gameObject.SetActive(false); // hide bar when infected, this may lead to problems later, if so: TODO: Fix bug
+        insideRenderer.color = new Color(0.0f, 1.0f, 0.0f);
         
         Heart heart = GameObject.Find("Heart").GetComponent<Heart>();
         heart.RemoveCell(this); // Removes only if this cell is in the list
