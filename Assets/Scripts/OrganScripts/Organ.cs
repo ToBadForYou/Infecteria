@@ -12,9 +12,9 @@ public class Organ : MonoBehaviour
     float yRange = 13.0f;
     float xRange = 16.0f;
 
-    void Start(){
+    protected void Start(){
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(5, 5, 20));
+        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 20));
         StartCoroutine(LateStart(0.0f));
     }
 
