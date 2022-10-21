@@ -13,11 +13,23 @@ public class SelectCell : MonoBehaviour
 
     public GameObject newSelectionCell;
     public GameObject newSelectionMenu;
+    SelectionCell selectedCell;
     public List<GameObject> fakeCells = new List<GameObject>();
 
-    public void SetTargetCell(Cell targetCell){
-        currentFactory.AutoInfect(targetCell);
-        CloseSelection();
+    public void SetTargetCell(SelectionCell targetFakeCell){
+        if(selectedCell == targetFakeCell){
+            targetFakeCell.infectText.text = "";
+            selectedCell = null;
+            currentFactory.AutoInfect(null);
+        }
+        else {
+            if(selectedCell != null){
+                selectedCell.infectText.text = "";
+            }
+            selectedCell = targetFakeCell;
+            targetFakeCell.infectText.text = "Infecting";
+            currentFactory.AutoInfect(targetFakeCell.realCellReference);
+        }
     }
 
     public void CloseSelection(){
@@ -59,6 +71,7 @@ public class SelectCell : MonoBehaviour
                 selectionCell.realCellReference = cell;
                 if(factory.infectTarget != null && factory.infectTarget.gameObject == objs[i]){
                     selectionCell.infectText.text = "Infecting";
+                    selectedCell = selectionCell;
                 }
                 fakeCells.Add(fakeCell);
             }

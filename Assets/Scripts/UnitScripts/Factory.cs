@@ -13,7 +13,6 @@ public class Factory : Infectable
     public GameObject[] structures = new GameObject[4];
 
     public bool belongsToHeart;
-    public bool autoInfect = false;
     public Infectable infectTarget;
     public GameObject cellPrefab;
     public List<GameObject> upgradeVisuals;
@@ -35,7 +34,7 @@ public class Factory : Infectable
                 obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
                 MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
                 AddMicrobacteria(bacteria);
-                if(autoInfect) {
+                if(infectTarget != null){
                     bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
                 }
             }
@@ -161,10 +160,6 @@ public class Factory : Infectable
         return levelsLeft && hasPoints;
     }
 
-    public bool CanAutoInfect(){
-        return !autoInfect;
-    }
-
     public bool CanBuild(int slot){
         return slot < currentLevel && structures[slot] == null;
     }
@@ -180,11 +175,12 @@ public class Factory : Infectable
 
     public void AutoInfect(Infectable newTarget){
         infectTarget = newTarget;
-        foreach(MicroBacteria bacteria in microbacterias){
-            bacteria.CancelTasks();
-            bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject), false);
+        if(newTarget != null){
+            foreach(MicroBacteria bacteria in microbacterias){
+                bacteria.CancelTasks();
+                bacteria.GiveTask(new InfectTask(bacteria, newTarget.gameObject), false);
+            }
         }
-        autoInfect = true;
     }
 
     public void JoinPlayerSquad(GameObject playerObject, UnitSquad unitSquad){

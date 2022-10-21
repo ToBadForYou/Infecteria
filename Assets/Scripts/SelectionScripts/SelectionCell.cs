@@ -8,7 +8,7 @@ public class SelectionCell : MonoBehaviour
     public Cell realCellReference;
     public TextMeshProUGUI infectText;
 
-    public void SelectCell() {
-        GameObject.Find("SelectCell").GetComponent<SelectCell>().SetTargetCell(realCellReference);
+    public void SelectCell(){
+        GameObject.Find("SelectCell").GetComponent<SelectCell>().SetTargetCell(this);
     }
 }
