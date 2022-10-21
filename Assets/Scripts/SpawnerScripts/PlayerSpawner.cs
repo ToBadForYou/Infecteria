@@ -7,8 +7,7 @@ public class PlayerSpawner : MonoBehaviour
     public List<Region> spawnableRegion = new List<Region>();
     Region activeRegion;
 
-    void Start()
-    {
+    void Start(){
         Region region1 = new Region(-133, 133, 51, 104); //TODO: Do this automatically in BorderGenerator later
         spawnableRegion.Add(region1);
         Region region2 = new Region(-133, 133, -82, -29); //TODO: Do this automatically in BorderGenerator later

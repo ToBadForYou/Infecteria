@@ -30,12 +30,12 @@ public class Player : Unit
     public AudioSource audioSrc;
     public AudioClip absorbSoundEffect;
 
-    new void Start() {
+    new void Start(){
         base.Start();
         SetUnitStats(100, 100, 1, 1, 1.0f, 0.9f, false);
     }
 
-    public void MakeObjActive(GameObject obj) {
+    public void MakeObjActive(GameObject obj){
         if(obj) {
             if(!obj.activeSelf) {
                 obj.SetActive(true);
@@ -43,7 +43,7 @@ public class Player : Unit
         }
     }
 
-    public void MakeObjDeactive(GameObject obj) {
+    public void MakeObjDeactive(GameObject obj){
         if(obj) {
             if(obj.activeSelf) {
                 obj.SetActive(false);
