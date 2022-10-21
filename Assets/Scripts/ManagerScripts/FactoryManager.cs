@@ -12,6 +12,7 @@ public class FactoryManager : MonoBehaviour
     public TextMeshProUGUI infectionText;
     public TextMeshProUGUI levelTextMesh;
     public TextMeshProUGUI upgradeTooltip;
+    public Button upgradeButton;
 
     public Transform infectionBar;
     public GameObject buildOptions;
@@ -25,7 +26,14 @@ public class FactoryManager : MonoBehaviour
 
     public void SetFactory(Factory factory) {
         currentFactory = factory;
-        upgradeTooltip.text = factory.upgradeCost + " sugar to upgrade";
+        if(factory.currentLevel == factory.maxLevel){
+            upgradeButton.interactable = false;
+            upgradeTooltip.text = "Fully upgraded";
+        }
+        else {
+            upgradeButton.interactable = true;
+            upgradeTooltip.text = factory.upgradeCost + " sugar to upgrade";
+        }
         UpdateMicrobacteria(factory.GetBacteriaAmount(), factory.GetMaximumBacteria());
         UpdateInfection(factory.infectionAmount, factory.maxInfectionAmount);
         // TODO Make a script for build slots to handle setting images, colors etc
@@ -62,9 +70,17 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void UpgradeFactory() {
-        currentFactory.Upgrade();
-        levelTextMesh.text = "Level " + currentFactory.currentLevel;
-        upgradeTooltip.text = currentFactory.upgradeCost + " sugar to upgrade";
+        if(currentFactory.currentLevel < currentFactory.maxLevel){
+            currentFactory.Upgrade();
+            levelTextMesh.text = "Level " + currentFactory.currentLevel;
+            if(currentFactory.currentLevel == currentFactory.maxLevel){
+                upgradeButton.interactable = false;
+                upgradeTooltip.text = "Fully upgraded";
+            }
+            else {
+                upgradeTooltip.text = currentFactory.upgradeCost + " sugar to upgrade";
+            }
+        }
     }
 
     public void ToggleInfectCell(){

@@ -18033,6 +18033,7 @@ MonoBehaviour:
   infectionText: {fileID: 613312028}
   levelTextMesh: {fileID: 2033668327}
   upgradeTooltip: {fileID: 162157776}
+  upgradeButton: {fileID: 578760290}
   infectionBar: {fileID: 613312027}
   buildOptions: {fileID: 933105315}
   buildSlots: {fileID: 230121895}
