@@ -9,13 +9,13 @@ public class TutorialHandler : MonoBehaviour
 
     public Dictionary<EventType, string> events = new Dictionary<EventType, string>()
     {
-        {EventType.Infected, "You just infected your first cell, congratulations! Now you have two choices, either you can absorb the cell or you can make it into a factory."},
-        {EventType.Absorbed, "You just absorbed your first cell, congratulations! When you absorb a cell, it dies and your health gets reset."},
-        {EventType.MadeFactory, "Congratulations, you just made your first factory! Factories can do many things, such as autoinfect cells and produce units. Upgrade your factories to make things easier."},
-        {EventType.EnteredCell, "You just entered an cell! In order to infect an cell you have to stay within the cell for a short period of time. You will notice when it's infected. Good luck!"},
+        {EventType.Infected, "You just infected your first cell, congratulations! Now you have two choices, either you can absorb the cell (E) or you can make it into a factory (Q)."},
+        {EventType.Absorbed, "You just absorbed your first cell, congratulations! Absorbing cells will grant you DNA points and recover lost health."},
+        {EventType.MadeFactory, "Congratulations, you just made your first factory! Factories can do many things, such as autoinfect cells, build structures and produce units. You may also upgrade it to unlock more building slots."},
+        {EventType.EnteredCell, "You just entered a cell! By staying inside you will increase its infection level until it has been fully infected."},
         {EventType.Microbacteria, "You just produced your first microbacteria! These are your friends. You can select them by holding left mouse button and draging over them."},
-        {EventType.ScoutDetected, "You just got detected by a scout. This is a bad thing. The scout will tell the body organs about you and start to produce antibodies."},
-        {EventType.DetectorDetected, "You just got detected by a detector. This is a bad thing. The detector produces some antibacteria to keep you away and also send out a scout, you will learn more about scouts soon."},
+        {EventType.ScoutDetected, "A scout has spotted you! Deal with it before it can report your presence to the heart!"},
+        {EventType.DetectorDetected, "A detector has spotted you! A few antibodies has been deployed to deal with you, but most importantly a scout which will inform the heart about your presence unless you deal with it."},
         {EventType.UnitSelected, "Some text about unit selection"}
     };
 
