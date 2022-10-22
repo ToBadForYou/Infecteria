@@ -29,6 +29,7 @@ public class Player : Unit
 
     public AudioSource audioSrc;
     public AudioClip absorbSoundEffect;
+    public AudioClip factorySoundEffect;
 
     new void Start(){
         base.Start();
@@ -116,6 +117,8 @@ public class Player : Unit
                                 MakeObjActive(mouseObject);
                             }
                         }
+                        audioSrc.clip = factorySoundEffect;
+                        audioSrc.Play();
                         currentCell.TurnIntoFactory();
                     }
                 }

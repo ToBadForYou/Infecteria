@@ -383,6 +383,9 @@ GameObject:
   - component: {fileID: 613358344}
   - component: {fileID: 1933062502438874124}
   - component: {fileID: 8890387693781151472}
+  - component: {fileID: 958990092}
+  - component: {fileID: 1949297069}
+  - component: {fileID: 804255500}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Cell
@@ -475,6 +478,7 @@ MonoBehaviour:
   maxInfectionAmount: 10
   infectionAmount: 0
   isInfected: 0
+  organ: {fileID: 0}
   factoryPrefab: {fileID: 9200442734102122332, guid: fc09b64f442f5f044a37597d4b1919cc, type: 3}
   infectionBarPivot: {fileID: 977891674}
   offset: 4
@@ -482,7 +486,10 @@ MonoBehaviour:
   insideRenderer: {fileID: 1427935810}
   source: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: b314b13b645e4a449968cd89d5b09c71, type: 3}
-  belongsToHeart: 0
+  soundManagers:
+  - {fileID: 958990092}
+  - {fileID: 1949297069}
+  - {fileID: 804255500}
   particleSystem: {fileID: 1909885213398494152, guid: 10f027e5aedaadf4e98f732c7a33364f, type: 3}
 --- !u!58 &613358344
 CircleCollider2D:
@@ -532,3 +539,63 @@ MonoBehaviour:
   spriteRenderers:
   - {fileID: 1427935810}
   - {fileID: 7336420520501473442}
+--- !u!114 &958990092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198534172057317654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Player Inside
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 57aca7948b2b6d6488adafe268192fb8, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &1949297069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198534172057317654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Player Enter Exit
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: b314b13b645e4a449968cd89d5b09c71, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &804255500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198534172057317654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Infected
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 2c53c6896a4d2e745b20b03f6bb131df, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0

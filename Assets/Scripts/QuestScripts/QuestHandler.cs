@@ -7,6 +7,8 @@ public class QuestHandler : MonoBehaviour
     public List<Quest> quests;
     public Quest activeQuest = null;
 
+    public SoundManager sm;
+
     Quest GetNextQuest() {
         Quest quest = quests[0];
         quests.Remove(quest);
@@ -21,6 +23,7 @@ public class QuestHandler : MonoBehaviour
     void Update() {
         if(activeQuest.isFinished) {
             activeQuest = GetNextQuest();
+            sm.PlaySound();
             if(!activeQuest) { // No more quests
                 // Game is over, player wins
             }

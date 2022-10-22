@@ -18,10 +18,15 @@ public class Cell : Infectable
     public AudioSource source;
     public AudioClip soundEffect;
 
-    void Start(){
+    public List<SoundManager> soundManagers;
+
+    void Start() {
+        foreach (SoundManager sm in soundManagers) {
+            sm.CreateAudioSrc();
+        }
+
         originPos = transform.position;
         target = GetNewTarget();
-        source = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
     }
 
     public void GetAbsorbed(){
@@ -70,6 +75,11 @@ public class Cell : Infectable
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(1);
 
+        foreach(SoundManager sm in soundManagers) {
+            if(sm.eventIdentifier == "Infected")
+                sm.PlaySound();
+        }
+
         infectionBarPivot.gameObject.SetActive(false); // hide bar when infected, this may lead to problems later, if so: TODO: Fix bug
         insideRenderer.color = new Color(0.0f, 1.0f, 0.0f);
     }
@@ -83,18 +93,28 @@ public class Cell : Infectable
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
-            source.clip = soundEffect;
-            source.Play();
+
+            foreach(SoundManager sm in soundManagers) {
+                sm.PlaySound();
+            }
+
             col.gameObject.GetComponent<PlayerMovement>().SetSpeedPenalty(1f);
             col.gameObject.GetComponent<Player>().currentCell = this;
         }
     }
-    
+
     void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
-            source.clip = soundEffect;
-            source.Play();
+            
+            foreach(SoundManager sm in soundManagers) {
+                if(sm.eventIdentifier == "Player Enter Exit")
+                    sm.PlaySound();
+                
+                if(sm.eventIdentifier == "Player Inside")
+                    sm.StopSound();
+            }
+
             col.gameObject.GetComponent<PlayerMovement>().SetSpeedPenalty(0f);
             col.gameObject.GetComponent<Player>().currentCell = null;
         }
