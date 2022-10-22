@@ -27,6 +27,7 @@ public class Detector : DetectorUnit
     public override void Attack(){
         if (!isAlerted){
             isAlerted = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().timesDetectedByDetector++;
 
             int availableScout = unitProducer.WithdrawAmount(UnitType.SCOUT, 1);
             if(availableScout > 0){            

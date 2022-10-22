@@ -20,7 +20,11 @@ public class Cell : Infectable
 
     public List<SoundManager> soundManagers;
 
+    GameManager gm;
+
     void Start() {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         foreach (SoundManager sm in soundManagers) {
             sm.CreateAudioSrc();
         }
@@ -30,7 +34,6 @@ public class Cell : Infectable
     }
 
     public void GetAbsorbed(){
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseDNAPoints(100);
         gm.IncreaseAbsorbedCells();
         gm.RemoveCell(gameObject);
@@ -44,7 +47,6 @@ public class Cell : Infectable
     }
 
     public void TurnIntoFactory(){
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseFactoryAmount(1);
         GameObject factoryObj = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
         Factory factory = factoryObj.GetComponent<Factory>();
@@ -72,7 +74,6 @@ public class Cell : Infectable
     }
 
     public override void OnInfect(){
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(1);
 
         foreach(SoundManager sm in soundManagers) {
@@ -92,6 +93,8 @@ public class Cell : Infectable
     public GameObject particleSystem;
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
+            gm.timesEnteredCell++;
+
             Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
 
             foreach(SoundManager sm in soundManagers) {

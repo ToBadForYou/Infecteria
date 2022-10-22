@@ -17,18 +17,46 @@ public class GameManager : MonoBehaviour
     public int factoryAmount = 0;
     public int infectedHeartCells = 0;
 
+    // Additional stats (only used for tutorial right now)
+    public int timesEnteredCell = 0;
+    public int producedMicrobacterias = 0;
+    public int timesDetectedByScout = 0;
+    public int timesDetectedByDetector = 0;
+
     private int cellAmount;
     public bool won;
     
     public List<GameObject> cells = new List<GameObject>();
 
+    TutorialHandler th;
+
     void Start(){
         StartCoroutine(LateStart(0.0f));
+    }
+
+    void Update() {
+        if(th) {
+            if(absorbedCells == 1 && th.events.ContainsKey(EventType.Absorbed))
+                th.TriggerEvent(EventType.Absorbed);
+            if(infectedCells == 1 && th.events.ContainsKey(EventType.Infected))
+                th.TriggerEvent(EventType.Infected);
+            if(factoryAmount == 1 && th.events.ContainsKey(EventType.MadeFactory))
+                th.TriggerEvent(EventType.MadeFactory);
+            if(timesEnteredCell == 1 && th.events.ContainsKey(EventType.EnteredCell))
+                th.TriggerEvent(EventType.EnteredCell);
+            if(producedMicrobacterias == 1 && th.events.ContainsKey(EventType.Microbacteria))
+                th.TriggerEvent(EventType.Microbacteria);
+            if(timesDetectedByScout == 1 && th.events.ContainsKey(EventType.ScoutDetected))
+                th.TriggerEvent(EventType.ScoutDetected);
+            if(timesDetectedByDetector == 1 && th.events.ContainsKey(EventType.DetectorDetected))
+                th.TriggerEvent(EventType.DetectorDetected);
+        }
     }
 
     IEnumerator LateStart(float waitTime){
         yield return new WaitForSeconds(waitTime);
         cellAmount = GameObject.FindGameObjectsWithTag("Cell").Length;
+        th = GameObject.Find("Tutorial Handler").GetComponent<TutorialHandler>();
     }
 
     public void SetWinStats(){

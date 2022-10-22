@@ -21,7 +21,9 @@ public class Factory : Infectable
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
     public List<MicroBacteria> bacteriaInside = new List<MicroBacteria>();
 
+    GameManager gm;
     void Start(){
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 0, 15));
     }
 
@@ -29,6 +31,7 @@ public class Factory : Infectable
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             int withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
             if(withdrawAmount > 0) {
+                gm.producedMicrobacterias++;
                 GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
                 obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
                 MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();

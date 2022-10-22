@@ -26,6 +26,7 @@ public class Scout : DetectorUnit
     }
 
     public void SetAlerted(GameObject triggerObject){
+        GameObject.Find("GameManager").GetComponent<GameManager>().timesDetectedByScout++;
         isAlerted = true;
         exclamationMark.SetActive(true);
         FollowTarget(parent);
