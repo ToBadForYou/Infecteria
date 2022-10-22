@@ -69,35 +69,36 @@ public class Player : Unit
 
     new void Update(){
         hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
-            // Skilltree
-            if(Input.GetKeyDown(KeyCode.T)){
-                ToggleSkillTree(!skilltree.activeSelf);
-            }
+        // Skilltree
+        if(Input.GetKeyDown(KeyCode.T)){
+            ToggleSkillTree(!skilltree.activeSelf);
+        }
 
-            // Zoom Map
-            if(Input.GetKeyDown(KeyCode.M)){
-                if(!zoomMap.activeSelf) {
-                    zoomMap.SetActive(true);
-                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
-                }
-                else {
-                    zoomMap.SetActive(false);
-                    PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
-                }
+        // Zoom Map
+        if(Input.GetKeyDown(KeyCode.M)){
+            if(!zoomMap.activeSelf){
+                zoomMap.SetActive(true);
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
             }
-
-            // Handling factories
-            if(currentFactory) {
-                MakeObjActive(factoryOverview);
-                factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
-                if(Input.GetKeyDown(KeyCode.F)) {
-                    currentFactory.JoinPlayerSquad(gameObject, units);
-                }
-            } else {
-                MakeObjDeactive(factoryOverview);
-                MakeObjDeactive(buildOptions);
+            else{
+                zoomMap.SetActive(false);
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
             }
+        }
 
+        // Handling factories
+        if(currentFactory) {
+            MakeObjActive(factoryOverview);
+            factoryOverview.GetComponent<FactoryManager>().SetFactory(currentFactory);
+            if(Input.GetKeyDown(KeyCode.F)) {
+                currentFactory.JoinPlayerSquad(gameObject, units);
+            }
+        } else {
+            MakeObjDeactive(factoryOverview);
+            MakeObjDeactive(buildOptions);
+        }
+
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
             // Infecting Cells
             if(currentCell) {
                 if(currentCell.isInfected) {
@@ -109,7 +110,7 @@ public class Player : Unit
                         currentCell.GetAbsorbed();
                         Heal(25);
 
-                        GetComponent<PlayerMovement>().SetSpeed(5.0f);
+                        GetComponent<PlayerMovement>().SetSpeedPenalty(0f);
                     }
                     else if(Input.GetKeyDown(KeyCode.Q)) {
                         if(mouseObject) {
@@ -131,5 +132,6 @@ public class Player : Unit
                 MakeObjDeactive(eObject);
                 MakeObjDeactive(qObject);
             }
+        }
     }
 }
