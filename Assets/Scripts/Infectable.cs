@@ -7,6 +7,7 @@ public class Infectable : MonoBehaviour
     public float maxInfectionAmount;
     public float infectionAmount;
     public bool isInfected;
+    public Organ organ;
 
     public void Infect(float amount) {
         if(amount < 0.0f)

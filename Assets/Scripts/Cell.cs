@@ -18,8 +18,6 @@ public class Cell : Infectable
     public AudioSource source;
     public AudioClip soundEffect;
 
-    public bool belongsToHeart;
-
     void Start(){
         originPos = transform.position;
         target = GetNewTarget();
@@ -32,8 +30,9 @@ public class Cell : Infectable
         gm.IncreaseAbsorbedCells();
         gm.RemoveCell(gameObject);
 
-        Heart heart = GameObject.Find("Heart").GetComponent<Heart>();
-        heart.RemoveCell(this); // Removes only if this cell is in the list
+        if(organ){
+            organ.RemoveCell(this);
+        }
 
         Destroy(this);
         GetComponent<AbsorbEffect>().isActive = true;
@@ -43,7 +42,9 @@ public class Cell : Infectable
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseFactoryAmount(1);
         GameObject factory = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
-        factory.GetComponent<Factory>().belongsToHeart = belongsToHeart;
+        factory.GetComponent<Factory>().organ = organ;
+        if(organ != null)
+            organ.ReplaceCell(this, factory.GetComponent<Factory>());
         gm.ReplaceCell(gameObject, factory);
         Destroy(gameObject);
     }

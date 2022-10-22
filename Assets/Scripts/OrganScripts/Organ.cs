@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Organ : MonoBehaviour
 {
     public List<UnitSquad> unitSquads;
-    public List<Cell> cells = new List<Cell>();
+    public List<Infectable> cells = new List<Infectable>();
     public UnitSpawner unitSpawner;
     public UnitProducer unitProducer;
     float yRange = 13.0f;
@@ -31,11 +31,28 @@ public class Organ : MonoBehaviour
         }
     }
 
-    public void RemoveCell(Cell cell) {
+    public void RemoveCell(Infectable cell){
         if(cells.Contains(cell)) {
             cells.Remove(cell);
         }
-        if(cells.Count == 0) {
+        CheckVictory();
+    }
+
+    public void ReplaceCell(Infectable oldCell, Infectable replacement) {
+        int index = cells.FindIndex(cell => cell == oldCell);
+        cells[index] = replacement;
+        CheckVictory();
+    }
+
+    void CheckVictory(){
+        bool allInfected = true;
+        foreach (Infectable cell in cells){
+            if(!cell.isInfected){
+                allInfected = false;
+                break;
+            }
+        }
+        if(allInfected){
             GameObject manager = GameObject.Find("GameManager");
             manager.GetComponent<GameManager>().won = true;
             DontDestroyOnLoad(manager);
@@ -57,7 +74,7 @@ public class Organ : MonoBehaviour
             float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);
             float yDiff = Mathf.Abs(objs[i].transform.position.y - transform.position.y);
             if(xDiff <= xRange && yDiff <= yRange) {
-                objs[i].GetComponent<Cell>().belongsToHeart = true;
+                objs[i].GetComponent<Cell>().organ = this;
                 cells.Add(objs[i].GetComponent<Cell>());
                 objs[i].GetComponent<SpriteRenderer>().color = cellColor;
                 //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
