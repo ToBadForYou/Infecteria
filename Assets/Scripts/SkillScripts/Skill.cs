@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class Skill : MonoBehaviour
 {
     [SerializeField] private Skilltree skilltree;
     [SerializeField] private Button nextButton;
+    public TextMeshProUGUI tooltip;
 
+    public string desc;
     public int cost;
     public float effect;
     
-    bool isClicked;
+    bool isBought;
+
+    void Start(){
+        tooltip.text = desc + " - Cost: " + cost + " DNA";
+    }
 
     public void SetButtonBought() {
         Button button = GetComponent<Button>();
@@ -32,30 +39,26 @@ public class Skill : MonoBehaviour
     }
 
     public void MakeActive() {
-        if(!isClicked) {
+        if(!isBought) {
             GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
             if(gm.GetDNAPointAmount() >= cost) {
                 gm.DecreaseDNAPoints(cost);
-                switch (gameObject.name)
-                {
+                switch (gameObject.name){
                     case "hp":
                         skilltree.activeHPSkill = this;
-                        SetButtonBought();
-                        ActivateNextButton();
                         break;
                      case "speed":
                         skilltree.activeSpeedSkill = this;
-                        SetButtonBought();
-                        ActivateNextButton();
                         break;
                     case "infection":
                         skilltree.activeInfectionRateSkill = this;
-                        SetButtonBought();
-                        ActivateNextButton();
                         break;
                 }
+                SetButtonBought();
+                ActivateNextButton();
                 skilltree.NotifyPlayer();
-                isClicked = true;
+                tooltip.text = desc + " - Upgraded";
+                isBought = true;
             }
         }
     }
