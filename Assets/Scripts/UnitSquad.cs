@@ -64,11 +64,13 @@ public class UnitSquad : MonoBehaviour
         }
     }
 
-    public void Infect(Infectable target){
+    public void Infect(Infectable target, bool cancelTasks){
         foreach (Unit unit in units){
             InfectUnit infectUnit = unit.gameObject.GetComponent<InfectUnit>();
             if(infectUnit != null){
-                unit.CancelTasks();
+                if(cancelTasks){
+                    unit.CancelTasks();
+                }    
                 unit.GiveTask(new InfectTask(infectUnit, target.gameObject), false);
             }
         }        

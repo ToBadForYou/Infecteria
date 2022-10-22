@@ -12,14 +12,14 @@ public class Organ : MonoBehaviour
     float yRange = 13.0f;
     float xRange = 16.0f;
     public float nextInspection;
-    public int inspectionCD = 120;
+    public int inspectionCD = 30;
     public Unit.Faction owner = Unit.Faction.IMMUNESYSTEM;
     int minimumSpawn = 5;
 
     protected void Start(){
         nextInspection = inspectionCD;
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 20));
+        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 18));
         StartCoroutine(LateStart(0.0f));
     }
 
@@ -28,6 +28,22 @@ public class Organ : MonoBehaviour
         // TODO actually check cells
         if(nextInspection < 0){
             nextInspection = inspectionCD;
+            AttemptCureInfectedCells();
+        }
+    }
+
+    void AttemptCureInfectedCells(){
+        foreach(Infectable cell in cells){
+            if(cell.isInfected){
+                int currentAntibodies = unitProducer.GetAvailableAmount(UnitType.ANTIBODY);
+                if(currentAntibodies >= 2){
+                    currentAntibodies = unitProducer.WithdrawAmount(UnitType.ANTIBODY, 2);
+                    List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
+                    UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
+                    unitSquads.Add(newSquad);
+                    newSquad.Infect(cell, true);                  
+                }
+            }
         }
     }
 
@@ -39,7 +55,10 @@ public class Organ : MonoBehaviour
     }
 
     public void ReplaceCell(Infectable oldCell, Infectable replacement) {
-        int index = cells.FindIndex(cell => cell == oldCell);
+        int index = cells.FindIndex(cell => cell.gameObject == oldCell.gameObject);
+        Debug.Log(index);
+        Debug.Log(oldCell);
+        Debug.Log(replacement);
         cells[index] = replacement;
         CheckVictory();
     }

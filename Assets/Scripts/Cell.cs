@@ -71,9 +71,6 @@ public class Cell : Infectable
 
         infectionBarPivot.gameObject.SetActive(false); // hide bar when infected, this may lead to problems later, if so: TODO: Fix bug
         insideRenderer.color = new Color(0.0f, 1.0f, 0.0f);
-        
-        Heart heart = GameObject.Find("Heart").GetComponent<Heart>();
-        heart.RemoveCell(this); // Removes only if this cell is in the list
     }
 
     public override void OnInfectUpdate(float amount){

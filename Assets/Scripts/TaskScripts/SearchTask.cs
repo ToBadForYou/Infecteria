@@ -32,7 +32,7 @@ public class SearchTask : Task
             if(unit.AtPosition(target.transform.position)){
                 Infectable infectable = target.GetComponent<Infectable>();
                 if(infectable.isInfected || infectable.infectionAmount/infectable.maxInfectionAmount > 0.5){
-                    ownerSquad.Infect(infectable);
+                    ownerSquad.Infect(infectable, true);
                     unit.GiveTask(new ReturnTask(unit, unit.parent), false);
                     FinishTask();
                 }

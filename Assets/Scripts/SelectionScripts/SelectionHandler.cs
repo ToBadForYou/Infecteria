@@ -91,7 +91,7 @@ public class SelectionHandler : MonoBehaviour
             infectableTarget = hitTransform.gameObject.GetComponent<Infectable>();
         }
         if(infectableTarget != null){
-            selectedUnits.Infect(infectableTarget);
+            selectedUnits.Infect(infectableTarget, true);
         }
         else {  
             Vector2 mousePosition = Input.mousePosition;
