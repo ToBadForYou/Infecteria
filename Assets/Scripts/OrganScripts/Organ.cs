@@ -56,9 +56,6 @@ public class Organ : MonoBehaviour
 
     public void ReplaceCell(Infectable oldCell, Infectable replacement) {
         int index = cells.FindIndex(cell => cell.gameObject == oldCell.gameObject);
-        Debug.Log(index);
-        Debug.Log(oldCell);
-        Debug.Log(replacement);
         cells[index] = replacement;
         CheckVictory();
     }
@@ -84,10 +81,13 @@ public class Organ : MonoBehaviour
         FillWithNearbyCells();
     }
 
-    void FillWithNearbyCells() {
+    public Color GetOrganCellColor(){
         Color organColor = gameObject.GetComponent<SpriteRenderer>().color;
-        Color cellColor = new Color(organColor.r + 0.1f, organColor.g + 0.1f, organColor.b + 0.1f, organColor.a);
-        //Color innerColor = new Color(organColor.r * 1.5f, organColor.g * 1.5f, organColor.b * 1.5f, organColor.a);
+        return new Color(organColor.r + 0.1f, organColor.g + 0.1f, organColor.b + 0.1f, organColor.a);
+    }
+
+    void FillWithNearbyCells() {
+        Color cellColor = GetOrganCellColor();
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Cell");
         for(int i = 0; i < objs.Length; i++) {
             float xDiff = Mathf.Abs(objs[i].transform.position.x - transform.position.x);

@@ -118,6 +118,7 @@ public class Factory : Infectable
 
         if(organ != null)
             organ.ReplaceCell(this, cell.GetComponent<Cell>());
+            cell.GetComponent<SpriteRenderer>().color = organ.GetOrganCellColor();
 
         gm.ReplaceCell(gameObject, cell);
         Destroy(gameObject);
