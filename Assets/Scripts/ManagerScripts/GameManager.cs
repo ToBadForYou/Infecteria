@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int absorbedCells = 0;
     public int infectedCells = 0;
     public int factoryAmount = 0;
+    public int infectedHeartCells = 0;
+
     private int cellAmount;
     public bool won;
     
