@@ -114,13 +114,15 @@ public class Factory : Infectable
         foreach(GameObject structure in structures){
             Destroy(structure);
         }
-        GameObject cell = Instantiate(cellPrefab, transform.position, Quaternion.identity);
+        GameObject cellObj = Instantiate(cellPrefab, transform.position, Quaternion.identity);
 
+        Cell cell = cellObj.GetComponent<Cell>();
+        cell.organ = organ;
         if(organ != null)
-            organ.ReplaceCell(this, cell.GetComponent<Cell>());
+            organ.ReplaceCell(this, cell);
             cell.GetComponent<SpriteRenderer>().color = organ.GetOrganCellColor();
 
-        gm.ReplaceCell(gameObject, cell);
+        gm.ReplaceCell(gameObject, cellObj);
         Destroy(gameObject);
     }
 

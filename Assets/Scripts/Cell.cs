@@ -41,11 +41,12 @@ public class Cell : Infectable
     public void TurnIntoFactory(){
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseFactoryAmount(1);
-        GameObject factory = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
-        factory.GetComponent<Factory>().organ = organ;
+        GameObject factoryObj = Instantiate(factoryPrefab, transform.position, Quaternion.identity);
+        Factory factory = factoryObj.GetComponent<Factory>();
+        factory.organ = organ;
         if(organ != null)
-            organ.ReplaceCell(this, factory.GetComponent<Factory>());
-        gm.ReplaceCell(gameObject, factory);
+            organ.ReplaceCell(this, factory);
+        gm.ReplaceCell(gameObject, factoryObj);
         Destroy(gameObject);
     }
 
