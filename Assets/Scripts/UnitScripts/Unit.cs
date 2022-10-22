@@ -31,6 +31,8 @@ public class Unit : MonoBehaviour
     public Sprite defensive;
     bool aggressiveStance = false;
 
+    int nextProximityCheck = 0;
+
     protected void Start(){
         maxHPBar = healthBar.localScale.x;
         if(unitMovement != null){
@@ -55,7 +57,15 @@ public class Unit : MonoBehaviour
             if (stats.IsAggressive()){
                 if(!CanAttack())
                     stats.DecreaseAttackTimer(Time.deltaTime);
-                FindHostileInProximity();
+                if(nextProximityCheck < 1){
+                    nextProximityCheck = 2;
+                    if(proximityHostile == null || proximityHostile.target == null || Vector2.Distance(transform.position, proximityHostile.target.transform.position) > stats.GetRange() + 0.1f){
+                        FindHostileInProximity();
+                    }
+                }
+                else {
+                    nextProximityCheck -= 1;
+                }    
             }
             UpdateCurrentTask();
         }
