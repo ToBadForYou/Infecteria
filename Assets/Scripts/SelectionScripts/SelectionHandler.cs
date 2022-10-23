@@ -128,6 +128,8 @@ public class SelectionHandler : MonoBehaviour
                 bottomRight = mousePosition;
                 DeselectUnits();
                 SelectUnits();
+                if(selectedUnits.units.Count > 0)
+                    GameObject.Find("GameManager").GetComponent<GameManager>().timesOpenedPlayerCommands++;
 
                 isDown = false;
             }
