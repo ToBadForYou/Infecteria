@@ -7,6 +7,8 @@ public class TutorialHandler : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tutorialTextMesh;
 
+    bool currentlyPlayingEvent;
+
     public Dictionary<EventType, string> events = new Dictionary<EventType, string>()
     {
         {EventType.Infected, "You just infected your first cell, congratulations! Now you have two choices, either you can absorb the cell (E) or you can make it into a factory (Q)."},
@@ -22,12 +24,15 @@ public class TutorialHandler : MonoBehaviour
     };
 
     public void TriggerEvent(EventType type) {
-        transform.GetChild(0).gameObject.SetActive(true);
-        PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
-        tutorialTextMesh.text = events[type];
-        events.Remove(type);
-        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameManager.tutorialPopup = true;
+        if(!currentlyPlayingEvent) {
+            transform.GetChild(0).gameObject.SetActive(true);
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
+            tutorialTextMesh.text = events[type];
+            events.Remove(type);
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.tutorialPopup = true;
+            currentlyPlayingEvent = true;
+        }
     }
 
     void Update(){
@@ -38,6 +43,7 @@ public class TutorialHandler : MonoBehaviour
             if(gameManager.ShouldUnPause()){
                 PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
             }
+            currentlyPlayingEvent = false;
         }
         else if(Input.GetKeyUp(KeyCode.X) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL){
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -46,6 +52,7 @@ public class TutorialHandler : MonoBehaviour
                 PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
             }
             Destroy(gameObject);
+            currentlyPlayingEvent = false;
         }
     }
 }
