@@ -22,6 +22,7 @@ public class Player : Unit
     public GameObject buildOptions;
 
     public GameObject zoomMap;
+    public GameObject instructionMenu;
 
     public UnitSquad units;
 
@@ -57,15 +58,47 @@ public class Player : Unit
         SceneManager.LoadScene("Ending");
     }
 
-    public void ToggleSkillTree(bool show){
-        skilltree.SetActive(show);
+    public void ToggleMap(bool show){
+        zoomMap.SetActive(show);
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.mapOpen = show;
         if(show){
-            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);        
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
         }
-        else {
-            PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+        else{
+            if(gameManager.ShouldUnPause()){
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            }
         }
     }
+
+    public void ToggleSkillTree(bool show){
+        skilltree.SetActive(show);
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.skillTreeOpen = show;
+        if(show){
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);    
+        }
+        else {
+            if(gameManager.ShouldUnPause()){
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            }
+        }
+    }
+
+    public void ToggleInstructionMenu(bool show){
+        instructionMenu.SetActive(show);
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.instructionOpen = show;
+        if(show){
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);    
+        }
+        else {
+            if(gameManager.ShouldUnPause()){
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            }
+        }
+    }    
 
     new void Update(){
         hpTextMesh.text = stats.GetCurrentHealth() + "/" + stats.GetHealth();
@@ -76,14 +109,12 @@ public class Player : Unit
 
         // Zoom Map
         if(Input.GetKeyDown(KeyCode.M)){
-            if(!zoomMap.activeSelf){
-                zoomMap.SetActive(true);
-                PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
-            }
-            else{
-                zoomMap.SetActive(false);
-                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
-            }
+            ToggleMap(!zoomMap.activeSelf);
+        }
+        
+        // Instruction menu
+        if(Input.GetButtonUp("Cancel")){
+            ToggleInstructionMenu(!instructionMenu.activeSelf);
         }
 
         // Handling factories

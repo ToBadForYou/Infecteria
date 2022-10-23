@@ -3960,6 +3960,10 @@ MonoBehaviour:
   timesDetectedByDetector: 0
   won: 0
   cells: []
+  skillTreeOpen: 0
+  mapOpen: 0
+  instructionOpen: 0
+  tutorialPopup: 0
 --- !u!1 &287319625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7166,7 +7170,6 @@ MonoBehaviour:
   controlPanel: {fileID: 1264500776}
   selectionTransform: {fileID: 791589947}
   targetCellRadius: 20
-  setCommand: 
   selectedUnits: {fileID: 605807175}
 --- !u!114 &605807175
 MonoBehaviour:
@@ -7360,7 +7363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addea39863af3374aa0179aac8f84b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUIObj: {fileID: 323350532}
 --- !u!1 &635969217
 GameObject:
   m_ObjectHideFlags: 0
@@ -7830,6 +7832,7 @@ MonoBehaviour:
   factoryOverview: {fileID: 2009071182}
   buildOptions: {fileID: 933105315}
   zoomMap: {fileID: 1143195085}
+  instructionMenu: {fileID: 323350532}
   units: {fileID: 647888340}
   additionalInfection: 0
   audioSrc: {fileID: 439333272}

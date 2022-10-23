@@ -26,15 +26,25 @@ public class TutorialHandler : MonoBehaviour
         PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
         tutorialTextMesh.text = events[type];
         events.Remove(type);
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.tutorialPopup = true;
     }
 
-    void Update() {
-        if(Input.GetKeyUp(KeyCode.Return) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL) {
+    void Update(){
+        if(Input.GetKeyUp(KeyCode.Return) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL){
             transform.GetChild(0).gameObject.SetActive(false);
-            PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.tutorialPopup = false;
+            if(gameManager.ShouldUnPause()){
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            }
         }
-        else if(Input.GetKeyUp(KeyCode.X) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL) {
-            PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+        else if(Input.GetKeyUp(KeyCode.X) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL){
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.tutorialPopup = false;
+            if(gameManager.ShouldUnPause()){
+                PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            }
             Destroy(gameObject);
         }
     }

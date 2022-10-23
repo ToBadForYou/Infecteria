@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     int lastSugar;
     int lastDNA;
 
+    public bool skillTreeOpen;
+    public bool mapOpen;
+    public bool instructionOpen;
+    public bool tutorialPopup;
+
     void Start(){
         lastSugar = sugar;
         lastDNA = DNAPoints;
@@ -59,7 +64,25 @@ public class GameManager : MonoBehaviour
                 th.TriggerEvent(EventType.CollectedSugar);
             if(DNAPoints > lastDNA && th.events.ContainsKey(EventType.CollectedDNA))
                 th.TriggerEvent(EventType.CollectedDNA);
+        }      
+    }  
+
+    public bool ShouldUnPause(){
+        int count = 0;
+        if(mapOpen){
+            count += 1;
         }
+        if(skillTreeOpen){
+            count += 1;
+        }
+        if(instructionOpen){
+            count += 1;
+        }
+        if(tutorialPopup){
+            count += 1;
+        }
+
+        return count < 1;
     }
 
     IEnumerator LateStart(float waitTime){

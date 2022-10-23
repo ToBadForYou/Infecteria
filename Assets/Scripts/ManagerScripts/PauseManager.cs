@@ -5,16 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseUIObj;
-
     private static PauseManager _instance;
-    public static PauseManager Instance
-    {
+    public static PauseManager Instance{
         private set => _instance = value;
-        get
-        {
-            if (_instance == null)
-            {
+        get{
+            if (_instance == null){
                 _instance = (PauseManager)FindObjectOfType(typeof(PauseManager));
                 if (_instance == null) // if non-existant
                     _instance = new GameObject("Pause Manager").AddComponent<PauseManager>();
@@ -26,41 +21,19 @@ public class PauseManager : MonoBehaviour
     public PauseState CurrPauseState { get; private set; }
     public PauseState PrevPauseState { get; private set; }
 
-    private void Awake()
-    {
+    private void Awake(){
         CurrPauseState = PauseState.NONE;
         PrevPauseState = PauseState.NONE;
     }
 
-    public void SetPauseState(PauseState newPauseState)
-    {
+    public void SetPauseState(PauseState newPauseState){
         PrevPauseState = CurrPauseState;
         CurrPauseState = newPauseState;
     }
 
-    private void Start()
-    {
+    private void Start(){
         if (FindObjectOfType<PauseManager>() != this)
             Destroy(gameObject);
-    }
-
-    bool guard = false;
-    private void Update()
-    {
-        if(CurrPauseState != PauseState.FULL && !guard) {
-            if (Input.GetButtonUp("Cancel")) {
-                SetPauseState(PauseState.FULL);
-                pauseUIObj.SetActive(true);
-                guard = true;
-            }
-        }
-        else if(guard){
-            if (Input.GetButtonUp("Cancel")) {
-                SetPauseState(PauseState.NONE);
-                pauseUIObj.SetActive(false);
-                guard = false;
-            }
-        }
     }
 
     public enum PauseState { NONE, FULL }
