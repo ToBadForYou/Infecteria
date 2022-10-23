@@ -11,8 +11,7 @@ public class Scout : DetectorUnit
     public bool finished;
     public bool isAlerted;
 
-    public AudioSource audioSrc;
-    public AudioClip soundEffect;
+    public SoundManager detectedSoundManager;
 
     new void Start() {
         base.Start();
@@ -32,9 +31,9 @@ public class Scout : DetectorUnit
         FollowTarget(parent);
         finished = true; 
         alertPosition = triggerObject.transform.position;
-        audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
-        audioSrc.clip = soundEffect;
-        audioSrc.Play();
+
+        detectedSoundManager.CreateAudioSrc();
+        detectedSoundManager.PlaySound();
     }
 
     public void SetTarget(GameObject target){

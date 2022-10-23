@@ -231,6 +231,9 @@ GameObject:
   - component: {fileID: 9221951727196453045}
   - component: {fileID: 320320704}
   - component: {fileID: 7256309753811360726}
+  - component: {fileID: 1510062937}
+  - component: {fileID: 1472379835}
+  - component: {fileID: 1444734376}
   m_Layer: 0
   m_Name: detectorRange
   m_TagString: Untagged
@@ -329,12 +332,12 @@ MonoBehaviour:
   isSelected: 0
   hostileDetectionPos: {x: 0, y: 0}
   maxHPBar: 0
-  hitSoundEffects:
-  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
-  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
-  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
-  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
-  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  deathSoundManager: {fileID: 1472379835}
+  hitSoundManager: {fileID: 1510062937}
+  healingIcon: {fileID: 0}
+  stanceIcon: {fileID: 0}
+  aggressive: {fileID: 0}
+  defensive: {fileID: 0}
   target: {fileID: 0}
   spriteRenderer: {fileID: 2461731516557241643}
   attacking: 0
@@ -346,8 +349,7 @@ MonoBehaviour:
   unitSquad: {fileID: 9221951727196453045}
   isAlerted: 0
   unitProducer: {fileID: 7256309753811360726}
-  audioSrc: {fileID: 0}
-  soundEffect: {fileID: 8300000, guid: c1675db8fbb2d4c4e951385340df4225, type: 3}
+  detectedSoundManager: {fileID: 1444734376}
 --- !u!58 &1145709383805078791
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -402,6 +404,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1510062937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218048525918559773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Hit Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
+  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
+  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
+  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &1472379835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218048525918559773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Death Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: a0ad79fe88d9e644abf37cfd86090963, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &1444734376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218048525918559773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Detected
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: c1675db8fbb2d4c4e951385340df4225, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
 --- !u!1 &4278691253781211458
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +704,7 @@ Transform:
   - {fileID: 1833783504}
   - {fileID: 1016434092}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &-6339431088290239499
 SpriteRenderer:

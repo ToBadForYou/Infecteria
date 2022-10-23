@@ -339,7 +339,7 @@ Transform:
   - {fileID: 635942688}
   - {fileID: 179820423}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2310231965825473703
 SpriteRenderer:
@@ -629,6 +629,9 @@ GameObject:
   - component: {fileID: 7047261104836626860}
   - component: {fileID: 4719285353734411330}
   - component: {fileID: 1335396875}
+  - component: {fileID: 74540034}
+  - component: {fileID: 74540035}
+  - component: {fileID: 681950458}
   m_Layer: 0
   m_Name: scoutRange
   m_TagString: Untagged
@@ -727,12 +730,12 @@ MonoBehaviour:
   isSelected: 0
   hostileDetectionPos: {x: 0, y: 0}
   maxHPBar: 0
-  hitSoundEffects:
-  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
-  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
-  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
-  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
-  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  deathSoundManager: {fileID: 74540035}
+  hitSoundManager: {fileID: 74540034}
+  healingIcon: {fileID: 0}
+  stanceIcon: {fileID: 0}
+  aggressive: {fileID: 0}
+  defensive: {fileID: 0}
   target: {fileID: 0}
   spriteRenderer: {fileID: 5792442732693720547}
   attacking: 0
@@ -744,8 +747,7 @@ MonoBehaviour:
   alertPosition: {x: 0, y: 0}
   finished: 0
   isAlerted: 0
-  audioSrc: {fileID: 0}
-  soundEffect: {fileID: 8300000, guid: 5575398df8911da4aa26e4a843e2a9a2, type: 3}
+  detectedSoundManager: {fileID: 681950458}
 --- !u!58 &4719285353734411330
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -775,6 +777,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 2310231965825473703}
+--- !u!114 &74540034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311081517874335256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Hit Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
+  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
+  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
+  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &74540035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311081517874335256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Death Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: a0ad79fe88d9e644abf37cfd86090963, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &681950458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311081517874335256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Detected
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 5575398df8911da4aa26e4a843e2a9a2, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
 --- !u!1 &8152614086710397668
 GameObject:
   m_ObjectHideFlags: 0
