@@ -8,6 +8,7 @@ public class TutorialHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI tutorialTextMesh;
 
     bool currentlyPlayingEvent;
+    bool isGettingDestroyed;
 
     public Dictionary<EventType, string> events = new Dictionary<EventType, string>()
     {
@@ -24,7 +25,7 @@ public class TutorialHandler : MonoBehaviour
     };
 
     public void TriggerEvent(EventType type) {
-        if(!currentlyPlayingEvent) {
+        if(!currentlyPlayingEvent && !isGettingDestroyed) {
             transform.GetChild(0).gameObject.SetActive(true);
             PauseManager.Instance.SetPauseState(PauseManager.PauseState.FULL);
             tutorialTextMesh.text = events[type];
@@ -36,7 +37,7 @@ public class TutorialHandler : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyUp(KeyCode.Return) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL){
+        if(Input.GetKeyUp(KeyCode.Space) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL){
             transform.GetChild(0).gameObject.SetActive(false);
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             gameManager.tutorialPopup = false;
@@ -51,8 +52,9 @@ public class TutorialHandler : MonoBehaviour
             if(gameManager.ShouldUnPause()){
                 PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
             }
-            Destroy(gameObject);
             currentlyPlayingEvent = false;
+            isGettingDestroyed = true;
+            Destroy(gameObject);
         }
     }
 }
