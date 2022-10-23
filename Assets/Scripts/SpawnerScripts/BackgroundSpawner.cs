@@ -26,7 +26,11 @@ public class BackgroundSpawner : MonoBehaviour
         for(int i = 0; i < objectAmount; i++) {
             Vector2 position = new Vector2(Random.Range(-135.0f, 135.0f), Random.Range(-85.0f, 160.0f));
             if(IsOutsideRegions(position)) {
-                Instantiate(backgroundObjs[Random.Range(0, backgroundObjs.Count)], position, Quaternion.identity);
+                GameObject obj = Instantiate(backgroundObjs[Random.Range(0, backgroundObjs.Count)], position, Quaternion.identity);
+                float bValue = (obj.transform.position.x - (-135.0f))/(160.0f - (-135.0f));
+                float gValue = (obj.transform.position.y - (-135.0f))/(160.0f - (-135.0f));
+                obj.GetComponent<SpriteRenderer>().color = new Color(0.3921569f, gValue/4.0f, bValue/4.0f);
+                Debug.Log(gValue/2.0f + ":" + bValue/2.0f);
             }
         }
     }

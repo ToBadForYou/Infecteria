@@ -36,5 +36,9 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += movementVector;
             }
         }
+        
+        float bValue = (transform.position.x - (-135.0f))/(160.0f - (-135.0f));
+        float gValue = (transform.position.y - (-135.0f))/(160.0f - (-135.0f));
+        Camera.main.backgroundColor = new Color(0.3921569f, gValue/4.0f, bValue/4.0f);
     }
 }
