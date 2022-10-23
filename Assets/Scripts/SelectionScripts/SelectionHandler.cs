@@ -20,8 +20,6 @@ public class SelectionHandler : MonoBehaviour
     public UnitSquad selectedUnits;
 
     void SelectUnits() {
-        List<MicroBacteria> bacterias = new List<MicroBacteria>();
-
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Bacteria");
 
         // Handle selection directions
@@ -57,20 +55,16 @@ public class SelectionHandler : MonoBehaviour
         }
     }
 
-    void DeselectAllBacterias(bool AddToPlayer) {
+    void DeselectUnits() {
         selectedUnits.ToggleSelection(false);
-        if(AddToPlayer){
-            UnitSquad playerSquad = GameObject.Find("Player").GetComponent<Player>().units;
-            foreach (Unit microbacteria in selectedUnits.GetUnits()){
-                playerSquad.AddUnit(microbacteria);
-            }
-        }
         selectedUnits.Clear();
     }
 
-    public void AssignFollowTask() {
-        //TODO: Add to player units squad
-        selectedUnits.Follow(GameObject.Find("Player"), true);
+    public void AssignFollowTask(){
+        GameObject playerObj = GameObject.Find("Player");
+        Player player = playerObj.GetComponent<Player>();
+        player.units.AddUnits(selectedUnits.GetUnits());
+        selectedUnits.Follow(playerObj, true);
     }
 
     public void AssignReturnTask() {
@@ -96,6 +90,10 @@ public class SelectionHandler : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             selectedUnits.MoveTo(mousePosition, true);
         }
+
+        GameObject playerObj = GameObject.Find("Player");
+        Player player = playerObj.GetComponent<Player>();
+        player.units.RemoveUnits(selectedUnits.GetUnits());      
     }
 
     void Update(){
@@ -130,7 +128,7 @@ public class SelectionHandler : MonoBehaviour
                     Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
                     bottomRight = mousePosition;
 
-                    DeselectAllBacterias(false);
+                    DeselectUnits();
                     SelectUnits();
 
                     isDown = false;

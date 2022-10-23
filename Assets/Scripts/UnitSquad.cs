@@ -26,21 +26,26 @@ public class UnitSquad : MonoBehaviour
 
     public void AddUnits(List<Unit> newUnits){
         foreach (Unit unit in newUnits){
-            units.Add(unit);
-            unit.squad = this;
+            AddUnit(unit);
         }
     }
 
-    public void AddUnit(Unit unit){
-        if(!units.Contains(unit)){
-            units.Add(unit);
-            unit.squad = this;
+    public void AddUnit(Unit addUnit){
+        if(!units.Contains(addUnit)){
+            units.Add(addUnit);
+            addUnit.squad = this;
         }
     }
 
-    public void RemoveUnit(Unit unit){
-        if(units.Contains(unit)){
-            units.Remove(unit);
+    public void RemoveUnits(List<Unit> removeUnits){
+        foreach (Unit unit in removeUnits){
+            RemoveUnit(unit);
+        }
+    }
+
+    public void RemoveUnit(Unit removeUnit){
+        if(units.Contains(removeUnit)){
+            units.Remove(removeUnit);
         }
     }
 
