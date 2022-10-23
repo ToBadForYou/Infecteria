@@ -15,6 +15,7 @@ public class Organ : MonoBehaviour
     public int inspectionCD = 30;
     public Unit.Faction owner = Unit.Faction.IMMUNESYSTEM;
     int minimumSpawn = 5;
+    public int countOrganCells;
 
     protected void Start(){
         nextInspection = inspectionCD;
@@ -25,7 +26,6 @@ public class Organ : MonoBehaviour
 
     protected void Update(){
         nextInspection -= Time.deltaTime;
-        // TODO actually check cells
         if(nextInspection < 0){
             nextInspection = inspectionCD;
             AttemptCureInfectedCells();
@@ -99,6 +99,7 @@ public class Organ : MonoBehaviour
                 //objs[i].transform.Find("cell-inside").GetComponent<SpriteRenderer>().color = innerColor;
             }
         }
+        countOrganCells = cells.Count;
     }
 
     protected void DeployAntibodies(Vector2 alertPosition){

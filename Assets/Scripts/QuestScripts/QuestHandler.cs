@@ -10,6 +10,9 @@ public class QuestHandler : MonoBehaviour
     public SoundManager sm;
 
     Quest GetNextQuest() {
+        if(quests.Count < 1){
+            return null;
+        }
         Quest quest = quests[0];
         quests.Remove(quest);
         return quest;
@@ -21,13 +24,13 @@ public class QuestHandler : MonoBehaviour
     }
 
     void Update() {
-        if(activeQuest.isFinished) {
+        if(activeQuest != null && activeQuest.isFinished) {
             activeQuest = GetNextQuest();
             sm.PlaySound();
-            if(!activeQuest) { // No more quests
-                // Game is over, player wins
+            if(activeQuest != null) {
+                activeQuest.InitQuest();         
+                activeQuest.isActive = true;
             }
-            activeQuest.isActive = true;
         }
     }
 }
