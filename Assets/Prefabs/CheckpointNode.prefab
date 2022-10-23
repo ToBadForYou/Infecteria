@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: -6447514502470855729}
   - component: {fileID: 2308820361922498250}
   - component: {fileID: 8497116098107129721}
+  - component: {fileID: 206495589798024748}
   m_Layer: 0
   m_Name: CheckpointNode
   m_TagString: Untagged
@@ -249,6 +250,10 @@ MonoBehaviour:
   maxHPBar: 0
   hitSoundEffects:
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  healingIcon: {fileID: 0}
+  stanceIcon: {fileID: 0}
+  aggressive: {fileID: 0}
+  defensive: {fileID: 0}
   unitProducer: {fileID: 8497116098107129721}
 --- !u!114 &-6447514502470855729
 MonoBehaviour:
@@ -291,6 +296,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &206495589798024748
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057881899675549492}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1929576358592922081
 GameObject:
   m_ObjectHideFlags: 0
