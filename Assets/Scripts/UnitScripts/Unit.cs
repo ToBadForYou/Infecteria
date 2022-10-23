@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour
                     stats.DecreaseAttackTimer(Time.deltaTime);
                 if(nextProximityCheck < 1){
                     nextProximityCheck = 2;
-                    if(proximityHostile == null || proximityHostile.target == null || Vector2.Distance(transform.position, proximityHostile.target.transform.position) > stats.GetRange() + 0.1f){
+                    if(!IsReturning() || proximityHostile == null || proximityHostile.target == null || Vector2.Distance(transform.position, proximityHostile.target.transform.position) > stats.GetRange() + 0.1f){
                         FindHostileInProximity();
                     }
                 }
@@ -89,6 +89,10 @@ public class Unit : MonoBehaviour
             currentTaskType = currentTasks[0].taskType;
         }
         return currentTaskType;
+    }
+
+    public bool IsReturning(){
+        return GetTaskType() == TaskType.RETURN;
     }
 
     public void CancelTasks(){
@@ -121,6 +125,9 @@ public class Unit : MonoBehaviour
 
     public void UpdateCurrentTask(){
         Task currentTask = null;
+        if(IsReturning()){
+            proximityHostile = null;
+        }
         if(proximityHostile != null){
             //Temp fix for not chasing units forever
             if(!aggressiveStance && Vector2.Distance(transform.position, hostileDetectionPos) > 10){
