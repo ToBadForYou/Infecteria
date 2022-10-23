@@ -30,7 +30,12 @@ public class GameManager : MonoBehaviour
 
     TutorialHandler th;
 
+    int lastSugar;
+    int lastDNA;
+
     void Start(){
+        lastSugar = sugar;
+        lastDNA = DNAPoints;
         StartCoroutine(LateStart(0.0f));
     }
 
@@ -50,6 +55,10 @@ public class GameManager : MonoBehaviour
                 th.TriggerEvent(EventType.ScoutDetected);
             if(timesDetectedByDetector == 1 && th.events.ContainsKey(EventType.DetectorDetected))
                 th.TriggerEvent(EventType.DetectorDetected);
+            if(sugar > lastSugar && th.events.ContainsKey(EventType.CollectedSugar))
+                th.TriggerEvent(EventType.CollectedSugar);
+            if(DNAPoints > lastDNA && th.events.ContainsKey(EventType.CollectedDNA))
+                th.TriggerEvent(EventType.CollectedDNA);
         }
     }
 
@@ -74,19 +83,23 @@ public class GameManager : MonoBehaviour
     }
 
     public void IncreaseSugar(int amount) {
+        lastSugar = sugar;
         sugar += amount;
         sugarText.text = sugar.ToString();
     }
+
     public int GetSugarAmount() {
         return sugar;
     }
 
     public void DecreaseDNAPoints(int amount) {
+        lastDNA = DNAPoints;
         DNAPoints -= amount;
         DNAPointsText.text = DNAPoints.ToString();
     }
 
     public void IncreaseDNAPoints(int amount) {
+        lastDNA = DNAPoints;
         DNAPoints += amount;
         DNAPointsText.text = DNAPoints.ToString();
     }
