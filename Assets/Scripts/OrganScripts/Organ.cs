@@ -60,7 +60,7 @@ public class Organ : MonoBehaviour
         CheckVictory();
     }
 
-    void CheckVictory(){
+    public void CheckVictory(){
         bool allInfected = true;
         foreach (Infectable cell in cells){
             if(!cell.isInfected){

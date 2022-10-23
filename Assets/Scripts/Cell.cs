@@ -77,6 +77,7 @@ public class Cell : Infectable
         gm.IncreaseInfectedCells(1);
         if(organ != null){
             GameObject.Find("GameManager").GetComponent<GameManager>().infectedHeartCells += 1;
+            organ.CheckVictory();
         }
 
         foreach(SoundManager sm in soundManagers) {
