@@ -4116,8 +4116,8 @@ MonoBehaviour:
   DNAPointsText: {fileID: 2051898743}
   sugarText: {fileID: 1277689686}
   textMesh: {fileID: 336580806}
-  DNAPoints: 9999
-  sugar: 9999
+  DNAPoints: 0
+  sugar: 0
   absorbedCells: 0
   infectedCells: 0
   factoryAmount: 0
@@ -15535,7 +15535,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999
+  m_text: '0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -23618,7 +23620,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999
+  m_text: '0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
