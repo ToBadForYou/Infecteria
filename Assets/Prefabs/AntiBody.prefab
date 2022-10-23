@@ -347,6 +347,9 @@ GameObject:
   - component: {fileID: 4705721064329749237}
   - component: {fileID: 4884734129937456385}
   - component: {fileID: 2041655848}
+  - component: {fileID: 505457180}
+  - component: {fileID: 492516021}
+  - component: {fileID: 667492007}
   m_Layer: 0
   m_Name: AntiBody
   m_TagString: Untagged
@@ -372,7 +375,7 @@ Transform:
   - {fileID: 2037527412}
   - {fileID: 1256533064}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-9024463097163357159
 MonoBehaviour:
@@ -397,17 +400,14 @@ MonoBehaviour:
   isSelected: 0
   hostileDetectionPos: {x: 0, y: 0}
   maxHPBar: 0
-  hitSoundEffects:
-  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
-  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
-  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
-  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
-  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  deathSoundManager: {fileID: 492516021}
+  hitSoundManager: {fileID: 505457180}
   healingIcon: {fileID: 0}
   stanceIcon: {fileID: 0}
   aggressive: {fileID: 0}
   defensive: {fileID: 0}
   infectionAmount: -5
+  spawnSoundManager: {fileID: 667492007}
 --- !u!114 &-3502876324055183019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +528,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: -8861267063218167367}
+--- !u!114 &505457180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467280437432995680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Hit Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 517c6ccb97855ca4685a41b9e6ab9790, type: 3}
+  - {fileID: 8300000, guid: 5142866d4a4dcb04bad694ecea3f829f, type: 3}
+  - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
+  - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
+  - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &492516021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467280437432995680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Death Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: a0ad79fe88d9e644abf37cfd86090963, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
+--- !u!114 &667492007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467280437432995680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b14f77617c9784a9dc793f1852bca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventIdentifier: Spawn Effect
+  audioSrcPrefab: {fileID: 4233825818235546227, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
+  audioSrc: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: ca47e3a947b68b042a19ee0ee7b4cb13, type: 3}
+  playDistance: 6
+  isGlobal: 0
+  hasAudioSrc: 0
 --- !u!1 &7425074799903178561
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,8 @@ public class Unit : MonoBehaviour
     public Vector2 hostileDetectionPos;
     public float maxHPBar;
 
-    public List<AudioClip> hitSoundEffects;
+    public SoundManager deathSoundManager;
+    public SoundManager hitSoundManager;
 
     GameObject healthBarBackground = null;
     public GameObject healingIcon;
@@ -243,13 +244,14 @@ public class Unit : MonoBehaviour
     }
 
     public virtual void OnTakeDamage(){
-        AudioSource audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
-        audioSrc.clip = hitSoundEffects[Random.Range(0, hitSoundEffects.Count)];
-        audioSrc.Play();
+        hitSoundManager.CreateAudioSrc();
+        hitSoundManager.PlaySound();
         GetComponent<DamageEffect>().Activate();
     }
 
     public virtual void OnDeath(){
+        deathSoundManager.CreateAudioSrc();
+        deathSoundManager.PlaySound();
         if(producer != null){
             producer.OnDeath(this);
         }

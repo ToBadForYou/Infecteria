@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Antibody : InfectUnit
 {
+    [SerializeField] SoundManager spawnSoundManager;
+
     new void Start() {
+        spawnSoundManager.CreateAudioSrc();
+        spawnSoundManager.PlaySound();
         base.Start();
         SetUnitStats(25, 25, 2, 1.5f, 1.0f, 1.0f, true);
     }

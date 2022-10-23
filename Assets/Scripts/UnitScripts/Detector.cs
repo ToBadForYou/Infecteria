@@ -12,8 +12,7 @@ public class Detector : DetectorUnit
     UnitSpawner unitSpawner;
     public UnitProducer unitProducer;
     
-    public AudioSource audioSrc;
-    public AudioClip soundEffect;
+    public SoundManager detectedSoundManager;
     
     new void Start(){
         base.Start();
@@ -46,9 +45,8 @@ public class Detector : DetectorUnit
                 }
             }
 
-            audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();
-            audioSrc.clip = soundEffect;
-            audioSrc.Play();
+            detectedSoundManager.CreateAudioSrc();
+            detectedSoundManager.PlaySound();
         }
     }
 
