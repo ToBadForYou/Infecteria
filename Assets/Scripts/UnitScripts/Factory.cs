@@ -121,9 +121,11 @@ public class Factory : Infectable
 
         Cell cell = cellObj.GetComponent<Cell>();
         cell.organ = organ;
-        if(organ != null)
+        if(organ != null){
             organ.ReplaceCell(this, cell);
             cell.GetComponent<SpriteRenderer>().color = organ.GetOrganCellColor();
+            GameObject.Find("GameManager").GetComponent<GameManager>().infectedHeartCells -= 1;
+        }
 
         gm.ReplaceCell(gameObject, cellObj);
         Destroy(gameObject);

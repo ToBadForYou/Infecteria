@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     int damage;
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
             if(damage != 0 && targetObject == null)
                 Destroy(gameObject);
         }
