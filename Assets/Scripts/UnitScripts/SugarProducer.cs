@@ -7,7 +7,7 @@ public class SugarProducer : MonoBehaviour
     public Transform barPivot;
 
     public GameManager gameManager;
-    public int baseProduction = 10;
+    public int baseProduction = 4;
     public int baseTimer = 5;
     public float productionTimer = 5;
 

@@ -384,6 +384,7 @@ MonoBehaviour:
   nextInspection: 0
   inspectionCD: 120
   owner: 1
+  countOrganCells: 0
 --- !u!1 &40330453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4054,7 +4055,7 @@ MonoBehaviour:
   nextButton: {fileID: 943622299}
   tooltip: {fileID: 1406069147}
   desc: Health 2
-  cost: 0
+  cost: 200
   effect: 50
 --- !u!114 &263787719
 MonoBehaviour:
@@ -4983,8 +4984,8 @@ MonoBehaviour:
   nextButton: {fileID: 1929508176}
   tooltip: {fileID: 56426409}
   desc: Infect 1
-  cost: 0
-  effect: 1
+  cost: 100
+  effect: 0.5
 --- !u!114 &329343719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7260,7 +7261,7 @@ MonoBehaviour:
   nextButton: {fileID: 0}
   tooltip: {fileID: 1307164763}
   desc: Speed 3
-  cost: 0
+  cost: 400
   effect: 1.5
 --- !u!114 &566673339
 MonoBehaviour:
@@ -9560,6 +9561,7 @@ MonoBehaviour:
   nextInspection: 0
   inspectionCD: 120
   owner: 1
+  countOrganCells: 0
   nextScout: 5
   scoutProductionTime: 5
   maxReportAntibodies: 6
@@ -11601,7 +11603,7 @@ MonoBehaviour:
   nextButton: {fileID: 0}
   tooltip: {fileID: 211774886}
   desc: Health 3
-  cost: 0
+  cost: 400
   effect: 75
 --- !u!114 &943622303
 MonoBehaviour:
@@ -11942,7 +11944,7 @@ MonoBehaviour:
   nextButton: {fileID: 1323144680}
   tooltip: {fileID: 370186062}
   desc: Speed 1
-  cost: 0
+  cost: 100
   effect: 0.5
 --- !u!114 &956616668
 MonoBehaviour:
@@ -16195,7 +16197,7 @@ MonoBehaviour:
   nextButton: {fileID: 566673335}
   tooltip: {fileID: 389831394}
   desc: Speed 2
-  cost: 0
+  cost: 200
   effect: 1
 --- !u!114 &1323144684
 MonoBehaviour:
@@ -18712,8 +18714,8 @@ MonoBehaviour:
   nextButton: {fileID: 0}
   tooltip: {fileID: 2018803178}
   desc: Infect 3
-  cost: 0
-  effect: 10
+  cost: 400
+  effect: 2
 --- !u!114 &1631572392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22161,8 +22163,8 @@ MonoBehaviour:
   nextButton: {fileID: 1631572388}
   tooltip: {fileID: 636042837}
   desc: Infect 2
-  cost: 0
-  effect: 5
+  cost: 200
+  effect: 1
 --- !u!114 &1929508180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23184,7 +23186,7 @@ MonoBehaviour:
   nextButton: {fileID: 263787715}
   tooltip: {fileID: 40330455}
   desc: Health 1
-  cost: 0
+  cost: 100
   effect: 25
 --- !u!114 &2018297224
 MonoBehaviour:

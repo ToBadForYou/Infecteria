@@ -23,7 +23,7 @@ public class Sugar : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.name == "Player") {
-            GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(1);
+            GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(40);
             
             audioSrc.clip = soundClip;
             audioSrc.Play();
