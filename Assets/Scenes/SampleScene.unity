@@ -1388,7 +1388,6 @@ RectTransform:
   - {fileID: 336580805}
   - {fileID: 1255069935}
   - {fileID: 1143195086}
-  - {fileID: 262452549}
   - {fileID: 1264500777}
   - {fileID: 2009071183}
   - {fileID: 1141134042}
@@ -1396,6 +1395,7 @@ RectTransform:
   - {fileID: 548928564}
   - {fileID: 94729530}
   - {fileID: 124480683}
+  - {fileID: 262452549}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3831,7 +3831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &262452549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3877,7 +3877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
