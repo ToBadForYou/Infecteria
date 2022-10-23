@@ -39,10 +39,11 @@ public class Detector : DetectorUnit
             if(currentAntibodies > 0){
                 List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
                 unitSquad.AddUnits(antibodies);
+                unitSquad.MoveTo(transform.position, false);
                 foreach (Unit antibody in antibodies){
                     antibody.producer = unitProducer;
                     antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
-                } 
+                }
             }
 
             audioSrc = GameObject.Find("Sound Effect Player").GetComponent<AudioSource>();

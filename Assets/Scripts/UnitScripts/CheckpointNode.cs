@@ -29,6 +29,7 @@ public class CheckpointNode : Unit
         if(currentAntibodies > 0){
             List<Unit> antibodies = unitSpawner.SpawnAntibodies(transform.position, currentAntibodies);
             UnitSquad newSquad = unitSpawner.CreateSquad(antibodies);
+            newSquad.MoveTo(transform.position, false);
             foreach (Unit antibody in antibodies){
                 antibody.producer = unitProducer;
                 antibody.GiveTask(new ReturnTask(antibody, gameObject), false);
