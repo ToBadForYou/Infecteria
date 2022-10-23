@@ -4985,7 +4985,7 @@ MonoBehaviour:
   tooltip: {fileID: 56426409}
   desc: Infect 1
   cost: 100
-  effect: 0.5
+  effect: 0.02
 --- !u!114 &329343719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18715,7 +18715,7 @@ MonoBehaviour:
   tooltip: {fileID: 2018803178}
   desc: Infect 3
   cost: 400
-  effect: 2
+  effect: 0.06
 --- !u!114 &1631572392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22164,7 +22164,7 @@ MonoBehaviour:
   tooltip: {fileID: 636042837}
   desc: Infect 2
   cost: 200
-  effect: 1
+  effect: 0.04
 --- !u!114 &1929508180
 MonoBehaviour:
   m_ObjectHideFlags: 0

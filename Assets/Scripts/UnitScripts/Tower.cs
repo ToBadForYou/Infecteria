@@ -7,7 +7,7 @@ public class Tower : Unit
     public GameObject projectilePrefab;
     new void Start() {
         base.Start();
-        SetUnitStats(5, 5, 1, 1, 1.0f, 5f, true);
+        SetUnitStats(50, 50, 2, 1, 1.0f, 5f, true);
     }
 
     public override bool AttackTarget(GameObject attackTarget){

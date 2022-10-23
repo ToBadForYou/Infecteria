@@ -233,7 +233,7 @@ Transform:
   - {fileID: 1433994590}
   - {fileID: 893733777}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &686625259711535223
 SpriteRenderer:
@@ -301,6 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barPivot: {fileID: 893733777}
   gameManager: {fileID: 0}
-  baseProduction: 10
+  baseProduction: 1
   baseTimer: 5
   productionTimer: 5
