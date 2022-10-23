@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SugarProducer : MonoBehaviour
 {
+    public Transform barPivot;
+
     public GameManager gameManager;
     public int baseProduction = 10;
     public int baseTimer = 5;
@@ -16,7 +18,11 @@ public class SugarProducer : MonoBehaviour
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             productionTimer -= Time.deltaTime;
+
+            float progress = productionTimer/(float)baseTimer;
+            barPivot.localScale = new Vector2(1.0f - progress, 1.0f);
             if (productionTimer < 0){
+                barPivot.localScale = new Vector2(0.0f, 1.0f);
                 gameManager.IncreaseSugar(baseProduction);
                 productionTimer = baseTimer;
             }   
