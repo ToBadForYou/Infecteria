@@ -130,6 +130,15 @@ public class UnitSquad : MonoBehaviour
         }
     }
 
+    public void Return(GameObject target, bool cancelTasks){
+        foreach (Unit unit in units){
+            if(cancelTasks){
+                unit.CancelTasks();
+            }
+            unit.GiveTask(new ReturnTask(unit, target), false);
+        }
+    }
+
     public void MoveTo(GameObject target, bool cancelTasks){
         foreach (Unit unit in units){
             if(cancelTasks){

@@ -68,9 +68,7 @@ public class SelectionHandler : MonoBehaviour
     }
 
     public void AssignReturnTask() {
-        //TODO: Use ReturnTask (currently only supports antibodies)
-        //Temp use first index values start position
-        selectedUnits.MoveTo(((MicroBacteria)selectedUnits.units[0]).startPosition, true);
+        selectedUnits.Return(GameObject.Find("Player"), true);
     }
 
     public void AssignMoveTask(){
@@ -113,8 +111,8 @@ public class SelectionHandler : MonoBehaviour
                     controlPanel.SetActive(false);
             }
 
-            if(!EventSystem.current.IsPointerOverGameObject()){
-                if(Input.GetMouseButtonDown(0)){
+            if(Input.GetMouseButtonDown(0)){
+                if(!EventSystem.current.IsPointerOverGameObject()){
                     selectionTransform.gameObject.SetActive(true);
                     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
@@ -122,35 +120,34 @@ public class SelectionHandler : MonoBehaviour
                     
                     isDown = true;
                 }
-                else if(Input.GetMouseButtonUp(0)){
-                    selectionTransform.gameObject.SetActive(false);
-                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
-                    bottomRight = mousePosition;
+            }
+            else if(Input.GetMouseButtonUp(0)){
+                selectionTransform.gameObject.SetActive(false);
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = new Vector2(worldPosition.x, worldPosition.y);
+                bottomRight = mousePosition;
+                DeselectUnits();
+                SelectUnits();
 
-                    DeselectUnits();
-                    SelectUnits();
+                isDown = false;
+            }
+            if(isDown){
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
+                float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
+                float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
 
-                    isDown = false;
-                }
-                if(isDown){
-                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    
-                    float xScale = Mathf.Abs(topLeft.x - worldPosition.x);
-                    float yScale = Mathf.Abs(topLeft.y - worldPosition.y);
-
-                    selectionTransform.localScale = new Vector2(xScale, yScale);
-                    
-                    //Draw selection box
-                    if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y)
-                        selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
-                    else if(worldPosition.x < topLeft.x && worldPosition.y > topLeft.y)
-                        selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y - yScale/2.0f);
-                    else if(worldPosition.x > topLeft.x && worldPosition.y > topLeft.y)
-                        selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y - yScale/2.0f);
-                    else
-                        selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y + yScale/2.0f);
-                }
+                selectionTransform.localScale = new Vector2(xScale, yScale);
+                
+                //Draw selection box
+                if(worldPosition.x > topLeft.x && worldPosition.y < topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y + yScale/2.0f);
+                else if(worldPosition.x < topLeft.x && worldPosition.y > topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y - yScale/2.0f);
+                else if(worldPosition.x > topLeft.x && worldPosition.y > topLeft.y)
+                    selectionTransform.position = new Vector2(worldPosition.x - xScale/2.0f, worldPosition.y - yScale/2.0f);
+                else
+                    selectionTransform.position = new Vector2(worldPosition.x + xScale/2.0f, worldPosition.y + yScale/2.0f);
             }
         }
     }
