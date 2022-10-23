@@ -301,6 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barPivot: {fileID: 88244590}
   gameManager: {fileID: 0}
-  baseProduction: 10
+  baseProduction: 4
   baseTimer: 5
   productionTimer: 5
