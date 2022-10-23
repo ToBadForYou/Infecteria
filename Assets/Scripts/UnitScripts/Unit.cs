@@ -33,7 +33,13 @@ public class Unit : MonoBehaviour
 
     int nextProximityCheck = 0;
 
+    int startSortingOrder;
+    SpriteRenderer sr;
     protected void Start(){
+        sr = GetComponent<SpriteRenderer>();
+        if(sr)
+            startSortingOrder = sr.sortingOrder; 
+
         maxHPBar = healthBar.localScale.x;
         if(unitMovement != null){
             for(int i = 0; i < healthBar.parent.childCount; i++) {
@@ -52,6 +58,8 @@ public class Unit : MonoBehaviour
         stats = new UnitStats(hp, currentHp, dmg, speed, time, r, state);
     }
 
+    float sortingOrderTimer = 2.0f;
+    float sortingOrderMaxTime = 2.0f;
     protected void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             if (stats.IsAggressive()){
@@ -68,6 +76,16 @@ public class Unit : MonoBehaviour
                 }    
             }
             UpdateCurrentTask();
+
+            if(sr) {
+                if(sr.sortingOrder != startSortingOrder) {
+                    sortingOrderTimer -= Time.deltaTime;
+                    if(sortingOrderTimer <= 0.0f) {
+                        sortingOrderTimer = sortingOrderMaxTime;
+                        sr.sortingOrder = startSortingOrder;
+                    }
+                }
+            }
         }
     }
 
@@ -211,6 +229,9 @@ public class Unit : MonoBehaviour
             healthBar.gameObject.SetActive(true);
             healthBarBackground.SetActive(true);
         }
+
+        if(sr)
+            sr.sortingOrder = startSortingOrder + 1;
 
         healthBar.localScale = new Vector2(((float)stats.GetCurrentHealth()/stats.GetHealth()) * maxHPBar, healthBar.localScale.y);
         if (stats.GetCurrentHealth() <= 0){
