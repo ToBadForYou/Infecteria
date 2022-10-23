@@ -13486,9 +13486,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move:           WASD\nInfect:         Hold SPACE\nMake Factory:   Q\nAbsorb:        
-    E\nSkill Tree:     T\nFollow (micro): F\nMove (micro):   M\nInfect (micro): I\nReturn
-    (micro): R\nSelect:         Right click\n                and drag"
+  m_text: "Move:          : WASD/Arrows\nInfect         : Stay in \n                
+    cell\nMake Factory   : Q\nAbsorb         : E\nSkill Tree     : T\nFollow (micro)
+    : F\nMove   (micro) : M\nInfect (micro) : I\nReturn (micro) : R\nSelect        
+    : Right click\n                 and drag\nSkip Tutorial  : X\nNext (tutorial):
+    Space\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
