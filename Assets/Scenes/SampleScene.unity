@@ -10963,7 +10963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [RETURN] to continue
+  m_text: Press [RETURN] to continue, Press [X] to deactivate tutorial popups
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -10990,8 +10990,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

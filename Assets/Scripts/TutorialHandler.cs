@@ -16,7 +16,9 @@ public class TutorialHandler : MonoBehaviour
         {EventType.Microbacteria, "You just produced your first microbacteria! These are your friends. You can select them by holding left mouse button and draging over them."},
         {EventType.ScoutDetected, "A scout has spotted you! Deal with it before it can report your presence to the heart!"},
         {EventType.DetectorDetected, "A detector has spotted you! A few antibodies has been deployed to deal with you, but most importantly a scout which will inform the heart about your presence unless you deal with it."},
-        {EventType.UnitSelected, "Some text about unit selection"}
+        {EventType.CollectedSugar, "You just obtained your first sugar! Sugar can be used to upgrade factories and build structures inside your factories."},
+        {EventType.CollectedDNA, "You just obtained your first DNA Point! DNA Points can be used in the SkillTree (T) to mutate your bacteria."},
+        {EventType.UnitSelected, "Some text about unit selection"},
     };
 
     public void TriggerEvent(EventType type) {
@@ -31,6 +33,10 @@ public class TutorialHandler : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
         }
+        else if(Input.GetKeyUp(KeyCode.X) && PauseManager.Instance.CurrPauseState == PauseManager.PauseState.FULL) {
+            PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
+            Destroy(gameObject);
+        }
     }
 }
 
@@ -40,7 +46,9 @@ public enum EventType {
     EnteredCell,
     MadeFactory,
     UnitSelected,
+    CollectedDNA,
     Microbacteria,
     ScoutDetected,
+    CollectedSugar,
     DetectorDetected
 }
