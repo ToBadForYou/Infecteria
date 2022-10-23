@@ -95,10 +95,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetWinStats(){
-        string infectedStats = "infected cells:       " + infectedCells + "\n";
-        string absorbedStats = "absorbed cells:       " + absorbedCells + "\n";
-        string factoriesStats = "factories:            " + factoryAmount + "\n";
-        GameObject.Find("stats").GetComponent<TextMeshProUGUI>().text = infectedStats + absorbedStats + factoriesStats;
+        string infectedStats = "infected cells:          " + infectedCells + "\n";
+        string absorbedStats = "absorbed cells:          " + absorbedCells + "\n";
+        string factoriesStats = "factories:               " + factoryAmount + "\n";
+        string bacteriaProduced = "produced microbacteria   " + producedMicrobacterias + "\n";
+        string scoutStats = "detection by scout:      " + timesDetectedByScout + "\n";
+        string detectorStats = "detection by detector:   " + timesDetectedByDetector + "\n";
+
+        GameObject.Find("stats").GetComponent<TextMeshProUGUI>().text = infectedStats + absorbedStats + factoriesStats + bacteriaProduced + scoutStats + detectorStats;
         if(!won){
             GameObject.Find("title").GetComponent<TextMeshProUGUI>().text = "Dead: you loose!";
         }

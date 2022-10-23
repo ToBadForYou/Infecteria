@@ -882,8 +882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 112}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 35, y: 207}
+  m_SizeDelta: {x: 570, y: 94.5298}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1286754305
 MonoBehaviour:
@@ -910,7 +910,14 @@ MonoBehaviour:
     absorbed cells:          0
 
     factories:              
-    0'
+    0
+
+    produced microbacteria   0
+
+    detection by scout:      0
+
+    detection
+    by detector:   0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
