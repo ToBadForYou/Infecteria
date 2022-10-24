@@ -46,6 +46,7 @@ public class UnitSquad : MonoBehaviour
     public void RemoveUnit(Unit removeUnit){
         if(units.Contains(removeUnit)){
             units.Remove(removeUnit);
+            removeUnit.squad = null;
         }
     }
 

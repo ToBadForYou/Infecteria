@@ -55,8 +55,12 @@ public class SelectionHandler : MonoBehaviour
         }
     }
 
-    void DeselectUnits() {
-        selectedUnits.ToggleSelection(false);
+    void DeselectUnits(){
+        foreach (Unit unit in selectedUnits.GetUnits()){
+            if(unit != null){
+                unit.ToggleSelection(false);
+            }
+        }
         selectedUnits.Clear();
     }
 
