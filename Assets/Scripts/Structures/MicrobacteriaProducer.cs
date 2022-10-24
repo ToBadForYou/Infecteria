@@ -33,4 +33,12 @@ public class MicrobacteriaProducer : Structure
             }
         }
     }
+
+    public int GetBacteriaAmount(){
+        return unitProducer.GetSpawnedAmount(UnitType.MICROBACTERIA);
+    }
+
+    public int GetMaximumAmount(){
+        return unitProducer.GetMaximumAmount(UnitType.MICROBACTERIA);
+    }   
 }

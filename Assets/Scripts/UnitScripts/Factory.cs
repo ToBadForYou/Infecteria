@@ -41,11 +41,31 @@ public class Factory : Infectable
     }
 
     public int GetBacteriaAmount(){
-        return 0;
+        int amount = 0;
+        foreach(GameObject structureObj in structures){
+            if(structureObj != null){
+                MicrobacteriaProducer bacteriaProducer = structureObj.GetComponent<MicrobacteriaProducer>();
+                //Not all buildings are structure atm, not required.
+                if(bacteriaProducer != null){
+                    amount += bacteriaProducer.GetBacteriaAmount();
+                }
+            }
+        }
+        return amount;
     }
 
     public int GetMaximumBacteria(){
-        return 0;
+        int amount = 0;
+        foreach(GameObject structureObj in structures){
+            if(structureObj != null){
+                MicrobacteriaProducer bacteriaProducer = structureObj.GetComponent<MicrobacteriaProducer>();
+                //Not all buildings are structure atm, not required.
+                if(bacteriaProducer != null){
+                    amount += bacteriaProducer.GetMaximumAmount();
+                }
+            }
+        }
+        return amount;
     }
     
     public string GetAttackDirection() {

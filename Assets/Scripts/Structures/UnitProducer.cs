@@ -22,19 +22,31 @@ public class UnitProducer : MonoBehaviour
     }
 
     public float GetProductionProgress(UnitType unitType){
-        return productionData[unitType].GetProductionProgress();
+        if(productionData.ContainsKey(unitType)){
+            return productionData[unitType].GetProductionProgress();
+        };
+        return 1f;
     }
 
     public int GetAvailableAmount(UnitType unitType){
-        return productionData[unitType].GetAvailableAmount();
+        if(productionData.ContainsKey(unitType)){
+            return productionData[unitType].GetAvailableAmount();
+        }
+        return 0;
     }
 
      public int GetMaximumAmount(UnitType unitType){
-        return productionData[unitType].GetMaximumAmount();
+        if(productionData.ContainsKey(unitType)){
+            return productionData[unitType].GetMaximumAmount();
+        }
+        return 0;
     }   
 
     public int GetSpawnedAmount(UnitType unitType){
-        return productionData[unitType].GetSpawnedAmount();
+        if(productionData.ContainsKey(unitType)){
+            return productionData[unitType].GetSpawnedAmount();
+        }
+        return 0;
     }
 
     public int WithdrawAll(UnitType unitType){
