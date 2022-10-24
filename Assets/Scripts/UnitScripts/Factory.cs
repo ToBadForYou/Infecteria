@@ -48,7 +48,10 @@ public class Factory : Infectable
                         bacteria.Heal(1);
                     }
                 }
-            }           
+            }
+            if(infectTarget)
+                if(infectTarget.isInfected)
+                    AutoInfect(null);           
         }
     }
 
