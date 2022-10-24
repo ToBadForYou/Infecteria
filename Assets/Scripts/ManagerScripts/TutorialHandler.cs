@@ -21,7 +21,7 @@ public class TutorialHandler : MonoBehaviour
         {EventType.DetectorDetected, "A detector has spotted you! A few antibodies has been deployed to deal with you, but most importantly a scout which will inform the heart about your presence unless you deal with it."},
         {EventType.CollectedSugar, "You just obtained your first sugar! Sugar can be used to upgrade factories and build structures inside your factories."},
         {EventType.CollectedDNA, "You just obtained your first DNA Point! DNA Points can be used in the SkillTree (T) to mutate your bacteria."},
-        {EventType.UnitSelected, "You just selected your first unit! From here you can control their stances (defensive/aggressive), move them (right click), make them follow you (f), and make them return to their factory (f)."},
+        {EventType.UnitSelected, "You just selected your first unit! From here you can control their stances (defensive/aggressive), move them (right click), make them follow you (F), and make them return to their factory (R)."},
     };
 
     public void TriggerEvent(EventType type) {
