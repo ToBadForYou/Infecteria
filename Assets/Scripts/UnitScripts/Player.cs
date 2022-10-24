@@ -15,7 +15,6 @@ public class Player : Unit
     public GameObject eObject;
     public GameObject qObject;
     public GameObject fObject;
-    public GameObject mouseObject;
 
     public GameObject skilltree;
     public GameObject factoryOverview;
@@ -145,11 +144,6 @@ public class Player : Unit
                         GetComponent<PlayerMovement>().SetSpeedPenalty(0f);
                     }
                     else if(Input.GetKeyDown(KeyCode.Q)) {
-                        if(mouseObject) {
-                            if(!mouseObject.activeSelf) {
-                                MakeObjActive(mouseObject);
-                            }
-                        }
                         audioSrc.clip = factorySoundEffect;
                         audioSrc.Play();
                         currentCell.TurnIntoFactory();

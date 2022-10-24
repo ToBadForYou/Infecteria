@@ -20,6 +20,10 @@ public class MicrobacteriaProducer : Structure
             barPivot.localScale = new Vector2(1.0f - unitProducer.GetProductionProgress(UnitType.MICROBACTERIA), 1.0f);
             int withdrawAmount = unitProducer.GetAvailableAmount(UnitType.MICROBACTERIA);
             if(withdrawAmount > 0){
+                if(builtBy.mouseObject != null){
+                    if(!builtBy.mouseObject.activeSelf)
+                        builtBy.MakeObjActive(builtBy.mouseObject);
+                }
                 withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
                 gm.producedMicrobacterias++;
                 MicroBacteria newBacteria = unitSpawner.SpawnMicrobacteria(transform.position, unitProducer);                

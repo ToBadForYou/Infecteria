@@ -17,10 +17,22 @@ public class Factory : Infectable
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
     public List<MicroBacteria> bacteriaInside = new List<MicroBacteria>();
-
+    
+    public GameObject mouseObject;
     GameManager gm;
     void Start(){
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        if(GameObject.Find("mouse-tooltip").transform.GetChild(0))
+            mouseObject = GameObject.Find("mouse-tooltip").transform.GetChild(0).gameObject;
+    }
+
+    public void MakeObjActive(GameObject obj){
+        if(obj) {
+            if(!obj.activeSelf) {
+                obj.SetActive(true);
+            }
+        }
     }
 
     void Update(){
