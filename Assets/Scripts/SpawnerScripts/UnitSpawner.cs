@@ -6,6 +6,14 @@ public class UnitSpawner : MonoBehaviour
 {
     public GameObject scoutObject;
     public GameObject antibodyObject;
+    public GameObject microbacteriaObject;
+
+    public MicroBacteria SpawnMicrobacteria(Vector2 pos, UnitProducer producer){
+        GameObject bacteriaObj = Instantiate(microbacteriaObject, pos, Quaternion.identity);
+        MicroBacteria bacteria = bacteriaObj.GetComponent<MicroBacteria>();
+        bacteria.producer = producer;
+        return bacteria;
+    }
 
     public Scout SpawnScout(Vector2 pos, GameObject parent){
         GameObject newScout = Instantiate(scoutObject, pos, Quaternion.identity);

@@ -177,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652466009}
-  - component: {fileID: 1143103404}
   m_Layer: 0
   m_Name: bar-pivot
   m_TagString: Untagged
@@ -201,19 +200,6 @@ Transform:
   m_Father: {fileID: 7518036808487970407}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1143103404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652466008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c08c797f0d62342a516d55c3228cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 15
 --- !u!1 &4946185802045496117
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7512ec95d5a8bc449db824a02572b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtBy: {fileID: 0}
   barPivot: {fileID: 1652466009}
   unitProducer: {fileID: 8776190248044632169}
 --- !u!114 &8776190248044632169

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Factory : Infectable
 {
-    public GameObject microBacteriaPrefab;
-    public UnitProducer unitProducer;
-    
     public int upgradeCost = 100;
     public int currentLevel = 1;
     public int maxLevel = 4;
@@ -24,22 +21,10 @@ public class Factory : Infectable
     GameManager gm;
     void Start(){
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 0, 15));
     }
 
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
-            int withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
-            if(withdrawAmount > 0){
-                gm.producedMicrobacterias++;
-                GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
-                obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
-                MicroBacteria bacteria = obj.GetComponent<MicroBacteria>();
-                AddMicrobacteria(bacteria);
-                if(infectTarget != null){
-                    bacteria.GiveTask(new InfectTask(bacteria, infectTarget.gameObject), false);
-                }
-            }
             nextHeal -= Time.deltaTime;
             if(nextHeal < 0){
                 nextHeal = healCD;
@@ -53,11 +38,11 @@ public class Factory : Infectable
     }
 
     public int GetBacteriaAmount(){
-        return unitProducer.GetSpawnedAmount(UnitType.MICROBACTERIA);
+        return 0;
     }
 
     public int GetMaximumBacteria(){
-        return unitProducer.GetMaximumAmount(UnitType.MICROBACTERIA);
+        return 0;
     }
     
     public string GetAttackDirection() {
@@ -111,7 +96,6 @@ public class Factory : Infectable
     }
 
     public override void OnCure(){
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.IncreaseInfectedCells(-1);
         gm.IncreaseFactoryAmount(-1);
         foreach(GameObject structure in structures){
@@ -203,13 +187,16 @@ public class Factory : Infectable
     }
 
     public void AddMicrobacteria(MicroBacteria bacteria){
-        bacteria.producer = unitProducer;
         microbacterias.Add(bacteria);
     }
 
     public void Build(int slot, Buildable structure){
         GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
         structures[slot] = temp;
-        unitProducer.IncreaseMaximumUnit(UnitType.MICROBACTERIA, structure.microbacteriaProduction);
+        Structure newStructure = temp.GetComponent<Structure>();
+        //Not all buildings are structure atm, not required.
+        if(newStructure != null){
+            newStructure.builtBy = this;
+        }
     }
 }
