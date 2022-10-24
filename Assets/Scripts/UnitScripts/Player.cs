@@ -83,6 +83,7 @@ public class Player : Unit
             if(gameManager.ShouldUnPause()){
                 PauseManager.Instance.SetPauseState(PauseManager.PauseState.NONE);
             }
+            skilltree.GetComponent<TooltipManager>().HideTooltips();
         }
     }
 

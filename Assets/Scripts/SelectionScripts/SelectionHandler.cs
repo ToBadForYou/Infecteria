@@ -111,8 +111,10 @@ public class SelectionHandler : MonoBehaviour
                     AssignMoveTask();
             }
             else {
-                if(controlPanel.activeSelf)
+                if(controlPanel.activeSelf){
                     controlPanel.SetActive(false);
+                    controlPanel.GetComponent<TooltipManager>().HideTooltips();
+                }
             }
 
             if(Input.GetMouseButtonDown(0)){
