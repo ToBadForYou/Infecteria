@@ -161,21 +161,28 @@ public class Factory : Infectable
 
     public bool CanUpgrade(){
         bool levelsLeft = currentLevel < maxLevel;
-        bool hasPoints = GameObject.Find("GameManager").GetComponent<GameManager>().GetSugarAmount() >= upgradeCost;
-        return levelsLeft && hasPoints;
+        bool canAfford = GameObject.Find("GameManager").GetComponent<GameManager>().CanAffordSugar(upgradeCost);
+        return levelsLeft && canAfford;
     }
 
-    public bool CanBuild(int slot){
+    public bool CanBuildAt(int slot){
         return slot < currentLevel && structures[slot] == null;
     }
 
-    public void Upgrade(){
-        if(CanUpgrade()) {
+    public bool CanBuild(Buildable structure){
+        bool canAfford = GameObject.Find("GameManager").GetComponent<GameManager>().CanAffordSugar(structure.cost);
+        return canAfford;
+    }
+
+    public bool Upgrade(){
+        bool canUpgrade = CanUpgrade();
+        if(canUpgrade) {
             upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
             GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(-upgradeCost);
             upgradeCost *= 2;
         }
+        return canUpgrade;
     }
 
     public void AutoInfect(Infectable newTarget){

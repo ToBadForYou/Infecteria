@@ -17,8 +17,7 @@ public class ToolTip : MonoBehaviour
     public SpriteRenderer sr;
     public SpriteRenderer sr2;
 
-    void Update()
-    {
+    void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             foreach(KeyCode keyCode in keyCodes) {
                 if(Input.GetKeyDown(keyCode))

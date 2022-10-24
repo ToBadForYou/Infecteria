@@ -69,9 +69,9 @@ public class FactoryManager : MonoBehaviour
         microbacteriaText.text = "Microbacteria: " + amount + "/" + maxAmount;
     }
 
+
     public void UpgradeFactory() {
-        if(currentFactory.currentLevel < currentFactory.maxLevel){
-            currentFactory.Upgrade();
+        if(currentFactory.currentLevel < currentFactory.maxLevel && currentFactory.Upgrade()){
             levelTextMesh.text = "Level " + currentFactory.currentLevel;
             if(currentFactory.currentLevel == currentFactory.maxLevel){
                 upgradeButton.interactable = false;
@@ -109,7 +109,7 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void DisplayBuildOptions(int buildSlot){
-        if(currentFactory.CanBuild(buildSlot)){
+        if(currentFactory.CanBuildAt(buildSlot)){
             buildOptions.SetActive(!buildOptions.activeSelf);
             if(buildOptions.activeSelf){
                 selectedSlot = buildSlot;
@@ -128,11 +128,13 @@ public class FactoryManager : MonoBehaviour
     }
 
     public void BuildStructure(int structureIndex){
-        if(currentFactory.CanBuild(selectedSlot) && selectedSlot != -1 && structureIndex != -1 && structureIndex < availableStructures.Count){
-            buildOptions.SetActive(false);
+        if(currentFactory.CanBuildAt(selectedSlot) && selectedSlot != -1 && structureIndex != -1 && structureIndex < availableStructures.Count){
             Buildable buildable = availableStructures[structureIndex];
-            currentFactory.Build(selectedSlot, availableStructures[structureIndex]);
-            SetStructure(selectedSlot, false, buildable.structureName, buildable.GetSprite(), buildable.GetColor());
+            if(currentFactory.CanBuild(buildable)){
+                buildOptions.SetActive(false);
+                currentFactory.Build(selectedSlot, availableStructures[structureIndex]);
+                SetStructure(selectedSlot, false, buildable.structureName, buildable.GetSprite(), buildable.GetColor());
+            }
         }
     }
 }

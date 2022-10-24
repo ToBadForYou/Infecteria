@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class FadeOutEffect : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    Image image;
+    TextMeshProUGUI text;
 
-    void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
+    void Start(){
+        image = GetComponent<Image>();
+        text = GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
-    {
-        if(sr.color.a >= 0.0f) {
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * 0.5f);
+    void Update(){
+        if(image.color.a >= 0.0f) {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * 0.5f);
+            if(text != null){
+                text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - Time.deltaTime * 0.5f);
+            }
         }
         else {
             Destroy(gameObject);

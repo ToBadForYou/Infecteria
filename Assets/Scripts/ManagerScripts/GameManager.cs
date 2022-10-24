@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI DNAPointsText;
     public TextMeshProUGUI sugarText;
     public TextMeshProUGUI textMesh;
+    public GameObject cantAfford;
 
     [SerializeField] private int DNAPoints = 0;
     [SerializeField] private int sugar = 0;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private int cellAmount;
     public bool won;
+    float affordTimer = 0;
     
     public List<GameObject> cells = new List<GameObject>();
 
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        if(th) {
+        if(th){
             if(absorbedCells == 1 && th.events.ContainsKey(EventType.Absorbed))
                 th.TriggerEvent(EventType.Absorbed);
             if(infectedCells == 1 && th.events.ContainsKey(EventType.Infected))
@@ -67,8 +70,35 @@ public class GameManager : MonoBehaviour
                 th.TriggerEvent(EventType.CollectedSugar);
             if(DNAPoints > lastDNA && th.events.ContainsKey(EventType.CollectedDNA))
                 th.TriggerEvent(EventType.CollectedDNA);
-        }      
-    }  
+        } 
+        if(affordTimer != 0){
+            affordTimer -= Time.deltaTime;
+            if(affordTimer < 0){
+                affordTimer = 0;
+                cantAfford.SetActive(false);
+            }
+        } 
+    }
+
+    public bool CanAffordSugar(int amount){
+        bool haveEnough = sugar >= amount;
+        if(!haveEnough){
+            CantAfford();
+        }
+        return haveEnough;
+    }
+
+    public void CantAfford(){
+        cantAfford.transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y + 16);
+        affordTimer = 0.8f;
+        cantAfford.SetActive(true);
+        /*
+        Image image = cantAfford.GetComponent<Image>();
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+        TextMeshProUGUI text = cantAfford.GetComponent<TextMeshProUGUI>();
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
+        cantAfford.AddComponent<FadeOutEffect>();*/
+    }   
 
     public bool ShouldUnPause(){
         int count = 0;
