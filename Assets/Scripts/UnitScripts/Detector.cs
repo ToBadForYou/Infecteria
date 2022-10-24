@@ -14,7 +14,9 @@ public class Detector : DetectorUnit
     
     public SoundManager detectedSoundManager;
     
+    GameManager gm;
     new void Start(){
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         base.Start();
         SetUnitStats(50, 50, 0, 1, 1.0f, 0.2f, false);
         reportTo = GameObject.Find("Heart");
@@ -26,7 +28,8 @@ public class Detector : DetectorUnit
     public override void Attack(){
         if (!isAlerted){
             isAlerted = true;
-            GameObject.Find("GameManager").GetComponent<GameManager>().timesDetectedByDetector++;
+            gm.timesDetectedByScout--;
+            gm.timesDetectedByDetector++;
 
             int availableScout = unitProducer.WithdrawAmount(UnitType.SCOUT, 1);
             if(availableScout > 0){            
