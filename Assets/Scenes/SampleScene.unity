@@ -1106,8 +1106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000005722, y: -0.000019073486}
-  m_SizeDelta: {x: 337.6629, y: 29.357}
+  m_AnchoredPosition: {x: -0.000005722, y: 0.66075}
+  m_SizeDelta: {x: 337.6629, y: 30.679}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64646910
 MonoBehaviour:
@@ -1129,7 +1129,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sugar Producer - 0 sugar
+  m_text: 'Sugar Producer
+
+    0 Sugar'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -4754,7 +4756,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DNA Producer - 50 sugar
+  m_text: 'DNA Producer
+
+    50 Sugar'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -4985,7 +4989,7 @@ MonoBehaviour:
   tooltip: {fileID: 56426409}
   desc: Infect 1
   cost: 100
-  effect: 0.02
+  effect: 0.008
 --- !u!114 &329343719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8508,8 +8512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 59}
-  m_SizeDelta: {x: 304.51, y: 26.7766}
+  m_AnchoredPosition: {x: 0.000015259, y: 69}
+  m_SizeDelta: {x: 152.26, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &665376366
 MonoBehaviour:
@@ -12542,7 +12546,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tower - 100 sugar
+  m_text: 'Tower
+
+    100 Sugar'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -16504,8 +16510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038147, y: 58}
-  m_SizeDelta: {x: 360.8902, y: 32}
+  m_AnchoredPosition: {x: -0.000015259, y: 69}
+  m_SizeDelta: {x: 217.95, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348080381
 MonoBehaviour:
@@ -18759,7 +18765,7 @@ MonoBehaviour:
   tooltip: {fileID: 2018803178}
   desc: Infect 3
   cost: 400
-  effect: 0.06
+  effect: 0.022
 --- !u!114 &1631572392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19202,7 +19208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: 0}
+  m_AnchoredPosition: {x: 70, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696463684
@@ -20052,7 +20058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: 0}
+  m_AnchoredPosition: {x: -70, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750379853
@@ -20502,7 +20508,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Microbacteria Producer - 50 sugar
+  m_text: 'Microbacteria Producer
+
+    50 Sugar'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -20972,8 +20980,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 56}
-  m_SizeDelta: {x: 490.2334, y: 32}
+  m_AnchoredPosition: {x: 0, y: 70}
+  m_SizeDelta: {x: 323.2166, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826455704
 MonoBehaviour:
@@ -22208,7 +22216,7 @@ MonoBehaviour:
   tooltip: {fileID: 636042837}
   desc: Infect 2
   cost: 200
-  effect: 0.04
+  effect: 0.015
 --- !u!114 &1929508180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22902,7 +22910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 0}
+  m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 216, y: 394}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2009071184
@@ -24251,8 +24259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: 57}
-  m_SizeDelta: {x: 374.1563, y: 32}
+  m_AnchoredPosition: {x: -0.0000076294, y: 69}
+  m_SizeDelta: {x: 187.08, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139515991
 MonoBehaviour:
