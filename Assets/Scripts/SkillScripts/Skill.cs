@@ -41,7 +41,7 @@ public class Skill : MonoBehaviour
     public void MakeActive() {
         if(!isBought) {
             GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-            if(gm.GetDNAPointAmount() >= cost) {
+            if(gm.CanAffordDNA(cost)){
                 gm.DecreaseDNAPoints(cost);
                 switch (gameObject.name){
                     case "hp":

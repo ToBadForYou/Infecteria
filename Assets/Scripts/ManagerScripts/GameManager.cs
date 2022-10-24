@@ -88,6 +88,14 @@ public class GameManager : MonoBehaviour
         return haveEnough;
     }
 
+    public bool CanAffordDNA(int amount){
+        bool haveEnough = DNAPoints >= amount;
+        if(!haveEnough){
+            CantAfford();
+        }
+        return haveEnough;
+    }
+
     public void CantAfford(){
         cantAfford.transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y + 16);
         affordTimer = 0.8f;
