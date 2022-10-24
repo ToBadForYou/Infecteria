@@ -30,7 +30,7 @@ public class Factory : Infectable
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             int withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
-            if(withdrawAmount > 0) {
+            if(withdrawAmount > 0){
                 gm.producedMicrobacterias++;
                 GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
                 obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));

@@ -21,6 +21,10 @@ public class UnitProducer : MonoBehaviour
         productionData.Add(unitType, newProductionData);
     }
 
+    public float GetProductionProgress(UnitType unitType){
+        return productionData[unitType].GetProductionProgress();
+    }
+
     public int GetAvailableAmount(UnitType unitType){
         return productionData[unitType].GetAvailableAmount();
     }

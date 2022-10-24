@@ -27,6 +27,10 @@ public class UnitProductionData
         }
     }
 
+    public float GetProductionProgress(){
+        return nextUnit/productionTime;
+    }
+
     public void IncreaseMaximum(int amount){
         maxUnits += amount;
     }

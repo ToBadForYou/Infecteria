@@ -7,13 +7,11 @@ public class ProducerProgressBar : MonoBehaviour
     public float time;
     float timePassed;
     
-    void Start()
-    {
+    void Start(){
         transform.localScale = new Vector2(0.0f, 1.0f);
     }
 
-    void Update()
-    {
+    void Update(){
         timePassed += Time.deltaTime;
         transform.localScale = new Vector2(timePassed/time, 1.0f);
         if(timePassed >= time) {

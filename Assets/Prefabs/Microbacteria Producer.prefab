@@ -224,6 +224,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7518036808487970407}
   - component: {fileID: 7752528979848689113}
+  - component: {fileID: 1266228279222686380}
+  - component: {fileID: 8776190248044632169}
   m_Layer: 0
   m_Name: Microbacteria Producer
   m_TagString: Untagged
@@ -246,7 +248,7 @@ Transform:
   - {fileID: 900724061}
   - {fileID: 1652466009}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7752528979848689113
 SpriteRenderer:
@@ -300,3 +302,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1266228279222686380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946185802045496117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7512ec95d5a8bc449db824a02572b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barPivot: {fileID: 1652466009}
+  unitProducer: {fileID: 8776190248044632169}
+--- !u!114 &8776190248044632169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946185802045496117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea467ac208ac340a363532539297c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
