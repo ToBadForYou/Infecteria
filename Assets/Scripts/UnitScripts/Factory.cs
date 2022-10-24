@@ -20,17 +20,33 @@ public class Factory : Infectable
 
     public List<MicroBacteria> microbacterias = new List<MicroBacteria>();
     public List<MicroBacteria> bacteriaInside = new List<MicroBacteria>();
-
+    
+    GameObject mouseObject;
     GameManager gm;
     void Start(){
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 0, 15));
+        
+        if(GameObject.Find("mouse-tooltip").transform.GetChild(0))
+            mouseObject = GameObject.Find("mouse-tooltip").transform.GetChild(0).gameObject;
+    }
+
+    public void MakeObjActive(GameObject obj){
+        if(obj) {
+            if(!obj.activeSelf) {
+                obj.SetActive(true);
+            }
+        }
     }
 
     void Update(){
         if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
             int withdrawAmount = unitProducer.WithdrawAmount(UnitType.MICROBACTERIA, 1);
             if(withdrawAmount > 0){
+                if(mouseObject) // Tooltip
+                    if(!mouseObject.activeSelf)
+                        MakeObjActive(mouseObject);
+
                 gm.producedMicrobacterias++;
                 GameObject obj = Instantiate(microBacteriaPrefab, transform.position, Quaternion.identity);
                 obj.GetComponent<MicroBacteria>().unitMovement.MoveToPosition(new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f)));
