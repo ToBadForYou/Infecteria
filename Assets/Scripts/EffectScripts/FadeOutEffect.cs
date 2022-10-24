@@ -16,13 +16,13 @@ public class FadeOutEffect : MonoBehaviour
 
     void Update(){
         if(image.color.a >= 0.0f) {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * 0.5f);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * 1f);
             if(text != null){
-                text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - Time.deltaTime * 0.5f);
+                text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - Time.deltaTime * 1f);
             }
         }
         else {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }

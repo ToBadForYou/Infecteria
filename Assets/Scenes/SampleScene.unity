@@ -4120,7 +4120,7 @@ MonoBehaviour:
   DNAPointsText: {fileID: 2051898743}
   sugarText: {fileID: 1277689686}
   textMesh: {fileID: 336580806}
-  cantAfford: {fileID: 299773466}
+  cantAfford: {fileID: 299773470}
   DNAPoints: 0
   sugar: 0
   absorbedCells: 0
@@ -4320,13 +4320,14 @@ GameObject:
   - component: {fileID: 299773467}
   - component: {fileID: 299773469}
   - component: {fileID: 299773468}
+  - component: {fileID: 299773470}
   m_Layer: 5
   m_Name: CantAfford
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &299773467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4361,7 +4362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4386,6 +4387,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299773466}
   m_CullTransparentMesh: 1
+--- !u!114 &299773470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299773466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2eb996d98ece64da014a8b518f443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 299773468}
+  textMesh: {fileID: 452358597}
 --- !u!1 &303380335
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,8 +6480,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279308561
-  m_fontColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
+    rgba: 1118481
+  m_fontColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
