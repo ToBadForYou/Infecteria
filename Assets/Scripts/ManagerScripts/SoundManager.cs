@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
     public bool isGlobal;
     public bool hasAudioSrc;
 
+    public int buildingIndex;
+
     public void CreateAudioSrc() {
         if(!hasAudioSrc) {
             if(!audioSrc) {
@@ -29,7 +31,12 @@ public class SoundManager : MonoBehaviour
     public void PlaySound() {
         if(isGlobal) {
             audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
-            audioSrc.Play();
+            if(eventIdentifier == "Build") {
+                if(GameObject.Find("GameManager").GetComponent<GameManager>().CanAffordSugar(GameObject.Find("FactoryOverview").GetComponent<FactoryManager>().availableStructures[buildingIndex].cost))
+                    audioSrc.Play();
+            }
+            else
+                audioSrc.Play();
         }
         else {
             if(Vector2.Distance(transform.position, GameObject.Find("Player").transform.position) <= playDistance) {

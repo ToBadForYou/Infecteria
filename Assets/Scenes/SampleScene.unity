@@ -1478,6 +1478,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 0
 --- !u!1 &92933454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,18 +2457,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 163704018}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: CreateAudioSrc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 163704018}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
@@ -2573,6 +2562,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 1
 --- !u!1 &164600039
 GameObject:
   m_ObjectHideFlags: 0
@@ -8735,6 +8725,7 @@ MonoBehaviour:
   playDistance: 6
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &647888345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8759,6 +8750,7 @@ MonoBehaviour:
   playDistance: 6
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!1 &665376364
 GameObject:
   m_ObjectHideFlags: 0
@@ -15023,18 +15015,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1203738598}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: CreateAudioSrc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1203738598}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
@@ -15140,6 +15120,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 2
 --- !u!1 &1214290116
 GameObject:
   m_ObjectHideFlags: 0
@@ -19559,18 +19540,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1696463688}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: CreateAudioSrc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1696463688}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
@@ -19676,6 +19645,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 0
 --- !u!1 &1707043003
 GameObject:
   m_ObjectHideFlags: 0
@@ -20409,18 +20379,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1750379856}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: CreateAudioSrc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1750379856}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
@@ -20513,6 +20471,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 3
 --- !u!1 &1763738188
 GameObject:
   m_ObjectHideFlags: 0
