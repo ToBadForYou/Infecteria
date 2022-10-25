@@ -115,6 +115,9 @@ public class Unit : MonoBehaviour
     }
 
     public void CancelTasks(){
+        if(currentTasks.Count > 0){
+            currentTasks[0].FinishTask();
+        }
         currentTasks.Clear();
     }
 

@@ -140,6 +140,7 @@ public class Factory : Infectable
 
         Cell cell = cellObj.GetComponent<Cell>();
         cell.organ = organ;
+        cell.warningCured.SetActive(true);
         if(organ != null){
             organ.ReplaceCell(this, cell);
             cell.GetComponent<SpriteRenderer>().color = organ.GetOrganCellColor();

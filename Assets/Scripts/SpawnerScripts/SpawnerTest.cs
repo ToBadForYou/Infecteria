@@ -15,7 +15,7 @@ public class SpawnerTest : MonoBehaviour
         Transform bottomRight = transform.GetChild(3);
 
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
+
         for(int x = (int)topLeft.position.x + step/2; x < (int)topRight.position.x; x+=step) {
             for(int y = (int)topLeft.position.y - step/2; y > (int)bottomRight.position.y; y-=step) {
                 GameObject cell = Instantiate(cellObj, new Vector2(x, y), Quaternion.identity);

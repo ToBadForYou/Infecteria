@@ -384,6 +384,7 @@ MonoBehaviour:
   nextInspection: 0
   inspectionCD: 120
   owner: 1
+  minimumSpawn: 5
   countOrganCells: 0
 --- !u!1 &40330453
 GameObject:
@@ -6791,7 +6792,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &476761554
 GameObject:
@@ -9883,6 +9884,7 @@ MonoBehaviour:
   nextInspection: 0
   inspectionCD: 120
   owner: 1
+  minimumSpawn: 5
   countOrganCells: 0
   nextScout: 5
   scoutProductionTime: 5
@@ -24760,7 +24762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4233825818235546237, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4233825818235546237, guid: 3541f5dd4b04f9943a7db502ea30de90, type: 3}
       propertyPath: m_LocalPosition.x

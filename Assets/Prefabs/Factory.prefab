@@ -560,8 +560,7 @@ MonoBehaviour:
   maxInfectionAmount: 10
   infectionAmount: 10
   isInfected: 1
-  microBacteriaPrefab: {fileID: 5050834132167503558, guid: 5ec7fb0577afbea4aab62482160d1f67, type: 3}
-  unitProducer: {fileID: 2994520214812468025}
+  organ: {fileID: 0}
   upgradeCost: 100
   currentLevel: 1
   maxLevel: 4
@@ -570,8 +569,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  belongsToHeart: 0
-  autoInfect: 0
   infectTarget: {fileID: 0}
   cellPrefab: {fileID: 7198534172057317654, guid: ea93c507a3a3ff84fbafba1c0dc3c5a0, type: 3}
   upgradeVisuals:
@@ -579,6 +576,8 @@ MonoBehaviour:
   - {fileID: 5020937355176580595}
   - {fileID: 206605740749628633}
   microbacterias: []
+  bacteriaInside: []
+  mouseObject: {fileID: 0}
   warningPrefab: {fileID: 8447067760826837992, guid: 9af7eb0c67f386942b5299e810f34892, type: 3}
 --- !u!58 &1221382061
 CircleCollider2D:

@@ -9,6 +9,7 @@ public class Cell : Infectable
     
     public GameObject factoryPrefab;
     public Transform infectionBarPivot;
+    public GameObject warningCured;
 
     public float offset;
     public float speed;

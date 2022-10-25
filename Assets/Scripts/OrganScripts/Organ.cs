@@ -14,13 +14,13 @@ public class Organ : MonoBehaviour
     public float nextInspection;
     public int inspectionCD = 30;
     public Unit.Faction owner = Unit.Faction.IMMUNESYSTEM;
-    int minimumSpawn = 5;
+    public int minimumSpawn = 5;
     public int countOrganCells;
 
     protected void Start(){
         nextInspection = inspectionCD;
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(20, 50, 18));
+        unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(30, 30, 10));
         StartCoroutine(LateStart(0.0f));
     }
 
