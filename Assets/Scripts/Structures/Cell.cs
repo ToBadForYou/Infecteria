@@ -34,7 +34,7 @@ public class Cell : Infectable
     }
 
     public void GetAbsorbed(){
-        gm.IncreaseDNAPoints(100);
+        gm.IncreaseDNAPoints(30);
         gm.IncreaseAbsorbedCells();
         gm.RemoveCell(gameObject);
 
@@ -94,12 +94,12 @@ public class Cell : Infectable
         infectionBarPivot.localScale = new Vector2(infectionAmount/10.0f, 1.0f);
     }
 
-    public GameObject particleSystem;
+    public GameObject particleSystemObj;
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
             gm.timesEnteredCell++;
 
-            Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
+            Instantiate(particleSystemObj, col.gameObject.transform.position, Quaternion.identity);
 
             foreach(SoundManager sm in soundManagers) {
                 sm.PlaySound();
@@ -112,7 +112,7 @@ public class Cell : Infectable
 
     void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Player") {
-            Instantiate(particleSystem, col.gameObject.transform.position, Quaternion.identity);
+            Instantiate(particleSystemObj, col.gameObject.transform.position, Quaternion.identity);
             
             foreach(SoundManager sm in soundManagers) {
                 if(sm.eventIdentifier == "Player Enter Exit")

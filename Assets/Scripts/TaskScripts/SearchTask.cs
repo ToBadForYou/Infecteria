@@ -18,7 +18,9 @@ public class SearchTask : Task
     public override void Update(){
         if(target == null){
             if(searchList.Count > 1){
-                target = searchList[0].gameObject;
+                if(searchList[0] != null){
+                    target = searchList[0].gameObject;
+                }
                 searchList.RemoveAt(0);
             }
             else {

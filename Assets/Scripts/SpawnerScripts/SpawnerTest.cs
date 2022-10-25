@@ -8,8 +8,7 @@ public class SpawnerTest : MonoBehaviour
     public GameObject detectorObj;
     public int step = 10;
 
-    void Start()
-    {
+    void Start(){
         Transform topLeft = transform.GetChild(0);
         Transform topRight = transform.GetChild(1);
         Transform bottomLeft = transform.GetChild(2);

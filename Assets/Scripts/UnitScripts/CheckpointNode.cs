@@ -11,7 +11,7 @@ public class CheckpointNode : Unit
     new void Start(){
         base.Start();
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
-        SetUnitStats(50, 50, 0, 1, 1.0f, 0.2f, false);
+        SetUnitStats(75, 75, 0, 1, 1.0f, 0.2f, false);
         unitProducer.AddProduction(UnitType.ANTIBODY, new UnitProductionData(5, 5, 20));
     }
 

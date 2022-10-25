@@ -12,6 +12,11 @@ public class FollowTask : Task
     }
 
     public override void Update(){
-        unit.FollowTarget(target, offset);
+        if(target != null){
+            unit.FollowTarget(target, offset);
+        }
+        else {
+            FinishTask();
+        }
     }    
 }

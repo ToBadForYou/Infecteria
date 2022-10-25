@@ -80,33 +80,32 @@ public class Factory : Infectable
         return amount;
     }
     
-    public string GetAttackDirection() {
-        Vector2 playerPos = GameObject.Find("Player").transform.position;
-        
-        float upDownRange = 4.5f;
-        float leftRightRange = 8.5f;
+    public string GetAttackDirection(Vector2 playerPos){
+        if(Vector2.Distance(transform.position, playerPos) > 10){
+            float upDownRange = 4.5f;
+            float leftRightRange = 8.5f;
 
-        if(transform.position.x < playerPos.x + leftRightRange && transform.position.x > playerPos.x - leftRightRange) {
-            if(transform.position.y > playerPos.y)
-                return "up";
-            else
-                return "down";
+            if(transform.position.x < playerPos.x + leftRightRange && transform.position.x > playerPos.x - leftRightRange) {
+                if(transform.position.y > playerPos.y)
+                    return "up";
+                else
+                    return "down";
+            }
+            else if(transform.position.y < playerPos.y + upDownRange && transform.position.y > playerPos.y - upDownRange) {
+                if(transform.position.x > playerPos.x)
+                    return "right";
+                else
+                    return "left";
+            }
         }
-        else if(transform.position.y < playerPos.y + upDownRange && transform.position.y > playerPos.y - upDownRange) {
-            if(transform.position.x > playerPos.x)
-                return "right";
-            else
-                return "left";
-        }
-
         return "none";
     }
 
     [SerializeField] private GameObject warningPrefab;
-    public override void OnGettingCured() {
-        string attackDir = GetAttackDirection();
+    public override void OnGettingCured(){
         GameObject player = GameObject.Find("Player");
         Vector2 playerPos = player.transform.position;
+        string attackDir = GetAttackDirection(playerPos);
         Vector2 pos = new Vector2();
         GameObject temp = null;
         switch(attackDir) {
@@ -127,7 +126,9 @@ public class Factory : Infectable
                 temp = Instantiate(warningPrefab, pos, Quaternion.identity);
                 break;
         }
-        temp.transform.parent = player.transform;
+        if(temp != null){
+            temp.transform.parent = player.transform;
+        }
     }
 
     public override void OnCure(){

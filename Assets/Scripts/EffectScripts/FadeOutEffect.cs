@@ -6,23 +6,18 @@ using TMPro;
 
 public class FadeOutEffect : MonoBehaviour
 {
-    Image image;
-    TextMeshProUGUI text;
+    private SpriteRenderer sr;
 
     void Start(){
-        image = GetComponent<Image>();
-        text = GetComponent<TextMeshProUGUI>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update(){
-        if(image.color.a >= 0.0f) {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * 1f);
-            if(text != null){
-                text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - Time.deltaTime * 1f);
-            }
+        if(sr.color.a >= 0.0f) {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * 0.5f);
         }
         else {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

@@ -409,7 +409,7 @@ Transform:
   - {fileID: 1427935809}
   - {fileID: 10664365}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7198534172057317649
 SpriteRenderer:
@@ -490,7 +490,7 @@ MonoBehaviour:
   - {fileID: 958990092}
   - {fileID: 1949297069}
   - {fileID: 804255500}
-  particleSystem: {fileID: 1909885213398494152, guid: 10f027e5aedaadf4e98f732c7a33364f, type: 3}
+  particleSystemObj: {fileID: 1909885213398494152, guid: 10f027e5aedaadf4e98f732c7a33364f, type: 3}
 --- !u!58 &613358344
 CircleCollider2D:
   m_ObjectHideFlags: 0

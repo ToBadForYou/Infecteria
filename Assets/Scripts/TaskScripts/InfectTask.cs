@@ -13,17 +13,23 @@ public class InfectTask : Task
     }    
 
     public override void Update(){
-        if (!unit.IsMoving())
-            unit.FollowTarget(target);
-        
-        if(unit.AtPosition(target.transform.position)) {
-            Infectable infectTarget = target.GetComponent<Infectable>();
-            if(infectTarget != null && unit.CanInfect(infectTarget)){
-                unit.InfectTarget(infectTarget);
+        if(target != null){
+            if (!unit.IsMoving())
+                unit.FollowTarget(target);
+            
+            if(unit.AtPosition(target.transform.position)){
+                Infectable infectTarget = target.GetComponent<Infectable>();
+                if(infectTarget != null && unit.CanInfect(infectTarget)){
+                    unit.InfectTarget(infectTarget);
+                }
+                else {
+                    unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
+                }
+                FinishTask();
             }
-            else{
-                unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
-            }
+        }
+        else {
+            unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
             FinishTask();
         }
     } 

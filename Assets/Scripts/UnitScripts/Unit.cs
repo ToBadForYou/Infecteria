@@ -124,7 +124,7 @@ public class Unit : MonoBehaviour
         foreach (GameObject closeObject in inRange){
             if(IsHostile(closeObject.GetComponent<Unit>())){
                 float distance = Vector2.Distance(transform.position, closeObject.transform.position);
-                if(distance + 0.2f <= closestDistance) {
+                if(distance <= closestDistance) {
                     closest = closeObject;
                     closestDistance = distance;
                 }
