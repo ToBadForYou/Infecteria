@@ -13744,8 +13744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: -0.000012398, y: 0}
+  m_SizeDelta: {x: 445.5953, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116607477
 MonoBehaviour:
@@ -13767,11 +13767,44 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move:          : WASD/Arrows\nInfect         : Stay in \n                
-    cell\nMake Factory   : Q\nAbsorb         : E\nSkill Tree     : T\nFollow (micro)
-    : F\nMove   (micro) : M\nInfect (micro) : I\nReturn (micro) : R\nSelect        
-    : Right click\n                 and drag\nSkip Tutorial  : X\nNext (tutorial):
-    Space\n"
+  m_text: 'Player
+
+    Move:           : WASD/Arrows
+
+    Make Factory    : Q
+
+    Absorb         
+    : E
+
+    Skill Tree      : T
+
+    Map             : M
+
+
+    Microbacteria (while
+    selected)
+
+    Follow          : F
+
+    Move            : Right click
+
+    Infect         
+    : Right click cell
+
+    Return          : R
+
+    Select          : Hold left
+    click and drag
+
+
+    Tutorial
+
+    Next (tutorial) : Space
+
+    Disable Tutorial:
+    X
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
   m_sharedMaterial: {fileID: -6685531626943358842, guid: ab6d4c5778dc02c47afb61f6b0861895, type: 2}
@@ -20472,6 +20505,7 @@ MonoBehaviour:
   playDistance: 0
   isGlobal: 1
   hasAudioSrc: 1
+  buildingIndex: 0
 --- !u!114 &1750379857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20485,7 +20519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1826455702}
-  buildingIndex: 3
 --- !u!1 &1763738188
 GameObject:
   m_ObjectHideFlags: 0
