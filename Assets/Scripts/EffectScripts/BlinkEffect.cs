@@ -12,11 +12,11 @@ public class BlinkEffect : MonoBehaviour
 
     private bool turnedOff;
 
-    public void TurnOff() {
+    public void TurnOff(){
         turnedOff = true;
     }
 
-    void Start() {
+    void Start(){
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -24,12 +24,12 @@ public class BlinkEffect : MonoBehaviour
         multiplier *= -1;
     }
 
-    void SetAlpha(float alpha) {
+    void SetAlpha(float alpha){
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
     }
 
     void Update(){
-        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE) {
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
             if(!turnedOff) {
                 float newAlpha = sr.color.a + Time.deltaTime * multiplier;
                 SetAlpha(newAlpha);

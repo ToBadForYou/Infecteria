@@ -8,12 +8,11 @@ public class PingPongFadeEffect : MonoBehaviour
     bool fadeOut = true;
     TextMeshProUGUI textMesh;
 
-    void Start() {
+    void Start(){
         textMesh = GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
-    {
+    void Update(){
         if(fadeOut) {
             textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, textMesh.color.a - Time.deltaTime);
             if(textMesh.color.a <= 0.0f) {

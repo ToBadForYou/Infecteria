@@ -81,22 +81,20 @@ public class Factory : Infectable
     }
     
     public string GetAttackDirection(Vector2 playerPos){
-        if(Vector2.Distance(transform.position, playerPos) > 10){
-            float upDownRange = 4.5f;
-            float leftRightRange = 8.5f;
+        float upDownRange = 4.5f;
+        float leftRightRange = 8.5f;
 
-            if(transform.position.x < playerPos.x + leftRightRange && transform.position.x > playerPos.x - leftRightRange) {
-                if(transform.position.y > playerPos.y)
-                    return "up";
-                else
-                    return "down";
-            }
-            else if(transform.position.y < playerPos.y + upDownRange && transform.position.y > playerPos.y - upDownRange) {
-                if(transform.position.x > playerPos.x)
-                    return "right";
-                else
-                    return "left";
-            }
+        if(transform.position.x < playerPos.x + leftRightRange && transform.position.x > playerPos.x - leftRightRange) {
+            if(transform.position.y > playerPos.y)
+                return "up";
+            else
+                return "down";
+        }
+        else if(transform.position.y < playerPos.y + upDownRange && transform.position.y > playerPos.y - upDownRange) {
+            if(transform.position.x > playerPos.x)
+                return "right";
+            else
+                return "left";
         }
         return "none";
     }
@@ -134,6 +132,7 @@ public class Factory : Infectable
     public override void OnCure(){
         gm.IncreaseInfectedCells(-1);
         gm.IncreaseFactoryAmount(-1);
+        gm.timesCuredCell += 1;
         foreach(GameObject structure in structures){
             Destroy(structure);
         }
@@ -227,7 +226,9 @@ public class Factory : Infectable
     }
 
     public void Build(int slot, Buildable structure){
-        GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f), -2.0f), Quaternion.identity);
+        Vector2 randomPos = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+        randomPos.Normalize();
+        GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + randomPos.x, transform.position.y + randomPos.y, -2f), Quaternion.identity);
         structures[slot] = temp;
         Structure newStructure = temp.GetComponent<Structure>();
         //Not all buildings are structure atm, not required.

@@ -22,6 +22,7 @@ public class TutorialHandler : MonoBehaviour
         {EventType.CollectedSugar, "You just obtained your first sugar! Sugar can be used to upgrade factories and build structures inside your factories."},
         {EventType.CollectedDNA, "You just obtained your first DNA Point! DNA Points can be used in the SkillTree (T) to mutate your bacteria."},
         {EventType.UnitSelected, "You just selected your first unit! From here you can control their stances (aggressive/defensive), move them (right click), make them follow you (F), and make them return to their factory (R)."},
+        {EventType.CuredCell, "Oh no! One of your infected cells were just cured! You can see in which direction the cell is by the visible warning symbol."},
     };
 
     public void TriggerEvent(EventType type) {
@@ -69,5 +70,6 @@ public enum EventType {
     Microbacteria,
     ScoutDetected,
     CollectedSugar,
-    DetectorDetected
+    DetectorDetected,
+    CuredCell
 }

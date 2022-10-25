@@ -24,6 +24,7 @@ public class SearchTask : Task
                 searchList.RemoveAt(0);
             }
             else {
+                ownerSquad.Return(unit.parent, true);
                 FinishTask();
             }
         }

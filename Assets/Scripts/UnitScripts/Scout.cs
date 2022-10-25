@@ -48,6 +48,7 @@ public class Scout : DetectorUnit
             Infectable cell = targetCell.GetComponent<Infectable>();
             if (cell != null && (cell.isInfected || cell.infectionAmount/cell.maxInfectionAmount > 0.5)){
                 // TODO heal the cell
+                GameObject.Find("GameManager").GetComponent<GameManager>().timesDetectedByScout--;
                 SetAlerted(targetCell);
             }
             else {

@@ -18,6 +18,9 @@ public class UnitProductionData
     }
 
     public void Update(){
+        if(spawnedUnits < 0){
+            spawnedUnits = 0;
+        }
         if(availableUnits < maxUnits){
             nextUnit -= Time.deltaTime;
             if(nextUnit < 0){

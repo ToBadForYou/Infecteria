@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int timesDetectedByScout = 0;
     public int timesDetectedByDetector = 0;
     public int timesOpenedPlayerCommands = 0;
+    public int timesCuredCell = 0;
 
     private int cellAmount;
     public bool won;
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
                 th.TriggerEvent(EventType.DetectorDetected);
             if(timesOpenedPlayerCommands == 1 && th.events.ContainsKey(EventType.UnitSelected))
                 th.TriggerEvent(EventType.UnitSelected);
+            if(timesCuredCell == 1 && th.events.ContainsKey(EventType.CuredCell))
+                th.TriggerEvent(EventType.CuredCell);                
             if(sugar > lastSugar && th.events.ContainsKey(EventType.CollectedSugar))
                 th.TriggerEvent(EventType.CollectedSugar);
             if(DNAPoints > lastDNA && th.events.ContainsKey(EventType.CollectedDNA))

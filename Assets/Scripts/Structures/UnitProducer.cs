@@ -52,7 +52,7 @@ public class UnitProducer : MonoBehaviour
     public int WithdrawAll(UnitType unitType){
         if(productionData.ContainsKey(unitType))
             return productionData[unitType].WithdrawAll();
-        return -1;
+        return 0;
     }
 
     public int WithdrawAmount(UnitType unitType, int amount){
@@ -60,11 +60,15 @@ public class UnitProducer : MonoBehaviour
     }    
 
     public void OnReturn(Unit returnedUnit){
-        productionData[returnedUnit.unitType].OnReturn();
+        if(productionData.ContainsKey(returnedUnit.unitType)){
+            productionData[returnedUnit.unitType].OnReturn();
+        }
         Destroy(returnedUnit.transform.root.gameObject);
     }
 
     public void OnDeath(Unit deadUnit){
-        productionData[deadUnit.unitType].OnDeath();
+        if(productionData.ContainsKey(deadUnit.unitType)){
+            productionData[deadUnit.unitType].OnDeath();
+        }
     }    
 }

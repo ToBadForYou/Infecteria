@@ -13,11 +13,13 @@ public class FadeOutEffect : MonoBehaviour
     }
 
     void Update(){
-        if(sr.color.a >= 0.0f) {
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * 0.5f);
-        }
-        else {
-            Destroy(gameObject);
+        if(PauseManager.Instance.CurrPauseState == PauseManager.PauseState.NONE){
+            if(sr.color.a >= 0.0f) {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * 0.5f);
+            }
+            else {
+                Destroy(gameObject);
+            }
         }
     }
 }

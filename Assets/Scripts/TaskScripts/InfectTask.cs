@@ -22,14 +22,10 @@ public class InfectTask : Task
                 if(infectTarget != null && unit.CanInfect(infectTarget)){
                     unit.InfectTarget(infectTarget);
                 }
-                else {
-                    unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
-                }
                 FinishTask();
             }
         }
         else {
-            unit.GiveTask(new ReturnTask(unit, unit.producer.gameObject), false);
             FinishTask();
         }
     } 
