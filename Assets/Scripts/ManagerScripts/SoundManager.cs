@@ -18,12 +18,22 @@ public class SoundManager : MonoBehaviour
 
     public int buildingIndex;
 
+    VolumeManager volumeManager;
+
+    void Start(){
+        volumeManager = GameObject.Find("VolumeManager").GetComponent<VolumeManager>();
+    }
+
     public void CreateAudioSrc() {
         if(!hasAudioSrc) {
             if(!audioSrc) {
                 GameObject audioSrcObj = Instantiate(audioSrcPrefab);
                 audioSrcObj.transform.parent = transform;
                 audioSrc = audioSrcObj.GetComponent<AudioSource>();
+                if(volumeManager == null){
+                    volumeManager = GameObject.Find("VolumeManager").GetComponent<VolumeManager>();
+                }
+                volumeManager.AddSource(audioSrc);
             }
         }
     }
