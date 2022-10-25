@@ -425,9 +425,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
   - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &1472379835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,9 +446,10 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: a0ad79fe88d9e644abf37cfd86090963, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &1444734376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,9 +467,10 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: c1675db8fbb2d4c4e951385340df4225, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!1 &4278691253781211458
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +707,7 @@ Transform:
   - {fileID: 1833783504}
   - {fileID: 1016434092}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &-6339431088290239499
 SpriteRenderer:

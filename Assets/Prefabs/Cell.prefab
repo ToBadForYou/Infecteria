@@ -558,7 +558,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: 57aca7948b2b6d6488adafe268192fb8, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
   buildingIndex: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: b314b13b645e4a449968cd89d5b09c71, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
   buildingIndex: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: 2c53c6896a4d2e745b20b03f6bb131df, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
   buildingIndex: 0

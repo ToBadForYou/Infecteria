@@ -552,6 +552,7 @@ MonoBehaviour:
   playDistance: 6
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &492516021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +573,7 @@ MonoBehaviour:
   playDistance: 6
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &667492007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,9 +591,10 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: ca47e3a947b68b042a19ee0ee7b4cb13, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!1 &7425074799903178561
 GameObject:
   m_ObjectHideFlags: 0

@@ -339,7 +339,7 @@ Transform:
   - {fileID: 635942688}
   - {fileID: 179820423}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2310231965825473703
 SpriteRenderer:
@@ -798,9 +798,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2d00a30551ff4b43b65b5230d18e39b, type: 3}
   - {fileID: 8300000, guid: da844d7900ab195459f18640e6b55771, type: 3}
   - {fileID: 8300000, guid: 89a734a224ef4c7429b2ca6a43a826b0, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &74540035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,9 +819,10 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: a0ad79fe88d9e644abf37cfd86090963, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!114 &681950458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,9 +840,10 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: 5575398df8911da4aa26e4a843e2a9a2, type: 3}
-  playDistance: 6
+  playDistance: 10
   isGlobal: 0
   hasAudioSrc: 0
+  buildingIndex: 0
 --- !u!1 &8152614086710397668
 GameObject:
   m_ObjectHideFlags: 0
