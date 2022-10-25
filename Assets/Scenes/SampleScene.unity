@@ -13781,29 +13781,31 @@ MonoBehaviour:
 
     Map             : M
 
+    Follow          :
+    F (while in factory)
 
-    Microbacteria (while
-    selected)
 
-    Follow          : F
+    Microbacteria (while selected)
+
+    Follow         
+    : F
 
     Move            : Right click
 
-    Infect         
-    : Right click cell
+    Infect          : Right click cell
 
-    Return          : R
+    Return         
+    : R
 
-    Select          : Hold left
-    click and drag
+    Select          : Hold left click and drag
 
 
     Tutorial
 
-    Next (tutorial) : Space
+    Next
+    (tutorial) : Space
 
-    Disable Tutorial:
-    X
+    Disable Tutorial: X
 
 '
   m_isRightToLeft: 0

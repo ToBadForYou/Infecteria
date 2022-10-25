@@ -154,7 +154,9 @@ public class Factory : Infectable
         if(col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<Player>().currentFactory = this;
             Player playerScript = col.gameObject.GetComponent<Player>();
-            playerScript.MakeObjActive(playerScript.fObject);
+            if(GetBacteriaAmount() > 0){
+                playerScript.MakeObjActive(playerScript.fObject);
+            }
         }
         MicroBacteria micro = col.GetComponent<MicroBacteria>();
         if(micro != null && !bacteriaInside.Contains(micro)){
