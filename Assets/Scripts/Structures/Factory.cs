@@ -183,7 +183,7 @@ public class Factory : Infectable
 
     public bool CanUpgrade(){
         bool levelsLeft = currentLevel < maxLevel;
-        bool canAfford = GameObject.Find("GameManager").GetComponent<GameManager>().CanAffordSugar(upgradeCost);
+        bool canAfford = gm.CanAffordSugar(upgradeCost);
         return levelsLeft && canAfford;
     }
 
@@ -192,7 +192,7 @@ public class Factory : Infectable
     }
 
     public bool CanBuild(Buildable structure){
-        bool canAfford = GameObject.Find("GameManager").GetComponent<GameManager>().CanAffordSugar(structure.cost);
+        bool canAfford = gm.CanAffordSugar(structure.cost);
         return canAfford;
     }
 
@@ -201,7 +201,7 @@ public class Factory : Infectable
         if(canUpgrade) {
             upgradeVisuals[currentLevel - 1].SetActive(true);
             currentLevel++;
-            GameObject.Find("GameManager").GetComponent<GameManager>().IncreaseSugar(-upgradeCost);
+            gm.IncreaseSugar(-upgradeCost);
             upgradeCost *= 2;
         }
         return canUpgrade;
@@ -229,6 +229,7 @@ public class Factory : Infectable
     }
 
     public void Build(int slot, Buildable structure){
+        gm.IncreaseSugar(-structure.cost);
         Vector2 randomPos = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         randomPos.Normalize();
         GameObject temp = Instantiate(structure.structure, new Vector3(transform.position.x + randomPos.x, transform.position.y + randomPos.y, -2f), Quaternion.identity);
