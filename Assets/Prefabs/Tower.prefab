@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 2927374873711401090}
   - component: {fileID: 1285136406}
   - component: {fileID: 2121435267}
+  - component: {fileID: 6426900249711946437}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -256,7 +257,7 @@ Transform:
   - {fileID: 1203469263837132799}
   - {fileID: 2805461438227611333}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &747668031414274712
 SpriteRenderer:
@@ -436,6 +437,20 @@ MonoBehaviour:
   isGlobal: 0
   hasAudioSrc: 0
   buildingIndex: 0
+--- !u!114 &6426900249711946437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904048588931265571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76ce5e5870fa3b4b8dcbdc84e3791c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  builtBy: {fileID: 0}
+  buildable: {fileID: 0}
 --- !u!1 &8217622070694714174
 GameObject:
   m_ObjectHideFlags: 0

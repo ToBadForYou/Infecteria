@@ -1694,6 +1694,7 @@ GameObject:
   - component: {fileID: 98840935}
   - component: {fileID: 98840934}
   - component: {fileID: 98840933}
+  - component: {fileID: 98840936}
   m_Layer: 5
   m_Name: buildingSlot2
   m_TagString: Untagged
@@ -1817,6 +1818,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98840931}
   m_CullTransparentMesh: 1
+--- !u!114 &98840936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98840931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f08d09d47f9b3c4e882e0fc5b43429f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 98840933}
+  slotIcon: {fileID: 98840934}
+  buildingIcon: {fileID: 1132156944}
+  buildingText: {fileID: 1344097427}
+  emptySprite: {fileID: 21300000, guid: 0253f6069127cbb419cf1489667cd8f2, type: 3}
+  lockedSprite: {fileID: 21300000, guid: f9f405ef7f7729c49a5eb5bfb7c17035, type: 3}
 --- !u!1 &104802740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,8 +3268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.5}
-  m_SizeDelta: {x: 20, y: -65}
+  m_AnchoredPosition: {x: 0, y: -59}
+  m_SizeDelta: {x: 20, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205676216
 MonoBehaviour:
@@ -14176,6 +14195,7 @@ GameObject:
   - component: {fileID: 1098904683}
   - component: {fileID: 1098904682}
   - component: {fileID: 1098904681}
+  - component: {fileID: 1098904684}
   m_Layer: 5
   m_Name: buildingSlot1
   m_TagString: Untagged
@@ -14299,6 +14319,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098904679}
   m_CullTransparentMesh: 1
+--- !u!114 &1098904684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098904679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f08d09d47f9b3c4e882e0fc5b43429f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1098904681}
+  slotIcon: {fileID: 1098904682}
+  buildingIcon: {fileID: 1495987587}
+  buildingText: {fileID: 205676216}
+  emptySprite: {fileID: 21300000, guid: 0253f6069127cbb419cf1489667cd8f2, type: 3}
+  lockedSprite: {fileID: 21300000, guid: f9f405ef7f7729c49a5eb5bfb7c17035, type: 3}
 --- !u!1 &1103299422
 GameObject:
   m_ObjectHideFlags: 0
@@ -15920,6 +15958,7 @@ GameObject:
   - component: {fileID: 1214290120}
   - component: {fileID: 1214290119}
   - component: {fileID: 1214290118}
+  - component: {fileID: 1214290121}
   m_Layer: 5
   m_Name: buildingSlot3
   m_TagString: Untagged
@@ -16043,6 +16082,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214290116}
   m_CullTransparentMesh: 1
+--- !u!114 &1214290121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214290116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f08d09d47f9b3c4e882e0fc5b43429f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1214290118}
+  slotIcon: {fileID: 1214290119}
+  buildingIcon: {fileID: 973064283}
+  buildingText: {fileID: 1978601559}
+  emptySprite: {fileID: 21300000, guid: 0253f6069127cbb419cf1489667cd8f2, type: 3}
+  lockedSprite: {fileID: 21300000, guid: f9f405ef7f7729c49a5eb5bfb7c17035, type: 3}
 --- !u!1 &1237349139
 GameObject:
   m_ObjectHideFlags: 0
@@ -17579,8 +17636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.5}
-  m_SizeDelta: {x: 20, y: -65}
+  m_AnchoredPosition: {x: 0, y: -59}
+  m_SizeDelta: {x: 20, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344097427
 MonoBehaviour:
@@ -18933,7 +18990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 61cde2a17c9f1124bb9592945496d3aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d23aec5ee706184c884b39f761a95f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20859,8 +20916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.5}
-  m_SizeDelta: {x: 20, y: -65}
+  m_AnchoredPosition: {x: 0, y: -59.000015}
+  m_SizeDelta: {x: 20, y: -52.000034}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707043005
 MonoBehaviour:
@@ -24267,8 +24324,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.5}
-  m_SizeDelta: {x: 20, y: -65}
+  m_AnchoredPosition: {x: 0, y: -59}
+  m_SizeDelta: {x: 20, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978601559
 MonoBehaviour:
@@ -24555,15 +24612,17 @@ MonoBehaviour:
   upgradeButton: {fileID: 578760290}
   infectionBar: {fileID: 613312027}
   buildOptions: {fileID: 933105315}
-  buildSlots: {fileID: 230121895}
   selectedSlot: 0
-  emptySprite: {fileID: 21300000, guid: 0253f6069127cbb419cf1489667cd8f2, type: 3}
-  lockedSprite: {fileID: 21300000, guid: f9f405ef7f7729c49a5eb5bfb7c17035, type: 3}
   availableStructures:
   - {fileID: 1973477630}
   - {fileID: 895079647}
   - {fileID: 1976241923}
   - {fileID: 469264842}
+  buildSlots:
+  - {fileID: 2139823913}
+  - {fileID: 1098904684}
+  - {fileID: 98840936}
+  - {fileID: 1214290121}
   selectCell: {fileID: 468504959}
 --- !u!1 &2016733478
 GameObject:
@@ -25897,6 +25956,7 @@ GameObject:
   - component: {fileID: 2139823912}
   - component: {fileID: 2139823911}
   - component: {fileID: 2139823910}
+  - component: {fileID: 2139823913}
   m_Layer: 5
   m_Name: buildingSlot0
   m_TagString: Untagged
@@ -26020,6 +26080,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139823908}
   m_CullTransparentMesh: 1
+--- !u!114 &2139823913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139823908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f08d09d47f9b3c4e882e0fc5b43429f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2139823910}
+  slotIcon: {fileID: 2139823911}
+  buildingIcon: {fileID: 1745016512}
+  buildingText: {fileID: 1707043005}
+  emptySprite: {fileID: 21300000, guid: 0253f6069127cbb419cf1489667cd8f2, type: 3}
+  lockedSprite: {fileID: 21300000, guid: f9f405ef7f7729c49a5eb5bfb7c17035, type: 3}
 --- !u!1001 &4233825818672962532
 PrefabInstance:
   m_ObjectHideFlags: 0

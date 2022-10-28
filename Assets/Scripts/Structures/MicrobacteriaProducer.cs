@@ -13,6 +13,7 @@ public class MicrobacteriaProducer : Structure
         unitSpawner = GameObject.Find("UnitSpawner").GetComponent<UnitSpawner>();
         unitProducer.AddProduction(UnitType.MICROBACTERIA, new UnitProductionData(0, 1, 15));
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buildable = GameObject.Find("MicrobacteriaProducer").GetComponent<Buildable>();
     }
 
     void Update(){

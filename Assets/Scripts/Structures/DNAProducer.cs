@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DNAProducer : MonoBehaviour
+public class DNAProducer : Structure
 {
     public Transform barPivot;
 
@@ -13,6 +13,7 @@ public class DNAProducer : MonoBehaviour
 
     void Start(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buildable = GameObject.Find("DNAProducer").GetComponent<Buildable>();
     }
 
     void Update(){

@@ -5,5 +5,6 @@ using UnityEngine;
 public class Structure : MonoBehaviour
 {
     public Factory builtBy;
+    public Buildable buildable;
 
 }

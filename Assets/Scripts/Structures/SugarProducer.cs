@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SugarProducer : MonoBehaviour
+public class SugarProducer : Structure
 {
     public Transform barPivot;
 
@@ -13,6 +13,7 @@ public class SugarProducer : MonoBehaviour
 
     void Start(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buildable = GameObject.Find("SugarProducer").GetComponent<Buildable>();
     }
 
     void Update(){
